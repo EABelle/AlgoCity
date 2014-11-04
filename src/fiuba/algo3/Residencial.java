@@ -17,7 +17,15 @@ public class Residencial extends Edificio {
 		}
 	}
 
-	int disponibilidad() {
+	public int disponibilidad() {
 		return 100 - habitantes;
+	}
+
+	public void quitarHabitantes (int habitantesSalientes) throws NoHayTantosHabitantes {
+		if ( (habitantes - habitantesSalientes) >= 0){
+			habitantes-= habitantesSalientes;
+		}else{
+			throw new NoHayTantosHabitantes();
+		}
 	}
 }
