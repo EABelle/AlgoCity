@@ -1,11 +1,10 @@
 package fiuba.algo3;
 
 public class Residencial extends Edificio {
-		int habitantes;
+	int habitantes;
 	
-	public Residencial (){
-		costo = 5;
-		consumoElectrico = 1;
+	public void Residencial (){
+		Edificio (5, 1);
 		habitantes = 0;
 	}
 
