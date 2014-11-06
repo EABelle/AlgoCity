@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 public class CentralEolicaTest extends TestCase {
 	
-	public void testCrearCentralEolica{
-		CentralEolica central =
+	public void testCrearCentralEolica(){
+		CentralEolica central = new CentralEolica();
 	}
 }
