@@ -4,7 +4,7 @@ public class Partida {
 
 	protected Mapa mapa;
 
-	public Partida() {
+	public Partida (Mapa mapa) {
 		this.mapa = mapa;
 	}
 
