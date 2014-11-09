@@ -1,5 +1,5 @@
 package fiuba.algo3;
 
-public class Hectarea {
-
+public abstract class Hectarea 
+implements CalculadorDeCalidadDeVida {
 }

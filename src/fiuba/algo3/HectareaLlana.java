@@ -10,4 +10,9 @@ public class HectareaLlana extends Hectarea {
 		this.edificio = edificio;
 	}
 
+	@Override
+	public int calcularCalidadDeVida() {
+		return 0;
+	}
+
 }
