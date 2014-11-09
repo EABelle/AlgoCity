@@ -9,4 +9,12 @@ public class IndustrialTest extends TestCase {
 		Industrial edificio = new Industrial();
 	}
 	
+	public void testConsumoIndustrial() {
+		assertEquals(Industrial.consumo, 5);
+	}
+
+	public void testCostoIndustrial() {
+		assertEquals(Industrial.costo, 10);
+	}
+	
 }

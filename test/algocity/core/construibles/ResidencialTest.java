@@ -7,8 +7,12 @@ import junit.framework.TestCase;
 
 public class ResidencialTest extends TestCase {
 	
-	public void testCrearResidencial(){
-		Residencial edificio = new Residencial();
+	public void testCostoDeResidencial() {
+		assertEquals(5, Residencial.costo);
+	}
+	
+	public void testConsumoDeResidencial() {
+		assertEquals(1, Residencial.consumo);
 	}
 	
 	public void testAgregarUnHabitante(){
