@@ -1,7 +1,7 @@
 package fiuba.algo3.edificios;
 
-import fiuba.algo3.EspacioInsuficiente;
-import fiuba.algo3.NoHayTantosHabitantes;
+import fiuba.algo3.EspacioInsuficienteException;
+import fiuba.algo3.NoHayTantosHabitantesException;
 import junit.framework.TestCase;
 
 public class ResidencialTest extends TestCase {
@@ -14,7 +14,7 @@ public class ResidencialTest extends TestCase {
 		Residencial edificio = new Residencial();
 		try{
 			edificio.agregarHabitantes(1);
-		}catch (EspacioInsuficiente e){}
+		}catch (EspacioInsuficienteException e){}
 		assertEquals (99, edificio.disponibilidad());
 	}
 	
@@ -23,7 +23,7 @@ public class ResidencialTest extends TestCase {
 		boolean excepcionLanzada = false;
 		try{
 			edificio.agregarHabitantes(101);
-		}catch (EspacioInsuficiente e){
+		}catch (EspacioInsuficienteException e){
 			excepcionLanzada = true;
 		}
 		assertTrue (excepcionLanzada);
@@ -43,7 +43,7 @@ public class ResidencialTest extends TestCase {
 		boolean excepcionLanzada = false;
 		try{
 			edificio.quitarHabitantes(1);
-		}catch(NoHayTantosHabitantes e){
+		}catch(NoHayTantosHabitantesException e){
 			excepcionLanzada = true;
 		}
 		assertTrue (excepcionLanzada);
