@@ -1,4 +1,4 @@
-package fiuba.algo3;
+package fiuba.algo3.edificios;
 
 public abstract class Edificio {
 	protected  int costo;

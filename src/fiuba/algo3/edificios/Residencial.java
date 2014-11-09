@@ -1,4 +1,7 @@
-package fiuba.algo3;
+package fiuba.algo3.edificios;
+
+import fiuba.algo3.EspacioInsuficiente;
+import fiuba.algo3.NoHayTantosHabitantes;
 
 public class Residencial extends Edificio {
 	int habitantes;

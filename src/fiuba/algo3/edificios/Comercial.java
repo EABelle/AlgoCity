@@ -1,4 +1,4 @@
-package fiuba.algo3;
+package fiuba.algo3.edificios;
 
 public class Comercial extends Edificio {
 
