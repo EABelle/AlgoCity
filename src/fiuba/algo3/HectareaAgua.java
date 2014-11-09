@@ -7,7 +7,7 @@ public class HectareaAgua extends Hectarea {
 	PozoDeAgua pozoDeAgua;
 	@Override
 	public int calcularCalidadDeVida() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
