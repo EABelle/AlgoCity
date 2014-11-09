@@ -1,5 +1,6 @@
-package fiuba.algo3;
+package fiuba.algo3.edificios;
 
+import fiuba.algo3.edificios.CentralMineral;
 import junit.framework.TestCase;
 
 public class CentralMineralTest extends TestCase {
