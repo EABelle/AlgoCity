@@ -5,15 +5,23 @@ import junit.framework.TestCase;
 
 public class ComercialTest extends TestCase {
 	
-	public void testCrearComercial(){
-		Comercial edificio = new Comercial();
+	Comercial edificio;
+	
+	@Override
+	protected void setUp() throws Exception {
+		// TODO Auto-generated method stub
+		super.setUp();
+		edificio = new Comercial();
 	}
 	
-	public void testCostoComercial() {
-		assertEquals(5, Comercial.costo);
+	public void testCrearIndustrial(){
 	}
 	
-	public void testConsumoComercial() {
-		assertEquals(2, Comercial.consumo);
+	public void testConsumoIndustrial() {
+		assertEquals(edificio.getConsumo(), 2);
+	}
+
+	public void testCostoIndustrial() {
+		assertEquals(edificio.getCosto(), 5);
 	}
 }

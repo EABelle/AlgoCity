@@ -5,12 +5,12 @@ import algocity.core.NoHayTantosHabitantesException;
 
 public class Residencial extends Edificio {
 	
-	static int costo = 5;
-	static int consumo = 1;
 	int habitantes;
 	
 	public Residencial() {
 		habitantes = 0;
+		costo = 5;
+		consumo = 1;
 	}
 
 	public void agregarHabitantes (int habitantesNuevos) throws EspacioInsuficienteException {

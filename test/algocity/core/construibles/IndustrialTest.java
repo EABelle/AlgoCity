@@ -5,16 +5,24 @@ import junit.framework.TestCase;
 
 public class IndustrialTest extends TestCase {
 	
+	Industrial edificio;
+	
+	@Override
+	protected void setUp() throws Exception {
+		// TODO Auto-generated method stub
+		super.setUp();
+		edificio = new Industrial();
+	}
+	
 	public void testCrearIndustrial(){
-		Industrial edificio = new Industrial();
 	}
 	
 	public void testConsumoIndustrial() {
-		assertEquals(Industrial.consumo, 5);
+		assertEquals(5, edificio.getConsumo());
 	}
 
 	public void testCostoIndustrial() {
-		assertEquals(Industrial.costo, 10);
+		assertEquals(10, edificio.getCosto());
 	}
 	
 }
