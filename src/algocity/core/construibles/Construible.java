@@ -2,6 +2,10 @@ package algocity.core.construibles;
 
 public abstract class Construible {
 
-	static int costo;
+	protected int costo;
+	
+	public int getCosto() {
+		return costo;
+	}
 	
 }

@@ -1,14 +1,14 @@
 package algocity.core.construibles;
 
 public abstract class CentralElectrica extends Construible{
-	static int radioDeAlimentacion;
-	static int potencia;
+	int radioDeAlimentacion;
+	int potencia;
 	
-	public static int getRadioDeAlimentacion() {
+	public int getRadioDeAlimentacion() {
 		return radioDeAlimentacion;
 	}
 	
-	public static int getPotencia() {
+	public int getPotencia() {
 		return potencia;
 	}
 	
