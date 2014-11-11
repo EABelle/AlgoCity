@@ -29,6 +29,8 @@ public class Tendido {
 		
 		vecino = this.getNodo(coordenadaX, coordenadaY-1);
 		this.hacerVecinos (nodoNuevo, vecino);
+		
+		nodos.add(nodoNuevo);
 	}
 	
 	public void eliminarNodo (int coordenadaX , int coordenadaY){
@@ -38,12 +40,17 @@ public class Tendido {
 		this.nodos.remove(nodo);
 	}
 	
-	private NodoTendido getNodo (int coordenadaX , int coordenadaY){
+	public NodoTendido getNodo (int coordenadaX , int coordenadaY){
 		Iterator<NodoTendido> iter = nodos.iterator();
+
 		while ( iter.hasNext() ){
+
 			NodoTendido nodoActual = iter.next();
 			
-			if ( (nodoActual.equals(coordenadaX)) && (nodoActual.equals(coordenadaY)) ){
+			int XActual = nodoActual.getCoordenadaX();
+			int YActual = nodoActual.getCoordenadaY();	
+			
+			if ( (XActual == coordenadaX) && ( YActual == coordenadaY) ){
 				return nodoActual;				
 			}
 		}return null;
@@ -68,7 +75,7 @@ public class Tendido {
 
 	}
 	
-	public boolean nodoExisteBFS (NodoTendido nodoInicial, NodoTendido nodoFinal){
+	public boolean existeConexionBFS (NodoTendido nodoInicial, NodoTendido nodoFinal){
 		
 		ConcurrentLinkedQueue<NodoTendido> q = new ConcurrentLinkedQueue<NodoTendido>();
 		Hashtable<NodoTendido, String> estadoVisitaNodo = new Hashtable<NodoTendido, String>();
@@ -98,4 +105,20 @@ public class Tendido {
 						
 		}return false;
 	}
+	/*
+	private Hashtable distanciasMinimasDijkstra (NodoTendido nodoInicial){
+		
+		ConcurrentLinkedQueue q = new ConcurrentLinkedQueue();
+		Hashtable distancias = new Hashtable();
+		int INFINITO = Integer.MAX_VALUE;
+		
+		Iterator<NodoTendido> iter = nodos.iterator();
+		while ( iter.hasNext() ){
+			NodoTendido nodoActual = iter.next();
+			distancias.put(nodoActual, "NO VISITADO");
+		}
+		
+		
+		
+	}*/
 }
