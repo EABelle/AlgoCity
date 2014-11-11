@@ -35,7 +35,6 @@ public class TendidoTest extends TestCase{
 		assertTrue( nodo1 == null );
 		assertTrue( nodo2 != null );
 		assertTrue( nodo3 != null );
-		
 	}
 	
 	public void testCrearTendidoYAgregarDosNodosConectados() {

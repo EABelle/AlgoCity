@@ -8,6 +8,7 @@ public class NodoTendido {
 	int coordenadaX;
 	int coordenadaY;
 	ArrayList<NodoTendido> vecinos;
+
 	
 	public NodoTendido(int coordenadaX, int coordenadaY) {
 		
