@@ -12,12 +12,12 @@ public class HectareaLlanaTest {
 	
 	public void testSeAgregaResidecialEnHectareaLlana(){
 		HectareaLlana llanura = new HectareaLlana();
-		llanura.agregarConstruible (new Residencial());
+		llanura.agregarEdificio (new Residencial());
 	}
 	
 	public void testSeAgregaComercialEnHectareaLlana(){
 		HectareaLlana llanura = new HectareaLlana();
-		llanura.agregarConstruible (new Comercial());
+		llanura.agregarEdificio (new Comercial());
 	}
 
 }

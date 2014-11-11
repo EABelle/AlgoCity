@@ -7,25 +7,12 @@ import junit.framework.TestCase;
 
 public class ResidencialTest extends TestCase {
 	
-	
-	Residencial edificio;
-	
-	@Override
-	protected void setUp() throws Exception {
-		// TODO Auto-generated method stub
-		super.setUp();
-		edificio = new Residencial();
-	}
-	
-	public void testConsumoResidencial() {
-		assertEquals(edificio.getConsumo(), 1);
-	}
-
-	public void testCostoResidencial() {
-		assertEquals(edificio.getCosto(), 5);
+	public void testCrearResidencial(){
+		Residencial edificio = new Residencial();
 	}
 	
 	public void testAgregarUnHabitante(){
+		Residencial edificio = new Residencial();
 		try{
 			edificio.agregarHabitantes(1);
 		}catch (EspacioInsuficienteException e){}
@@ -33,6 +20,7 @@ public class ResidencialTest extends TestCase {
 	}
 	
 	public void testSuperarLaCantidadDeHabitantesLanzaExcepcion(){
+		Residencial edificio = new Residencial();
 		boolean excepcionLanzada = false;
 		try{
 			edificio.agregarHabitantes(101);
@@ -43,6 +31,7 @@ public class ResidencialTest extends TestCase {
 	}
 	
 	public void testAlAgregarDosPersonasYSacarUnaQuedan99Disponibles (){
+		Residencial edificio = new Residencial();
 		try{
 			edificio.agregarHabitantes(2);
 			edificio.quitarHabitantes(1);
@@ -51,6 +40,7 @@ public class ResidencialTest extends TestCase {
 	}
 	
 	public void TestQuitarHabitanteDeUnEdificioVacioLanzaUnaExcepcion(){
+		Residencial edificio = new Residencial();
 		boolean excepcionLanzada = false;
 		try{
 			edificio.quitarHabitantes(1);

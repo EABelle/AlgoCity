@@ -1,11 +1,11 @@
 package algocity.core.construibles;
 
 public class CentralMineral extends CentralElectrica {
-	
-	public CentralMineral() {
+
+	public CentralMineral(){
 		costo = 3000;
+		potenciaGenerada = 400;
 		radioDeAlimentacion = 10;
-		potencia = 400;
 	}
 	
 }
