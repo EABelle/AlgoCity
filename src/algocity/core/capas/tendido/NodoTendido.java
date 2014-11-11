@@ -37,10 +37,13 @@ public class NodoTendido {
 		while ( iter.hasNext() ){
 			NodoTendido nodoActual = iter.next();
 			
-			if ( (nodoActual.getCoordenadaX() == coordenadaX) && (nodoActual.getCoordenadaY() == coordenadaY) ){
-				this.vecinos.remove(nodoActual);				
+			int XActual = nodoActual.getCoordenadaX();
+			int YActual = nodoActual.getCoordenadaY();
+			
+			if ( (XActual == coordenadaX) && (YActual == coordenadaY) ){
+				this.vecinos.remove(nodoActual);
+				return;
 			}
 		}
 	}
-
 }
