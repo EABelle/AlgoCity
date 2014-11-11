@@ -1,12 +1,11 @@
 package algocity.core.construibles;
 
-public abstract class Edificio {
-	protected  int costo;
-	protected int consumoElectrico;
-	
-	public void Edificio (int costo, int consumoElectrico){
-		this.costo = costo;
-		this.consumoElectrico = consumoElectrico;
-	}
+public abstract class Edificio extends Construible {
 
+	protected int consumo;
+	
+	public int getConsumo() {
+		return consumo;
+	}
+	
 }

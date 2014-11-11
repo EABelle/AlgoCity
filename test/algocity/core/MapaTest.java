@@ -13,5 +13,4 @@ public class MapaTest extends TestCase {
 			}
 			assertEquals (100, i);
 		}
-
 }

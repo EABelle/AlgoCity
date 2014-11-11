@@ -1,5 +1,6 @@
 package algocity.core.capas;
 
+import algocity.core.construibles.Construible;
 import algocity.core.construibles.Edificio;
 
 public class HectareaLlana extends Hectarea {
@@ -14,6 +15,7 @@ public class HectareaLlana extends Hectarea {
 	public int calcularCalidadDeVida() {
 		return 0;
 	}
+
 
 	@Override
 	public boolean agregarConstruible(Construible construible) {

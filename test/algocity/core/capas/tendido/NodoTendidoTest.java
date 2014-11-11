@@ -38,6 +38,5 @@ public class NodoTendidoTest extends TestCase {
 		
 		nodo.borrarVecino(5,2);
 		assertFalse(vecinos.contains(vecino));
-		
 	}	
 }
