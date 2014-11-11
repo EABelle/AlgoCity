@@ -10,5 +10,10 @@ public class HectareaAgua extends Hectarea {
 		
 		return 0;
 	}
+	@Override
+	public boolean agregarConstruible(Construible construible) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
