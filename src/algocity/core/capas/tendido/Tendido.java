@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import algocity.core.capas.tendido.NodoTendido;
 
-public class Tendido {
+abstract public class Tendido {
 
 	ArrayList<NodoTendido> nodos;
 		
@@ -16,23 +16,8 @@ public class Tendido {
 		this.nodos = new ArrayList<NodoTendido>();		
 	}
 
-	public void agregarNodo (int coordenadaX , int coordenadaY){
-		NodoTendido nodoNuevo = new NodoTendido(coordenadaX, coordenadaY);
-		
-		NodoTendido vecino = this.getNodo(coordenadaX+1, coordenadaY);
-		this.hacerVecinos (nodoNuevo, vecino);
-		
-		vecino = this.getNodo(coordenadaX, coordenadaY+1);
-		this.hacerVecinos (nodoNuevo, vecino);
-		
-		vecino = this.getNodo(coordenadaX-1, coordenadaY);
-		this.hacerVecinos (nodoNuevo, vecino);
-		
-		vecino = this.getNodo(coordenadaX, coordenadaY-1);
-		this.hacerVecinos (nodoNuevo, vecino);
-		
-		nodos.add(nodoNuevo);
-	}
+	abstract public void agregarNodo (int coordenadaX , int coordenadaY) 
+		throws NoHayNodoCercanoException, NodoExistenteException;
 	
 	public void eliminarNodo (int coordenadaX , int coordenadaY){
 		
@@ -57,11 +42,13 @@ public class Tendido {
 		}return null;
 	}
 	
-	private void hacerVecinos (NodoTendido nodoNuevo, NodoTendido vecino){
-		if ( vecino != null) {
-			nodoNuevo.agregarVecino(vecino);
-			vecino.agregarVecino(nodoNuevo);
-		}	
+	public int distanciaMinima(int XInicial, int YInicial, int XFinal, int YFinal){
+		
+		NodoTendido nodoInicial = this.getNodo(XInicial,YInicial);
+		NodoTendido nodoFinal = this.getNodo(XFinal,YFinal);
+		
+		Hashtable<NodoTendido, Integer> distancias = distanciasMinimasDijkstra(nodoInicial);	
+		return (distancias.get(nodoFinal));
 	}
 	
 	private void quitarReferenciasDeVecinos(NodoTendido nodo){
@@ -76,8 +63,18 @@ public class Tendido {
 
 	}
 	
-	public boolean existeConexionBFS (NodoTendido nodoInicial, NodoTendido nodoFinal){
+	public void hacerVecinos (NodoTendido nodoNuevo, NodoTendido vecino){
+		if ( vecino != null) {
+			nodoNuevo.agregarVecino(vecino);
+			vecino.agregarVecino(nodoNuevo);
+		}	
+	}
+	
+	public boolean existeConexionBFS (int XInicial, int YInicial, int XFinal, int YFinal){
 		//Implementa el algoritmo de recorrido BFS para saber si dos elementos se encuentran en el mismo subgrafo conexo.
+		
+		NodoTendido nodoInicial = this.getNodo(XInicial,YInicial);
+		NodoTendido nodoFinal = this.getNodo(XFinal,YFinal);
 		
 		ConcurrentLinkedQueue<NodoTendido> q = new ConcurrentLinkedQueue<NodoTendido>();
 		Hashtable<NodoTendido, String> estadoVisitaNodo = new Hashtable<NodoTendido, String>();
@@ -138,9 +135,7 @@ public class Tendido {
 		return distancias;
 	}
 	
-	public int distanciaMinima(NodoTendido nodoInicial, NodoTendido nodoFinal){
-		
-		Hashtable<NodoTendido, Integer> distancias = distanciasMinimasDijkstra(nodoInicial);	
-		return (distancias.get(nodoFinal));
-	}
+	
+	
+
 }

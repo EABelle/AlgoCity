@@ -1,66 +1,89 @@
 package algocity.core.capas.tendido;
 
 import junit.framework.TestCase;
-import algocity.core.capas.tendido.Tendido;
 
 
-public class TendidoTest extends TestCase{
+public class RedDeAguaTest extends TestCase{
 
-	public void testCrearTendidoVacio() {
-		Tendido tendido = new Tendido();
-		NodoTendido nodo = tendido.getNodo(2,3);
+	public void test01CrearRedVacia() {
+		RedDeAgua red = new RedDeAgua();
+		NodoTendido nodo = red.getNodo(2,3);
 		assertTrue( nodo == null );
 		
 	}
 	
-	public void testCrearTendidoYAgregarNodo() {
-		Tendido tendido = new Tendido();
-		tendido.agregarNodo(2,3);
+	public void test02NoSePuedeAgregarNodoSinPozo() throws NodoExistenteException{
+		RedDeAgua red = new RedDeAgua();
 		
-		NodoTendido nodo = tendido.getNodo(2,3);
+		try {
+			
+			red.agregarNodo(2,3);
+		} 
+		catch (NoHayNodoCercanoException e){}
+		
+		NodoTendido nodo = red.getNodo(2,3);
+		assertTrue( nodo == null );
+		
+	}
+	
+	public void test03CrearRedLuegoAgregarPozoYNodo() throws NoHayNodoCercanoException, NodoExistenteException{
+		
+		RedDeAgua red = new RedDeAgua();
+		red.agregarPozo(3,3);
+		red.agregarNodo(3,3);
+		
+		NodoTendido nodo = red.getNodo(3,3);
+
 		assertTrue( nodo != null );
+	}
+	
+	public void test04NoSePuedeAgregarNodoSinNodoVecino() throws NoHayNodoCercanoException, NodoExistenteException{
+		
+		RedDeAgua red = new RedDeAgua();
+		red.agregarPozo(3,3);
+		red.agregarNodo(3,3);
+		
+		try {
+			red.agregarNodo(5,5);
+		} catch (NoHayNodoCercanoException e) {}
+		
+		NodoTendido nodoQueNoSePuedeAgregar = red.getNodo(5,5);
+
+		assertTrue( nodoQueNoSePuedeAgregar == null );
 		
 	}
 	
-	public void testCrearTendidoYAgregarDosNodos() {
-		Tendido tendido = new Tendido();
-		tendido.agregarNodo(2,3);
-		tendido.agregarNodo(3,3);
+	public void test05AgregarNodoVecino() throws NoHayNodoCercanoException, NodoExistenteException{
+		
+		RedDeAgua red = new RedDeAgua();
+		red.agregarPozo(3,3);
+		red.agregarNodo(3,3);
+		red.agregarNodo(4,3);
 		
 		
-		NodoTendido nodo1 = tendido.getNodo(4,4);
-		NodoTendido nodo2 = tendido.getNodo(2,3);
-		NodoTendido nodo3 = tendido.getNodo(3,3);
+		NodoTendido nodoVecino = red.getNodo(4,3);
 
-		assertTrue( nodo1 == null );
-		assertTrue( nodo2 != null );
-		assertTrue( nodo3 != null );
-	}
+		assertTrue( nodoVecino != null );
+		
 	
-	public void testCrearTendidoYAgregarDosNodosConectados() {
-		Tendido tendido = new Tendido();
-		tendido.agregarNodo(2,3);
-		tendido.agregarNodo(3,3);
-		
-		
-		NodoTendido nodo1 = tendido.getNodo(2,3);
-		NodoTendido nodo2 = tendido.getNodo(3,3);
-
-		assertTrue( tendido.existeConexionBFS(nodo1, nodo2) );
 		
 	}
 	
-	public void testCrearTendidoYAgregarDosNodosNOConectados() {
-		Tendido tendido = new Tendido();
-		tendido.agregarNodo(2,3);
-		tendido.agregarNodo(5,5);
+	public void test06NoSePuedeAgregarNodoDondeYaHay() throws NoHayNodoCercanoException, NodoExistenteException{
 		
-		NodoTendido nodo1 = tendido.getNodo(2,3);
-		NodoTendido nodo2 = tendido.getNodo(5,5);
-
-		assertFalse( tendido.existeConexionBFS(nodo1, nodo2) );
+		boolean sePudo = false;
 		
+		RedDeAgua red = new RedDeAgua();
+		
+		red.agregarPozo(3,3);
+		red.agregarNodo(3,3);
+		try {
+			
+			red.agregarNodo(3,3);
+			sePudo = true;
+			
+		} catch (NodoExistenteException e) {}
+		
+		assertTrue( sePudo == false);
 	}
-	
-
 }
