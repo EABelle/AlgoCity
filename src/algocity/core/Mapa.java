@@ -1,7 +1,9 @@
 package algocity.core;
 
 import algocity.core.capas.Hectarea;
+import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
+import algocity.core.construibles.Edificio;
 
 public class Mapa
 implements CalculadorDeCalidadDeVida {
@@ -41,14 +43,33 @@ implements CalculadorDeCalidadDeVida {
 		return hectareas[x][y];
 	}
 	
-	public boolean agregarConstruible (Construible construible,
+	public boolean agregarConstruible (Edificio edificio,
 			int x, int y) {
-		return hectareas[x][y].agregarConstruible(construible);
+		return hectareas[x][y].agregarConstruible(edificio);
+	}
+	
+	public boolean agregarConstruible (CentralElectrica central,
+			int x, int y) {
+		int i;
+		int j;
+		int radio;
+		if (hectareas[x][y].agregarConstruible(central)){
+			radio  = central.getRadioDeAlimentacion();
+			for(i = 0; i <= 2 * radio; i++){
+				for (j = 0; j <= 2 * radio; j++){
+					if(((x - radio + i) >= 0 ) && ((x - radio + i) < filas) &&
+							((y - radio + j) >= 0) && ((y - radio + j) <columnas))
+					hectareas[x - radio + i][y - radio + j].conectarRedElectrica();
+				}
+			}
+			return true;
+		}
+		return false;
 	}
 	
 	@Override
 	public int calcularCalidadDeVida() {
-		//en cada hectárea calcularCalidadDeVida();
+		/*en cada hectárea calcularCalidadDeVida();*/
 		return 0;
 	}
 

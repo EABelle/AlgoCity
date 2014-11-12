@@ -1,6 +1,6 @@
 package algocity.core.construibles;
 
-public abstract class Edificio extends Construible {
+public abstract class Edificio extends ConstruibleEnLlano {
 
 	protected int consumo;
 	
