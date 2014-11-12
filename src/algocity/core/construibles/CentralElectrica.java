@@ -1,6 +1,6 @@
 package algocity.core.construibles;
 
-public abstract class CentralElectrica extends Construible{
+public abstract class CentralElectrica extends ConstruibleEnLlano{
 	int radioDeAlimentacion;
 	int potencia;
 	

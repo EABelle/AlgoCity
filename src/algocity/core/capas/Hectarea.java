@@ -6,18 +6,25 @@ import algocity.core.construibles.Construible;
 public abstract class Hectarea 
 implements CalculadorDeCalidadDeVida {
 	
-	int conexionesElectricas;
 	Construible construible;
+	int conexionesElectricas;
 	
 	public Hectarea() {
-		conexionesElectricas = 0;
 		construible = null;
+		conexionesElectricas = 0;
 	}
 	
 	public abstract boolean agregarConstruible(Construible construible);
 
 	public boolean redElectricaConectada() {
-		
 		return (conexionesElectricas > 0);
+	}
+	
+	public void conectarRedElectrica() {
+		conexionesElectricas ++;
+	}
+	
+	public void desconectarRedElectrica(){
+		conexionesElectricas --;
 	}
 }
