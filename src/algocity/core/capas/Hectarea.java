@@ -11,6 +11,7 @@ implements CalculadorDeCalidadDeVida {
 	
 	public Hectarea() {
 		conexionesElectricas = 0;
+		construible = null;
 	}
 	
 	public abstract boolean agregarConstruible(Construible construible);
