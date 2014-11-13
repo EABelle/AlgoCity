@@ -3,6 +3,7 @@ package algocity.core;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
+import algocity.core.capas.tendido.RutaPavimentada;
 import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.PozoDeAgua;
 
@@ -11,11 +12,13 @@ public class Partida {
 	protected Mapa mapa;
 	protected RedDeAgua redDeAgua;
 	protected RedElectrica redElectrica;
-	protected RutaPavimentada ruta;
+	protected RutaPavimentada rutaPavimentada;
 
 	public Partida (Mapa mapa) {
 		this.mapa = mapa;
 		redDeAgua = new RedDeAgua();
+		redElectrica = new RedElectrica();
+		rutaPavimentada = new RutaPavimentada();
 	}
 	
 	public boolean agregarHectareaMapa (Hectarea hectarea){
@@ -24,11 +27,14 @@ public class Partida {
 	
 	public boolean agregarConstruible (CentralElectrica central,
 			int x, int y) {
+		
 		int i;
 		int j;
 		int radio;
 		
 		if (mapa.agregarConstruible(central, x, y)){
+			
+	//		redElectrica.
 			radio  = central.getRadioDeAlimentacion();
 				
 			for(i = 0; i <= 2 * radio; i++) {
@@ -45,8 +51,12 @@ public class Partida {
 	
 	public boolean agregarConstruible (PozoDeAgua pozo,
 			int x, int y) {
-		redDeAgua.agregarPozo(x, y);
-		return mapa.getHectarea(x, y).agregarConstruible(pozo);
+		
+		if  (mapa.getHectarea(x, y).agregarConstruible(pozo)) {
+			redDeAgua.agregarPozo(x, y);
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean agregarConstruible ( RedDeAgua redDeAgua,
@@ -54,6 +64,11 @@ public class Partida {
 		
 				return redDeAgua.agregarNodo(x, y);
 			
+	}
+
+	public Hectarea getHectarea(int x, int y) {
+		
+		return mapa.getHectarea(x, y);
 	}
 
 }

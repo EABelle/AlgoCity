@@ -1,11 +1,7 @@
 package algocity.core;
 
 import algocity.core.capas.Hectarea;
-import algocity.core.capas.tendido.RedDeAgua;
-import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
-import algocity.core.construibles.Edificio;
-import algocity.core.construibles.PozoDeAgua;
 
 public class Mapa
 implements CalculadorDeCalidadDeVida {
@@ -23,7 +19,6 @@ implements CalculadorDeCalidadDeVida {
 		filas = dimension1;
 		columnas = dimension2;
 		cargadoCompleto = false;
-		redDeAgua = new RedDeAgua();
 	}
 
 	public boolean cargarHectareaNueva(Hectarea hectarea) {
