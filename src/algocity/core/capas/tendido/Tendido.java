@@ -17,8 +17,14 @@ abstract public class Tendido extends Construible{
 		this.nodos = new ArrayList<NodoTendido>();		
 	}
 
-	abstract public void agregarNodo (int coordenadaX , int coordenadaY) 
-		throws NoHayNodoCercanoException, NodoExistenteException;
+	abstract public boolean agregarNodo (int coordenadaX , int coordenadaY);
+	
+	public boolean nodoExiste (int coordenadaX , int coordenadaY){
+		if (this.getNodo(coordenadaX,coordenadaY) == null){
+			return false;
+		}
+		return true;
+	}
 	
 	public void eliminarNodo (int coordenadaX , int coordenadaY){
 		

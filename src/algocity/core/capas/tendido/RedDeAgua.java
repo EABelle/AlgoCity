@@ -20,12 +20,10 @@ public class RedDeAgua extends Tendido {
 	}
 	
 	@Override
-	public void agregarNodo(int coordenadaX, int coordenadaY) 
-	throws NoHayNodoCercanoException, NodoExistenteException{
+	public boolean agregarNodo(int coordenadaX, int coordenadaY){
 		
-		if (this.getNodo(coordenadaX,coordenadaY) != null){
-			throw new NodoExistenteException();
-		}
+		if ( this.nodoExiste(coordenadaX,coordenadaY) )
+			return false;
 		
 		NodoTendido nodoNuevo = new NodoTendido(coordenadaX, coordenadaY);
 		
@@ -44,7 +42,7 @@ public class RedDeAgua extends Tendido {
 			Coordenada coordenadaActual = iter2.next();
 			if ( (coordenadaActual.getX() == coordenadaX) && (coordenadaActual.getY() == coordenadaY) ){
 				this.nodos.add(nodoNuevo);
-				return;
+				return true;
 			}
 		}
 
@@ -66,10 +64,9 @@ public class RedDeAgua extends Tendido {
 		if (count >= 1){
 			hacerVecinos (nodoNuevo, vecino);
 			this.nodos.add(nodoNuevo);
-			return;
+			return true;
 		}
-		if (count == 0)
-			throw new NoHayNodoCercanoException();
+		return false;
 	}
 
 
