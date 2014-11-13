@@ -8,11 +8,10 @@ public class RutaPavimentada extends Tendido {
 ArrayList<Coordenada> coordenadasCentralesElectricas;
 	
 	@Override
-	public void agregarNodo(int coordenadaX, int coordenadaY)
-			throws NodoExistenteException {
+	public boolean agregarNodo(int coordenadaX, int coordenadaY){
 		
 		if (this.getNodo(coordenadaX,coordenadaY) != null){
-			throw new NodoExistenteException();
+			return false;
 		}
 		
 		NodoTendido nodoNuevo = new NodoTendido(coordenadaX, coordenadaY);
@@ -33,6 +32,7 @@ ArrayList<Coordenada> coordenadasCentralesElectricas;
 		}
 		
 		this.nodos.add(nodoNuevo);
+		return true;
 	}
 	
 	

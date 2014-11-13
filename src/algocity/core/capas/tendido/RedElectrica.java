@@ -12,11 +12,10 @@ public class RedElectrica extends Tendido {
 	}
 	
 	@Override
-	public void agregarNodo(int coordenadaX, int coordenadaY)
-			throws NoHayNodoCercanoException, NodoExistenteException {
+	public boolean agregarNodo(int coordenadaX, int coordenadaY){
 		
 		if (this.getNodo(coordenadaX,coordenadaY) != null){
-			throw new NodoExistenteException();
+			return false;
 		}
 		
 		NodoTendido nodoNuevo = new NodoTendido(coordenadaX, coordenadaY);
@@ -35,7 +34,7 @@ public class RedElectrica extends Tendido {
 			Coordenada coordenadaActual = iter2.next();
 			if ( (coordenadaActual.getX() == coordenadaX) && (coordenadaActual.getY() == coordenadaY) ){
 				this.nodos.add(nodoNuevo);
-				return;
+				return true;
 			}
 		}
 		
@@ -56,9 +55,9 @@ public class RedElectrica extends Tendido {
 		
 		if (hayVecinos){
 			this.nodos.add(nodoNuevo);
-			return;
+			return true;
 		}
-		throw new NoHayNodoCercanoException();
+		return false;
 
 	}
 	
