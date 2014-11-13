@@ -1,9 +1,12 @@
 package algocity.core;
 
 import algocity.core.capas.Hectarea;
+import algocity.core.capas.tendido.RedDeAgua;
+import algocity.core.construibles.Canieria;
 import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 import algocity.core.construibles.Edificio;
+import algocity.core.construibles.PozoDeAgua;
 
 public class Mapa
 implements CalculadorDeCalidadDeVida {
@@ -13,6 +16,7 @@ implements CalculadorDeCalidadDeVida {
 	private int filas;
 	private int columnas;
 	private boolean cargadoCompleto;
+	private RedDeAgua redDeAgua;
 	
 	public Mapa(int dimension1, int dimension2){
 		hectareas = new Hectarea[dimension1][dimension2];
@@ -21,6 +25,7 @@ implements CalculadorDeCalidadDeVida {
 		filas = dimension1;
 		columnas = dimension2;
 		cargadoCompleto = false;
+		redDeAgua = new RedDeAgua();
 	}
 
 	public boolean cargarHectareaNueva(Hectarea hectarea) {
@@ -66,6 +71,21 @@ implements CalculadorDeCalidadDeVida {
 		}
 		return false;
 	}
+	
+	public boolean agregarConstruible (PozoDeAgua pozo,
+			int x, int y) {
+		redDeAgua.agregarPozo(x, y);
+		return hectareas[x][y].agregarConstruible(pozo);
+	}
+	
+	public boolean agregarConstruible ( Canieria canio,
+			int x, int y) {
+		if (hectareas[x][y].agregarCanio(canio)){
+			
+		}
+	}
+	
+	
 	
 	@Override
 	public int calcularCalidadDeVida() {

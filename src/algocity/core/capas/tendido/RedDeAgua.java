@@ -11,6 +11,7 @@ public class RedDeAgua extends Tendido {
 	
 	public RedDeAgua(){
 		coordenadasPozos = new ArrayList<Coordenada>();
+		costo = 5;
 	}
 
 	public void agregarPozo (int coordenadaX , int coordenadaY){

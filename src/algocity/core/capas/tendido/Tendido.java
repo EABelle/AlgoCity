@@ -7,8 +7,9 @@ import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import algocity.core.capas.tendido.NodoTendido;
+import algocity.core.construibles.Construible;
 
-abstract public class Tendido {
+abstract public class Tendido extends Construible{
 
 	ArrayList<NodoTendido> nodos;
 		
