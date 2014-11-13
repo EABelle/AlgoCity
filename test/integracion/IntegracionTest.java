@@ -1,13 +1,14 @@
 package integracion;
 
 import algocity.core.Mapa;
+import algocity.core.Partida;
 import algocity.core.capas.HectareaLlana;
 import algocity.core.construibles.CentralEolica;
 import junit.framework.TestCase;
 
 public class IntegracionTest extends TestCase {
 	
-	public void testagregarUnaCentralEolicaAlimenta4Hectareas() {
+	public void test01agregarUnaCentralEolicaAlimenta4Hectareas() {
 		
 		Mapa mapa = new Mapa(10,10);
 		
@@ -15,9 +16,10 @@ public class IntegracionTest extends TestCase {
 			mapa.cargarHectareaNueva(new HectareaLlana());
 		}
 		
+		Partida partida = new Partida(mapa);
 		CentralEolica central = new CentralEolica();
 		
-		mapa.agregarConstruible(central, 4, 4);
+		partida.agregarConstruible(central, 4, 4);
 		
 		assertTrue ((mapa.getHectarea(1, 2).redElectricaConectada()));
 		assertTrue ((mapa.getHectarea(8, 8).redElectricaConectada()));
@@ -36,9 +38,10 @@ public class IntegracionTest extends TestCase {
 			mapa.cargarHectareaNueva(new HectareaLlana());
 		}
 		
+		Partida partida = new Partida(mapa);
 		CentralEolica central = new CentralEolica();
 		
-		mapa.agregarConstruible(central, 0, 0);
+		partida.agregarConstruible(central, 0, 0);
 		
 		assertTrue ((mapa.getHectarea(0, 0).redElectricaConectada()));
 		assertTrue ((mapa.getHectarea(4, 4).redElectricaConectada()));

@@ -15,8 +15,7 @@ implements CalculadorDeCalidadDeVida {
 	private int filas;
 	private int columnas;
 	private boolean cargadoCompleto;
-	private RedDeAgua redDeAgua;
-	
+		
 	public Mapa(int dimension1, int dimension2){
 		hectareas = new Hectarea[dimension1][dimension2];
 		x = 0;
@@ -47,7 +46,12 @@ implements CalculadorDeCalidadDeVida {
 		return hectareas[x][y];
 	}
 	
-	public boolean agregarConstruible (Edificio edificio,
+	public boolean agregarConstruible (Construible construible,
+			int x, int y) {
+		return hectareas[x][y].agregarConstruible(construible);
+	}
+	
+	/*public boolean agregarConstruible (Edificio edificio,
 			int x, int y) {
 		return hectareas[x][y].agregarConstruible(edificio);
 	}
@@ -84,7 +88,7 @@ implements CalculadorDeCalidadDeVida {
 			
 	}
 	
-	
+	*/
 	
 	@Override
 	public int calcularCalidadDeVida() {
@@ -95,6 +99,14 @@ implements CalculadorDeCalidadDeVida {
 	public boolean cargado() {
 		
 		return cargadoCompleto;
+	}
+
+	public int getfilas() {
+		return filas;
+	}
+
+	public int getcolumnas() {
+		return columnas;
 	}
 
 }
