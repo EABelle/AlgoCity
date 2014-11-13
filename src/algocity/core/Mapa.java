@@ -2,7 +2,6 @@ package algocity.core;
 
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RedDeAgua;
-import algocity.core.construibles.Canieria;
 import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 import algocity.core.construibles.Edificio;
@@ -80,6 +79,8 @@ implements CalculadorDeCalidadDeVida {
 	
 	public boolean agregarConstruible ( RedDeAgua redDeAgua,
 			int x, int y) {
+		
+				return redDeAgua.agregarNodo(x, y);
 			
 	}
 	
