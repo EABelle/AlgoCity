@@ -14,9 +14,8 @@ public class RedElectrica extends Tendido {
 	@Override
 	public boolean agregarNodo(int coordenadaX, int coordenadaY){
 		
-		if (this.getNodo(coordenadaX,coordenadaY) != null){
+		if ( this.nodoExiste(coordenadaX,coordenadaY) )
 			return false;
-		}
 		
 		NodoTendido nodoNuevo = new NodoTendido(coordenadaX, coordenadaY);
 		
