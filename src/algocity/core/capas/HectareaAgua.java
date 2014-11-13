@@ -14,8 +14,21 @@ public class HectareaAgua extends Hectarea {
 
 	@Override
 	public boolean agregarConstruible(Construible construible) {
-		// TODO Auto-generated method stub
+		try{
+			return agregarConstruibleEnAgua (construible);
+		} catch (Exception e){
+			/*agregar sonido de error*/
+			return false;
+		} 
+	}
+
+	private boolean agregarConstruibleEnAgua(Construible construible) {
+		if (this.construible == null){
+			this.construible = construible;
+			return true;
+		}
 		return false;
+		
 	}
 
 }

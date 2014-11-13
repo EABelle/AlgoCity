@@ -1,6 +1,6 @@
 package algocity.core.construibles;
 
-public class PozoDeAgua {
+public class PozoDeAgua extends ConstruibleEnAgua {
 	int costo;
 	public PozoDeAgua(){
 		costo = 250;

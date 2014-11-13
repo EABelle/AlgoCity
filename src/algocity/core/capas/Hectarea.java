@@ -27,4 +27,12 @@ implements CalculadorDeCalidadDeVida {
 	public void desconectarRedElectrica(){
 		conexionesElectricas --;
 	}
+	
+	public boolean borrarConstruible(){
+		if (construible != null){
+			construible = null;
+			return true;
+		}
+		return false;
+	}
 }
