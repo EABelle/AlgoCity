@@ -12,12 +12,19 @@ import algocity.core.construibles.Construible;
 abstract public class Tendido extends Construible{
 
 	ArrayList<NodoTendido> nodos;
-		
+	ArrayList<Coordenada> edificiosProveedores;
+	
 	public Tendido () {
-		this.nodos = new ArrayList<NodoTendido>();		
+		this.nodos = new ArrayList<NodoTendido>();
+		this.edificiosProveedores = new ArrayList<Coordenada>();
 	}
 
 	abstract public boolean agregarNodo (int coordenadaX , int coordenadaY);
+	
+	public void agregarEdificioProveedor (int coordenadaX , int coordenadaY){
+		
+		this.edificiosProveedores.add ( new Coordenada(coordenadaX,coordenadaY) );
+	}
 	
 	public boolean nodoExiste (int coordenadaX , int coordenadaY){
 		if (this.getNodo(coordenadaX,coordenadaY) == null){

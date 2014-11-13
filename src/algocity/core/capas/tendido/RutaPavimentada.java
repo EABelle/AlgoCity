@@ -5,8 +5,6 @@ import java.util.Iterator;
 
 public class RutaPavimentada extends Tendido {
 
-ArrayList<Coordenada> coordenadasCentralesElectricas;
-	
 	@Override
 	public boolean agregarNodo(int coordenadaX, int coordenadaY){
 		
@@ -33,7 +31,5 @@ ArrayList<Coordenada> coordenadasCentralesElectricas;
 		this.nodos.add(nodoNuevo);
 		return true;
 	}
-	
-	
 
 }

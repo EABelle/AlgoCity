@@ -2,18 +2,17 @@ package algocity.core.capas.tendido;
 
 import junit.framework.TestCase;
 
-
-public class RedDeAguaTest extends TestCase{
+public class RedElectricaTest extends TestCase{
 
 	public void test01CrearRedVacia() {
-		RedDeAgua red = new RedDeAgua();
+		RedElectrica red = new RedElectrica();
 		NodoTendido nodo = red.getNodo(2,3);
 		assertTrue( nodo == null );
 		
 	}
-	
-	public void test02NoSePuedeAgregarNodoSinPozo(){
-		RedDeAgua red = new RedDeAgua();
+
+	public void test02NoSePuedeAgregarNodoSinCentral(){
+		RedElectrica red = new RedElectrica();
 		
 		boolean seAgregoElNodo = red.agregarNodo(2,3);
 				
@@ -24,9 +23,9 @@ public class RedDeAguaTest extends TestCase{
 		
 	}
 	
-	public void test03CrearRedLuegoAgregarPozoYNodo(){
+	public void test03CrearRedLuegoAgregarCentralYNodo(){
 		
-		RedDeAgua red = new RedDeAgua();
+		RedElectrica red = new RedElectrica();
 		red.agregarEdificioProveedor(3,3);
 		red.agregarNodo(3,3);
 		
@@ -37,7 +36,7 @@ public class RedDeAguaTest extends TestCase{
 	
 	public void test04NoSePuedeAgregarNodoSinNodoVecino(){
 		
-		RedDeAgua red = new RedDeAgua();
+		RedElectrica red = new RedElectrica();
 		red.agregarEdificioProveedor(3,3);
 		red.agregarNodo(3,3);
 		
@@ -51,7 +50,7 @@ public class RedDeAguaTest extends TestCase{
 	
 	public void test05AgregarNodoVecino(){
 		
-		RedDeAgua red = new RedDeAgua();
+		RedElectrica red = new RedElectrica();
 		red.agregarEdificioProveedor(3,3);
 		red.agregarNodo(3,3);
 		red.agregarNodo(4,3);
@@ -64,7 +63,7 @@ public class RedDeAguaTest extends TestCase{
 		
 		boolean seAgregoElNodo = false;
 		
-		RedDeAgua red = new RedDeAgua();
+		RedElectrica red = new RedElectrica();
 		
 		red.agregarEdificioProveedor(3,3);
 		red.agregarNodo(3,3);
@@ -73,4 +72,6 @@ public class RedDeAguaTest extends TestCase{
 				
 		assertTrue(!seAgregoElNodo);
 	}
+	
+	
 }

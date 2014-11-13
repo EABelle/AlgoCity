@@ -7,18 +7,10 @@ import java.util.Iterator;
 
 public class RedDeAgua extends Tendido {
 
-	ArrayList<Coordenada> coordenadasPozos;
-	
 	public RedDeAgua(){
-		coordenadasPozos = new ArrayList<Coordenada>();
 		costo = 5;
 	}
 
-	public void agregarPozo (int coordenadaX , int coordenadaY){
-		
-		this.coordenadasPozos.add ( new Coordenada(coordenadaX,coordenadaY) );
-	}
-	
 	@Override
 	public boolean agregarNodo(int coordenadaX, int coordenadaY){
 		
@@ -37,7 +29,7 @@ public class RedDeAgua extends Tendido {
 		/*--------------------------------------------------------------------------------------------
 		 * Agrega el nodo si son las coordenadas de un pozo
 		 *------------------------------------------------------------------------------------------*/
-		Iterator<Coordenada> iter2 = coordenadasPozos.iterator();
+		Iterator<Coordenada> iter2 = edificiosProveedores.iterator();
 		while (iter2.hasNext()){
 			Coordenada coordenadaActual = iter2.next();
 			if ( (coordenadaActual.getX() == coordenadaX) && (coordenadaActual.getY() == coordenadaY) ){
