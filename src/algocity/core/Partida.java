@@ -34,7 +34,7 @@ public class Partida {
 		
 		if (mapa.agregarConstruible(central, x, y)){
 			
-	//		redElectrica.
+			redElectrica.agregarEdificioProveedor(x, y);
 			radio  = central.getRadioDeAlimentacion();
 				
 			for(i = 0; i <= 2 * radio; i++) {
@@ -53,22 +53,47 @@ public class Partida {
 			int x, int y) {
 		
 		if  (mapa.getHectarea(x, y).agregarConstruible(pozo)) {
-			redDeAgua.agregarPozo(x, y);
+			redDeAgua.agregarEdificioProveedor(x, y);
 			return true;
 		}
 		return false;
 	}
 	
-	public boolean agregarConstruible ( RedDeAgua redDeAgua,
-			int x, int y) {
+	public boolean agregarConexionDeAgua (int x, int y) {
 		
-				return redDeAgua.agregarNodo(x, y);
+				if (redDeAgua.agregarNodo(x, y)){
+					
+					return true;
+				}
+				return false;
 			
 	}
+	
+	
+	public boolean agregarConexionElectrica(int x, int y) {
+		if (redElectrica.agregarNodo(x, y)){
+			mapa.getHectarea(x, y).conectarRedElectrica();
+			return true;
+		}
+			return false;
+	}
 
-	public Hectarea getHectarea(int x, int y) {
+	public void desconectarRedElectrica(int x, int y) {
+		
+		redElectrica.eliminarNodo(x, y);
+		
+		
+	}
+
+	public boolean redElectricaConectada(int x, int y) {
+		return mapa.getHectarea(x, y).redElectricaConectada();
+	}
+
+/*	public Hectarea getHectarea(int x, int y) {
+ 
 		
 		return mapa.getHectarea(x, y);
 	}
-
+*/
+	
 }

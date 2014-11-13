@@ -5,7 +5,7 @@ import algocity.core.construibles.Construible;
 
 public class Mapa
 implements CalculadorDeCalidadDeVida {
-	Hectarea[][] hectareas;
+	private Hectarea[][] hectareas;
 	private int x;
 	private int y;
 	private int filas;
