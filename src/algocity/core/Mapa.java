@@ -78,11 +78,9 @@ implements CalculadorDeCalidadDeVida {
 		return hectareas[x][y].agregarConstruible(pozo);
 	}
 	
-	public boolean agregarConstruible ( Canieria canio,
+	public boolean agregarConstruible ( RedDeAgua redDeAgua,
 			int x, int y) {
-		if (hectareas[x][y].agregarCanio(canio)){
 			
-		}
 	}
 	
 	
