@@ -7,10 +7,6 @@ import java.util.Iterator;
 
 public class RedDeAgua extends Tendido {
 
-	public RedDeAgua(){
-		costo = 5;
-	}
-
 	@Override
 	public boolean agregarNodo(int coordenadaX, int coordenadaY){
 		

@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import algocity.core.capas.tendido.NodoTendido;
 import algocity.core.construibles.Construible;
 
-abstract public class Tendido extends Construible{
+abstract public class Tendido {
 
 	ArrayList<NodoTendido> nodos;
 	ArrayList<Coordenada> edificiosProveedores;
@@ -33,11 +33,16 @@ abstract public class Tendido extends Construible{
 		return true;
 	}
 	
-	public void eliminarNodo (int coordenadaX , int coordenadaY){
+	public boolean eliminarNodo (int coordenadaX , int coordenadaY){
 		
 		NodoTendido nodo = getNodo (coordenadaX , coordenadaY);
-		quitarReferenciasDeVecinos(nodo);
-		this.nodos.remove(nodo);
+		
+		if (nodo != null){
+			quitarReferenciasDeVecinos(nodo);
+			this.nodos.remove(nodo);
+			return true;
+		}
+		return false;
 	}
 	
 	public NodoTendido getNodo (int coordenadaX , int coordenadaY){
@@ -77,6 +82,8 @@ abstract public class Tendido extends Construible{
 
 	}
 	
+
+
 	public void hacerVecinos (NodoTendido nodoNuevo, NodoTendido vecino){
 		if ( vecino != null) {
 			nodoNuevo.agregarVecino(vecino);
@@ -84,10 +91,28 @@ abstract public class Tendido extends Construible{
 		}	
 	}
 	
+	
+	public boolean servicioExiste(int X, int Y) {
+		
+		Iterator<Coordenada> iter = edificiosProveedores.iterator();
+		
+		Coordenada coord;
+		while (iter.hasNext()){
+			coord = iter.next();
+			if (this.existeConexionBFS(X, Y, coord.getX(), coord.getY() ) ){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public boolean existeConexionBFS (int XInicial, int YInicial, int XFinal, int YFinal){
 		//Implementa el algoritmo de recorrido BFS para saber si dos elementos se encuentran en el mismo subgrafo conexo.
 		
 		NodoTendido nodoInicial = this.getNodo(XInicial,YInicial);
+		if (nodoInicial == null){
+			return false;
+		}
 		NodoTendido nodoFinal = this.getNodo(XFinal,YFinal);
 		
 		ConcurrentLinkedQueue<NodoTendido> q = new ConcurrentLinkedQueue<NodoTendido>();
@@ -148,8 +173,4 @@ abstract public class Tendido extends Construible{
 		}
 		return distancias;
 	}
-	
-	
-	
-
 }

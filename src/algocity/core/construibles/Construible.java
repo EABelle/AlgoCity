@@ -4,15 +4,15 @@ public abstract class Construible {
 
 	protected int costo;
 	private int porcentajeDeVida;
-	private boolean cumpleRedDeAgua;
-	private boolean cumpleRedElectrica;
-	private boolean cumpleRutaPavimentada;
+	protected boolean cumpleRedDeAgua;
+	protected boolean cumpleRedElectrica;
+	protected boolean cumpleRutaPavimentada;
 	
 	public Construible() {
 		porcentajeDeVida = 100;
-		cumpleRedDeAgua = false;
-		cumpleRedElectrica = false;
-		cumpleRutaPavimentada = false;
+		cumpleRedDeAgua = true;
+		cumpleRedElectrica = true;
+		cumpleRutaPavimentada = true;
 	}
 	
 	public void daniar (int porcentajeDeDanio) {
@@ -30,5 +30,30 @@ public abstract class Construible {
 	public int getCosto() {
 		return costo;
 	}
+	
+	public boolean cumpleRequerimientos(){
+		if (cumpleRedDeAgua && cumpleRedElectrica && cumpleRutaPavimentada){
+			return true;
+		}
+		return false;
+	}
+	
+	public void conectarARedDeAgua(){
+		cumpleRedDeAgua = true;
+	}
+	
+	public void conectarARedElectrica(){
+		cumpleRedElectrica = true;
+	}
+	
+	public void conectarARutaPavimentada(){
+		cumpleRutaPavimentada = true;
+	}
+	
+	public abstract void desconectarDeRedDeAgua();
+	
+	public abstract void desconectarDeRedElectrica();
+	
+	public abstract void desconectarDeRutaPavimentada();
 	
 }

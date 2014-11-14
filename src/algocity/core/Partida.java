@@ -52,7 +52,7 @@ public class Partida {
 	public boolean agregarConstruible (PozoDeAgua pozo,
 			int x, int y) {
 		
-		if  (mapa.getHectarea(x, y).agregarConstruible(pozo)) {
+		if  (mapa.agregarConstruible(pozo, x, y)) {
 			redDeAgua.agregarEdificioProveedor(x, y);
 			return true;
 		}
@@ -67,6 +67,11 @@ public class Partida {
 				}
 				return false;
 			
+	}
+	
+	public boolean redDeAguaConectada(int x, int y) {
+		
+		return redDeAgua.servicioExiste(x, y);
 	}
 	
 	
@@ -86,8 +91,11 @@ public class Partida {
 	}
 
 	public boolean redElectricaConectada(int x, int y) {
-		return mapa.getHectarea(x, y).redElectricaConectada();
+		return (mapa.getHectarea(x, y).redElectricaConectada()) || (
+				(!mapa.getHectarea(x, y).redElectricaConectada() && redElectrica.servicioExiste(x, y)));
 	}
+
+	
 
 /*	public Hectarea getHectarea(int x, int y) {
  

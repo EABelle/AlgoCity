@@ -73,5 +73,11 @@ public class RedElectricaTest extends TestCase{
 		assertTrue(!seAgregoElNodo);
 	}
 	
+	public void test07NoSePuedeEliminarNodoQueNoEsta(){
+		
+		RedElectrica red = new RedElectrica();
+		red.eliminarNodo(2, 3);	
+	}
+	
 	
 }

@@ -58,6 +58,7 @@ public class RedDeAguaTest extends TestCase{
 		
 		NodoTendido nodoVecino = red.getNodo(4,3);
 		assertTrue( nodoVecino != null );
+		assertTrue(red.servicioExiste(4,3));
 	}
 	
 	public void test06NoSePuedeAgregarNodoDondeYaHay(){
@@ -72,5 +73,19 @@ public class RedDeAguaTest extends TestCase{
 		seAgregoElNodo = red.agregarNodo(3,3);
 				
 		assertTrue(!seAgregoElNodo);
+	}
+	
+	public void test07agregaDosNodosSeparadosNoEstanConectados(){
+		
+		RedDeAgua red = new RedDeAgua();
+		
+		red.agregarEdificioProveedor(3,3);
+		red.agregarNodo(3,3);
+		red.agregarNodo(6,6);
+		
+		assertFalse(red.servicioExiste(6, 6));
+		
+		
+		
 	}
 }

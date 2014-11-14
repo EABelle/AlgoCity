@@ -11,6 +11,9 @@ public class Residencial extends Edificio {
 		habitantes = 0;
 		costo = 5;
 		consumo = 1;
+		cumpleRedDeAgua = false;
+		cumpleRedElectrica = false;
+		cumpleRutaPavimentada = false;
 	}
 
 	public void agregarHabitantes (int habitantesNuevos) throws EspacioInsuficienteException {
@@ -31,5 +34,17 @@ public class Residencial extends Edificio {
 		}else{
 			throw new NoHayTantosHabitantesException();
 		}
+	}
+	
+	public void desconectarDeRedDeAgua(){
+		cumpleRedDeAgua = false;
+	}
+	
+	public void desconectarDeRedElectrica(){
+		cumpleRedElectrica = false;		
+	}
+	
+	public void desconectarDeRutaPavimentada(){
+		cumpleRutaPavimentada = false;
 	}
 }

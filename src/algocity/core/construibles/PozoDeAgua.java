@@ -5,4 +5,19 @@ public class PozoDeAgua extends ConstruibleEnAgua {
 	public PozoDeAgua(){
 		costo = 250;
 	}
+	@Override
+	public void desconectarDeRedDeAgua() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void desconectarDeRedElectrica() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void desconectarDeRutaPavimentada() {
+		// TODO Auto-generated method stub
+		
+	}
 }

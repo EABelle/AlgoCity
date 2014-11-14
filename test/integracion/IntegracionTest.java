@@ -2,6 +2,7 @@ package integracion;
 
 import algocity.core.Mapa;
 import algocity.core.Partida;
+import algocity.core.capas.HectareaAgua;
 import algocity.core.capas.HectareaLlana;
 import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.construibles.CentralEolica;
@@ -85,28 +86,29 @@ public void test03agregarUnaCentralYTendidoAlimentaTodoElTendido() {
 	}
 
 
-/*public void test04agregarUnPozoDeAguaYCanieriaAlimentaTodoLaCanieria() {
+public void test04agregarUnPozoDeAguaYCanieriaAlimentaTodoLaCanieria() {
 	
 	Mapa mapa = new Mapa(100,100);
 	int i;
 	
+	mapa.cargarHectareaNueva(new HectareaAgua());
 	while (!mapa.cargado()) {
 		mapa.cargarHectareaNueva(new HectareaLlana());
 	}
 	
 	Partida partida = new Partida(mapa);
-	PozoDeAgua central = new PozoDeAgua();
+	PozoDeAgua pozo = new PozoDeAgua();
 	
-	partida.agregarConstruible(central, 0, 0);
+	partida.agregarConstruible(pozo, 0, 0);
 	
 	for (i = 0; i <= 73; i ++) {
-		partida.agregarConexionElectrica( 0, i);
+		partida.agregarConexionDeAgua(0, i);
 	}
 	
-	assertTrue (partida.getHectarea(0, 50).redDeAguaConectada());
-	assertTrue (partida.getHectarea(10, 10).redDeAguaConectada());
-	assertFalse (partida.getHectarea(1, 50).redDeAguaConectada());
-	assertFalse (partida.getHectarea(0, 51).redDeAguaConectada());
+	assertTrue (partida.redDeAguaConectada(0, 0));
+	assertTrue (partida.redDeAguaConectada(0, 73));
+	assertFalse (partida.redDeAguaConectada(0, 74));
+	assertFalse (partida.redDeAguaConectada(1, 0));
 	
-}*/
+	}
 }
