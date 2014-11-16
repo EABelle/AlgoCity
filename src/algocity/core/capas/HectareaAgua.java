@@ -1,6 +1,7 @@
 package algocity.core.capas;
 
 import algocity.core.construibles.Construible;
+import algocity.core.construibles.ConstruibleEnAgua;
 import algocity.core.construibles.PozoDeAgua;
 
 public class HectareaAgua extends Hectarea {
@@ -15,14 +16,14 @@ public class HectareaAgua extends Hectarea {
 	@Override
 	public boolean agregarConstruible(Construible construible) {
 		try{
-			return agregarConstruibleEnAgua (construible);
+			return agregarConstruibleEnAgua ((ConstruibleEnAgua)construible);
 		} catch (Exception e){
-			/*agregar sonido de error*/
+			//System.out.println("NO ES CONSTRUIBLE EN AGUA");
 			return false;
 		} 
 	}
 
-	private boolean agregarConstruibleEnAgua(Construible construible) {
+	private boolean agregarConstruibleEnAgua(ConstruibleEnAgua construible) {
 		if (this.construible == null){
 			this.construible = construible;
 			return true;

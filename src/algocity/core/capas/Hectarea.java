@@ -7,29 +7,39 @@ public abstract class Hectarea
 implements CalculadorDeCalidadDeVida {
 	
 	Construible construible;
-	boolean conexionesElectricas;
+	boolean conexionElectrica;
+	boolean conexionRuta;
+	boolean conexionAgua;
 	
 	public Hectarea() {
 		construible = null;
-		conexionesElectricas = false;
+		conexionAgua = false;
+		conexionElectrica = false;
+		conexionRuta = false;
 	}
 	
 	public abstract boolean agregarConstruible(Construible construible);
 
 	public boolean redElectricaConectada() {
-		return conexionesElectricas ;
+		return conexionElectrica ;
 	}
 	
 	public boolean redDeAguaConectada() {
-		return false;
+		return conexionAgua;
 	}
 	
+	public boolean rutaPavimentadaConectada() {
+		
+		return conexionRuta;
+	}
+
+	
 	public void conectarRedElectrica() {
-		conexionesElectricas = true;
+		conexionElectrica = true;
 	}
 	
 	public void desconectarRedElectrica(){
-		conexionesElectricas = false;;
+		conexionElectrica = false;;
 	}
 	
 	public boolean borrarConstruible(){
@@ -40,4 +50,5 @@ implements CalculadorDeCalidadDeVida {
 		return false;
 	}
 
+	
 }

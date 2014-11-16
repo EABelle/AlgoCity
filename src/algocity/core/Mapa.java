@@ -37,53 +37,10 @@ implements CalculadorDeCalidadDeVida {
 		return cargadoCompleto;
 	}
 	
-	public Hectarea getHectarea(int x, int y) {
-		return hectareas[x][y];
-	}
-	
 	public boolean agregarConstruible (Construible construible,
 			int x, int y) {
 		return hectareas[x][y].agregarConstruible(construible);
 	}
-	
-	/*public boolean agregarConstruible (Edificio edificio,
-			int x, int y) {
-		return hectareas[x][y].agregarConstruible(edificio);
-	}
-	
-	public boolean agregarConstruible (CentralElectrica central,
-			int x, int y) {
-		int i;
-		int j;
-		int radio;
-		if (hectareas[x][y].agregarConstruible(central)){
-			radio  = central.getRadioDeAlimentacion();
-			for(i = 0; i <= 2 * radio; i++){
-				for (j = 0; j <= 2 * radio; j++){
-					if(((x - radio + i) >= 0 ) && ((x - radio + i) < filas) &&
-							((y - radio + j) >= 0) && ((y - radio + j) <columnas))
-					hectareas[x - radio + i][y - radio + j].conectarRedElectrica();
-				}
-			}
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean agregarConstruible (PozoDeAgua pozo,
-			int x, int y) {
-		redDeAgua.agregarPozo(x, y);
-		return hectareas[x][y].agregarConstruible(pozo);
-	}
-	
-	public boolean agregarConstruible ( RedDeAgua redDeAgua,
-			int x, int y) {
-		
-				return redDeAgua.agregarNodo(x, y);
-			
-	}
-	
-	*/
 	
 	@Override
 	public int calcularCalidadDeVida() {
@@ -92,7 +49,6 @@ implements CalculadorDeCalidadDeVida {
 	}
 
 	public boolean cargado() {
-		
 		return cargadoCompleto;
 	}
 
@@ -102,6 +58,18 @@ implements CalculadorDeCalidadDeVida {
 
 	public int getcolumnas() {
 		return columnas;
+	}
+
+	public void conectarHectareaARedElectrica(int i, int j) {
+		hectareas[i][j].conectarRedElectrica();
+	}
+	
+	public boolean cercanoACentralElecrica(int x, int y) {
+		return hectareas[x][y].redElectricaConectada();
+	}
+
+	public boolean rutaPavimentadaConectada(int x, int y) {
+		return hectareas[x][y].rutaPavimentadaConectada();
 	}
 
 }

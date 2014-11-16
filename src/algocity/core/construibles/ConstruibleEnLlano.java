@@ -1,6 +1,6 @@
 package algocity.core.construibles;
 
-public class ConstruibleEnLlano extends Construible {
+public abstract class ConstruibleEnLlano extends Construible {
 
 	@Override
 	public void desconectarDeRedDeAgua() {

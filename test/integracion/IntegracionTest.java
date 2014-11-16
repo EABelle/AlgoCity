@@ -4,7 +4,6 @@ import algocity.core.Mapa;
 import algocity.core.Partida;
 import algocity.core.capas.HectareaAgua;
 import algocity.core.capas.HectareaLlana;
-import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.construibles.CentralEolica;
 import algocity.core.construibles.CentralMineral;
 import algocity.core.construibles.PozoDeAgua;
@@ -25,12 +24,12 @@ public class IntegracionTest extends TestCase {
 		
 		partida.agregarConstruible(central, 4, 4);
 		
+		assertTrue ((partida.redElectricaConectada(4, 4)));
 		assertTrue ((partida.redElectricaConectada(1, 2)));
 		assertTrue ((partida.redElectricaConectada(8, 8)));
 		assertTrue ((partida.redElectricaConectada(0, 0)));
 		assertTrue ((partida.redElectricaConectada(0, 8)));
 		assertTrue ((partida.redElectricaConectada(8, 0)));
-		assertTrue ((partida.redElectricaConectada(4, 4)));
 		assertFalse ((partida.redElectricaConectada(9, 9)));
 	}
 	
@@ -111,4 +110,39 @@ public void test04agregarUnPozoDeAguaYCanieriaAlimentaTodoLaCanieria() {
 	assertFalse (partida.redDeAguaConectada(1, 0));
 	
 	}
+
+public void test05NoSePuedeAgregarUnaCentralElectricaEnHectareaDeAgua() {
+	
+	Mapa mapa = new Mapa(100,100);
+
+	
+	mapa.cargarHectareaNueva(new HectareaAgua());
+	while (!mapa.cargado()) {
+		mapa.cargarHectareaNueva(new HectareaLlana());
+	}
+	
+	Partida partida = new Partida(mapa);
+	CentralEolica central = new CentralEolica();
+	
+	assertFalse(partida.agregarConstruible(central, 0, 0));
+	
+	}
+
+public void test06NoSePuedeAgregarUnPozoDeAguaEnHectareaLlana() {
+	
+	Mapa mapa = new Mapa(100,100);
+
+	while (!mapa.cargado()) {
+		mapa.cargarHectareaNueva(new HectareaLlana());
+	}
+	
+	Partida partida = new Partida(mapa);
+	PozoDeAgua pozo = new PozoDeAgua();
+	
+	assertFalse(partida.agregarConstruible(pozo, 0, 0));
+	
+	}
+
+
+
 }

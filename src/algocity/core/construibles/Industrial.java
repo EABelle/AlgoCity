@@ -1,22 +1,30 @@
 package algocity.core.construibles;
 
+import algocity.core.Partida;
+
 public class Industrial extends Edificio {
 	
 	public Industrial() {
 		costo = 10;
 		consumo = 5;
-		cumpleRedElectrica = false;
-		cumpleRutaPavimentada = false;
+		redElectricaConectada = false;
+		rutaPavimentadaConectada = false;
 	}
 	
 	public void desconectarDeRedDeAgua(){
 	}
 	
 	public void desconectarDeRedElectrica(){
-		cumpleRedElectrica = false;		
+		redElectricaConectada = false;		
 	}
 	
 	public void desconectarDeRutaPavimentada(){
-		cumpleRutaPavimentada = false;
+		rutaPavimentadaConectada = false;
+	}
+
+	@Override
+	public void procesarAgregado(Partida partida, int x, int y) {
+		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
+		redElectricaConectada = partida.redElectricaConectada(x, y);
 	}
 }

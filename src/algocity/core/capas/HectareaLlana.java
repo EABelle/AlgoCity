@@ -19,7 +19,7 @@ public class HectareaLlana extends Hectarea {
 		try{
 			return agregarConstruibleEnLlano((ConstruibleEnLlano)construible);
 		}catch(Exception e){
-			/*se podria agregar sonido indicando que no es compatible*/
+			//System.out.println("NO ES CONSTRUIBLE EN LLANO");
 			return false;
 		}
 	}

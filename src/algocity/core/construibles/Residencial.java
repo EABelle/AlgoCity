@@ -2,7 +2,6 @@ package algocity.core.construibles;
 
 import algocity.core.EspacioInsuficienteException;
 import algocity.core.NoHayTantosHabitantesException;
-
 public class Residencial extends Edificio {
 	
 	int habitantes;
@@ -11,9 +10,9 @@ public class Residencial extends Edificio {
 		habitantes = 0;
 		costo = 5;
 		consumo = 1;
-		cumpleRedDeAgua = false;
-		cumpleRedElectrica = false;
-		cumpleRutaPavimentada = false;
+		redDeAguaConectada = false;
+		redElectricaConectada = false;
+		rutaPavimentadaConectada = false;
 	}
 
 	public void agregarHabitantes (int habitantesNuevos) throws EspacioInsuficienteException {
@@ -37,14 +36,14 @@ public class Residencial extends Edificio {
 	}
 	
 	public void desconectarDeRedDeAgua(){
-		cumpleRedDeAgua = false;
+		redDeAguaConectada = false;
 	}
 	
 	public void desconectarDeRedElectrica(){
-		cumpleRedElectrica = false;		
+		redElectricaConectada = false;		
 	}
 	
 	public void desconectarDeRutaPavimentada(){
-		cumpleRutaPavimentada = false;
+		rutaPavimentadaConectada = false;
 	}
 }

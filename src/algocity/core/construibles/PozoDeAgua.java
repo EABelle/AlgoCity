@@ -1,5 +1,7 @@
 package algocity.core.construibles;
 
+import algocity.core.Partida;
+
 public class PozoDeAgua extends ConstruibleEnAgua {
 	int costo;
 	public PozoDeAgua(){
@@ -19,5 +21,9 @@ public class PozoDeAgua extends ConstruibleEnAgua {
 	public void desconectarDeRutaPavimentada() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public void procesarAgregado(Partida partida, int x, int y) {
+		partida.agregarPozoDeAgua(x, y);
 	}
 }
