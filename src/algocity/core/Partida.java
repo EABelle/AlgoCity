@@ -1,5 +1,7 @@
 package algocity.core;
 
+import java.util.ArrayList;
+
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
@@ -12,12 +14,42 @@ public class Partida {
 	protected RedDeAgua redDeAgua;
 	protected RedElectrica redElectrica;
 	protected RutaPavimentada rutaPavimentada;
-
+	protected PasadorDeTurnos pasadorDeTurnos;
+	protected int turno;
+	
+	public class NodoEdificioDaniado{
+		int x;
+		int y;
+		Construible construible;
+		
+		public NodoEdificioDaniado(int x, int y, Construible construible) {
+			this.x = x;
+			this.y = y;
+			this.construible = construible;
+		}
+		
+		public int getX() {
+			return x;
+		}
+		
+		public int getY(){
+			return y;
+		}
+		
+		public Construible getConstruible() {
+			return construible;
+		}
+	}
+	
+	private ArrayList<NodoEdificioDaniado> edificiosDaniados;
+	
 	public Partida (Mapa mapa) {
 		this.mapa = mapa;
 		redDeAgua = new RedDeAgua();
 		redElectrica = new RedElectrica();
 		rutaPavimentada = new RutaPavimentada();
+		pasadorDeTurnos = new PasadorDeTurnos();
+		turno = 0;
 	}
 	
 	public boolean agregarHectareaMapa (Hectarea hectarea){
@@ -92,6 +124,29 @@ public boolean rutaPavimentadaConectada(int x, int y) {
 
 	public void agregarPozoDeAgua(int x, int y) {
 		redDeAgua.agregarEdificioProveedor(x, y);
+	}
+
+	public void agregarDaniado(Construible construible, int x, int y) {
+		edificiosDaniados.add(new NodoEdificioDaniado(x, y, construible));
+	}
+	
+	public void pasarTurno() {
+		edificiosDaniados = new ArrayList<Partida.NodoEdificioDaniado>();
+		pasadorDeTurnos.pasarTurno(this, mapa, rutaPavimentada, edificiosDaniados);
+		
+	}
+
+	public void pasoTurno() {
+		turno ++;
+		
+	}
+
+	public void mandarBomberosDesdeHasta(int x, int y, Construible construible) {
+		mapa.mandarBomberosDesdeHasta(x, y, construible);
+	}
+
+	public void agregarRuta(int x, int y) {
+		rutaPavimentada.agregarNodo(x, y);
 	}
 	
 }

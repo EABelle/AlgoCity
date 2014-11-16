@@ -3,6 +3,9 @@ package algocity.core.capas.tendido;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import algocity.core.Partida;
+import algocity.core.Partida.NodoEdificioDaniado;
+
 public class RutaPavimentada extends Tendido {
 
 	@Override
@@ -30,6 +33,31 @@ public class RutaPavimentada extends Tendido {
 		
 		this.nodos.add(nodoNuevo);
 		return true;
+	}
+
+	public void mandarBomberos(Partida partida, 
+			ArrayList<NodoEdificioDaniado> edificiosDaniados) {
+		
+		Iterator<Coordenada> coordenadasEstacionesDeBomberos = edificiosProveedores.iterator();
+		Iterator<NodoEdificioDaniado> iterDaniados = edificiosDaniados.iterator();
+		
+		Coordenada coordBombero;
+		NodoEdificioDaniado edificioDaniado;
+		
+		while (coordenadasEstacionesDeBomberos.hasNext()){
+			coordBombero = coordenadasEstacionesDeBomberos.next();
+			
+			while (iterDaniados.hasNext()) {
+				edificioDaniado = iterDaniados.next();
+				
+				if (existeConexionBFS(coordBombero.getX(), coordBombero.getY(),
+						edificioDaniado.getX(), edificioDaniado.getY())) {
+					partida.mandarBomberosDesdeHasta(coordBombero.getX(), coordBombero.getY(),
+							edificioDaniado.getConstruible());
+				}
+			}
+		}
+		
 	}
 
 }

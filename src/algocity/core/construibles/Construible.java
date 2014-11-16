@@ -59,5 +59,13 @@ public abstract class Construible {
 	public abstract void desconectarDeRutaPavimentada();
 
 	public abstract void procesarAgregado(Partida partida, int x, int y);
+
+	public void procesarTurno(Partida partida, int x, int y){
+		/*redefinido en los edificios y las centrales*/
+	}
+	
+	public boolean daniado() {
+		return porcentajeDeVida != 100;
+	}
 	
 }

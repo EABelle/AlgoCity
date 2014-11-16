@@ -6,7 +6,9 @@ import algocity.core.capas.HectareaAgua;
 import algocity.core.capas.HectareaLlana;
 import algocity.core.construibles.CentralEolica;
 import algocity.core.construibles.CentralMineral;
+import algocity.core.construibles.EstacionDeBombero;
 import algocity.core.construibles.PozoDeAgua;
+import algocity.core.construibles.Residencial;
 import junit.framework.TestCase;
 
 public class IntegracionTest extends TestCase {
@@ -55,7 +57,7 @@ public class IntegracionTest extends TestCase {
 		assertFalse ((partida.redElectricaConectada(9, 9)));
 	}
 	
-public void test03agregarUnaCentralYTendidoAlimentaTodoElTendido() {
+	public void test03agregarUnaCentralYTendidoAlimentaTodoElTendido() {
 		
 		Mapa mapa = new Mapa(100,100);
 		int i;
@@ -85,64 +87,88 @@ public void test03agregarUnaCentralYTendidoAlimentaTodoElTendido() {
 	}
 
 
-public void test04agregarUnPozoDeAguaYCanieriaAlimentaTodoLaCanieria() {
+	public void test04agregarUnPozoDeAguaYCanieriaAlimentaTodoLaCanieria() {
 	
-	Mapa mapa = new Mapa(100,100);
-	int i;
-	
-	mapa.cargarHectareaNueva(new HectareaAgua());
-	while (!mapa.cargado()) {
-		mapa.cargarHectareaNueva(new HectareaLlana());
-	}
-	
-	Partida partida = new Partida(mapa);
-	PozoDeAgua pozo = new PozoDeAgua();
-	
-	partida.agregarConstruible(pozo, 0, 0);
-	
-	for (i = 0; i <= 73; i ++) {
-		partida.agregarConexionDeAgua(0, i);
-	}
-	
-	assertTrue (partida.redDeAguaConectada(0, 0));
-	assertTrue (partida.redDeAguaConectada(0, 73));
-	assertFalse (partida.redDeAguaConectada(0, 74));
-	assertFalse (partida.redDeAguaConectada(1, 0));
-	
-	}
-
-public void test05NoSePuedeAgregarUnaCentralElectricaEnHectareaDeAgua() {
-	
-	Mapa mapa = new Mapa(100,100);
-
-	
-	mapa.cargarHectareaNueva(new HectareaAgua());
-	while (!mapa.cargado()) {
-		mapa.cargarHectareaNueva(new HectareaLlana());
-	}
-	
-	Partida partida = new Partida(mapa);
-	CentralEolica central = new CentralEolica();
-	
-	assertFalse(partida.agregarConstruible(central, 0, 0));
+		Mapa mapa = new Mapa(100,100);
+		int i;
+		
+		mapa.cargarHectareaNueva(new HectareaAgua());
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		PozoDeAgua pozo = new PozoDeAgua();
+		
+		partida.agregarConstruible(pozo, 0, 0);
+		
+		for (i = 0; i <= 73; i ++) {
+			partida.agregarConexionDeAgua(0, i);
+		}
+		
+		assertTrue (partida.redDeAguaConectada(0, 0));
+		assertTrue (partida.redDeAguaConectada(0, 73));
+		assertFalse (partida.redDeAguaConectada(0, 74));
+		assertFalse (partida.redDeAguaConectada(1, 0));
 	
 	}
 
-public void test06NoSePuedeAgregarUnPozoDeAguaEnHectareaLlana() {
+	public void test05NoSePuedeAgregarUnaCentralElectricaEnHectareaDeAgua() {
+		
+		Mapa mapa = new Mapa(100,100);
 	
-	Mapa mapa = new Mapa(100,100);
-
-	while (!mapa.cargado()) {
-		mapa.cargarHectareaNueva(new HectareaLlana());
+		
+		mapa.cargarHectareaNueva(new HectareaAgua());
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		CentralEolica central = new CentralEolica();
+		
+		assertFalse(partida.agregarConstruible(central, 0, 0));
+		
 	}
+
+	public void test06NoSePuedeAgregarUnPozoDeAguaEnHectareaLlana() {
+		
+		Mapa mapa = new Mapa(100,100);
 	
-	Partida partida = new Partida(mapa);
-	PozoDeAgua pozo = new PozoDeAgua();
-	
-	assertFalse(partida.agregarConstruible(pozo, 0, 0));
-	
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		PozoDeAgua pozo = new PozoDeAgua();
+		
+		assertFalse(partida.agregarConstruible(pozo, 0, 0));
+		
 	}
 
-
+	public void test07RepararResidencialConectadoAumentaUn10Porciento(){
+		
+		Mapa mapa = new Mapa(100,100);
+		
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		Residencial residencial = new Residencial();
+		
+		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
+		partida.agregarConstruible(residencial, 0, 10);
+		
+		int j;
+		for (j = 0; j <= 10; j ++) {
+			partida.agregarRuta(0, j);
+		}
+		
+		residencial.daniar(10);
+		
+		assertTrue (residencial.daniado());
+		partida.pasarTurno();
+		assertFalse (residencial.daniado());
+	}
 
 }

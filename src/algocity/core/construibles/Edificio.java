@@ -18,4 +18,12 @@ public abstract class Edificio extends ConstruibleEnLlano {
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
 		
 	}
+	
+	public void procesarTurno(Partida partida, int x, int y) {
+		redDeAguaConectada = partida.redDeAguaConectada(x, y);
+		redElectricaConectada = partida.redElectricaConectada(x, y);
+		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
+		if (daniado())
+			partida.agregarDaniado(this, x, y);
+	}
 }

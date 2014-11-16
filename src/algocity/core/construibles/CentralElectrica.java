@@ -50,7 +50,11 @@ public abstract class CentralElectrica extends ConstruibleEnLlano{
 		}
 	}
 	
-	
+	public void procesarTurno(Partida partida, int x, int y) {
+		redDeAguaConectada = partida.redDeAguaConectada(x, y);
+		if (daniado())
+			partida.agregarDaniado(this, x, y);
+	}
 	
 	
 }

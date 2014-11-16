@@ -1,7 +1,9 @@
 package algocity.core.capas;
 
 import algocity.core.CalculadorDeCalidadDeVida;
+import algocity.core.Partida;
 import algocity.core.construibles.Construible;
+import algocity.core.construibles.EstacionDeBombero;
 
 public abstract class Hectarea 
 implements CalculadorDeCalidadDeVida {
@@ -48,6 +50,17 @@ implements CalculadorDeCalidadDeVida {
 			return true;
 		}
 		return false;
+	}
+
+	public void procesarTurno(Partida partida, int x, int y) {
+		if (construible != null)
+			construible.procesarTurno(partida, x, y);
+		
+	}
+
+	public void mandarBomberoHasta(Construible daniado) {
+		((EstacionDeBombero)construible).reparar(daniado);
+		
 	}
 
 	

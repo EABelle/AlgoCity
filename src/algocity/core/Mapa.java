@@ -72,4 +72,21 @@ implements CalculadorDeCalidadDeVida {
 		return hectareas[x][y].rutaPavimentadaConectada();
 	}
 
+	public void procesarTurno(Partida partida) {
+		int i;
+		int j;
+		
+		for (i = 0; i < filas; i ++){
+			for (j = 0; j < columnas; j ++){
+				hectareas[i][j].procesarTurno(partida,i ,j);
+			}
+		}
+		
+	}
+
+	public void mandarBomberosDesdeHasta(int x, int y, Construible construible) {
+		hectareas[x][y].mandarBomberoHasta(construible);
+		
+	}
+
 }

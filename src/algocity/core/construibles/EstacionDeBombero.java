@@ -38,4 +38,9 @@ public class EstacionDeBombero extends ConstruibleEnLlano {
 		
 	}
 
+	public void reparar(Construible daniado) {
+		reparar(daniado);
+		
+	}
+
 }

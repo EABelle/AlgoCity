@@ -27,4 +27,11 @@ public class Industrial extends Edificio {
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
 		redElectricaConectada = partida.redElectricaConectada(x, y);
 	}
+	
+	public void procesarTurno(Partida partida, int x, int y) {
+		redElectricaConectada = partida.redElectricaConectada(x, y);
+		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
+		if (daniado())
+			partida.agregarDaniado(this, x, y);
+	}
 }
