@@ -12,12 +12,18 @@ abstract public class Tendido {
 
 	ArrayList<NodoTendido> nodos;
 	ArrayList<Coordenada> edificiosProveedores;
+	int costo;
 	
 	public Tendido () {
 		this.nodos = new ArrayList<NodoTendido>();
 		this.edificiosProveedores = new ArrayList<Coordenada>();
+		costo = 5;
 	}
-
+	
+	public int getCosto() {
+		return costo;
+	}
+	
 	abstract public boolean agregarNodo (int coordenadaX , int coordenadaY);
 	
 	public void agregarEdificioProveedor (int coordenadaX , int coordenadaY){

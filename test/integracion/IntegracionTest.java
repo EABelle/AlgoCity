@@ -184,7 +184,6 @@ public class IntegracionTest extends TestCase {
 		Residencial residencial = new Residencial();
 		
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
-		//partida.agregarConstruible(new EstacionDeBombero(), 0, 5);
 		partida.agregarConstruible(residencial, 0, 10);
 		
 		int j;
@@ -272,4 +271,60 @@ public void test10UnaEstacionDeBomberoReparaTodosLosEdificiosALosQueSeConecta(){
 		assertFalse (central.daniado());
 		
 	}
+
+	public void test11NoPuedoExcedermeEnGastos(){
+		
+		Mapa mapa = new Mapa(100,100);
+		
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		Residencial residencial1 = new Residencial();
+		Residencial residencial2 = new Residencial();
+		CentralNuclear central1 = new CentralNuclear();
+		CentralNuclear central2 = new CentralNuclear();
+		
+		
+		assertTrue (partida.agregarConstruible(central1, 10, 0));
+		assertTrue (partida.agregarConstruible(residencial1, 0, 10));
+		assertFalse (partida.agregarConstruible(central2, 10, 1));
+		assertTrue (partida.agregarConstruible(residencial2, 1, 10));
+	}
+	
+
+	public void test12NoPuedoConstruirDosConstruiblesEnElMismoLugar(){
+		
+		Mapa mapa = new Mapa(100,100);
+		
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		Residencial residencial1 = new Residencial();
+		Residencial residencial2 = new Residencial();
+		
+		
+		assertTrue (partida.agregarConstruible(residencial1, 0, 10));
+		assertFalse (partida.agregarConstruible(residencial2, 0, 10));
+		assertTrue (partida.agregarConstruible(residencial2, 1, 10));
+	}
+
+	public void test13NoPuedoConstruirFueraDelMapa(){
+		
+		Mapa mapa = new Mapa(2, 2);
+		
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		Residencial residencial = new Residencial();
+		
+		assertFalse (partida.agregarConstruible(residencial, 3, 3));
+		assertTrue (partida.agregarConstruible(residencial, 0, 0));
+	}	
+	
 }

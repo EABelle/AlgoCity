@@ -16,6 +16,7 @@ public class Partida {
 	protected RutaPavimentada rutaPavimentada;
 	protected PasadorDeTurnos pasadorDeTurnos;
 	protected int turno;
+	int plata;
 	
 	public class NodoEdificioDaniado{
 		int x;
@@ -50,17 +51,24 @@ public class Partida {
 		rutaPavimentada = new RutaPavimentada();
 		pasadorDeTurnos = new PasadorDeTurnos();
 		turno = 0;
+		plata = 20000;
 	}
 	
 	public boolean agregarHectareaMapa (Hectarea hectarea){
 		return mapa.cargarHectareaNueva(hectarea);
 	}
 	
+	public int getPlata(){
+		return plata;
+	}
 	
 	public boolean agregarConstruible(Construible construible, int x, int y) {
-		if (mapa.agregarConstruible(construible, x, y)){
-			construible.procesarAgregado(this, x, y);
-			return true;
+		if (plata - construible.getCosto() >= 0){
+			if (mapa.agregarConstruible(construible, x, y)){
+				construible.procesarAgregado(this, x, y);
+				plata -= construible.getCosto();
+				return true;
+			}
 		}
 		return false;
 	}
@@ -68,8 +76,10 @@ public class Partida {
 	
 	public boolean agregarConexionDeAgua (int x, int y) {
 		
-		if (redDeAgua.agregarNodo(x, y)){
-			return true;
+		if ((plata - redDeAgua.getCosto()) >= 0) {
+			if (redDeAgua.agregarNodo(x, y)){
+				return true;
+			}
 		}
 		return false;
 			
@@ -81,11 +91,13 @@ public class Partida {
 	
 	
 	public boolean agregarConexionElectrica(int x, int y) {
-		if (redElectrica.agregarNodo(x, y)){
-			this.conectarRedElectrica(x, y);
-			return true;
+		if (plata - redElectrica.getCosto() >= 0) {
+			if (redElectrica.agregarNodo(x, y)){
+				this.conectarRedElectrica(x, y);
+				return true;
+			}
 		}
-			return false;
+		return false;
 	}
 
 	public void desconectarRedElectrica(int x, int y) {
@@ -145,8 +157,12 @@ public boolean rutaPavimentadaConectada(int x, int y) {
 		mapa.mandarBomberosDesdeHasta(x, y, construible);
 	}
 
-	public void agregarRuta(int x, int y) {
-		rutaPavimentada.agregarNodo(x, y);
+	public boolean agregarRuta(int x, int y) {
+		if (plata - rutaPavimentada.getCosto() >=0 ) {
+			rutaPavimentada.agregarNodo(x, y);
+			return true;
+		}
+		return false;
 	}
 
 	public void agregarEstacionDeBomberos(int x, int y) {

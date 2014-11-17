@@ -39,7 +39,9 @@ implements CalculadorDeCalidadDeVida {
 	
 	public boolean agregarConstruible (Construible construible,
 			int x, int y) {
-		return hectareas[x][y].agregarConstruible(construible);
+		if ( (x >= 0) && (x < filas) && (y >= 0) && (y <= columnas))
+			return hectareas[x][y].agregarConstruible(construible);
+		return false;
 	}
 	
 	@Override

@@ -16,7 +16,7 @@ public class Residencial extends Edificio {
 	}
 
 	public void agregarHabitantes (int habitantesNuevos) throws EspacioInsuficienteException {
-		if (habitantes + habitantesNuevos <= 100)
+		if ((habitantes + habitantesNuevos <= 100) && cumpleRequerimientos())
 			habitantes += habitantesNuevos;
 		else {
 			throw new EspacioInsuficienteException();

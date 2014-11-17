@@ -34,10 +34,7 @@ public abstract class Construible {
 	}
 	
 	public boolean cumpleRequerimientos(){
-		if (redDeAguaConectada && redElectricaConectada && rutaPavimentadaConectada){
-			return true;
-		}
-		return false;
+		return (redDeAguaConectada && redElectricaConectada && rutaPavimentadaConectada);
 	}
 	
 	public void conectarARedDeAgua(){

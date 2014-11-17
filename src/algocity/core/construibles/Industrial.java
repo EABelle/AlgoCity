@@ -4,16 +4,24 @@ import algocity.core.Partida;
 
 public class Industrial extends Edificio {
 	
+	int puestosDisponibles;
+	
 	public Industrial() {
 		costo = 10;
 		consumo = 5;
+		puestosDisponibles = 25;
 		redElectricaConectada = false;
 		rutaPavimentadaConectada = false;
 	}
 	
-	public void desconectarDeRedDeAgua(){
+	public boolean agregarTrabajadores(int cantidad) {
+		if ((puestosDisponibles - cantidad) >= 0){
+			puestosDisponibles -= cantidad;
+			return true;
+		}
+		return false;
 	}
-	
+		
 	public void desconectarDeRedElectrica(){
 		redElectricaConectada = false;		
 	}
