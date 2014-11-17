@@ -60,7 +60,6 @@ implements CalculadorDeCalidadDeVida {
 
 	public void mandarBomberoHasta(Construible daniado) {
 		((EstacionDeBombero)construible).reparar(daniado);
-		
 	}
 
 	

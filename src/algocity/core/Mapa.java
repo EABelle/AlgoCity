@@ -86,7 +86,6 @@ implements CalculadorDeCalidadDeVida {
 
 	public void mandarBomberosDesdeHasta(int x, int y, Construible construible) {
 		hectareas[x][y].mandarBomberoHasta(construible);
-		
 	}
 
 }

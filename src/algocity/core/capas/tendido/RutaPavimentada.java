@@ -38,13 +38,15 @@ public class RutaPavimentada extends Tendido {
 			ArrayList<NodoEdificioDaniado> edificiosDaniados) {
 		
 		Iterator<Coordenada> coordenadasEstacionesDeBomberos = edificiosProveedores.iterator();
-		Iterator<NodoEdificioDaniado> iterDaniados = edificiosDaniados.iterator();
+		//Iterator<NodoEdificioDaniado> iterDaniados = edificiosDaniados.iterator();
 		
 		Coordenada coordBombero;
 		NodoEdificioDaniado edificioDaniado;
 		
 		while (coordenadasEstacionesDeBomberos.hasNext()){
 			coordBombero = coordenadasEstacionesDeBomberos.next();
+			
+			Iterator<NodoEdificioDaniado> iterDaniados = edificiosDaniados.iterator();
 			
 			while (iterDaniados.hasNext()) {
 				edificioDaniado = iterDaniados.next();

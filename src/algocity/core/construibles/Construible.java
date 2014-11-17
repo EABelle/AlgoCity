@@ -67,5 +67,8 @@ public abstract class Construible {
 	public boolean daniado() {
 		return porcentajeDeVida != 100;
 	}
+
+	public void pasanLosBomberos() {		
+	}
 	
 }

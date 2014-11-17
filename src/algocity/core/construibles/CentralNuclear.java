@@ -8,4 +8,7 @@ public class CentralNuclear extends CentralElectrica {
 		potencia = 1000;
 	}
 	
+	public void pasanLosBomberos() {		
+		this.reparar(10);
+	}
 }

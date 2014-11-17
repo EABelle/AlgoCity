@@ -7,4 +7,8 @@ public class CentralEolica extends CentralElectrica {
 		radioDeAlimentacion = 4;
 		potencia = 100;
 	}
+	
+	public void pasanLosBomberos() {		
+		this.reparar(15);
+	}
 }

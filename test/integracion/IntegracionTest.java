@@ -171,4 +171,65 @@ public class IntegracionTest extends TestCase {
 		assertFalse (residencial.daniado());
 	}
 
+	public void test08RepararResidencialConectadoABomberosAumentaUn20PorcientoEn2Turnos(){
+		
+		Mapa mapa = new Mapa(100,100);
+		
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		Residencial residencial = new Residencial();
+		
+		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
+		//partida.agregarConstruible(new EstacionDeBombero(), 0, 5);
+		partida.agregarConstruible(residencial, 0, 10);
+		
+		int j;
+		for (j = 0; j <= 10; j ++) {
+			partida.agregarRuta(0, j);
+		}
+		
+		residencial.daniar(20);
+		
+		assertTrue (residencial.daniado());
+		partida.pasarTurno();
+		assertTrue (residencial.daniado());
+		partida.pasarTurno();
+		assertFalse (residencial.daniado());
+	}
+	
+	public void test09RepararResidencialConectadoA2BomberosAumentaUn20Porciento(){
+		
+		Mapa mapa = new Mapa(100,100);
+		
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		Residencial residencial = new Residencial();
+		
+		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
+		partida.agregarConstruible(new EstacionDeBombero(), 10, 0);
+		partida.agregarConstruible(residencial, 0, 10);
+		
+		int j;
+		for (j = 0; j <= 10; j ++) {
+			partida.agregarRuta(0, j);
+		}
+		
+		for (j = 0; j <= 10; j ++) {
+			partida.agregarRuta(j, 0);
+		}
+		
+		residencial.daniar(20);
+		
+		assertTrue (residencial.daniado());
+		partida.pasarTurno();
+		assertFalse (residencial.daniado());
+		/*no esta usando los dos bomberos, mirar el procesamiento al agregar 
+		 * bomberos y ruta.mandarBomberos*/
+	}
 }

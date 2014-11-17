@@ -21,5 +21,9 @@ public class Comercial extends Edificio {
 	public void desconectarDeRutaPavimentada(){
 		rutaPavimentadaConectada = false;
 	}
-		
+	
+	public void pasanLosBomberos() {		
+		this.reparar(7);
+	}
+	
 }

@@ -34,4 +34,9 @@ public class Industrial extends Edificio {
 		if (daniado())
 			partida.agregarDaniado(this, x, y);
 	}
+	
+	public void pasanLosBomberos() {		
+		this.reparar(3);
+	}
+	
 }
