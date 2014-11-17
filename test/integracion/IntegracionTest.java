@@ -6,6 +6,7 @@ import algocity.core.capas.HectareaAgua;
 import algocity.core.capas.HectareaLlana;
 import algocity.core.construibles.CentralEolica;
 import algocity.core.construibles.CentralMineral;
+import algocity.core.construibles.CentralNuclear;
 import algocity.core.construibles.EstacionDeBombero;
 import algocity.core.construibles.PozoDeAgua;
 import algocity.core.construibles.Residencial;
@@ -229,7 +230,46 @@ public class IntegracionTest extends TestCase {
 		assertTrue (residencial.daniado());
 		partida.pasarTurno();
 		assertFalse (residencial.daniado());
-		/*no esta usando los dos bomberos, mirar el procesamiento al agregar 
-		 * bomberos y ruta.mandarBomberos*/
+		
+	}
+	
+public void test10UnaEstacionDeBomberoReparaTodosLosEdificiosALosQueSeConecta(){
+		
+		Mapa mapa = new Mapa(100,100);
+		
+		while (!mapa.cargado()) {
+			mapa.cargarHectareaNueva(new HectareaLlana());
+		}
+		
+		Partida partida = new Partida(mapa);
+		Residencial residencial = new Residencial();
+		CentralNuclear central = new CentralNuclear();
+		
+		
+		int j;
+		for (j = 0; j <= 10; j ++) {
+			partida.agregarRuta(0, j);
+		}
+		
+		for (j = 0; j <= 10; j ++) {
+			partida.agregarRuta(j, 0);
+		}
+		
+		residencial.daniar(10);
+		central.daniar(1);
+		
+		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
+		partida.agregarConstruible(central, 10, 0);
+		partida.agregarConstruible(residencial, 0, 10);
+		
+		
+		assertTrue (residencial.daniado());
+		assertTrue (central.daniado());
+		
+		partida.pasarTurno();
+		
+		assertFalse (residencial.daniado());
+		assertFalse (central.daniado());
+		
 	}
 }
