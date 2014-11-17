@@ -1,7 +1,6 @@
 package algocity.core;
 
 import java.util.ArrayList;
-
 import algocity.core.Partida.NodoEdificioDaniado;
 import algocity.core.capas.tendido.RutaPavimentada;
 

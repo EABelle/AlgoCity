@@ -148,5 +148,10 @@ public boolean rutaPavimentadaConectada(int x, int y) {
 	public void agregarRuta(int x, int y) {
 		rutaPavimentada.agregarNodo(x, y);
 	}
+
+	public void agregarEstacionDeBomberos(int x, int y) {
+		rutaPavimentada.agregarEdificioProveedor(x, y);
+		
+	}
 	
 }

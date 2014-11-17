@@ -8,38 +8,43 @@ public class EstacionDeBombero extends ConstruibleEnLlano {
 		rutaPavimentadaConectada = false;
 	}
 	
-	public void reparar(Residencial residencial) {
+	public void arreglar(Construible construible) {
+		//para que corra
+	}
+	
+	public void arreglar(Residencial residencial) {
 		residencial.reparar(10);
 	}
 	
-	public void reparar(Comercial comercial) {
+	public void arreglar(Comercial comercial) {
 		comercial.reparar(7);
 	}
 	
-	public void reparar(Industrial industrial) {
+	public void arreglar(Industrial industrial) {
 		industrial.reparar(3);
 	}
 	
-	public void reparar(CentralEolica central) {
+	public void arreglar(CentralEolica central) {
 		central.reparar(15);
 	}
 	
-	public void reparar(CentralMineral central) {
+	public void arreglar(CentralMineral central) {
 		central.reparar(10);
 	}
 	
-	public void reparar(CentralNuclear central) {
+	public void arreglar(CentralNuclear central) {
 		central.reparar(3);
 	}
 
 	@Override
 	public void procesarAgregado(Partida partida, int x, int y) {
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
+		partida.agregarEstacionDeBomberos(x, y);
 		
 	}
 
 	public void reparar(Construible daniado) {
-		reparar(daniado);
+		arreglar(daniado);
 		
 	}
 

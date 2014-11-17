@@ -2,7 +2,6 @@ package algocity.core.capas.tendido;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import algocity.core.Partida;
 import algocity.core.Partida.NodoEdificioDaniado;
 
@@ -49,11 +48,11 @@ public class RutaPavimentada extends Tendido {
 			
 			while (iterDaniados.hasNext()) {
 				edificioDaniado = iterDaniados.next();
-				
 				if (existeConexionBFS(coordBombero.getX(), coordBombero.getY(),
 						edificioDaniado.getX(), edificioDaniado.getY())) {
-					partida.mandarBomberosDesdeHasta(coordBombero.getX(), coordBombero.getY(),
-							edificioDaniado.getConstruible());
+					partida.mandarBomberosDesdeHasta(coordBombero.getX(),
+							coordBombero.getY(), edificioDaniado.getConstruible());
+					
 				}
 			}
 		}
