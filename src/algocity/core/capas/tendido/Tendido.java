@@ -180,12 +180,12 @@ abstract public class Tendido {
 	}
 
 
-	public Coordenada buscarEdificioProveedorBFS (int XInicial, int YInicial){
-		//Implementa el algoritmo de recorrido BFS para saber si dos elementos se encuentran en el mismo subgrafo conexo.
+	public ArrayList<Coordenada> buscarEdificiosProveedoresBFS (int XInicial, int YInicial){
 		
 		NodoTendido nodoInicial = this.getNodo(XInicial,YInicial);
+		ArrayList<Coordenada> edificiosBuscados = new ArrayList<Coordenada>();
 		if (nodoInicial == null){
-			return null;
+			return edificiosBuscados;
 		}
 			
 		ConcurrentLinkedQueue<NodoTendido> q = new ConcurrentLinkedQueue<NodoTendido>();
@@ -204,16 +204,19 @@ abstract public class Tendido {
 			NodoTendido nodoActual = q.poll();
 			ArrayList<NodoTendido> vecinos = nodoActual.getVecinos();
 			Iterator<NodoTendido> iterVecinos = vecinos.iterator();
+			if (edificiosProveedores.contains(nodoActual) ){
+				Coordenada coord = new Coordenada(nodoActual.getCoordenadaX(), nodoActual.getCoordenadaY());
+				edificiosBuscados.add(coord);
+			}
 			while ( iterVecinos.hasNext() ){
 				NodoTendido vecino = iterVecinos.next();
-				if (edificiosProveedores.contains(vecino))
-					return (new Coordenada (vecino.getCoordenadaX() , vecino.getCoordenadaY() ) );
 				if (estadoVisitaNodo.get(vecino) == "NO_VISITADO"){
 					estadoVisitaNodo.put(vecino, "VISITADO");
 					q.add(vecino);
 				}
 			}
 						
-		}return null;
+		}
+		return edificiosBuscados;
 	}
 }

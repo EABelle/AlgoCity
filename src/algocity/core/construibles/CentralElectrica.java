@@ -59,8 +59,11 @@ public abstract class CentralElectrica extends ConstruibleEnLlano{
 			partida.agregarDaniado(this, x, y);
 	}
 
-	public void restarPotencia(int consumo) {
-		potenciaDisponible -= consumo; 
+	public boolean restarPotencia(int consumo) {
+		if (potenciaDisponible - consumo < 0)
+			return false;
+		potenciaDisponible -= consumo;
+		return true;
 		
 	}
 	

@@ -1,7 +1,6 @@
 package algocity.core.construibles;
 
 import algocity.core.Partida;
-import algocity.core.exceptions.ExcedidaLaCapacidadException;
 
 
 public abstract class Edificio extends ConstruibleEnLlano {
@@ -26,18 +25,15 @@ public abstract class Edificio extends ConstruibleEnLlano {
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
 		if (daniado())
 			partida.agregarDaniado(this, x, y);
-		try {
-			consumirElectricidad(partida, x, y);
-		} catch (ExcedidaLaCapacidadException e) {
+		if (!consumirElectricidad(partida, x, y) )
 			redElectricaConectada = false;
-		}
 		
 	}
 	
-	private void consumirElectricidad(Partida partida, int x, int y) throws ExcedidaLaCapacidadException{
+	private boolean consumirElectricidad(Partida partida, int x, int y){
 		CentralElectrica central = partida.buscarCentralDesde(x,y);
 		if (central == null)
-			throw new ExcedidaLaCapacidadException();
-		central.restarPotencia(consumo);
+			return false;
+		return (central.restarPotencia(consumo)); //false si excede de la carga maxima
 	}
 }
