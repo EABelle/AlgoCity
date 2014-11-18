@@ -181,7 +181,11 @@ public class Partida {
 
 	public CentralElectrica buscarCentralDesde(int x, int y) {
 		Coordenada coordCentral = redElectrica.buscarEdificioProveedorBFS(x, y);
-		return mapa.getCentral(coordCentral.getX(), coordCentral.getY());
+		if (coordCentral == null)
+			return null;
+		int xCentral = coordCentral.getX();
+		int yCentral = coordCentral.getY();
+		return mapa.getCentral(xCentral, yCentral);
 	}
 	
 }
