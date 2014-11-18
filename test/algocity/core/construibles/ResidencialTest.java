@@ -1,8 +1,8 @@
 package algocity.core.construibles;
 
-import algocity.core.EspacioInsuficienteException;
-import algocity.core.NoHayTantosHabitantesException;
 import algocity.core.construibles.Residencial;
+import algocity.core.exceptions.EspacioInsuficienteException;
+import algocity.core.exceptions.NoHayTantosHabitantesException;
 import junit.framework.TestCase;
 
 public class ResidencialTest extends TestCase {
