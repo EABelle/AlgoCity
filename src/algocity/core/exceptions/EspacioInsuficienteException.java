@@ -1,4 +1,4 @@
-package algocity.core;
+package algocity.core.exceptions;
 
 public class EspacioInsuficienteException extends Exception {
 
