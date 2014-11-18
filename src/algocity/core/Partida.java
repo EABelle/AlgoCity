@@ -14,7 +14,6 @@ public class Partida {
 	protected RedDeAgua redDeAgua;
 	protected RedElectrica redElectrica;
 	protected RutaPavimentada rutaPavimentada;
-	protected PasadorDeTurnos pasadorDeTurnos;
 	protected int turno;
 	int plata;
 	
@@ -49,7 +48,6 @@ public class Partida {
 		redDeAgua = new RedDeAgua();
 		redElectrica = new RedElectrica();
 		rutaPavimentada = new RutaPavimentada();
-		pasadorDeTurnos = new PasadorDeTurnos();
 		turno = 0;
 		plata = 20000;
 	}
@@ -142,15 +140,15 @@ public boolean rutaPavimentadaConectada(int x, int y) {
 		edificiosDaniados.add(new NodoEdificioDaniado(x, y, construible));
 	}
 	
-	public void pasarTurno() {
+	/*public void pasarTurno() {
 		edificiosDaniados = new ArrayList<Partida.NodoEdificioDaniado>();
 		pasadorDeTurnos.pasarTurno(this, mapa, rutaPavimentada, edificiosDaniados);
 		
-	}
+	}*/
 
-	public void pasoTurno() {
-		turno ++;
-		
+	private void pasoTurno() {
+		if ((turno ++) == 30)
+			turno = 0;
 	}
 
 	public void mandarBomberosDesdeHasta(int x, int y, Construible construible) {
@@ -167,6 +165,15 @@ public boolean rutaPavimentadaConectada(int x, int y) {
 
 	public void agregarEstacionDeBomberos(int x, int y) {
 		rutaPavimentada.agregarEdificioProveedor(x, y);
+		
+	}
+	
+	public void pasarTurno()/*(Partida partida, Mapa mapa, RutaPavimentada ruta,
+			ArrayList<NodoEdificioDaniado> edificiosDaniados)*/ {
+		edificiosDaniados = new ArrayList<Partida.NodoEdificioDaniado>();
+		mapa.procesarTurno(this);
+		rutaPavimentada.mandarBomberos(this, edificiosDaniados);
+		pasoTurno();
 		
 	}
 	
