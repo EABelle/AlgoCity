@@ -140,11 +140,6 @@ public boolean rutaPavimentadaConectada(int x, int y) {
 		edificiosDaniados.add(new NodoEdificioDaniado(x, y, construible));
 	}
 	
-	/*public void pasarTurno() {
-		edificiosDaniados = new ArrayList<Partida.NodoEdificioDaniado>();
-		pasadorDeTurnos.pasarTurno(this, mapa, rutaPavimentada, edificiosDaniados);
-		
-	}*/
 
 	private void pasoTurno() {
 		if ((turno ++) == 30)
@@ -168,8 +163,7 @@ public boolean rutaPavimentadaConectada(int x, int y) {
 		
 	}
 	
-	public void pasarTurno()/*(Partida partida, Mapa mapa, RutaPavimentada ruta,
-			ArrayList<NodoEdificioDaniado> edificiosDaniados)*/ {
+	public void pasarTurno() {
 		edificiosDaniados = new ArrayList<Partida.NodoEdificioDaniado>();
 		mapa.procesarTurno(this);
 		rutaPavimentada.mandarBomberos(this, edificiosDaniados);

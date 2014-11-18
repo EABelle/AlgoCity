@@ -5,7 +5,7 @@ import algocity.core.Partida;
 public abstract class Construible {
 
 	protected int costo;
-	private int porcentajeDeVida;
+	private float porcentajeDeVida;
 	protected boolean redDeAguaConectada;
 	protected boolean redElectricaConectada;
 	protected boolean rutaPavimentadaConectada;
@@ -17,13 +17,13 @@ public abstract class Construible {
 		rutaPavimentadaConectada = true;
 	}
 	
-	public void daniar (int porcentajeDeDanio) {
+	public void daniar (float porcentajeDeDanio) {
 		if ((porcentajeDeVida -=  porcentajeDeDanio) < 0) {
 			porcentajeDeVida = 0;
 		}
 	}
 	
-	public void reparar (int porcentajeDeReparo) {
+	public void reparar (float porcentajeDeReparo) {
 		if ((porcentajeDeVida +=  porcentajeDeReparo) > 100) {
 			porcentajeDeVida = 100;
 		}
