@@ -178,4 +178,45 @@ abstract public class Tendido {
 		}
 		return distancias;
 	}
+
+
+	public ArrayList<Coordenada> buscarEdificiosProveedoresBFS (int XInicial, int YInicial){
+		
+		NodoTendido nodoInicial = this.getNodo(XInicial,YInicial);
+		ArrayList<Coordenada> edificiosBuscados = new ArrayList<Coordenada>();
+		if (nodoInicial == null){
+			return edificiosBuscados;
+		}
+			
+		ConcurrentLinkedQueue<NodoTendido> q = new ConcurrentLinkedQueue<NodoTendido>();
+		Hashtable<NodoTendido, String> estadoVisitaNodo = new Hashtable<NodoTendido, String>();
+		
+		Iterator<NodoTendido> iter = nodos.iterator();
+		while ( iter.hasNext() ){
+			NodoTendido nodoActual = iter.next();
+			estadoVisitaNodo.put(nodoActual, "NO_VISITADO");
+		}
+		
+		estadoVisitaNodo.put(nodoInicial, "VISITADO");
+		q.add(nodoInicial);
+		
+		while (!q.isEmpty()){
+			NodoTendido nodoActual = q.poll();
+			ArrayList<NodoTendido> vecinos = nodoActual.getVecinos();
+			Iterator<NodoTendido> iterVecinos = vecinos.iterator();
+			if (edificiosProveedores.contains(nodoActual) ){
+				Coordenada coord = new Coordenada(nodoActual.getCoordenadaX(), nodoActual.getCoordenadaY());
+				edificiosBuscados.add(coord);
+			}
+			while ( iterVecinos.hasNext() ){
+				NodoTendido vecino = iterVecinos.next();
+				if (estadoVisitaNodo.get(vecino) == "NO_VISITADO"){
+					estadoVisitaNodo.put(vecino, "VISITADO");
+					q.add(vecino);
+				}
+			}
+						
+		}
+		return edificiosBuscados;
+	}
 }

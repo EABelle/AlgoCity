@@ -5,7 +5,8 @@ public class CentralMineral extends CentralElectrica {
 	public CentralMineral() {
 		costo = 3000;
 		radioDeAlimentacion = 10;
-		potencia = 400;
+		capacidad = 400;
+		potenciaDisponible = capacidad;
 	}
 	
 	public void pasanLosBomberos() {		

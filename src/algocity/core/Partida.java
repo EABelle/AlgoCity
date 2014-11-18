@@ -1,11 +1,14 @@
 package algocity.core;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import algocity.core.capas.Hectarea;
+import algocity.core.capas.tendido.Coordenada;
 import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.capas.tendido.RutaPavimentada;
+import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 
 public class Partida {
@@ -106,7 +109,7 @@ public class Partida {
 		return (mapa.cercanoACentralElecrica(x, y)) ||  redElectrica.servicioExiste(x, y);
 	}
 	
-public boolean rutaPavimentadaConectada(int x, int y) {
+	public boolean rutaPavimentadaConectada(int x, int y) {
 		
 		return mapa.rutaPavimentadaConectada(x, y);
 	}
@@ -169,6 +172,25 @@ public boolean rutaPavimentadaConectada(int x, int y) {
 		rutaPavimentada.mandarBomberos(this, edificiosDaniados);
 		pasoTurno();
 		
+	}
+
+	public CentralElectrica buscarCentralDesde(int x, int y) {
+		ArrayList<Coordenada> coordCentralesConectadas = redElectrica.buscarEdificiosProveedoresBFS(x, y);
+		if (coordCentralesConectadas.isEmpty() ) {
+			return null; //si no hay conexion a alguna central
+		}
+		Iterator<Coordenada> iter = coordCentralesConectadas.iterator();
+		while (iter.hasNext()){
+			Coordenada coordCentral = iter.next();
+			if (coordCentral != null){
+				int xCentral = coordCentral.getX();
+				int yCentral = coordCentral.getY();
+				CentralElectrica centralActual = mapa.getCentral(xCentral, yCentral);
+				if (centralActual.cumpleRequerimientos())
+					return centralActual;
+			}
+		}
+		return null; //si ninguna central cumple los requerimientos
 	}
 	
 }

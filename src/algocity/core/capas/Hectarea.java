@@ -62,5 +62,9 @@ implements CalculadorDeCalidadDeVida {
 		((EstacionDeBombero)construible).reparar(daniado);
 	}
 
+	public Construible getConstruible() {
+		return construible;
+	}
+
 	
 }

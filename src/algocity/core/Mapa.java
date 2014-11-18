@@ -1,6 +1,7 @@
 package algocity.core;
 
 import algocity.core.capas.Hectarea;
+import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 
 public class Mapa
@@ -88,6 +89,10 @@ implements CalculadorDeCalidadDeVida {
 
 	public void mandarBomberosDesdeHasta(int x, int y, Construible construible) {
 		hectareas[x][y].mandarBomberoHasta(construible);
+	}
+
+	public CentralElectrica getCentral(int x, int y) {
+		return (CentralElectrica)hectareas[x][y].getConstruible();
 	}
 
 }

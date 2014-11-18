@@ -20,6 +20,6 @@ public class CentralMineralTest extends TestCase {
 	}
 	
 	public void testPotencia() throws Exception {
-		assertEquals(central.getPotencia(), 400);
+		assertEquals(central.getPotenciaDisponible(), 400);
 	}
 }
