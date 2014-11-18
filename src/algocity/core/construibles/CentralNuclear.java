@@ -5,7 +5,8 @@ public class CentralNuclear extends CentralElectrica {
 	public CentralNuclear() {
 		costo = 10000;
 		radioDeAlimentacion = 25;
-		potencia = 1000;
+		capacidad = 1000;
+		potenciaDisponible = capacidad;
 	}
 	
 	public void pasanLosBomberos() {		

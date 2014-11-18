@@ -2,11 +2,11 @@ package algocity.core.construibles;
 
 import algocity.core.Partida;
 
-
-
 public abstract class CentralElectrica extends ConstruibleEnLlano{
+
 	int radioDeAlimentacion;
-	int potencia;
+	int capacidad;
+	int potenciaDisponible;
 	
 	public CentralElectrica(){
 		redDeAguaConectada = false;
@@ -16,8 +16,12 @@ public abstract class CentralElectrica extends ConstruibleEnLlano{
 		return radioDeAlimentacion;
 	}
 	
-	public int getPotencia() {
-		return potencia;
+	public int getCapacidad() {
+		return capacidad;
+	}
+	
+	public int getPotenciaDisponible() {
+		return potenciaDisponible;
 	}
 	
 	public void desconectarDeRedDeAgua(){
@@ -33,19 +37,18 @@ public abstract class CentralElectrica extends ConstruibleEnLlano{
 	}
 	
 	public void procesarAgregado(Partida partida, int x, int y)  {
-		
-
-	int i;
-	int j;
-		
 			
-	partida.agregarCentralElectrica(x, y);
+		int i;
+		int j;
 			
-	for(i = 0; i <= 2 * radioDeAlimentacion; i++) {
-		for (j = 0; j <= 2 * radioDeAlimentacion; j++) {
-			if(((x - radioDeAlimentacion + i) >= 0 ) && 
-				((x - radioDeAlimentacion + i) < partida.getfilas()) && ((y - radioDeAlimentacion + j) >= 0) && ((y - radioDeAlimentacion + j) <partida.getcolumnas()))
-				partida.conectarRedElectrica(x - radioDeAlimentacion + i, y - radioDeAlimentacion + j);
+				
+		partida.agregarCentralElectrica(x, y);
+				
+		for(i = 0; i <= 2 * radioDeAlimentacion; i++) {
+			for (j = 0; j <= 2 * radioDeAlimentacion; j++) {
+				if(((x - radioDeAlimentacion + i) >= 0 ) && 
+					((x - radioDeAlimentacion + i) < partida.getfilas()) && ((y - radioDeAlimentacion + j) >= 0) && ((y - radioDeAlimentacion + j) <partida.getcolumnas()))
+					partida.conectarRedElectrica(x - radioDeAlimentacion + i, y - radioDeAlimentacion + j);
 			}
 		}
 	}
@@ -54,6 +57,11 @@ public abstract class CentralElectrica extends ConstruibleEnLlano{
 		redDeAguaConectada = partida.redDeAguaConectada(x, y);
 		if (daniado())
 			partida.agregarDaniado(this, x, y);
+	}
+
+	public void restarPotencia(int consumo) {
+		potenciaDisponible -= consumo; 
+		
 	}
 	
 	

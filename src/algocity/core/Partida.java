@@ -3,9 +3,11 @@ package algocity.core;
 import java.util.ArrayList;
 
 import algocity.core.capas.Hectarea;
+import algocity.core.capas.tendido.Coordenada;
 import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.capas.tendido.RutaPavimentada;
+import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 
 public class Partida {
@@ -106,7 +108,7 @@ public class Partida {
 		return (mapa.cercanoACentralElecrica(x, y)) ||  redElectrica.servicioExiste(x, y);
 	}
 	
-public boolean rutaPavimentadaConectada(int x, int y) {
+	public boolean rutaPavimentadaConectada(int x, int y) {
 		
 		return mapa.rutaPavimentadaConectada(x, y);
 	}
@@ -175,6 +177,11 @@ public boolean rutaPavimentadaConectada(int x, int y) {
 		rutaPavimentada.mandarBomberos(this, edificiosDaniados);
 		pasoTurno();
 		
+	}
+
+	public CentralElectrica buscarCentralDesde(int x, int y) {
+		Coordenada coordCentral = redElectrica.buscarEdificioProveedorBFS(x, y);
+		return mapa.getCentral(coordCentral.getX(), coordCentral.getY());
 	}
 	
 }

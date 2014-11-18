@@ -20,7 +20,7 @@ public class CentralEolicaTest extends TestCase {
 	}
 	
 	public void testPotencia() throws Exception {
-		assertEquals(central.getPotencia(), 100);
+		assertEquals(central.getPotenciaDisponible(), 100);
 	}
 	
 }

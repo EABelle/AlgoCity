@@ -178,4 +178,42 @@ abstract public class Tendido {
 		}
 		return distancias;
 	}
+
+
+	public Coordenada buscarEdificioProveedorBFS (int XInicial, int YInicial){
+		//Implementa el algoritmo de recorrido BFS para saber si dos elementos se encuentran en el mismo subgrafo conexo.
+		
+		NodoTendido nodoInicial = this.getNodo(XInicial,YInicial);
+		if (nodoInicial == null){
+			return null;
+		}
+			
+		ConcurrentLinkedQueue<NodoTendido> q = new ConcurrentLinkedQueue<NodoTendido>();
+		Hashtable<NodoTendido, String> estadoVisitaNodo = new Hashtable<NodoTendido, String>();
+		
+		Iterator<NodoTendido> iter = nodos.iterator();
+		while ( iter.hasNext() ){
+			NodoTendido nodoActual = iter.next();
+			estadoVisitaNodo.put(nodoActual, "NO_VISITADO");
+		}
+		
+		estadoVisitaNodo.put(nodoInicial, "VISITADO");
+		q.add(nodoInicial);
+		
+		while (!q.isEmpty()){
+			NodoTendido nodoActual = q.poll();
+			ArrayList<NodoTendido> vecinos = nodoActual.getVecinos();
+			Iterator<NodoTendido> iterVecinos = vecinos.iterator();
+			while ( iterVecinos.hasNext() ){
+				NodoTendido vecino = iterVecinos.next();
+				if (edificiosProveedores.contains(vecino))
+					return (new Coordenada (vecino.getCoordenadaX() , vecino.getCoordenadaY() ) );
+				if (estadoVisitaNodo.get(vecino) == "NO_VISITADO"){
+					estadoVisitaNodo.put(vecino, "VISITADO");
+					q.add(vecino);
+				}
+			}
+						
+		}return null;
+	}
 }

@@ -20,6 +20,6 @@ public class CentralNuclearTest extends TestCase {
 	}
 	
 	public void testPotencia() throws Exception {
-		assertEquals(central.getPotencia(), 1000);
+		assertEquals(central.getPotenciaDisponible(), 1000);
 	}
 }

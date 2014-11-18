@@ -23,7 +23,15 @@ public abstract class Edificio extends ConstruibleEnLlano {
 		redDeAguaConectada = partida.redDeAguaConectada(x, y);
 		redElectricaConectada = partida.redElectricaConectada(x, y);
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
+		consumirElectricidad(partida, x, y);
 		if (daniado())
 			partida.agregarDaniado(this, x, y);
+	}
+	
+	private void consumirElectricidad(Partida partida, int x, int y){
+		if (!redElectricaConectada)
+			return;
+		CentralElectrica central = partida.buscarCentralDesde(x,y);
+		central.restarPotencia(consumo);
 	}
 }
