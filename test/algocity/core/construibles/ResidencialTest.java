@@ -26,6 +26,9 @@ public class ResidencialTest extends TestCase {
 	}
 	
 	public void testAgregarUnHabitante(){
+		edificio.conectarARedDeAgua();
+		edificio.conectarARedElectrica();
+		edificio.conectarARutaPavimentada();
 		try{
 			edificio.agregarHabitantes(1);
 		}catch (EspacioInsuficienteException e){}
@@ -43,6 +46,10 @@ public class ResidencialTest extends TestCase {
 	}
 	
 	public void testAlAgregarDosPersonasYSacarUnaQuedan99Disponibles (){
+
+		edificio.conectarARedDeAgua();
+		edificio.conectarARedElectrica();
+		edificio.conectarARutaPavimentada();
 		try{
 			edificio.agregarHabitantes(2);
 			edificio.quitarHabitantes(1);
