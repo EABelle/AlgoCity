@@ -9,12 +9,14 @@ public abstract class Construible {
 	protected boolean redDeAguaConectada;
 	protected boolean redElectricaConectada;
 	protected boolean rutaPavimentadaConectada;
+	protected String soyUn;
 	
 	public Construible() {
 		porcentajeDeVida = 100;
 		redDeAguaConectada = true;
 		redElectricaConectada = true;
 		rutaPavimentadaConectada = true;
+		soyUn = new String();
 	}
 	
 	public void daniar (float porcentajeDeDanio) {
@@ -65,7 +67,8 @@ public abstract class Construible {
 		return porcentajeDeVida != 100;
 	}
 
-	public void pasanLosBomberos() {		
+	public String tipo() {
+		return soyUn;
 	}
 	
 }

@@ -12,6 +12,7 @@ public class Industrial extends Edificio {
 		puestosDisponibles = 25;
 		redElectricaConectada = false;
 		rutaPavimentadaConectada = false;
+		soyUn = "Industrial";
 	}
 	
 	public boolean agregarTrabajadores(int cantidad) {
@@ -41,10 +42,6 @@ public class Industrial extends Edificio {
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
 		if (daniado())
 			partida.agregarDaniado(this, x, y);
-	}
-	
-	public void pasanLosBomberos() {		
-		this.reparar(3);
 	}
 	
 }

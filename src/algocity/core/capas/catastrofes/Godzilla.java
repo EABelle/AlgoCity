@@ -9,4 +9,5 @@ public class Godzilla extends Catastrofe {
 		
 	}
 
+
 }

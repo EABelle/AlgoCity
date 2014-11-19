@@ -5,8 +5,11 @@ import algocity.core.construibles.ConstruibleEnLlano;
 
 public class HectareaLlana extends Hectarea {
 		
+	private String contiene;
+
+
 	public HectareaLlana() {
-		super();
+		contiene = null;
 	}
 	@Override
 	public int calcularCalidadDeVida() {
@@ -17,11 +20,14 @@ public class HectareaLlana extends Hectarea {
 	@Override
 	public boolean agregarConstruible(Construible construible) {
 		try{
-			return agregarConstruibleEnLlano((ConstruibleEnLlano)construible);
-		}catch(Exception e){
+			if (agregarConstruibleEnLlano((ConstruibleEnLlano)construible)){
+				contiene = construible.tipo();
+				return true;
+			}
+		}catch(Exception e){}
 			//System.out.println("NO ES CONSTRUIBLE EN LLANO");
-			return false;
-		}
+		return false;
+
 	}
 		
 
@@ -33,6 +39,10 @@ public class HectareaLlana extends Hectarea {
 			return true;
 		}
 		return false;
+	}
+	
+	public String contieneUn() {
+		return contiene;
 	}
 
 }

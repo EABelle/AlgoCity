@@ -13,6 +13,7 @@ public class Residencial extends Edificio {
 		redDeAguaConectada = false;
 		redElectricaConectada = false;
 		rutaPavimentadaConectada = false;
+		soyUn = "Residencial";
 	}
 
 	public void agregarHabitantes (int habitantesNuevos) throws EspacioInsuficienteException {
@@ -45,10 +46,6 @@ public class Residencial extends Edificio {
 	
 	public void desconectarDeRutaPavimentada(){
 		rutaPavimentadaConectada = false;
-	}
-	
-	public void pasanLosBomberos() {		
-		this.reparar(10);
 	}
 	
 }

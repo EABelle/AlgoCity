@@ -7,9 +7,7 @@ public class CentralEolica extends CentralElectrica {
 		radioDeAlimentacion = 4;
 		capacidad = 100;
 		potenciaDisponible = capacidad;
+		soyUn = "CentralEolica";
 	}
-	
-	public void pasanLosBomberos() {		
-		this.reparar(15);
-	}
+
 }
