@@ -34,9 +34,6 @@ public abstract class Edificio extends ConstruibleEnLlano {
 	}
 	
 	private boolean consumirElectricidad(Partida partida, int x, int y){
-		CentralElectrica central = partida.buscarCentralDesde(x,y);
-		if (central == null)
-			return false;
-		return (central.restarPotencia(consumo)); //false si excede de la carga maxima
+		return partida.consumirElectricidadDesde(x,y,consumo);
 	}
 }
