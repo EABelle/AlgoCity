@@ -114,11 +114,6 @@ public class Partida {
 		return mapa.rutaPavimentadaConectada(x, y);
 	}
 
-
-	public RedElectrica getRedElectrica() {
-		return redElectrica;
-	}
-
 	public int getfilas() {
 		return mapa.getfilas();
 	}
