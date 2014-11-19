@@ -1,4 +1,4 @@
-package algocity.core.capas.tendido;
+package algocity.core.exceptions;
 
 public class NoHayNodoCercanoException extends Exception {
 

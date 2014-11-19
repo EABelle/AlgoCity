@@ -52,7 +52,7 @@ public class Partida {
 		redElectrica = new RedElectrica();
 		rutaPavimentada = new RutaPavimentada();
 		turno = 0;
-		plata = 20000;
+		plata = Configuracion.PlataInicial;
 	}
 	
 	public boolean agregarHectareaMapa (Hectarea hectarea){
@@ -78,9 +78,7 @@ public class Partida {
 	public boolean agregarConexionDeAgua (int x, int y) {
 		
 		if ((plata - redDeAgua.getCosto()) >= 0) {
-			if (redDeAgua.agregarNodo(x, y)){
-				return true;
-			}
+			return redDeAgua.agregarNodo(x, y);
 		}
 		return false;
 			
