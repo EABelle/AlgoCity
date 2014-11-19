@@ -66,5 +66,10 @@ implements CalculadorDeCalidadDeVida {
 		return construible;
 	}
 
+	public void impactar(float danio) {
+		if (construible != null)
+			construible.daniar(danio);
+	}
+
 	
 }

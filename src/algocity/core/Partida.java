@@ -115,11 +115,11 @@ public class Partida {
 	}
 
 	public int getfilas() {
-		return mapa.getfilas();
+		return mapa.getFilas();
 	}
 
 	public int getcolumnas() {
-		return mapa.getcolumnas();
+		return mapa.getColumnas();
 	}
 
 	public void conectarRedElectrica(int i, int j) {

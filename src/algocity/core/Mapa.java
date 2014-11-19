@@ -55,11 +55,11 @@ implements CalculadorDeCalidadDeVida {
 		return cargadoCompleto;
 	}
 
-	public int getfilas() {
+	public int getFilas() {
 		return filas;
 	}
 
-	public int getcolumnas() {
+	public int getColumnas() {
 		return columnas;
 	}
 
@@ -93,6 +93,10 @@ implements CalculadorDeCalidadDeVida {
 
 	public CentralElectrica getCentral(int x, int y) {
 		return (CentralElectrica)hectareas[x][y].getConstruible();
+	}
+
+	public void impactarEn(int x, int y, float danio) {
+		hectareas[x][y].impactar(danio);
 	}
 
 }
