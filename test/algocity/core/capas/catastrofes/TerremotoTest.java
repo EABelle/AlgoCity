@@ -18,6 +18,7 @@ public class TerremotoTest extends TestCase{
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		Residencial residencial = new Residencial();
 		
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
@@ -54,6 +55,7 @@ public class TerremotoTest extends TestCase{
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		Residencial residencial = new Residencial();
 		
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);

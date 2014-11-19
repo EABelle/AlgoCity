@@ -1,11 +1,16 @@
 package algocity.core;
 
+import java.util.Random;
+
 import algocity.core.capas.Hectarea;
+import algocity.core.capas.HectareaAgua;
+import algocity.core.capas.HectareaLlana;
 import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 
 public class Mapa
 implements CalculadorDeCalidadDeVida {
+	
 	private Hectarea[][] hectareas;
 	private int x;
 	private int y;
@@ -13,13 +18,13 @@ implements CalculadorDeCalidadDeVida {
 	private int columnas;
 	private boolean cargadoCompleto;
 		
-	public Mapa(int dimension1, int dimension2){
-		hectareas = new Hectarea[dimension1][dimension2];
-		x = 0;
-		y = 0;
-		filas = dimension1;
-		columnas = dimension2;
-		cargadoCompleto = false;
+	public Mapa(int filas, int columnas){
+		this.hectareas = new Hectarea[filas][columnas];
+		this.x = 0;
+		this.y = 0;
+		this.filas = filas;
+		this.columnas = columnas;
+		this.cargadoCompleto = false;
 	}
 
 	public boolean cargarHectareaNueva(Hectarea hectarea) {
@@ -97,6 +102,25 @@ implements CalculadorDeCalidadDeVida {
 
 	public void impactarEn(int x, int y, float danio) {
 		hectareas[x][y].impactar(danio);
+	}
+
+	/**
+	 *  Llena el mapa de hectareas
+	 *  TODO: Agregar algun criterio de llenado
+	 */
+	public void llenar() {
+		int numero;
+		Random rn = new Random();
+		while(!this.cargado()) {
+			Hectarea hectarea;
+			numero = rn.nextInt(3);
+			if (numero % 3 == 0) {
+				hectarea = new HectareaAgua();
+			} else {
+				hectarea = new HectareaLlana();
+			}
+			this.cargarHectareaNueva(hectarea);
+		}
 	}
 
 }

@@ -23,6 +23,7 @@ public class IntegracionTest extends TestCase {
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		CentralEolica central = new CentralEolica();
 		
 		partida.agregarConstruible(central, 4, 4);
@@ -45,6 +46,7 @@ public class IntegracionTest extends TestCase {
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		CentralEolica central = new CentralEolica();
 		
 		partida.agregarConstruible(central, 0, 0);
@@ -68,6 +70,7 @@ public class IntegracionTest extends TestCase {
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		CentralMineral central = new CentralMineral();
 		
 		partida.agregarConstruible(central, 0, 0);
@@ -99,6 +102,7 @@ public class IntegracionTest extends TestCase {
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		PozoDeAgua pozo = new PozoDeAgua();
 		
 		partida.agregarConstruible(pozo, 0, 0);
@@ -125,6 +129,7 @@ public class IntegracionTest extends TestCase {
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		CentralEolica central = new CentralEolica();
 		
 		assertFalse(partida.agregarConstruible(central, 0, 0));
@@ -140,6 +145,7 @@ public class IntegracionTest extends TestCase {
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		PozoDeAgua pozo = new PozoDeAgua();
 		
 		assertFalse(partida.agregarConstruible(pozo, 0, 0));
@@ -155,6 +161,7 @@ public class IntegracionTest extends TestCase {
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		Residencial residencial = new Residencial();
 		
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
@@ -181,6 +188,7 @@ public class IntegracionTest extends TestCase {
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		Residencial residencial = new Residencial();
 		
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
@@ -209,6 +217,7 @@ public class IntegracionTest extends TestCase {
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		Residencial residencial = new Residencial();
 		
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
@@ -241,6 +250,7 @@ public void test10UnaEstacionDeBomberoReparaTodosLosEdificiosALosQueSeConecta(){
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		Residencial residencial = new Residencial();
 		CentralNuclear central = new CentralNuclear();
 		
@@ -281,6 +291,7 @@ public void test10UnaEstacionDeBomberoReparaTodosLosEdificiosALosQueSeConecta(){
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		Residencial residencial1 = new Residencial();
 		Residencial residencial2 = new Residencial();
 		CentralNuclear central1 = new CentralNuclear();
@@ -303,6 +314,7 @@ public void test10UnaEstacionDeBomberoReparaTodosLosEdificiosALosQueSeConecta(){
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		Residencial residencial1 = new Residencial();
 		Residencial residencial2 = new Residencial();
 		
@@ -321,6 +333,7 @@ public void test10UnaEstacionDeBomberoReparaTodosLosEdificiosALosQueSeConecta(){
 		}
 		
 		Partida partida = new Partida(mapa);
+		partida.inicializar();
 		Residencial residencial = new Residencial();
 		
 		assertFalse (partida.agregarConstruible(residencial, 3, 3));

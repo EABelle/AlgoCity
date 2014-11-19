@@ -13,4 +13,10 @@ public class MapaTest extends TestCase {
 			}
 			assertEquals (100, i);
 		}
+		
+		public void testMapaSeLlena() {
+			Mapa mapa = new Mapa(10, 10);
+			mapa.llenar();
+			assertTrue(mapa.cargado());
+		}
 }

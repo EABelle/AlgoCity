@@ -20,6 +20,8 @@ public class Partida {
 	protected int turno;
 	int plata;
 	
+	boolean inicializada;
+	
 	public class NodoEdificioDaniado{
 		int x;
 		int y;
@@ -48,11 +50,7 @@ public class Partida {
 	
 	public Partida (Mapa mapa) {
 		this.mapa = mapa;
-		redDeAgua = new RedDeAgua();
-		redElectrica = new RedElectrica();
-		rutaPavimentada = new RutaPavimentada();
-		turno = 0;
-		plata = Configuracion.PlataInicial;
+		inicializada = false;
 	}
 	
 	public boolean agregarHectareaMapa (Hectarea hectarea){
@@ -190,5 +188,27 @@ public class Partida {
 		return false;
 		
 	}
+	
+	public void inicializar() {
+		redDeAgua = new RedDeAgua();
+		redElectrica = new RedElectrica();
+		rutaPavimentada = new RutaPavimentada();
+		turno = 0;
+		plata = Configuracion.PlataInicial;
+		inicializada = true;
+	}
+	
+	public boolean inicializada() {
+		return inicializada;
+	}
+
+	public void jugar() {
+		int turno = 0;
+		while(turno < Configuracion.TurnoMaximo) {
+			this.pasarTurno();
+			turno++;
+		}
+	}
+
 	
 }
