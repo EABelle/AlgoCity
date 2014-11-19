@@ -174,23 +174,28 @@ public class Partida {
 		
 	}
 
-	public CentralElectrica buscarCentralDesde(int x, int y) {
+	public boolean consumirElectricidadDesde(int x, int y, int consumo) {
 		ArrayList<Coordenada> coordCentralesConectadas = redElectrica.buscarEdificiosProveedoresBFS(x, y);
-		if (coordCentralesConectadas.isEmpty() ) {
-			return null; //si no hay conexion a alguna central
+		CentralElectrica centralUtilizada = null; //si no hay conexion a alguna central
+		
+		if (!coordCentralesConectadas.isEmpty() ) {
+			Iterator<Coordenada> iter = coordCentralesConectadas.iterator();
+			while (iter.hasNext()){
+				Coordenada coordCentral = iter.next();
+				if (coordCentral != null){
+					int xCentral = coordCentral.getX();
+					int yCentral = coordCentral.getY();
+					CentralElectrica centralActual = mapa.getCentral(xCentral, yCentral);
+					if (centralActual.cumpleRequerimientos())
+						centralUtilizada = centralActual;
+				}
+			}			
 		}
-		Iterator<Coordenada> iter = coordCentralesConectadas.iterator();
-		while (iter.hasNext()){
-			Coordenada coordCentral = iter.next();
-			if (coordCentral != null){
-				int xCentral = coordCentral.getX();
-				int yCentral = coordCentral.getY();
-				CentralElectrica centralActual = mapa.getCentral(xCentral, yCentral);
-				if (centralActual.cumpleRequerimientos())
-					return centralActual;
-			}
-		}
-		return null; //si ninguna central cumple los requerimientos
+		if (centralUtilizada != null)
+			return (centralUtilizada.restarPotencia(consumo));//si alguna central cumple los requerimientos
+		
+		return false;
+		
 	}
 	
 }
