@@ -23,6 +23,9 @@ public class CalculadorDeCalidadDeVida implements Procesador {
 	@Override
 	public void procesarHectarea(Hectarea hectarea) {
 		String tipo = hectarea.contieneUn();
+		if (tipo == null) {
+			return;
+		}
 		if (tipo.equals("Residencial")) {
 			cantidadResidenciales++;
 		} else if (tipo.equals("Comercial")) {

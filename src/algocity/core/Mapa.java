@@ -7,16 +7,18 @@ import algocity.core.capas.HectareaAgua;
 import algocity.core.capas.HectareaLlana;
 import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
+import algocity.core.procesadores.CalculadorDeCalidadDeVida;
+import algocity.core.procesadores.ManejadorDeHabitantes;
 
 public class Mapa {
-	
+
 	private Hectarea[][] hectareas;
 	private int x;
 	private int y;
 	private int filas;
 	private int columnas;
 	private boolean cargadoCompleto;
-		
+
 	public Mapa(int filas, int columnas){
 		this.hectareas = new Hectarea[filas][columnas];
 		this.x = 0;
@@ -27,7 +29,7 @@ public class Mapa {
 	}
 
 	public boolean cargarHectareaNueva(Hectarea hectarea) {
-		
+
 		if (x < filas) {
 			if (y < columnas){
 				hectareas[x][y] = hectarea;
@@ -41,13 +43,13 @@ public class Mapa {
 		else cargadoCompleto = true;
 		return cargadoCompleto;
 	}
-	
+
 	public boolean agregarConstruible (Construible construible, int x, int y) {
 		if ( (x >= 0) && (x < filas) && (y >= 0) && (y <= columnas))
 			return hectareas[x][y].agregarConstruible(construible);
 		return false;
 	}
-	
+
 	public boolean cargado() {
 		return cargadoCompleto;
 	}
@@ -63,7 +65,7 @@ public class Mapa {
 	public void conectarHectareaARedElectrica(int i, int j) {
 		hectareas[i][j].conectarRedElectrica();
 	}
-	
+
 	public boolean cercanoACentralElecrica(int x, int y) {
 		return hectareas[x][y].redElectricaConectada();
 	}
@@ -74,13 +76,24 @@ public class Mapa {
 
 	public void procesarTurno(Partida partida) {
 		int i, j;
-		
+
+		// Esto no deberia estar aca, pero es un ejemplo de uso
+		CalculadorDeCalidadDeVida calc = new CalculadorDeCalidadDeVida();
+		ManejadorDeHabitantes man = new ManejadorDeHabitantes();
+
 		for (i = 0; i < filas; i++){
 			for (j = 0; j < columnas; j++){
-				hectareas[i][j].procesarTurno(partida, i, j);
+				Hectarea hectarea = hectareas[i][j];
+				hectarea.procesarTurno(partida, i, j);
+				man.procesarHectarea(hectarea);
+				calc.procesarHectarea(hectarea);
 			}
 		}
-		
+
+		man.setHabitantes(200);
+		calc.finalizarProceso();
+		man.finalizarProceso();
+
 	}
 
 	public void mandarBomberosDesdeHasta(int x, int y, Construible construible) {
