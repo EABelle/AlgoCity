@@ -136,8 +136,7 @@ public class Partida {
 	
 
 	private void pasoTurno() {
-		if ((turno ++) == 30)
-			turno = 0;
+		turno = (turno + 1) % 30;
 	}
 
 	public void mandarBomberosDesdeHasta(int x, int y, Construible construible) {

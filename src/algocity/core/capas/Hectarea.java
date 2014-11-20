@@ -71,5 +71,9 @@ implements CalculadorDeCalidadDeVida {
 			construible.daniar(danio);
 	}
 
+	public String contieneUn() {
+		return null;
+	}
+
 	
 }

@@ -3,6 +3,7 @@ package algocity.core.capas.catastrofes;
 import algocity.core.Mapa;
 import algocity.core.Partida;
 import algocity.core.capas.HectareaLlana;
+import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.construibles.EstacionDeBombero;
 import algocity.core.construibles.Residencial;
 import junit.framework.TestCase;
@@ -30,8 +31,7 @@ public class TerremotoTest extends TestCase{
 		}
 		
 		Terremoto terremoto = new Terremoto(0, 10);
-		
-		terremoto.procesar(mapa);
+		terremoto.procesar(mapa, new RedElectrica());
 		
 		assertTrue (residencial.daniado());
 		partida.pasarTurno();
@@ -68,7 +68,7 @@ public class TerremotoTest extends TestCase{
 		
 		Terremoto terremoto = new Terremoto(0, 30);
 		
-		terremoto.procesar(mapa);
+		terremoto.procesar(mapa, new RedElectrica());
 		
 		assertTrue (residencial.daniado());
 		partida.pasarTurno();

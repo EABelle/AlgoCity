@@ -123,4 +123,8 @@ implements CalculadorDeCalidadDeVida {
 		}
 	}
 
+	public String EnXYhayUn(int x, int y) {
+		return hectareas[x][y].contieneUn();
+	}
+
 }

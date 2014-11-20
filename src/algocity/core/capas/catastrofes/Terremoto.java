@@ -3,6 +3,7 @@ package algocity.core.capas.catastrofes;
 import java.util.Random;
 
 import algocity.core.Mapa;
+import algocity.core.capas.tendido.RedElectrica;
 
 public class Terremoto extends Catastrofe {
 	int origenX;
@@ -24,7 +25,7 @@ public class Terremoto extends Catastrofe {
 
 
 	@Override
-	public void procesar(Mapa mapa) {
+	public void procesar(Mapa mapa, RedElectrica red) {
 		danio = 50;//Math.round((70*rn.nextFloat())*10)/10 + 30;
 		
 		int i;
