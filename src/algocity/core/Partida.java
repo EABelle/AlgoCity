@@ -53,6 +53,19 @@ public class Partida {
 		inicializada = false;
 	}
 	
+	public void inicializar() {
+		redDeAgua = new RedDeAgua();
+		redElectrica = new RedElectrica();
+		rutaPavimentada = new RutaPavimentada();
+		turno = 0;
+		plata = Configuracion.PlataInicial;
+		inicializada = true;
+	}
+	
+	public boolean inicializada() {
+		return inicializada;
+	}
+
 	public boolean agregarHectareaMapa (Hectarea hectarea){
 		return mapa.cargarHectareaNueva(hectarea);
 	}
@@ -186,19 +199,6 @@ public class Partida {
 		
 		return false;
 		
-	}
-	
-	public void inicializar() {
-		redDeAgua = new RedDeAgua();
-		redElectrica = new RedElectrica();
-		rutaPavimentada = new RutaPavimentada();
-		turno = 0;
-		plata = Configuracion.PlataInicial;
-		inicializada = true;
-	}
-	
-	public boolean inicializada() {
-		return inicializada;
 	}
 
 	public void jugar() {

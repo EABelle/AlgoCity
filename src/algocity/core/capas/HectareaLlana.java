@@ -11,11 +11,6 @@ public class HectareaLlana extends Hectarea {
 	public HectareaLlana() {
 		contiene = null;
 	}
-	@Override
-	public int calcularCalidadDeVida() {
-		return 0;
-	}
-
 
 	@Override
 	public boolean agregarConstruible(Construible construible) {

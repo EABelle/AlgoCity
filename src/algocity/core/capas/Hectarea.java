@@ -1,12 +1,10 @@
 package algocity.core.capas;
 
-import algocity.core.CalculadorDeCalidadDeVida;
 import algocity.core.Partida;
 import algocity.core.construibles.Construible;
 import algocity.core.construibles.EstacionDeBombero;
 
-public abstract class Hectarea 
-implements CalculadorDeCalidadDeVida {
+public abstract class Hectarea  {
 	
 	Construible construible;
 	boolean conexionElectrica;

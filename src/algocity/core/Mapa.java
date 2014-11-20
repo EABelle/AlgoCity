@@ -8,8 +8,7 @@ import algocity.core.capas.HectareaLlana;
 import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 
-public class Mapa
-implements CalculadorDeCalidadDeVida {
+public class Mapa {
 	
 	private Hectarea[][] hectareas;
 	private int x;
@@ -43,19 +42,12 @@ implements CalculadorDeCalidadDeVida {
 		return cargadoCompleto;
 	}
 	
-	public boolean agregarConstruible (Construible construible,
-			int x, int y) {
+	public boolean agregarConstruible (Construible construible, int x, int y) {
 		if ( (x >= 0) && (x < filas) && (y >= 0) && (y <= columnas))
 			return hectareas[x][y].agregarConstruible(construible);
 		return false;
 	}
 	
-	@Override
-	public int calcularCalidadDeVida() {
-		/*en cada hectárea calcularCalidadDeVida();*/
-		return 0;
-	}
-
 	public boolean cargado() {
 		return cargadoCompleto;
 	}
@@ -81,12 +73,11 @@ implements CalculadorDeCalidadDeVida {
 	}
 
 	public void procesarTurno(Partida partida) {
-		int i;
-		int j;
+		int i, j;
 		
-		for (i = 0; i < filas; i ++){
-			for (j = 0; j < columnas; j ++){
-				hectareas[i][j].procesarTurno(partida,i ,j);
+		for (i = 0; i < filas; i++){
+			for (j = 0; j < columnas; j++){
+				hectareas[i][j].procesarTurno(partida, i, j);
 			}
 		}
 		
