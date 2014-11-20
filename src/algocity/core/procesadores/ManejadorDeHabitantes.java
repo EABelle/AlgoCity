@@ -1,7 +1,6 @@
 package algocity.core.procesadores;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Residencial;
@@ -9,7 +8,6 @@ import algocity.core.exceptions.EspacioInsuficienteException;
 
 public class ManejadorDeHabitantes implements Procesador {
 	
-	int indice;
 	int habitantes;
 	ArrayList<Residencial> casas;
 	
@@ -21,6 +19,11 @@ public class ManejadorDeHabitantes implements Procesador {
 		return habitantes;
 	}
 	
+	
+	/**
+	 * La cantidad de habitantes es proporcionada desde afuera
+	 * @param habitantes
+	 */
 	public void setHabitantes(int habitantes) {
 		this.habitantes = habitantes;
 	}
@@ -34,6 +37,10 @@ public class ManejadorDeHabitantes implements Procesador {
 		}
 	}
 
+	/**
+	 * Los habitantes llenan las casas.
+	 * TODO: Agregar un mejor criterio
+	 */
 	public void finalizarProceso() {
 		for (int i = 0; i < casas.size(); i++) {
 			Residencial casa = casas.get(i);
