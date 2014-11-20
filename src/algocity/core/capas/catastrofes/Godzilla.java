@@ -11,7 +11,21 @@ public class Godzilla extends Catastrofe {
 
 	@Override
 	public void procesar(Mapa mapa, RedElectrica red) {
-	
+		Random rn = new Random();
+		switch (rn.nextInt(6)){
+		case 0: movimientoHorizontal(mapa, red);
+			break;
+		case 1: movimientoVertical(mapa, red);
+			break;
+		case 2: movimientoDiagonal1(mapa, red);
+			break;
+		case 3: movimientoDiagonal2(mapa, red);
+			break;
+		case 4: movimientoZigZag1(mapa, red);
+			break;
+		case 5: movimientoZigZag2(mapa, red);
+			break;
+		}
 	}
 	
 	
