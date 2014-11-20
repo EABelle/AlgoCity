@@ -1,5 +1,6 @@
 package algocity.core.construibles;
 
+import algocity.core.Configuracion;
 import algocity.core.exceptions.EspacioInsuficienteException;
 import algocity.core.exceptions.NoHayTantosHabitantesException;
 public class Residencial extends Edificio {
@@ -17,7 +18,7 @@ public class Residencial extends Edificio {
 	}
 
 	public void agregarHabitantes (int habitantesNuevos) throws EspacioInsuficienteException {
-		if ((habitantes + habitantesNuevos <= 100) && cumpleRequerimientos())
+		if ((habitantes + habitantesNuevos <= Configuracion.MaximoHabitantes) && cumpleRequerimientos())
 			habitantes += habitantesNuevos;
 		else {
 			throw new EspacioInsuficienteException();
@@ -25,7 +26,7 @@ public class Residencial extends Edificio {
 	}
 
 	public int disponibilidad() {
-		return 100 - habitantes;
+		return Configuracion.MaximoHabitantes - habitantes;
 	}
 
 	public void quitarHabitantes (int habitantesSalientes) throws NoHayTantosHabitantesException {
