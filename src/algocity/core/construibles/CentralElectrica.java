@@ -28,19 +28,10 @@ public abstract class CentralElectrica extends ConstruibleEnLlano{
 		redDeAguaConectada = false;
 	}
 	
-	public void desconectarDeRedElectrica(){
-		
-	}
-	
-	public void desconectarDeRutaPavimentada(){
-		
-	}
-	
 	public void procesarAgregado(Partida partida, int x, int y)  {
 			
 		int i;
 		int j;
-			
 				
 		partida.agregarCentralElectrica(x, y);
 				

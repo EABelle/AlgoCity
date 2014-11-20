@@ -36,16 +36,4 @@ public class Residencial extends Edificio {
 		}
 	}
 	
-	public void desconectarDeRedDeAgua(){
-		redDeAguaConectada = false;
-	}
-	
-	public void desconectarDeRedElectrica(){
-		redElectricaConectada = false;		
-	}
-	
-	public void desconectarDeRutaPavimentada(){
-		rutaPavimentadaConectada = false;
-	}
-	
 }

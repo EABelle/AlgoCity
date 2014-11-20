@@ -5,22 +5,7 @@ public class Comercial extends Edificio {
 	public Comercial() {
 		costo = 5;
 		consumo = 2;
-		redDeAguaConectada = false;
-		redElectricaConectada = false;
-		rutaPavimentadaConectada = false;
 		soyUn = "Comercial";
 	}
 	
-	public void desconectarDeRedDeAgua(){
-		redDeAguaConectada = false;
-	}
-	
-	public void desconectarDeRedElectrica(){
-		redElectricaConectada = false;		
-	}
-	
-	public void desconectarDeRutaPavimentada(){
-		rutaPavimentadaConectada = false;
-	}
-		
 }

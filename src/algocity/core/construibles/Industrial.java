@@ -22,15 +22,11 @@ public class Industrial extends Edificio {
 		}
 		return false;
 	}
-		
-	public void desconectarDeRedElectrica(){
-		redElectricaConectada = false;		
+	
+	public void desconectarDeRedDeAgua() {
+		redElectricaConectada = false;
 	}
 	
-	public void desconectarDeRutaPavimentada(){
-		rutaPavimentadaConectada = false;
-	}
-
 	@Override
 	public void procesarAgregado(Partida partida, int x, int y) {
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);

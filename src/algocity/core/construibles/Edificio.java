@@ -35,5 +35,17 @@ public abstract class Edificio extends ConstruibleEnLlano {
 	
 	private boolean consumirElectricidad(Partida partida, int x, int y){
 		return partida.consumirElectricidadDesde(x,y,consumo);
+	}	
+	
+	public void desconectarDeRedDeAgua() {
+		redDeAguaConectada = false;
+	}
+	
+	public void desconectarDeRedElectrica() {
+		redElectricaConectada = false;
+	}
+	
+	public void desconectarDeRutaPavimentada() {
+		rutaPavimentadaConectada = false;
 	}
 }

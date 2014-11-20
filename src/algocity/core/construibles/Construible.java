@@ -51,11 +51,9 @@ public abstract class Construible {
 		rutaPavimentadaConectada = true;
 	}
 	
-	public abstract void desconectarDeRedDeAgua();
-	
-	public abstract void desconectarDeRedElectrica();
-	
-	public abstract void desconectarDeRutaPavimentada();
+	public void desconectarDeRedDeAgua() {}
+	public void desconectarDeRedElectrica() {}
+	public void desconectarDeRutaPavimentada() {}
 
 	public abstract void procesarAgregado(Partida partida, int x, int y);
 
