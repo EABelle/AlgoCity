@@ -35,4 +35,9 @@ public class Residencial extends Edificio {
 		return false;
 	}
 
+	@Override
+	public void teArreglanLosBomberos(EstacionDeBombero estacion) {
+		estacion.arreglar(this);
+	}
+	
 }

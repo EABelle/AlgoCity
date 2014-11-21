@@ -40,4 +40,9 @@ public class Industrial extends Edificio {
 			partida.agregarDaniado(this, x, y);
 	}
 	
+	@Override
+	public void teArreglanLosBomberos(EstacionDeBombero estacion) {
+		estacion.arreglar(this);
+	}
+	
 }

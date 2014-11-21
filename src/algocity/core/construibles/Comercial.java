@@ -8,4 +8,9 @@ public class Comercial extends Edificio {
 		soyUn = "Comercial";
 	}
 	
+	@Override
+	public void teArreglanLosBomberos(EstacionDeBombero estacion) {
+		estacion.arreglar(this);
+	}
+	
 }

@@ -1,6 +1,7 @@
 package algocity.core.capas;
 
 import algocity.core.Partida;
+import algocity.core.construibles.Arreglable;
 import algocity.core.construibles.Construible;
 import algocity.core.construibles.EstacionDeBombero;
 
@@ -55,7 +56,7 @@ public abstract class Hectarea  {
 
 	}
 
-	public void mandarBomberoHasta(Construible daniado) {
+	public void mandarBomberoHasta(Arreglable daniado) {
 		((EstacionDeBombero)construible).reparar(daniado);
 	}
 

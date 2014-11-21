@@ -10,4 +10,9 @@ public class CentralEolica extends CentralElectrica {
 		soyUn = "CentralEolica";
 	}
 
+	@Override
+	public void teArreglanLosBomberos(EstacionDeBombero estacion) {
+		estacion.arreglar(this);
+	}
+
 }

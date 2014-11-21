@@ -5,6 +5,7 @@ import java.util.Random;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.HectareaAgua;
 import algocity.core.capas.HectareaLlana;
+import algocity.core.construibles.Arreglable;
 import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
@@ -96,8 +97,8 @@ public class Mapa {
 
 	}
 
-	public void mandarBomberosDesdeHasta(int x, int y, Construible construible) {
-		hectareas[x][y].mandarBomberoHasta(construible);
+	public void mandarBomberosDesdeHasta(int x, int y, Arreglable arreglable) {
+		hectareas[x][y].mandarBomberoHasta(arreglable);
 	}
 
 	public CentralElectrica getCentral(int x, int y) {

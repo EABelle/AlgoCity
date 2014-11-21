@@ -8,6 +8,7 @@ import algocity.core.capas.tendido.Coordenada;
 import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.capas.tendido.RutaPavimentada;
+import algocity.core.construibles.Arreglable;
 import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 
@@ -25,12 +26,12 @@ public class Partida {
 	public class NodoEdificioDaniado{
 		int x;
 		int y;
-		Construible construible;
+		Arreglable arreglable;
 		
-		public NodoEdificioDaniado(int x, int y, Construible construible) {
+		public NodoEdificioDaniado(int x, int y, Arreglable arreglable) {
 			this.x = x;
 			this.y = y;
-			this.construible = construible;
+			this.arreglable = arreglable;
 		}
 		
 		public int getX() {
@@ -41,8 +42,8 @@ public class Partida {
 			return y;
 		}
 		
-		public Construible getConstruible() {
-			return construible;
+		public Arreglable getConstruible() {
+			return arreglable;
 		}
 	}
 	
@@ -143,8 +144,8 @@ public class Partida {
 		redDeAgua.agregarEdificioProveedor(x, y);
 	}
 
-	public void agregarDaniado(Construible construible, int x, int y) {
-		edificiosDaniados.add(new NodoEdificioDaniado(x, y, construible));
+	public void agregarDaniado(Arreglable arreglable, int x, int y) {
+		edificiosDaniados.add(new NodoEdificioDaniado(x, y, arreglable));
 	}
 	
 
@@ -152,8 +153,8 @@ public class Partida {
 		turno = (turno + 1) % 30;
 	}
 
-	public void mandarBomberosDesdeHasta(int x, int y, Construible construible) {
-		mapa.mandarBomberosDesdeHasta(x, y, construible);
+	public void mandarBomberosDesdeHasta(int x, int y, Arreglable arreglable) {
+		mapa.mandarBomberosDesdeHasta(x, y, arreglable);
 	}
 
 	public boolean agregarRuta(int x, int y) {

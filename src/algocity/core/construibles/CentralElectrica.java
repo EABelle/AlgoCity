@@ -2,7 +2,7 @@ package algocity.core.construibles;
 
 import algocity.core.Partida;
 
-public abstract class CentralElectrica extends ConstruibleEnLlano{
+public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable{
 
 	int radioDeAlimentacion;
 	int capacidad;

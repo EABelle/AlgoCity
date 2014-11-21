@@ -8,22 +8,33 @@ public class EstacionDeBombero extends ConstruibleEnLlano {
 		rutaPavimentadaConectada = false;
 	}
 	
-	public void reparar(Construible daniado) {
-		if (daniado.tipo().compareTo("Residencial") == 0) {
-			daniado.reparar(10);
-		}else if (daniado.tipo().compareTo("Comercial") == 0){
-			daniado.reparar(7);
-		}else if (daniado.tipo().compareTo("Industrial") == 0){
-			daniado.reparar(3);
-		}else if (daniado.tipo().compareTo("CentralEolica") == 0){
-			daniado.reparar(15);
-		}else if (daniado.tipo().compareTo("CentralMineral") == 0){
-			daniado.reparar(10);
-		}else if (daniado.tipo().compareTo("CentralNuclear") == 0){
-			daniado.reparar(3);
-		}
+	public void reparar (Arreglable arreglable) {
+		arreglable.teArreglanLosBomberos(this);
+	}
+	
+	public void arreglar (Residencial residencial){
+		residencial.reparar(10);
+	}
+	
+	public void arreglar (Comercial comercial){
+		comercial.reparar(3);
 	}
 
+	public void arreglar (Industrial industrial){
+		industrial.reparar(10);
+	}
+	
+	public void arreglar (CentralEolica central){
+		central.reparar(15);
+	}
+	
+	public void arreglar (CentralMineral central){
+		central.reparar(10);
+	}
+	
+	public void arreglar (CentralNuclear central){
+		central.reparar(3);
+	}
 	@Override
 	public void procesarAgregado(Partida partida, int x, int y) {
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);

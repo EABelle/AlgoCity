@@ -3,7 +3,7 @@ package algocity.core.construibles;
 import algocity.core.Partida;
 
 
-public abstract class Edificio extends ConstruibleEnLlano {
+public abstract class Edificio extends ConstruibleEnLlano implements Arreglable {
 
 	protected int consumo;
 	
@@ -48,4 +48,5 @@ public abstract class Edificio extends ConstruibleEnLlano {
 	public void desconectarDeRutaPavimentada() {
 		rutaPavimentadaConectada = false;
 	}
+	
 }
