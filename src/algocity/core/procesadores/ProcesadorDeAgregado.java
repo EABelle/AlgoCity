@@ -1,11 +1,12 @@
 package algocity.core.procesadores;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 
-public abstract class ProcesadorDeAgregado implements Procesador {
+public class ProcesadorDeAgregado implements Procesador {
 	int x;
 	int y;
 	Mapa mapa;
@@ -16,6 +17,20 @@ public abstract class ProcesadorDeAgregado implements Procesador {
 		this.mapa = mapa;
 	}
 
-	public abstract Iterator<Hectarea> getIterator();
+	public Iterator<Hectarea> getIterator() {
+		return new ArrayList<Hectarea>().iterator();
+	}
+
+	@Override
+	public void procesarHectarea(Hectarea hectarea) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void finalizarProceso() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

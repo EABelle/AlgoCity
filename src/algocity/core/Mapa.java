@@ -22,9 +22,12 @@ public class Mapa {
 	private int columnas;
 	private boolean cargadoCompleto;
 	private ArrayList<Hectarea> residenciales;
-	protected RedDeAgua redDeAgua;
-	protected RedElectrica redElectrica;
-	protected RutaPavimentada rutaPavimentada;
+	private ArrayList<Hectarea> comerciales;
+	private ArrayList<Hectarea> industriales;
+	private ArrayList<Hectarea> daniados;
+	private RedDeAgua redDeAgua;
+	private RedElectrica redElectrica;
+	private RutaPavimentada rutaPavimentada;
 
 
 	public Mapa(int filas, int columnas){
