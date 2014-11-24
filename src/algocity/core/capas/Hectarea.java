@@ -1,16 +1,20 @@
 package algocity.core.capas;
 
+import java.util.Observable;
+
 import algocity.core.Partida;
 import algocity.core.construibles.Arreglable;
 import algocity.core.construibles.Construible;
 import algocity.core.construibles.EstacionDeBombero;
 
-public abstract class Hectarea  {
+public abstract class Hectarea extends Observable {
 
 	Construible construible;
 	boolean conexionElectrica;
 	boolean conexionRuta;
 	boolean conexionAgua;
+	int fila;
+	int columna;
 
 	public Hectarea() {
 		construible = null;
@@ -18,6 +22,23 @@ public abstract class Hectarea  {
 		conexionElectrica = false;
 		conexionRuta = false;
 	}
+
+	public int getFila() {
+		return fila;
+	}
+
+	public void setFila(int fila) {
+		this.fila = fila;
+	}
+
+	public int getColumna() {
+		return columna;
+	}
+
+	public void setColumna(int columna) {
+		this.columna = columna;
+	}
+
 
 	public abstract boolean agregarConstruible(Construible construible);
 

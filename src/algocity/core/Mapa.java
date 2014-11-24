@@ -1,5 +1,7 @@
 package algocity.core;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 import algocity.core.capas.Hectarea;
@@ -10,6 +12,7 @@ import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.ManejadorDeHabitantes;
+import algocity.core.procesadores.Procesador;
 
 public class Mapa {
 
@@ -75,6 +78,17 @@ public class Mapa {
 		return hectareas[x][y].rutaPavimentadaConectada();
 	}
 
+	public void recorrerseSecuencialmente(ArrayList<Procesador> procesadores) {
+		for (int i = 0; i < hectareas.length; i++) {
+			for (int j = 0; j < hectareas.length; j++) {
+				for (Iterator iterator = procesadores.iterator(); iterator
+						.hasNext();) {
+					((Procesador) iterator.next()).procesarHectarea(this.getHectarea(i, j));
+				}
+			}
+		}
+	}
+
 	public void procesarTurno(Partida partida) {
 		int i, j;
 
@@ -130,6 +144,10 @@ public class Mapa {
 
 	public String EnXYhayUn(int x, int y) {
 		return hectareas[x][y].contieneUn();
+	}
+
+	public Hectarea getHectarea(int fila, int columna) {
+		return hectareas[fila][columna];
 	}
 
 }
