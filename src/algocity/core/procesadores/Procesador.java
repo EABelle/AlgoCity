@@ -10,7 +10,7 @@ public interface Procesador {
 	 * Por ejemplo, la pueden implementar clases capaces de procesar
 	 * las hectareas en un turno.
 	 */
-	
+
 	public void procesarHectarea(Hectarea hectarea);
-	
+	public void finalizarProceso();
 }

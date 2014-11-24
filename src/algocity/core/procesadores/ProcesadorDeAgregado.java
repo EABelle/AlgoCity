@@ -27,6 +27,10 @@ public class ProcesadorDeAgregado implements Procesador {
 		return new ArrayList<Hectarea>().iterator();
 	}
 
+	@Override
+	public void finalizarProceso() {
+	}
+
 
 
 }

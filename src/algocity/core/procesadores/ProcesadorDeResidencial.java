@@ -16,5 +16,8 @@ public class ProcesadorDeResidencial extends ProcesadorDeAgregado {
 	}
 
 
+	public void finalizarProceso() {
+		mapa.agregarResidencial(x, y);
+	}
 
 }

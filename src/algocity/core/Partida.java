@@ -151,13 +151,10 @@ public class Partida {
 				Hectarea hectarea = iterator.next();
 				procesador.procesarHectarea(hectarea);
 			}
+			procesador.finalizarProceso();
 			return true;
 		}
 		return false;
-	}
-
-	private void pasoTurno() {
-		turno = (turno + 1) % 30;
 	}
 
 	private ArrayList<Procesador> getProcesadores(int turno) {
