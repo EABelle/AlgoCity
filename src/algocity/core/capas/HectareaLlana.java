@@ -4,19 +4,11 @@ import algocity.core.construibles.Construible;
 import algocity.core.construibles.ConstruibleEnLlano;
 
 public class HectareaLlana extends Hectarea {
-		
-	private String contiene;
-
-
-	public HectareaLlana() {
-		contiene = null;
-	}
 
 	@Override
 	public boolean agregarConstruible(Construible construible) {
 		try{
 			if (agregarConstruibleEnLlano((ConstruibleEnLlano)construible)){
-				contiene = construible.tipo();
 				return true;
 			}
 		}catch(Exception e){}
@@ -34,10 +26,6 @@ public class HectareaLlana extends Hectarea {
 			return true;
 		}
 		return false;
-	}
-	
-	public String contieneUn() {
-		return contiene;
 	}
 
 }

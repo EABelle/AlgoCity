@@ -1,5 +1,10 @@
 package algocity.core.construibles;
 
+import algocity.core.Mapa;
+import algocity.core.procesadores.ProcesadorDeAgregado;
+import algocity.core.procesadores.ProcesadorDeCentral;
+import algocity.core.procesadores.ProcesadorDeResidencial;
+
 
 public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable{
 
@@ -57,5 +62,14 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 		return true;
 
 	}
+	
+	@Override
+	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
+		ProcesadorDeCentral procesador = new ProcesadorDeCentral(mapa, x, y);
+		procesador.setCentral(this);
+		return procesador;
+	}
+
+
 
 }

@@ -18,9 +18,9 @@ import algocity.core.procesadores.ProcesadorDeBomberos.NodoEdificioDaniado;
 public class Partida {
 
 	protected Mapa mapa;
-	protected RedDeAgua redDeAgua;
+/*	protected RedDeAgua redDeAgua;
 	protected RedElectrica redElectrica;
-	protected RutaPavimentada rutaPavimentada;
+	protected RutaPavimentada rutaPavimentada;*/
 	protected int turno;
 	int plata;
 
@@ -58,9 +58,9 @@ public class Partida {
 	}
 
 	public void inicializar() {
-		redDeAgua = new RedDeAgua();
+/*		redDeAgua = new RedDeAgua();
 		redElectrica = new RedElectrica();
-		rutaPavimentada = new RutaPavimentada();
+		rutaPavimentada = new RutaPavimentada();*/
 		turno = 0;
 		plata = Configuracion.PlataInicial;
 		inicializada = true;
@@ -157,7 +157,7 @@ public class Partida {
 		return false;
 	}
 
-	private ArrayList<Procesador> getProcesadores(int turno) {
+/*	private ArrayList<Procesador> getProcesadores(int turno) {
 		ArrayList<Procesador> procesadores = new ArrayList<Procesador>();
 		CalculadorDeCalidadDeVida calculador = new CalculadorDeCalidadDeVida();
 		ProcesadorDeBomberos bomberos = new ProcesadorDeBomberos();
@@ -184,6 +184,21 @@ public class Partida {
 
 		}
 
+	}*/
+	
+	public void pasarTurno() {
+		turno++;
+		CalculadorDeCalidadDeVida calculador = new CalculadorDeCalidadDeVida();
+		ProcesadorDeBomberos bomberos = new ProcesadorDeBomberos();
+		if (turno % 30 == 0) {
+			Debitador debitador = new Debitador(mapa);
+			
+			for(Iterator<Hectarea> iter = mapa.recorridoResidenciales(); 
+					iter.hasNext();){
+				debitador.procesarHectarea(iter.next());
+			}
+			plata += debitador.getPago();
+		}
 	}
 /*
 	public void mandarBomberosDesdeHasta(int x, int y, Arreglable arreglable) {
