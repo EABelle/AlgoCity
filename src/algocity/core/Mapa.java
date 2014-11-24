@@ -7,11 +7,7 @@ import java.util.Random;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.HectareaAgua;
 import algocity.core.capas.HectareaLlana;
-import algocity.core.construibles.Arreglable;
-import algocity.core.construibles.CentralElectrica;
 import algocity.core.construibles.Construible;
-import algocity.core.procesadores.CalculadorDeCalidadDeVida;
-import algocity.core.procesadores.ManejadorDeHabitantes;
 import algocity.core.procesadores.Procesador;
 
 public class Mapa {
@@ -22,6 +18,7 @@ public class Mapa {
 	private int filas;
 	private int columnas;
 	private boolean cargadoCompleto;
+	private ArrayList<Hectarea> residenciales;
 
 	public Mapa(int filas, int columnas){
 		this.hectareas = new Hectarea[filas][columnas];
@@ -30,6 +27,7 @@ public class Mapa {
 		this.filas = filas;
 		this.columnas = columnas;
 		this.cargadoCompleto = false;
+		this.residenciales = new ArrayList<Hectarea>();
 	}
 
 	public boolean cargarHectareaNueva(Hectarea hectarea) {
@@ -78,15 +76,41 @@ public class Mapa {
 		return hectareas[x][y].rutaPavimentadaConectada();
 	}
 */
-	public void recorrerseSecuencialmente(ArrayList<Procesador> procesadores) {
-		for (int i = 0; i < hectareas.length; i++) {
-			for (int j = 0; j < hectareas.length; j++) {
-				for (Iterator iterator = procesadores.iterator(); iterator
-						.hasNext();) {
-					((Procesador) iterator.next()).procesarHectarea(this.getHectarea(i, j));
-				}
+
+	private void aplicarProcesadoresAHectarea(int fila, int columna,
+			ArrayList<Procesador> procesadores) {
+		for (Iterator iterator = procesadores.iterator(); iterator
+				.hasNext();) {
+			((Procesador) iterator.next()).procesarHectarea(this.getHectarea(fila, columna));
+		}
+	}
+
+	public Iterator recorridoSecuencial() {
+		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		for (int i = 0; i < getFilas(); i++) {
+			for (int j = 0; j < getColumnas(); j++) {
+				recorrido.add(hectareas[i][j]);
 			}
 		}
+		return recorrido.iterator();
+	}
+
+	public void procesarEnUnRadio(int radio, int x, int y,
+			ArrayList<Procesador> procesadores) {
+		int fila, columna;
+		for(int i = 0; i <= 2 * radio; i++) {
+			for (int j = 0; j <= 2 * radio; j++) {
+				fila = x - radio + i;
+				columna = y - radio + j;
+				if((fila >= 0) && (fila < getFilas()) &&
+				   (columna >= 0) && (columna < getColumnas()))
+					aplicarProcesadoresAHectarea(fila, columna, procesadores);
+			}
+		}
+	}
+
+	public Iterator recorridoResidenciales() {
+		return this.residenciales.iterator();
 	}
 
 /*	public void procesarTurno(Partida partida) {
@@ -148,6 +172,14 @@ public class Mapa {
 */
 	public Hectarea getHectarea(int fila, int columna) {
 		return hectareas[fila][columna];
+	}
+
+	public void agregarConstruible(Construible construible, int x2, int y2) {
+		hectareas[x][y].agregarConstruible(construible);
+	}
+
+	public void agregarResidencial(int x, int y) {
+		this.residenciales.add(hectareas[x][y]);
 	}
 
 }
