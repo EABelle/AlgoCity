@@ -1,22 +1,13 @@
 package algocity.core.construibles;
 
-import algocity.core.Partida;
-
 public abstract class Construible {
 
 	protected int costo;
 	private float porcentajeDeVida;
-	protected boolean redDeAguaConectada;
-	protected boolean redElectricaConectada;
-	protected boolean rutaPavimentadaConectada;
-	protected String soyUn;
+
 	
 	public Construible() {
 		porcentajeDeVida = 100;
-		redDeAguaConectada = true;
-		redElectricaConectada = true;
-		rutaPavimentadaConectada = true;
-		soyUn = new String();
 	}
 	
 	public void daniar (float porcentajeDeDanio) {
@@ -35,10 +26,11 @@ public abstract class Construible {
 		return costo;
 	}
 	
-	public boolean cumpleRequerimientos(){
-		return (redDeAguaConectada && redElectricaConectada && rutaPavimentadaConectada);
+	public boolean cumpleRequerimientos(boolean conexionAgua, 
+			boolean conexionRuta, boolean conexionElectrica){
+		return true;
 	}
-	
+	/*
 	public void conectarARedDeAgua(){
 		redDeAguaConectada = true;
 	}
@@ -58,15 +50,12 @@ public abstract class Construible {
 	public abstract void procesarAgregado(Partida partida, int x, int y);
 
 	public void procesarTurno(Partida partida, int x, int y){
-		/*redefinido en los edificios y las centrales*/
+		//redefinido en los edificios y las centrales
 	}
 	
 	public boolean daniado() {
 		return porcentajeDeVida != 100;
 	}
-
-	public String tipo() {
-		return soyUn;
-	}
+*/
 	
 }

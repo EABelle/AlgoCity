@@ -47,13 +47,13 @@ public class Mapa {
 		else cargadoCompleto = true;
 		return cargadoCompleto;
 	}
-
+/*
 	public boolean agregarConstruible (Construible construible, int x, int y) {
 		if ( (x >= 0) && (x < filas) && (y >= 0) && (y <= columnas))
 			return hectareas[x][y].agregarConstruible(construible);
 		return false;
 	}
-
+*/
 	public boolean cargado() {
 		return cargadoCompleto;
 	}
@@ -65,7 +65,7 @@ public class Mapa {
 	public int getColumnas() {
 		return columnas;
 	}
-
+/*
 	public void conectarHectareaARedElectrica(int i, int j) {
 		hectareas[i][j].conectarRedElectrica();
 	}
@@ -77,7 +77,7 @@ public class Mapa {
 	public boolean rutaPavimentadaConectada(int x, int y) {
 		return hectareas[x][y].rutaPavimentadaConectada();
 	}
-
+*/
 	public void recorrerseSecuencialmente(ArrayList<Procesador> procesadores) {
 		for (int i = 0; i < hectareas.length; i++) {
 			for (int j = 0; j < hectareas.length; j++) {
@@ -89,7 +89,7 @@ public class Mapa {
 		}
 	}
 
-	public void procesarTurno(Partida partida) {
+/*	public void procesarTurno(Partida partida) {
 		int i, j;
 
 		// Esto no deberia estar aca, pero es un ejemplo de uso
@@ -122,7 +122,7 @@ public class Mapa {
 	public void impactarEn(int x, int y, float danio) {
 		hectareas[x][y].impactar(danio);
 	}
-
+*/
 	/**
 	 *  Llena el mapa de hectareas
 	 *  TODO: Agregar algun criterio de llenado
@@ -141,11 +141,11 @@ public class Mapa {
 			this.cargarHectareaNueva(hectarea);
 		}
 	}
-
+/*
 	public String EnXYhayUn(int x, int y) {
 		return hectareas[x][y].contieneUn();
 	}
-
+*/
 	public Hectarea getHectarea(int fila, int columna) {
 		return hectareas[fila][columna];
 	}

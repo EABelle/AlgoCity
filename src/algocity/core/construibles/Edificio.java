@@ -1,8 +1,5 @@
 package algocity.core.construibles;
 
-import algocity.core.Partida;
-
-
 public abstract class Edificio extends ConstruibleEnLlano implements Arreglable {
 
 	protected int consumo;
@@ -11,6 +8,12 @@ public abstract class Edificio extends ConstruibleEnLlano implements Arreglable 
 		return consumo;
 	}
 	
+	public boolean cumpleRequerimientos(boolean conexionAgua, 
+			boolean conexionRuta, boolean conexionElectrica){
+		return conexionAgua & conexionRuta & conexionElectrica;
+	}	
+	
+	/*
 	@Override
 	public void procesarAgregado(Partida partida, int x, int y) {
 		redDeAguaConectada = partida.redDeAguaConectada(x, y);
@@ -37,16 +40,5 @@ public abstract class Edificio extends ConstruibleEnLlano implements Arreglable 
 		return partida.consumirElectricidadDesde(x,y,consumo);
 	}	
 	
-	public void desconectarDeRedDeAgua() {
-		redDeAguaConectada = false;
-	}
-	
-	public void desconectarDeRedElectrica() {
-		redElectricaConectada = false;
-	}
-	
-	public void desconectarDeRutaPavimentada() {
-		rutaPavimentadaConectada = false;
-	}
-	
+*/
 }

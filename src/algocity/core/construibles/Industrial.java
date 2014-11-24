@@ -1,6 +1,5 @@
 package algocity.core.construibles;
 
-import algocity.core.Partida;
 
 public class Industrial extends Edificio {
 	
@@ -10,10 +9,12 @@ public class Industrial extends Edificio {
 		costo = 10;
 		consumo = 5;
 		puestosDisponibles = 25;
-		redElectricaConectada = false;
-		rutaPavimentadaConectada = false;
-		soyUn = "Industrial";
 	}
+
+	public boolean cumpleRequerimientos(boolean conexionAgua, 
+			boolean conexionRuta, boolean conexionElectrica){
+		return conexionRuta & conexionElectrica;
+	}	
 	
 	public boolean agregarTrabajadores(int cantidad) {
 		if ((puestosDisponibles - cantidad) >= 0){
@@ -22,11 +23,7 @@ public class Industrial extends Edificio {
 		}
 		return false;
 	}
-	
-	public void desconectarDeRedDeAgua() {
-		redElectricaConectada = false;
-	}
-	
+/*	
 	@Override
 	public void procesarAgregado(Partida partida, int x, int y) {
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
@@ -39,7 +36,7 @@ public class Industrial extends Edificio {
 		if (daniado())
 			partida.agregarDaniado(this, x, y);
 	}
-	
+*/	
 	@Override
 	public void teArreglanLosBomberos(EstacionDeBombero estacion) {
 		estacion.arreglar(this);

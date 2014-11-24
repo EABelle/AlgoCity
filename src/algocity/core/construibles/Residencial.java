@@ -9,14 +9,10 @@ public class Residencial extends Edificio {
 		habitantes = 0;
 		costo = 5;
 		consumo = 1;
-		redDeAguaConectada = false;
-		redElectricaConectada = false;
-		rutaPavimentadaConectada = false;
-		soyUn = "Residencial";
-	}
+}
 
 	public boolean agregarHabitantes (int habitantesNuevos) {
-		if ((habitantes + habitantesNuevos <= Configuracion.MaximoHabitantes) && cumpleRequerimientos()) {
+		if (habitantes + habitantesNuevos <= Configuracion.MaximoHabitantes)  {
 			habitantes += habitantesNuevos;
 			return true;
 		}

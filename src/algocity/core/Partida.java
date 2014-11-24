@@ -23,7 +23,7 @@ public class Partida {
 	
 	boolean inicializada;
 	
-	public class NodoEdificioDaniado{
+/*	public class NodoEdificioDaniado{
 		int x;
 		int y;
 		Arreglable arreglable;
@@ -46,7 +46,7 @@ public class Partida {
 			return arreglable;
 		}
 	}
-	
+	*/
 	private ArrayList<NodoEdificioDaniado> edificiosDaniados;
 	
 	public Partida (Mapa mapa) {
@@ -66,11 +66,11 @@ public class Partida {
 	public boolean inicializada() {
 		return inicializada;
 	}
-
+/*
 	public boolean agregarHectareaMapa (Hectarea hectarea){
 		return mapa.cargarHectareaNueva(hectarea);
 	}
-	
+*/	
 	public int getPlata(){
 		return plata;
 	}
@@ -86,7 +86,7 @@ public class Partida {
 		return false;
 	}
 	
-	
+/*	
 	public boolean agregarConexionDeAgua (int x, int y) {
 		
 		if ((plata - redDeAgua.getCosto()) >= 0) {
@@ -148,11 +148,11 @@ public class Partida {
 		edificiosDaniados.add(new NodoEdificioDaniado(x, y, arreglable));
 	}
 	
-
+*/
 	private void pasoTurno() {
 		turno = (turno + 1) % 30;
 	}
-
+/*
 	public void mandarBomberosDesdeHasta(int x, int y, Arreglable arreglable) {
 		mapa.mandarBomberosDesdeHasta(x, y, arreglable);
 	}
@@ -201,7 +201,7 @@ public class Partida {
 		return false;
 		
 	}
-
+*/
 	public void jugar() {
 		int turno = 0;
 		while(turno < Configuracion.TurnoMaximo) {

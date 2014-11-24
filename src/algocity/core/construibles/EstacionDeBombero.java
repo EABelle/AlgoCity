@@ -4,10 +4,6 @@ import algocity.core.Partida;
 
 public class EstacionDeBombero extends ConstruibleEnLlano {
 		
-	public EstacionDeBombero() {
-		rutaPavimentadaConectada = false;
-	}
-	
 	public void reparar (Arreglable arreglable) {
 		arreglable.teArreglanLosBomberos(this);
 	}
@@ -35,10 +31,11 @@ public class EstacionDeBombero extends ConstruibleEnLlano {
 	public void arreglar (CentralNuclear central){
 		central.reparar(3);
 	}
+/*
 	@Override
 	public void procesarAgregado(Partida partida, int x, int y) {
 		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
 		partida.agregarEstacionDeBomberos(x, y);
 	}
-
+*/
 }

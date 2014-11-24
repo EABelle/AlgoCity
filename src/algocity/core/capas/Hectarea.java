@@ -70,7 +70,7 @@ public abstract class Hectarea extends Observable {
 		}
 		return false;
 	}
-
+/*
 	public void procesarTurno(Partida partida, int x, int y) {
 		if (construible != null)
 			construible.procesarTurno(partida, x, y);
@@ -80,7 +80,7 @@ public abstract class Hectarea extends Observable {
 	public void mandarBomberoHasta(Arreglable daniado) {
 		((EstacionDeBombero)construible).reparar(daniado);
 	}
-
+*/
 	public Construible getConstruible() {
 		return construible;
 	}
@@ -90,9 +90,6 @@ public abstract class Hectarea extends Observable {
 			construible.daniar(danio);
 	}
 
-	public String contieneUn() {
-		return null;
-	}
 
 
 }

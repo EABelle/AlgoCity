@@ -7,7 +7,6 @@ public class CentralNuclear extends CentralElectrica {
 		radioDeAlimentacion = 25;
 		capacidad = 1000;
 		potenciaDisponible = capacidad;
-		soyUn = "CentralNuclear";
 	}
 	
 	@Override

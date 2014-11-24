@@ -1,6 +1,5 @@
 package algocity.core.construibles;
 
-import algocity.core.Partida;
 
 public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable{
 
@@ -8,9 +7,6 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	int capacidad;
 	int potenciaDisponible;
 
-	public CentralElectrica(){
-		redDeAguaConectada = false;
-	}
 
 	public int getRadioDeAlimentacion() {
 		return radioDeAlimentacion;
@@ -23,12 +19,13 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	public int getPotenciaDisponible() {
 		return potenciaDisponible;
 	}
+	
+	public boolean cumpleRequerimientos(boolean conexionAgua, 
+			boolean conexionRuta, boolean conexionElectrica){
+		return conexionAgua;
+	}	
 
-	@Override
-	public void desconectarDeRedDeAgua(){
-		redDeAguaConectada = false;
-	}
-
+/*
 	@Override
 	public void procesarAgregado(Partida partida, int x, int y)  {
 
@@ -52,7 +49,7 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 		if (daniado())
 			partida.agregarDaniado(this, x, y);
 	}
-
+*/
 	public boolean restarPotencia(int consumo) {
 		if (potenciaDisponible - consumo < 0)
 			return false;
