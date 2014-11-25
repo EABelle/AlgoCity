@@ -251,5 +251,9 @@ public class Partida {
 		}
 	}
 
+	public Mapa getMapa() {
+		return mapa;
+	}
+
 
 }

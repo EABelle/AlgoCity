@@ -1,8 +1,5 @@
 package algocity.core;
 
-import algocity.controladores.ControladorPartida;
-import algocity.vistas.VistaDeMapa;
-import algocity.vistas.VistaDePartida;
 
 public class Juego {
 
@@ -17,14 +14,10 @@ public class Juego {
 		return mapa;
 	}
 
-	public void comenzarPartida() {
+	public Partida crearPartida() {
 		Partida partida = new Partida(mapa);
 		partida.inicializar();
-		VistaDePartida vistaDePartida = new VistaDePartida(partida);
-		ControladorPartida controlador = new ControladorPartida(partida, vistaDePartida);
-		VistaDeMapa vistaDeMapa = new VistaDeMapa(getMapa());
-		vistaDePartida.add(vistaDeMapa);
-		vistaDePartida.setVisible(true);
+		return partida;
 	}
 
 }
