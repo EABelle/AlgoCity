@@ -1,19 +1,13 @@
 package algocity.core;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import algocity.core.capas.Hectarea;
-import algocity.core.capas.tendido.RedDeAgua;
-import algocity.core.capas.tendido.RedElectrica;
-import algocity.core.capas.tendido.RutaPavimentada;
 import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
-import algocity.core.procesadores.Procesador;
 import algocity.core.procesadores.ProcesadorDeAgregado;
 import algocity.core.procesadores.ProcesadorDeBomberos;
-import algocity.core.procesadores.ProcesadorDeBomberos.NodoEdificioDaniado;
 
 public class Partida {
 
@@ -50,7 +44,6 @@ public class Partida {
 		}
 	}
 	*/
-	private ArrayList<NodoEdificioDaniado> edificiosDaniados;
 
 	public Partida (Mapa mapa) {
 		this.mapa = mapa;
@@ -185,15 +178,15 @@ public class Partida {
 		}
 
 	}*/
-	
+
 	public void pasarTurno() {
 		turno++;
 		CalculadorDeCalidadDeVida calculador = new CalculadorDeCalidadDeVida();
 		ProcesadorDeBomberos bomberos = new ProcesadorDeBomberos();
 		if (turno % 30 == 0) {
 			Debitador debitador = new Debitador(mapa);
-			
-			for(Iterator<Hectarea> iter = mapa.recorridoResidenciales(); 
+
+			for(Iterator<Hectarea> iter = mapa.recorridoResidenciales();
 					iter.hasNext();){
 				debitador.procesarHectarea(iter.next());
 			}

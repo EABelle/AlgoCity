@@ -40,7 +40,7 @@ public class Mapa {
 		this.residenciales = new ArrayList<Hectarea>();
 		redDeAgua = new RedDeAgua();
 		redElectrica = new RedElectrica();
-		rutaPavimentada = new RutaPavimentada();
+		//rutaPavimentada = new RutaPavimentada();
 	}
 
 	public boolean cargarHectareaNueva(Hectarea hectarea) {
@@ -94,7 +94,7 @@ public class Mapa {
 			ArrayList<Procesador> procesadores) {
 		for (Iterator<Procesador> iterator = procesadores.iterator(); iterator
 				.hasNext();) {
-			((Procesador) iterator.next()).procesarHectarea(this.getHectarea(fila, columna));
+			iterator.next().procesarHectarea(this.getHectarea(fila, columna));
 		}
 	}
 
@@ -121,7 +121,7 @@ public class Mapa {
 			}
 		}
 	}*/
-	
+
 	public Iterator<Hectarea> recorrerEnUnRadio(int radio, int x, int y) {
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		int fila, columna;
