@@ -1,16 +1,53 @@
 package algocity.core.procesadores;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RutaPavimentada;
 import algocity.core.construibles.Construible;
+import algocity.core.construibles.EstacionDeBombero;
 
-public class ProcesadorDeBomberos implements Procesador {
+public class ProcesadorDeBomberos extends ProcesadorDeAgregado {
 
-	private RutaPavimentada ruta;
+	public ProcesadorDeBomberos(Mapa mapa, int x, int y) {
+		super(mapa, x, y);
+		mapa.getRutaPavimentada().agregarEdificioProveedor(x, y);
+		}
 
-	public class NodoEdificioDaniado{
+	private EstacionDeBombero estacionDeBombero;
+
+	@Override
+	public void procesarHectarea(Hectarea hectarea) {
+		Construible construible = hectarea.getConstruible();
+		if (construible != null && construible.daniado()) {
+		}
+	}
+
+	public void setRutaPavimentada(RutaPavimentada ruta) {
+		this.ruta = ruta;
+	}
+
+	@Override
+	public void finalizarProceso() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBombero(EstacionDeBombero estacionDeBombero) {
+		this.estacionDeBombero = estacionDeBombero;
+		
+	}
+	
+	@Override
+	public Iterator<Hectarea> getIterator() {
+		return mapa.getHectareasDaniadas().iterator();
+	}
+	
+//	private RutaPavimentada ruta;
+
+	/*public class NodoEdificioDaniado{
 		int x;
 		int y;
 		Construible construible;
@@ -34,27 +71,13 @@ public class ProcesadorDeBomberos implements Procesador {
 		}
 	}
 
-	private ArrayList<NodoEdificioDaniado> edificiosDaniados;
+	private ArrayList<NodoEdificioDaniado> edificiosDaniados;*/
 
-	@Override
-	public void procesarHectarea(Hectarea hectarea) {
-		Construible construible = hectarea.getConstruible();
-		if (construible != null && construible.daniado()) {
-		}
-	}
-
-	public void setRutaPavimentada(RutaPavimentada ruta) {
-		this.ruta = ruta;
-	}
-
+	
 /*	public RutaPavimentada getRutaPavimentada() {
 		return ruta;
 	}*/
 
-	@Override
-	public void finalizarProceso() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

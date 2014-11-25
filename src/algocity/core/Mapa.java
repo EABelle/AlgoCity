@@ -24,7 +24,7 @@ public class Mapa {
 	private ArrayList<Hectarea> residenciales;
 	private ArrayList<Hectarea> comerciales;
 	private ArrayList<Hectarea> industriales;
-	private ArrayList<Hectarea> daniados;
+	private ArrayList<Hectarea> daniadas;
 	private RedDeAgua redDeAgua;
 	private RedElectrica redElectrica;
 	private RutaPavimentada rutaPavimentada;
@@ -40,7 +40,7 @@ public class Mapa {
 		this.residenciales = new ArrayList<Hectarea>();
 		redDeAgua = new RedDeAgua();
 		redElectrica = new RedElectrica();
-		//rutaPavimentada = new RutaPavimentada();
+		rutaPavimentada = new RutaPavimentada();
 	}
 
 	public boolean cargarHectareaNueva(Hectarea hectarea) {
@@ -217,17 +217,22 @@ public class Mapa {
 	public ArrayList<Hectarea> getHectareasIndustriales() {
 		return industriales;
 	}
+	
+	public ArrayList<Hectarea> getHectareasDaniadas() {
+		return daniadas;
+	}
 
 	public RedElectrica getRedElectrica() {
 		return redElectrica;
 	}
 	
-	RedDeAgua getRedDeAgua() {
+	public RedDeAgua getRedDeAgua() {
 		return redDeAgua;
 	}
 	
-	RutaPavimentada getRutaPavimentada(){
+	public RutaPavimentada getRutaPavimentada(){
 		return rutaPavimentada;
 	}
+
 
 }

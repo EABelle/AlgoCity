@@ -1,5 +1,9 @@
 package algocity.core.construibles;
 
+import algocity.core.Mapa;
+import algocity.core.procesadores.ProcesadorDeAgregado;
+import algocity.core.procesadores.ProcesadorDeBomberos;
+
 public class EstacionDeBombero extends ConstruibleEnLlano {
 		
 	public void reparar (Arreglable arreglable) {
@@ -36,4 +40,11 @@ public class EstacionDeBombero extends ConstruibleEnLlano {
 		partida.agregarEstacionDeBomberos(x, y);
 	}
 */
+	
+	@Override
+	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
+		ProcesadorDeBomberos procesador = new ProcesadorDeBomberos(mapa, x, y);
+		procesador.setBombero(this);
+		return procesador;
+	}
 }
