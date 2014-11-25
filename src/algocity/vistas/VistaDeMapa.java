@@ -23,7 +23,8 @@ public class VistaDeMapa extends JPanel implements Observer {
 		for (int i = 0; i < filas; i++) {
 			for (int j = 0; j < columnas; j++) {
 				Hectarea hectarea = mapa.getHectarea(i, j);
-				VistaDeHectarea vistaDeHectarea = new VistaDeHectarea(hectarea);
+				VistaDeHectarea vistaDeHectarea = new VistaDeHectarea();
+				hectarea.dibujarse(vistaDeHectarea);
 				this.add(vistaDeHectarea);
 			}
 		}

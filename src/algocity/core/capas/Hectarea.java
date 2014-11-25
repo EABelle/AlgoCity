@@ -2,10 +2,8 @@ package algocity.core.capas;
 
 import java.util.Observable;
 
-import algocity.core.Partida;
-import algocity.core.construibles.Arreglable;
 import algocity.core.construibles.Construible;
-import algocity.core.construibles.EstacionDeBombero;
+import algocity.vistas.VistaDeHectarea;
 
 public abstract class Hectarea extends Observable {
 
@@ -89,6 +87,8 @@ public abstract class Hectarea extends Observable {
 		if (construible != null)
 			construible.daniar(danio);
 	}
+
+	public abstract void dibujarse(VistaDeHectarea vistaDeHectarea);
 
 
 

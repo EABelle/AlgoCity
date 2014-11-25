@@ -2,9 +2,10 @@ package algocity.core.capas;
 
 import algocity.core.construibles.Construible;
 import algocity.core.construibles.ConstruibleEnLlano;
+import algocity.vistas.VistaDeHectarea;
 
 public class HectareaLlana extends Hectarea {
-		
+
 	private String contiene;
 
 
@@ -24,20 +25,26 @@ public class HectareaLlana extends Hectarea {
 		return false;
 
 	}
-		
+
 
 
 	private boolean agregarConstruibleEnLlano(ConstruibleEnLlano construible) {
-		
+
 		if (this.construible == null){
 			this.construible = construible;
 			return true;
 		}
 		return false;
 	}
-	
+
 	public String contieneUn() {
 		return contiene;
 	}
+
+	@Override
+	public void dibujarse(VistaDeHectarea vistaDeHectarea) {
+		vistaDeHectarea.dibujarHectarea(this);
+	}
+
 
 }
