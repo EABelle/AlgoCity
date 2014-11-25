@@ -46,4 +46,8 @@ public class Residencial extends Edificio {
 		return procesador;
 	}
 
+	public int habitantes() {
+		return habitantes;
+	}
+
 }

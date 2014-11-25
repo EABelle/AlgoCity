@@ -6,18 +6,10 @@ import algocity.vistas.VistaDeHectarea;
 
 public class HectareaLlana extends Hectarea {
 
-	private String contiene;
-
-
-	public HectareaLlana() {
-		contiene = null;
-	}
-
 	@Override
 	public boolean agregarConstruible(Construible construible) {
 		try{
 			if (agregarConstruibleEnLlano((ConstruibleEnLlano)construible)){
-				contiene = construible.tipo();
 				return true;
 			}
 		}catch(Exception e){}
@@ -25,11 +17,11 @@ public class HectareaLlana extends Hectarea {
 		return false;
 
 	}
-
+		
 
 
 	private boolean agregarConstruibleEnLlano(ConstruibleEnLlano construible) {
-
+		
 		if (this.construible == null){
 			this.construible = construible;
 			return true;
@@ -37,14 +29,9 @@ public class HectareaLlana extends Hectarea {
 		return false;
 	}
 
-	public String contieneUn() {
-		return contiene;
-	}
-
 	@Override
 	public void dibujarse(VistaDeHectarea vistaDeHectarea) {
 		vistaDeHectarea.dibujarHectarea(this);
 	}
-
 
 }

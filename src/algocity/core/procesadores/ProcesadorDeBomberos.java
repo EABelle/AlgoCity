@@ -51,4 +51,10 @@ public class ProcesadorDeBomberos implements Procesador {
 		return ruta;
 	}
 
+	@Override
+	public void finalizarProceso() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
