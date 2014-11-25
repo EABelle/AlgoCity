@@ -47,9 +47,9 @@ public class ProcesadorDeBomberos implements Procesador {
 		this.ruta = ruta;
 	}
 
-	public RutaPavimentada getRutaPavimentada() {
+/*	public RutaPavimentada getRutaPavimentada() {
 		return ruta;
-	}
+	}*/
 
 	@Override
 	public void finalizarProceso() {

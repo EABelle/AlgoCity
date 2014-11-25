@@ -1,5 +1,8 @@
 package algocity.core.construibles;
 
+import algocity.core.Mapa;
+import algocity.core.procesadores.ProcesadorDeAgregado;
+import algocity.core.procesadores.ProcesadorDeIndustrial;
 
 public class Industrial extends Edificio {
 	
@@ -40,6 +43,13 @@ public class Industrial extends Edificio {
 	@Override
 	public void teArreglanLosBomberos(EstacionDeBombero estacion) {
 		estacion.arreglar(this);
+	}
+	
+	@Override
+	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
+		ProcesadorDeIndustrial procesador = new ProcesadorDeIndustrial(mapa, x, y);
+		procesador.setIndustrial(this);
+		return procesador;
 	}
 	
 }

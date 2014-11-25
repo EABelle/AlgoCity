@@ -1,5 +1,9 @@
 package algocity.core.construibles;
 
+import algocity.core.Mapa;
+import algocity.core.procesadores.ProcesadorDeAgregado;
+import algocity.core.procesadores.ProcesadorDeComercial;
+
 public class Comercial extends Edificio {
 	
 	public Comercial() {
@@ -12,5 +16,11 @@ public class Comercial extends Edificio {
 	public void teArreglanLosBomberos(EstacionDeBombero estacion) {
 		estacion.arreglar(this);
 	}
-	
+
+	@Override
+	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
+		ProcesadorDeComercial procesador = new ProcesadorDeComercial(mapa, x, y);
+		procesador.setComercial(this);
+		return procesador;
+	}
 }

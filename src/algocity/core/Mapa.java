@@ -206,12 +206,28 @@ public class Mapa {
 		hectareas[x][y].agregarConstruible(construible);
 	}
 
-	public void agregarResidencial(int x, int y) {
-		this.residenciales.add(hectareas[x][y]);
+	public ArrayList<Hectarea> getHectareasResidenciales() {
+		return residenciales;
+	}
+	
+	public ArrayList<Hectarea> getHectareasComerciales() {
+		return comerciales;
+	}
+	
+	public ArrayList<Hectarea> getHectareasIndustriales() {
+		return industriales;
 	}
 
 	public RedElectrica getRedElectrica() {
 		return redElectrica;
+	}
+	
+	RedDeAgua getRedDeAgua() {
+		return redDeAgua;
+	}
+	
+	RutaPavimentada getRutaPavimentada(){
+		return rutaPavimentada;
 	}
 
 }

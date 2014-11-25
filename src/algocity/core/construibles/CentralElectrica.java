@@ -3,7 +3,6 @@ package algocity.core.construibles;
 import algocity.core.Mapa;
 import algocity.core.procesadores.ProcesadorDeAgregado;
 import algocity.core.procesadores.ProcesadorDeCentral;
-import algocity.core.procesadores.ProcesadorDeResidencial;
 
 
 public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable{

@@ -1,7 +1,5 @@
 package algocity.core.construibles;
 
-import algocity.core.Partida;
-
 public class EstacionDeBombero extends ConstruibleEnLlano {
 		
 	public void reparar (Arreglable arreglable) {

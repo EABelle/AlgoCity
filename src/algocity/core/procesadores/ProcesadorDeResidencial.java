@@ -21,7 +21,11 @@ public class ProcesadorDeResidencial extends ProcesadorDeAgregado {
 
 
 	public void finalizarProceso() {
-		mapa.agregarResidencial(x, y);
+		/*
+		 * agrega la nueva hectarea, donde se ha agregado un residencial
+		 * a la lista de hectares residencial al finalizar el procesamiento
+		 */
+		mapa.getHectareasResidenciales().add(mapa.getHectarea(x, y));
 	}
 
 	@Override
