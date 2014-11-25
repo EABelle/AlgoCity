@@ -6,6 +6,8 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import algocity.controladores.ControladorHectarea;
+import algocity.controladores.ControladorPartida;
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 
@@ -15,7 +17,7 @@ public class VistaDeMapa extends JPanel implements Observer {
 	int filas;
 	int columnas;
 
-	public VistaDeMapa(Mapa mapa) {
+	public VistaDeMapa(Mapa mapa, ControladorPartida controladorPartida) {
 		this.mapa = mapa;
 		filas = mapa.getFilas();
 		columnas = mapa.getColumnas();
@@ -23,8 +25,10 @@ public class VistaDeMapa extends JPanel implements Observer {
 		for (int i = 0; i < filas; i++) {
 			for (int j = 0; j < columnas; j++) {
 				Hectarea hectarea = mapa.getHectarea(i, j);
-				VistaDeHectarea vistaDeHectarea = new VistaDeHectarea();
+				VistaDeHectarea vistaDeHectarea = new VistaDeHectarea(hectarea);
 				hectarea.dibujarse(vistaDeHectarea);
+				vistaDeHectarea.addMouseListener(new ControladorHectarea(
+						hectarea, vistaDeHectarea, controladorPartida));
 				this.add(vistaDeHectarea);
 			}
 		}

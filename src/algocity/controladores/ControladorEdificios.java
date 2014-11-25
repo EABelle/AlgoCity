@@ -3,6 +3,7 @@ package algocity.controladores;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import algocity.core.construibles.Construible;
 import algocity.vistas.construibles.VistaDeConstruible;
 
 public class ControladorEdificios extends MouseAdapter {
@@ -19,6 +20,11 @@ public class ControladorEdificios extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		this.controladorPartida.setEstado(vistaEdificios.getEstado());
+		this.controladorPartida.setControladorEdificios(this);
+	}
+
+	public Construible getConstruible() {
+		return vistaEdificios.getConstruible();
 	}
 
 }

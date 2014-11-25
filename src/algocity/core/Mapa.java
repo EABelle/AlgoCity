@@ -202,7 +202,7 @@ public class Mapa {
 		return hectareas[fila][columna];
 	}
 
-	public void agregarConstruible(Construible construible, int x2, int y2) {
+	public void agregarConstruible(Construible construible, int x, int y) {
 		hectareas[x][y].agregarConstruible(construible);
 	}
 

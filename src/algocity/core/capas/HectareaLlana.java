@@ -17,13 +17,14 @@ public class HectareaLlana extends Hectarea {
 		return false;
 
 	}
-		
+
 
 
 	private boolean agregarConstruibleEnLlano(ConstruibleEnLlano construible) {
-		
+
 		if (this.construible == null){
 			this.construible = construible;
+			this.hayCambio();
 			return true;
 		}
 		return false;

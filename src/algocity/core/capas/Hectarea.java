@@ -90,6 +90,10 @@ public abstract class Hectarea extends Observable {
 
 	public abstract void dibujarse(VistaDeHectarea vistaDeHectarea);
 
+	public void hayCambio() {
+		this.setChanged();
+		this.notifyObservers();
+	}
 
 
 }

@@ -22,6 +22,7 @@ public class HectareaAgua extends Hectarea {
 	private boolean agregarConstruibleEnAgua(ConstruibleEnAgua construible) {
 		if (this.construible == null){
 			this.construible = construible;
+			this.hayCambio();
 			return true;
 		}
 		return false;
