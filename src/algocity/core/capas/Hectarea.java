@@ -40,27 +40,6 @@ public abstract class Hectarea extends Observable {
 
 	public abstract boolean agregarConstruible(Construible construible);
 
-	public boolean redElectricaConectada() {
-		return conexionElectrica ;
-	}
-
-	public boolean redDeAguaConectada() {
-		return conexionAgua;
-	}
-
-	public boolean rutaPavimentadaConectada() {
-		return conexionRuta;
-	}
-
-
-	public void conectarRedElectrica() {
-		conexionElectrica = true;
-	}
-
-	public void desconectarRedElectrica(){
-		conexionElectrica = false;;
-	}
-
 	public boolean borrarConstruible(){
 		if (construible != null){
 			construible = null;
@@ -68,17 +47,43 @@ public abstract class Hectarea extends Observable {
 		}
 		return false;
 	}
-/*
-	public void procesarTurno(Partida partida, int x, int y) {
-		if (construible != null)
-			construible.procesarTurno(partida, x, y);
-
+	
+	public void conectarRedElectrica() {
+		conexionElectrica = true;
 	}
 
-	public void mandarBomberoHasta(Arreglable daniado) {
-		((EstacionDeBombero)construible).reparar(daniado);
+	public void desconectarRedElectrica(){
+		conexionElectrica = false;
 	}
-*/
+	
+	public boolean redElectricaConectada() {
+		return conexionElectrica ;
+	}
+
+	public void conectarRedDeAgua() {
+		conexionAgua= true;
+	}
+
+	public void desconectarRedDeAgua(){
+		conexionAgua = false;
+	}
+
+	public boolean redDeAguaConectada() {
+		return conexionAgua;
+	}
+
+	public void conectarRutaPavimentada() {
+		conexionRuta = true;
+	}
+
+	public void desconectarRutaPavimentada(){
+		conexionRuta = false;
+	}
+	
+	public boolean rutaPavimentadaConectada() {
+		return conexionRuta;
+	}
+	
 	public Construible getConstruible() {
 		return construible;
 	}
@@ -94,6 +99,18 @@ public abstract class Hectarea extends Observable {
 		this.setChanged();
 		this.notifyObservers();
 	}
+
+	/*
+	public void procesarTurno(Partida partida, int x, int y) {
+		if (construible != null)
+			construible.procesarTurno(partida, x, y);
+
+	}
+
+	public void mandarBomberoHasta(Arreglable daniado) {
+		((EstacionDeBombero)construible).reparar(daniado);
+	}
+*/
 
 
 }
