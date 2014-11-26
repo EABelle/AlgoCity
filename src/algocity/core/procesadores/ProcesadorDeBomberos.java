@@ -9,7 +9,7 @@ import algocity.core.capas.tendido.RutaPavimentada;
 import algocity.core.construibles.Construible;
 import algocity.core.construibles.EstacionDeBombero;
 
-public class ProcesadorDeBomberos extends ProcesadorDeAgregado {
+public class ProcesadorDeBomberos extends ProcesadorDeTurno implements Procesador {
 
 	private EstacionDeBombero estacionDeBombero;
 	private RutaPavimentada ruta;

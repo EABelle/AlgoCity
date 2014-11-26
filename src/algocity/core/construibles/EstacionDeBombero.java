@@ -1,36 +1,32 @@
 package algocity.core.construibles;
 
-import algocity.core.Mapa;
-import algocity.core.procesadores.ProcesadorDeAgregado;
-import algocity.core.procesadores.ProcesadorDeBomberos;
-
 public class EstacionDeBombero extends ConstruibleEnLlano {
 		
 	public void reparar (Arreglable arreglable) {
 		arreglable.teArreglanLosBomberos(this);
 	}
 	
-	public void arreglar (Residencial residencial){
+	void arreglar (Residencial residencial){
 		residencial.reparar(10);
 	}
 	
-	public void arreglar (Comercial comercial){
+	void arreglar (Comercial comercial){
 		comercial.reparar(3);
 	}
 
-	public void arreglar (Industrial industrial){
+	void arreglar (Industrial industrial){
 		industrial.reparar(10);
 	}
 	
-	public void arreglar (CentralEolica central){
+	void arreglar (CentralEolica central){
 		central.reparar(15);
 	}
 	
-	public void arreglar (CentralMineral central){
+	void arreglar (CentralMineral central){
 		central.reparar(10);
 	}
 	
-	public void arreglar (CentralNuclear central){
+	void arreglar (CentralNuclear central){
 		central.reparar(3);
 	}
 /*
@@ -41,10 +37,12 @@ public class EstacionDeBombero extends ConstruibleEnLlano {
 	}
 */
 	
-	@Override
-	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
+/*	@Override
+	public void ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
 		ProcesadorDeBomberos procesador = new ProcesadorDeBomberos(mapa, x, y);
 		procesador.setBombero(this);
 		return procesador;
 	}
+	
+*/
 }

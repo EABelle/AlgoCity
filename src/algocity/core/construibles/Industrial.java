@@ -1,8 +1,6 @@
 package algocity.core.construibles;
 
 import algocity.core.Mapa;
-import algocity.core.procesadores.ProcesadorDeAgregado;
-import algocity.core.procesadores.ProcesadorDeIndustrial;
 
 public class Industrial extends Edificio {
 	
@@ -13,11 +11,14 @@ public class Industrial extends Edificio {
 		consumo = 5;
 		puestosDisponibles = 25;
 	}
-
-	public boolean cumpleRequerimientos(boolean conexionAgua, 
-			boolean conexionRuta, boolean conexionElectrica){
-		return conexionRuta & conexionElectrica;
-	}	
+	
+	public int puestosDeTrabajoOcupados() {
+		return 25 - puestosDisponibles;
+	}
+	
+	public int puestosDeTrabajoDisponibles() {
+		return puestosDisponibles;
+	}
 	
 	public boolean agregarTrabajadores(int cantidad) {
 		if ((puestosDisponibles - cantidad) >= 0){
@@ -25,6 +26,30 @@ public class Industrial extends Edificio {
 			return true;
 		}
 		return false;
+	}
+
+	public boolean quitarTrabajadores(int cantidad) {
+		if ((puestosDisponibles + cantidad) <= 25){
+			puestosDisponibles += cantidad;
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean cumpleRequerimientos(boolean conexionAgua, 
+			boolean conexionRuta, boolean conexionElectrica){
+		return conexionRuta & conexionElectrica;
+	}	
+	
+	@Override
+	public void teArreglanLosBomberos(EstacionDeBombero estacion) {
+		estacion.arreglar(this);
+	}
+	
+	@Override
+	public void procesarAgregado(Mapa mapa, int x, int y) {
+		mapa.getHectareasIndustriales().add(mapa.getHectarea(x, y));
 	}
 /*	
 	@Override
@@ -40,10 +65,7 @@ public class Industrial extends Edificio {
 			partida.agregarDaniado(this, x, y);
 	}
 */	
-	@Override
-	public void teArreglanLosBomberos(EstacionDeBombero estacion) {
-		estacion.arreglar(this);
-	}
+	
 	
 /*	@Override
 	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
@@ -51,10 +73,5 @@ public class Industrial extends Edificio {
 		procesador.setIndustrial(this);
 		return procesador;
 	}*/
-	
-	@Override
-	public void procesarAgregado(Mapa mapa, int x, int y) {
-		mapa.getHectareasIndustriales().add(mapa.getHectarea(x, y));
-	}
 	
 }

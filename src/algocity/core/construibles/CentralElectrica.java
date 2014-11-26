@@ -4,9 +4,6 @@ import java.util.Iterator;
 
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
-import algocity.core.procesadores.ProcesadorDeAgregado;
-import algocity.core.procesadores.ProcesadorDeCentral;
-
 
 public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable{
 
@@ -27,11 +24,30 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 		return potenciaDisponible;
 	}
 	
+	public boolean restarPotencia(int consumo) {
+		if (potenciaDisponible - consumo < 0)
+			return false;
+		potenciaDisponible -= consumo;
+		return true;
+	}
+	
+	@Override
 	public boolean cumpleRequerimientos(boolean conexionAgua, 
 			boolean conexionRuta, boolean conexionElectrica){
 		return conexionAgua;
 	}	
 
+	@Override
+	public void procesarAgregado(Mapa mapa, int x, int y) {
+
+		mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
+		for(Iterator<Hectarea> iter = 
+			mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
+			iter.hasNext();){
+			Hectarea hectarea = iter.next();
+			hectarea.conectarRedElectrica();
+		}
+	}
 /*
 	@Override
 	public void procesarAgregado(Partida partida, int x, int y)  {
@@ -57,31 +73,12 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 			partida.agregarDaniado(this, x, y);
 	}
 */
-	public boolean restarPotencia(int consumo) {
-		if (potenciaDisponible - consumo < 0)
-			return false;
-		potenciaDisponible -= consumo;
-		return true;
-
-	}
-	
+		
 /*	@Override
 	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
 		ProcesadorDeCentral procesador = new ProcesadorDeCentral(mapa, x, y);
 		procesador.setCentral(this);
 		return procesador;
 	}*/
-
-	@Override
-	public void procesarAgregado(Mapa mapa, int x, int y) {
-
-		mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
-		for(Iterator<Hectarea> iter = 
-			mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
-			iter.hasNext();){
-			Hectarea hectarea = iter.next();
-			hectarea.conectarRedElectrica();
-		}
-	}
 
 }

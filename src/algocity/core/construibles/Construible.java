@@ -1,7 +1,6 @@
 package algocity.core.construibles;
 
 import algocity.core.Mapa;
-import algocity.core.procesadores.Procesador;
 public abstract class Construible {
 
 	protected int costo;
@@ -9,6 +8,14 @@ public abstract class Construible {
 
 	public Construible() {
 		porcentajeDeVida = 100;
+	}
+	
+	public int getCosto() {
+		return costo;
+	}
+	
+	public float getPorcetajeDeVida() {
+		return porcentajeDeVida;
 	}
 
 	public void daniar (float porcentajeDeDanio) {
@@ -21,10 +28,6 @@ public abstract class Construible {
 		if ((porcentajeDeVida +=  porcentajeDeReparo) > 100) {
 			porcentajeDeVida = 100;
 		}
-	}
-
-	public int getCosto() {
-		return costo;
 	}
 
 	public boolean cumpleRequerimientos(boolean conexionAgua,

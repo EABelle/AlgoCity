@@ -8,6 +8,7 @@ public abstract class Edificio extends ConstruibleEnLlano implements Arreglable 
 		return consumo;
 	}
 	
+	@Override
 	public boolean cumpleRequerimientos(boolean conexionAgua, 
 			boolean conexionRuta, boolean conexionElectrica){
 		return conexionAgua & conexionRuta & conexionElectrica;

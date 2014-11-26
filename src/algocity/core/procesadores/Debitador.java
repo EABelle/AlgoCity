@@ -1,7 +1,5 @@
 package algocity.core.procesadores;
 
-import java.util.Iterator;
-
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Residencial;
