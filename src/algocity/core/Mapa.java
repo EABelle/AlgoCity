@@ -33,13 +33,17 @@ public class Mapa {
 
 
 	public Mapa(int filas, int columnas){
-		this.hectareas = new Hectarea[filas][columnas];
-		this.x = 0;
-		this.y = 0;
+		hectareas = new Hectarea[filas][columnas];
+		x = 0;
+		y = 0;
 		this.filas = filas;
 		this.columnas = columnas;
-		this.cargadoCompleto = false;
-		this.residenciales = new ArrayList<Hectarea>();
+		cargadoCompleto = false;
+		residenciales = new ArrayList<Hectarea>();
+		comerciales = new ArrayList<Hectarea>();
+		industriales = new ArrayList<Hectarea>();
+		daniadas = new ArrayList<Hectarea>();
+		centrales = new ArrayList<Hectarea>();
 		redDeAgua = new RedDeAgua();
 		redElectrica = new RedElectrica();
 		rutaPavimentada = new RutaPavimentada();
@@ -60,13 +64,6 @@ public class Mapa {
 		else cargadoCompleto = true;
 		return cargadoCompleto;
 	}
-/*
-	public boolean agregarConstruible (Construible construible, int x, int y) {
-		if ( (x >= 0) && (x < filas) && (y >= 0) && (y <= columnas))
-			return hectareas[x][y].agregarConstruible(construible);
-		return false;
-	}
-*/
 	public boolean cargado() {
 		return cargadoCompleto;
 	}
@@ -78,25 +75,24 @@ public class Mapa {
 	public int getColumnas() {
 		return columnas;
 	}
-/*
-	public void conectarHectareaARedElectrica(int i, int j) {
-		hectareas[i][j].conectarRedElectrica();
-	}
 
-	public boolean cercanoACentralElecrica(int x, int y) {
-		return hectareas[x][y].redElectricaConectada();
-	}
 
-	public boolean rutaPavimentadaConectada(int x, int y) {
-		return hectareas[x][y].rutaPavimentadaConectada();
-	}
-*/
-
-	private void aplicarProcesadoresAHectarea(int fila, int columna,
-			ArrayList<Procesador> procesadores) {
-		for (Iterator<Procesador> iterator = procesadores.iterator(); iterator
-				.hasNext();) {
-			iterator.next().procesarHectarea(this.getHectarea(fila, columna));
+	/**
+	 *  Llena el mapa de hectareas
+	 *  TODO: Agregar algun criterio de llenado
+	 */
+	public void llenar() {
+		int numero;
+		Random rn = new Random();
+		while(!this.cargado()) {
+			Hectarea hectarea;
+			numero = rn.nextInt(3);
+			if (numero % 3 == 0) {
+				hectarea = new HectareaAgua();
+			} else {
+				hectarea = new HectareaLlana();
+			}
+			this.cargarHectareaNueva(hectarea);
 		}
 	}
 
@@ -109,21 +105,6 @@ public class Mapa {
 		}
 		return recorrido.iterator();
 	}
-
-/*	public void procesarEnUnRadio(int radio, int x, int y,
-			ArrayList<Procesador> procesadores) {
-		int fila, columna;
-		for(int i = 0; i <= 2 * radio; i++) {
-			for (int j = 0; j <= 2 * radio; j++) {
-				fila = x - radio + i;
-				columna = y - radio + j;
-				if((fila >= 0) && (fila < getFilas()) &&
-				   (columna >= 0) && (columna < getColumnas()))
-					aplicarProcesadoresAHectarea(fila, columna, procesadores);
-			}
-		}
-	}*/
-
 	public Iterator<Hectarea> recorrerEnUnRadio(int radio, int x, int y) {
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		int fila, columna;
@@ -140,8 +121,112 @@ public class Mapa {
 	}
 
 	public Iterator<Hectarea> recorridoResidenciales() {
-		return this.residenciales.iterator();
+		return residenciales.iterator();
 	}
+
+	public Iterator<Hectarea> recorridoComerciales() {
+		return comerciales.iterator();
+	}
+	
+	public Iterator<Hectarea> recorridoIndustriales() {
+		return industriales.iterator();
+	}
+	
+	public Iterator<Hectarea> recorridoCentrales() {
+		return centrales.iterator();
+	}
+	
+	public Iterator<Hectarea> recorridoDaniados() {
+		return daniadas.iterator();
+	}
+
+
+
+	public void agregarConstruible(Construible construible, int x, int y) {
+		hectareas[x][y].agregarConstruible(construible);
+	}
+
+	public Hectarea getHectarea(int fila, int columna) {
+		return hectareas[fila][columna];
+	}
+	
+	public RedElectrica getRedElectrica() {
+		return redElectrica;
+	}
+	
+	public RedDeAgua getRedDeAgua() {
+		return redDeAgua;
+	}
+	
+	public RutaPavimentada getRutaPavimentada(){
+		return rutaPavimentada;
+	}
+
+
+
+	public ArrayList<Hectarea> getHectareasResidenciales() {
+		return residenciales;
+	}
+	
+	public ArrayList<Hectarea> getHectareasComerciales() {
+		return comerciales;
+	}
+	
+	public ArrayList<Hectarea> getHectareasIndustriales() {
+		return industriales;
+	}
+	
+	public ArrayList<Hectarea> getHectareasDaniadas() {
+		return daniadas;
+	}
+	
+	public ArrayList<Hectarea> getHectareasDeCentralElectrica() {
+		return centrales;
+	}
+
+	private void aplicarProcesadoresAHectarea(int fila, int columna,
+			ArrayList<Procesador> procesadores) {
+		for (Iterator<Procesador> iterator = procesadores.iterator(); iterator
+				.hasNext();) {
+			iterator.next().procesarHectarea(this.getHectarea(fila, columna));
+		}
+	}
+
+	/*
+	public boolean agregarConstruible (Construible construible, int x, int y) {
+		if ( (x >= 0) && (x < filas) && (y >= 0) && (y <= columnas))
+			return hectareas[x][y].agregarConstruible(construible);
+		return false;
+	}
+*/
+
+/*
+	public void conectarHectareaARedElectrica(int i, int j) {
+		hectareas[i][j].conectarRedElectrica();
+	}
+
+	public boolean cercanoACentralElecrica(int x, int y) {
+		return hectareas[x][y].redElectricaConectada();
+	}
+
+	public boolean rutaPavimentadaConectada(int x, int y) {
+		return hectareas[x][y].rutaPavimentadaConectada();
+	}
+*/
+
+/*	public void procesarEnUnRadio(int radio, int x, int y,
+			ArrayList<Procesador> procesadores) {
+		int fila, columna;
+		for(int i = 0; i <= 2 * radio; i++) {
+			for (int j = 0; j <= 2 * radio; j++) {
+				fila = x - radio + i;
+				columna = y - radio + j;
+				if((fila >= 0) && (fila < getFilas()) &&
+				   (columna >= 0) && (columna < getColumnas()))
+					aplicarProcesadoresAHectarea(fila, columna, procesadores);
+			}
+		}
+	}*/
 
 /*	public void procesarTurno(Partida partida) {
 		int i, j;
@@ -177,68 +262,10 @@ public class Mapa {
 		hectareas[x][y].impactar(danio);
 	}
 */
-	/**
-	 *  Llena el mapa de hectareas
-	 *  TODO: Agregar algun criterio de llenado
-	 */
-	public void llenar() {
-		int numero;
-		Random rn = new Random();
-		while(!this.cargado()) {
-			Hectarea hectarea;
-			numero = rn.nextInt(3);
-			if (numero % 3 == 0) {
-				hectarea = new HectareaAgua();
-			} else {
-				hectarea = new HectareaLlana();
-			}
-			this.cargarHectareaNueva(hectarea);
-		}
-	}
 /*
 	public String EnXYhayUn(int x, int y) {
 		return hectareas[x][y].contieneUn();
 	}
 */
-	public Hectarea getHectarea(int fila, int columna) {
-		return hectareas[fila][columna];
-	}
-
-	public void agregarConstruible(Construible construible, int x, int y) {
-		hectareas[x][y].agregarConstruible(construible);
-	}
-
-	public ArrayList<Hectarea> getHectareasResidenciales() {
-		return residenciales;
-	}
-	
-	public ArrayList<Hectarea> getHectareasComerciales() {
-		return comerciales;
-	}
-	
-	public ArrayList<Hectarea> getHectareasIndustriales() {
-		return industriales;
-	}
-	
-	public ArrayList<Hectarea> getHectareasDaniadas() {
-		return daniadas;
-	}
-
-	public RedElectrica getRedElectrica() {
-		return redElectrica;
-	}
-	
-	public RedDeAgua getRedDeAgua() {
-		return redDeAgua;
-	}
-	
-	public RutaPavimentada getRutaPavimentada(){
-		return rutaPavimentada;
-	}
-
-	public ArrayList<Hectarea> getHectareasDeCentralElectrica() {
-		return centrales;
-	}
-
 
 }
