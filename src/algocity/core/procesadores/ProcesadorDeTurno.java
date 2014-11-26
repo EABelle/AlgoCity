@@ -7,16 +7,12 @@ import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 
 public class ProcesadorDeTurno{
-	int x;
-	int y;
 	Mapa mapa;
+	int turno;
 
-	public ProcesadorDeTurno(Mapa mapa, int x, int y) {
-		this.x = x;
-		this.y = y;
+	public ProcesadorDeTurno(Mapa mapa) {
 		this.mapa = mapa;
 	}
-
 /*	public Iterator<Hectarea> getIteratorAgregado() {
 		return new ArrayList<Hectarea>().iterator();
 	}
@@ -32,9 +28,5 @@ public class ProcesadorDeTurno{
 		// TODO Auto-generated method stub
 		
 	}*/
-	
-	public void procesarAgregado(){
-		
-	}
 
 }

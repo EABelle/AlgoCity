@@ -7,6 +7,7 @@ import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
 import algocity.core.procesadores.ProcesadorDeBomberos;
+import algocity.core.procesadores.ProcesadorDeTurno;
 
 public class Partida {
 
@@ -23,9 +24,6 @@ public class Partida {
 	}
 
 	public void inicializar() {
-/*		redDeAgua = new RedDeAgua();
-		redElectrica = new RedElectrica();
-		rutaPavimentada = new RutaPavimentada();*/
 		turno = 0;
 		plata = Configuracion.PlataInicial;
 		inicializada = true;
@@ -42,13 +40,6 @@ public class Partida {
 		if (plata >= construible.getCosto()) {
 			plata -= construible.getCosto();
 			mapa.agregarConstruible(construible, x, y);
-		/*	ProcesadorDeAgregado procesador = construible.getProcesador(mapa, x, y);
-			for (Iterator<Hectarea> iterator = procesador.getIterator(); iterator
-					.hasNext();) {
-				Hectarea hectarea = iterator.next();
-				procesador.procesarHectarea(hectarea);
-			}
-			procesador.finalizarProceso();*/
 			construible.procesarAgregado(mapa, x, y);
 			return true;
 		}
@@ -58,6 +49,12 @@ public class Partida {
 
 	public void pasarTurno() {
 		turno ++;
+		if ((turno % 30) == 0){
+			Debitador debitador = new Debitador(mapa);
+			plata += debitador.getPago();
+		}
+		
+		
 		
 	}
 
