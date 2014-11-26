@@ -25,10 +25,16 @@ public class Mapa {
 	private ArrayList<Hectarea> comerciales;
 	private ArrayList<Hectarea> industriales;
 	private ArrayList<Hectarea> daniadas;
+	/*----------------EN DANIADAS-------------
+	 *  HAY QUE VER COMO AGREGARLO CUANDO SE DANIA ALGO
+	 * Y COMO SACARLO CUANDO SE TERMINA DE REPARAR
+	 * */
 	private ArrayList<Hectarea> centrales;
+	private ArrayList<Hectarea> bomberos;
 	private RedDeAgua redDeAgua;
 	private RedElectrica redElectrica;
 	private RutaPavimentada rutaPavimentada;
+	
 	
 
 
@@ -140,7 +146,9 @@ public class Mapa {
 		return daniadas.iterator();
 	}
 
-
+	public Iterator<Hectarea> recorridoBomberos() {
+		return bomberos.iterator();
+	}
 
 	public void agregarConstruible(Construible construible, int x, int y) {
 		hectareas[x][y].agregarConstruible(construible);
@@ -183,14 +191,19 @@ public class Mapa {
 	public ArrayList<Hectarea> getHectareasDeCentralElectrica() {
 		return centrales;
 	}
+	
+	public ArrayList<Hectarea> getHectareasDeBomberos() {
+		return bomberos;
+	}
 
-	private void aplicarProcesadoresAHectarea(int fila, int columna,
+/*	private void aplicarProcesadoresAHectarea(int fila, int columna,
 			ArrayList<Procesador> procesadores) {
 		for (Iterator<Procesador> iterator = procesadores.iterator(); iterator
 				.hasNext();) {
 			iterator.next().procesarHectarea(this.getHectarea(fila, columna));
 		}
 	}
+*/
 
 	/*
 	public boolean agregarConstruible (Construible construible, int x, int y) {

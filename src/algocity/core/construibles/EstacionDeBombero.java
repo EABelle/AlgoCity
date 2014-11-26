@@ -1,5 +1,7 @@
 package algocity.core.construibles;
 
+import algocity.core.Mapa;
+
 public class EstacionDeBombero extends ConstruibleEnLlano {
 		
 	public void reparar (Arreglable arreglable) {
@@ -28,6 +30,12 @@ public class EstacionDeBombero extends ConstruibleEnLlano {
 	
 	void arreglar (CentralNuclear central){
 		central.reparar(3);
+	}
+	
+	@Override
+	public void procesarAgregado(Mapa mapa, int x, int y) {
+		super.procesarAgregado(mapa, x, y);
+		mapa.getHectareasDeBomberos().add(mapa.getHectarea(x, y));
 	}
 /*
 	@Override

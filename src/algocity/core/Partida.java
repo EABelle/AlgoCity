@@ -54,7 +54,7 @@ public class Partida {
 			plata += debitador.getPago();
 		}
 		
-		
+		ProcesadorDeBomberos procesadorBomberos = new ProcesadorDeBomberos(mapa);
 		
 	}
 
