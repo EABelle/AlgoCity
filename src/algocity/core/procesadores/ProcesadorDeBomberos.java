@@ -11,12 +11,13 @@ import algocity.core.construibles.EstacionDeBombero;
 
 public class ProcesadorDeBomberos extends ProcesadorDeAgregado {
 
+	private EstacionDeBombero estacionDeBombero;
+	private RutaPavimentada ruta;
+
 	public ProcesadorDeBomberos(Mapa mapa, int x, int y) {
 		super(mapa, x, y);
 		mapa.getRutaPavimentada().agregarEdificioProveedor(x, y);
 		}
-
-	private EstacionDeBombero estacionDeBombero;
 
 	@Override
 	public void procesarHectarea(Hectarea hectarea) {
@@ -45,6 +46,10 @@ public class ProcesadorDeBomberos extends ProcesadorDeAgregado {
 		return mapa.getHectareasDaniadas().iterator();
 	}
 	
+	
+	public void setEstacionDeBomberos (EstacionDeBombero estacionDeBombero){
+		this.estacionDeBombero = estacionDeBombero;
+	}
 //	private RutaPavimentada ruta;
 
 	/*public class NodoEdificioDaniado{

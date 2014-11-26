@@ -1,13 +1,11 @@
 package algocity.core.construibles;
 
 import algocity.core.Mapa;
-import algocity.core.procesadores.ProcesadorDeAgregado;
-
+import algocity.core.procesadores.Procesador;
 public abstract class Construible {
 
 	protected int costo;
 	private float porcentajeDeVida;
-
 
 	public Construible() {
 		porcentajeDeVida = 100;
@@ -55,14 +53,18 @@ public abstract class Construible {
 	public void procesarTurno(Partida partida, int x, int y){
 		//redefinido en los edificios y las centrales
 	}
-
+*/
 	public boolean daniado() {
 		return porcentajeDeVida != 100;
 	}
-*/
 
+/*
 	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
 		return new ProcesadorDeAgregado(mapa, x, y);
+	}
+*/
+	public void procesarAgregado(Mapa mapa, int x, int y) {
+	
 	}
 
 }

@@ -39,7 +39,7 @@ public class Residencial extends Edificio {
 		estacion.arreglar(this);
 	}
 
-	@Override
+/*	@Override
 	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
 		ProcesadorDeResidencial procesador = new ProcesadorDeResidencial(mapa, x, y);
 		procesador.setResidencial(this);
@@ -48,6 +48,11 @@ public class Residencial extends Edificio {
 
 	public int habitantes() {
 		return habitantes;
+	}*/
+	
+	@Override
+	public void procesarAgregado(Mapa mapa, int x, int y) {
+		mapa.getHectareasResidenciales().add(mapa.getHectarea(x, y));
 	}
 
 }

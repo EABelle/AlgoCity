@@ -25,9 +25,11 @@ public class Mapa {
 	private ArrayList<Hectarea> comerciales;
 	private ArrayList<Hectarea> industriales;
 	private ArrayList<Hectarea> daniadas;
+	private ArrayList<Hectarea> centrales;
 	private RedDeAgua redDeAgua;
 	private RedElectrica redElectrica;
 	private RutaPavimentada rutaPavimentada;
+	
 
 
 	public Mapa(int filas, int columnas){
@@ -232,6 +234,10 @@ public class Mapa {
 	
 	public RutaPavimentada getRutaPavimentada(){
 		return rutaPavimentada;
+	}
+
+	public ArrayList<Hectarea> getHectareasDeCentralElectrica() {
+		return centrales;
 	}
 
 

@@ -6,18 +6,18 @@ import java.util.Iterator;
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 
-public class ProcesadorDeAgregado implements Procesador {
+public class ProcesadorDeTurno{
 	int x;
 	int y;
 	Mapa mapa;
 
-	public ProcesadorDeAgregado(Mapa mapa, int x, int y) {
+	public ProcesadorDeTurno(Mapa mapa, int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.mapa = mapa;
 	}
 
-	public Iterator<Hectarea> getIterator() {
+/*	public Iterator<Hectarea> getIteratorAgregado() {
 		return new ArrayList<Hectarea>().iterator();
 	}
 
@@ -30,6 +30,10 @@ public class ProcesadorDeAgregado implements Procesador {
 	@Override
 	public void finalizarProceso() {
 		// TODO Auto-generated method stub
+		
+	}*/
+	
+	public void procesarAgregado(){
 		
 	}
 

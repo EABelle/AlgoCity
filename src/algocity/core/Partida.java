@@ -138,13 +138,14 @@ public class Partida {
 		if (plata >= construible.getCosto()) {
 			plata -= construible.getCosto();
 			mapa.agregarConstruible(construible, x, y);
-			ProcesadorDeAgregado procesador = construible.getProcesador(mapa, x, y);
+		/*	ProcesadorDeAgregado procesador = construible.getProcesador(mapa, x, y);
 			for (Iterator<Hectarea> iterator = procesador.getIterator(); iterator
 					.hasNext();) {
 				Hectarea hectarea = iterator.next();
 				procesador.procesarHectarea(hectarea);
 			}
-			procesador.finalizarProceso();
+			procesador.finalizarProceso();*/
+			construible.procesarAgregado(mapa, x, y);
 			return true;
 		}
 		return false;

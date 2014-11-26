@@ -1,6 +1,9 @@
 package algocity.core.construibles;
 
+import java.util.Iterator;
+
 import algocity.core.Mapa;
+import algocity.core.capas.Hectarea;
 import algocity.core.procesadores.ProcesadorDeAgregado;
 import algocity.core.procesadores.ProcesadorDeCentral;
 
@@ -62,13 +65,23 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 
 	}
 	
-	@Override
+/*	@Override
 	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
 		ProcesadorDeCentral procesador = new ProcesadorDeCentral(mapa, x, y);
 		procesador.setCentral(this);
 		return procesador;
+	}*/
+
+	@Override
+	public void procesarAgregado(Mapa mapa, int x, int y) {
+
+		mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
+		for(Iterator<Hectarea> iter = 
+			mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
+			iter.hasNext();){
+			Hectarea hectarea = iter.next();
+			hectarea.conectarRedElectrica();
+		}
 	}
-
-
 
 }

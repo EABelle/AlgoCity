@@ -17,10 +17,15 @@ public class Comercial extends Edificio {
 		estacion.arreglar(this);
 	}
 
-	@Override
+/*	@Override
 	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
 		ProcesadorDeComercial procesador = new ProcesadorDeComercial(mapa, x, y);
 		procesador.setComercial(this);
 		return procesador;
+	}*/
+	
+	@Override
+	public void procesarAgregado(Mapa mapa, int x, int y) {
+		mapa.getHectareasComerciales().add(mapa.getHectarea(x, y));
 	}
 }

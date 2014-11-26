@@ -45,11 +45,16 @@ public class Industrial extends Edificio {
 		estacion.arreglar(this);
 	}
 	
-	@Override
+/*	@Override
 	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
 		ProcesadorDeIndustrial procesador = new ProcesadorDeIndustrial(mapa, x, y);
 		procesador.setIndustrial(this);
 		return procesador;
+	}*/
+	
+	@Override
+	public void procesarAgregado(Mapa mapa, int x, int y) {
+		mapa.getHectareasIndustriales().add(mapa.getHectarea(x, y));
 	}
 	
 }
