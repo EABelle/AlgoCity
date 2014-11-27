@@ -1,25 +1,28 @@
 package algocity.core.procesadores;
 
 import algocity.core.Configuracion;
+import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 
-public class CalculadorDeCalidadDeVida implements Procesador {
+public class CalculadorDeCalidadDeVida {
 
 	int indice;
 	int cantidadResidenciales;
 	int cantidadComerciales;
 	int cantidadIndustriales;
+	private Mapa mapa;
 
-	public CalculadorDeCalidadDeVida() {
+	public CalculadorDeCalidadDeVida(Mapa mapa) {
 		indice = Configuracion.IndiceVidaInicial;
 		cantidadResidenciales = cantidadComerciales = cantidadIndustriales = 0;
+		this.mapa = mapa;
 	}
 
 	public int getIndice() {
 		return indice;
 	}
 
-
+/*
 	@Override
 	public void procesarHectarea(Hectarea hectarea) {
 		String tipo = hectarea.contieneUn();
@@ -38,4 +41,5 @@ public class CalculadorDeCalidadDeVida implements Procesador {
 	public void finalizarProceso() {
 		indice -= (cantidadResidenciales - (cantidadComerciales + cantidadIndustriales) / 2);
 	}
+	*/
 }

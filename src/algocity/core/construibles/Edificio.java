@@ -7,7 +7,25 @@ public abstract class Edificio extends ConstruibleEnLlano implements Arreglable 
 	public int getConsumo() {
 		return consumo;
 	}
-	
+
+	@Override
+	public boolean daniar (float porcentajeDeDanio) {
+		if ((porcentajeDeVida -=  porcentajeDeDanio) < 0) {
+			porcentajeDeVida = 0;
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean reparar (float porcentajeDeReparo) {
+		if ((porcentajeDeVida +=  porcentajeDeReparo) > 100) {
+			porcentajeDeVida = 100;
+			return true;
+		}
+		return false;
+	}
+
 	@Override
 	public boolean cumpleRequerimientos(boolean conexionAgua, 
 			boolean conexionRuta, boolean conexionElectrica){

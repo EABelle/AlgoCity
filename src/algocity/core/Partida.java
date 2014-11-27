@@ -55,7 +55,7 @@ public class Partida {
 		}
 		
 		ProcesadorDeBomberos procesadorBomberos = new ProcesadorDeBomberos(mapa);
-		
+		CalculadorDeCalidadDeVida calculador = new CalculadorDeCalidadDeVida(mapa);
 	}
 
 	public void jugar() {

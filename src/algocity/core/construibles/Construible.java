@@ -4,7 +4,7 @@ import algocity.core.Mapa;
 public abstract class Construible {
 
 	protected int costo;
-	private float porcentajeDeVida;
+	protected float porcentajeDeVida;
 
 	public Construible() {
 		porcentajeDeVida = 100;
@@ -18,16 +18,12 @@ public abstract class Construible {
 		return porcentajeDeVida;
 	}
 
-	public void daniar (float porcentajeDeDanio) {
-		if ((porcentajeDeVida -=  porcentajeDeDanio) < 0) {
-			porcentajeDeVida = 0;
-		}
+	public boolean daniar (float porcentajeDeDanio) {
+		return false;
 	}
 
-	public void reparar (float porcentajeDeReparo) {
-		if ((porcentajeDeVida +=  porcentajeDeReparo) > 100) {
-			porcentajeDeVida = 100;
-		}
+	public boolean reparar (float porcentajeDeReparo) {
+		return false;
 	}
 
 	public boolean cumpleRequerimientos(boolean conexionAgua,
