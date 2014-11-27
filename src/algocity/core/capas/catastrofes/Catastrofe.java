@@ -13,5 +13,5 @@ public abstract class Catastrofe {
 				rm.nextBoolean() & rm.nextBoolean());
 	}
 	
-	public abstract void procesar (Mapa mapa, RedElectrica red);
+	public abstract void procesar (Mapa mapa);
 }

@@ -3,7 +3,9 @@ package algocity.core.capas.catastrofes;
 import java.util.Random;
 
 import algocity.core.Mapa;
+import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RedElectrica;
+import algocity.core.construibles.Construible;
 
 public class Terremoto extends Catastrofe {
 	int origenX;
@@ -14,6 +16,7 @@ public class Terremoto extends Catastrofe {
 	public Terremoto(int x, int y) {
 		origenX = x;
 		origenY = y;
+		danio = 50;
 	}
 	
 	public Terremoto(Mapa mapa) {
@@ -23,8 +26,25 @@ public class Terremoto extends Catastrofe {
 		
 	}
 
-
 	@Override
+	public void procesar(Mapa mapa) {
+		int radio = 1;
+		
+		Hectarea hectarea = mapa.getHectarea(origenX, origenY);
+		Construible impactado = hectarea.getConstruible();
+		
+		if (impactado.daniar(danio)){
+			
+		}
+		
+		while (danio > 0);
+			mapa.RecorrerSoloEnUnRadio(radio, origenX, origenY);
+	}
+	
+}
+
+
+/*	@Override
 	public void procesar(Mapa mapa, RedElectrica red) {
 		danio = 50;//Math.round((70*rn.nextFloat())*10)/10 + 30;
 		
@@ -51,7 +71,7 @@ public class Terremoto extends Catastrofe {
 						mapa.impactarEn(origenX + radio, origenY + i , danio);
 				} else break;
 			}
-			
 		}
 	}
 }
+*/

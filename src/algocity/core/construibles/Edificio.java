@@ -12,8 +12,8 @@ public abstract class Edificio extends ConstruibleEnLlano implements Arreglable 
 	public boolean daniar (float porcentajeDeDanio) {
 		if ((porcentajeDeVida -=  porcentajeDeDanio) < 0) {
 			porcentajeDeVida = 0;
-			return true;
 		}
+		else{porcentajeDeVida = 0;}
 		return false;
 	}
 
@@ -21,8 +21,7 @@ public abstract class Edificio extends ConstruibleEnLlano implements Arreglable 
 	public boolean reparar (float porcentajeDeReparo) {
 		if ((porcentajeDeVida +=  porcentajeDeReparo) > 100) {
 			porcentajeDeVida = 100;
-			return true;
-		}
+		}else{porcentajeDeVida = 100;}
 		return false;
 	}
 

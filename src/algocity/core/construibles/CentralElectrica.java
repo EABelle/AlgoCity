@@ -32,6 +32,23 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	}
 	
 	@Override
+	public boolean daniar (float porcentajeDeDanio) {
+		if ((porcentajeDeVida -=  porcentajeDeDanio) < 0) {
+			porcentajeDeVida = 0;
+		}
+		else{porcentajeDeVida = 0;}
+		return false;
+	}
+
+	@Override
+	public boolean reparar (float porcentajeDeReparo) {
+		if ((porcentajeDeVida +=  porcentajeDeReparo) > 100) {
+			porcentajeDeVida = 100;
+		}else{porcentajeDeVida = 100;}
+		return false;
+	}
+	
+	@Override
 	public boolean cumpleRequerimientos(boolean conexionAgua, 
 			boolean conexionRuta, boolean conexionElectrica){
 		return conexionAgua;
