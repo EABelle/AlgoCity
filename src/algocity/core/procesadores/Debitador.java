@@ -6,7 +6,7 @@ import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Residencial;
 
-public class Debitador /*implements Procesador*/ {
+public class Debitador {
 
 	int total;
 	private int precio;
@@ -27,7 +27,6 @@ public class Debitador /*implements Procesador*/ {
 		}
 	}
 
-//	@Override
 	private void procesarHectarea(Hectarea hectarea) {
 		total += precio * ((Residencial)(hectarea.getConstruible())).habitantes();
 		
@@ -38,11 +37,5 @@ public class Debitador /*implements Procesador*/ {
 		total = 0;
 		return pago;
 	}
-
-/*	@Override
-	public void finalizarProceso() {
-		// TODO Auto-generated method stub
-		
-	}*/
 
 }

@@ -2,6 +2,8 @@ package algocity.core.capas;
 
 import java.util.Observable;
 
+import algocity.core.capas.catastrofes.Godzilla;
+import algocity.core.capas.catastrofes.Terremoto;
 import algocity.core.construibles.Construible;
 import algocity.vistas.VistaDeHectarea;
 
@@ -100,17 +102,12 @@ public abstract class Hectarea extends Observable {
 		this.notifyObservers();
 	}
 
-	/*
-	public void procesarTurno(Partida partida, int x, int y) {
-		if (construible != null)
-			construible.procesarTurno(partida, x, y);
-
+	public void teImpacta(Terremoto terremoto) {
+		construible.teImpacta(terremoto);
 	}
 
-	public void mandarBomberoHasta(Arreglable daniado) {
-		((EstacionDeBombero)construible).reparar(daniado);
+	public void teImpacta(Godzilla godzy) {
+		construible.teImpacta(godzy);
 	}
-*/
-
 
 }

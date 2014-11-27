@@ -3,7 +3,6 @@ package algocity.core.capas.catastrofes;
 import java.util.Random;
 
 import algocity.core.Mapa;
-import algocity.core.capas.tendido.RedElectrica;
 
 public abstract class Catastrofe {
 	
@@ -13,5 +12,7 @@ public abstract class Catastrofe {
 				rm.nextBoolean() & rm.nextBoolean());
 	}
 	
+	public abstract boolean continua();
 	public abstract void procesar (Mapa mapa);
+
 }

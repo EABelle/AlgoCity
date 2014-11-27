@@ -1,6 +1,7 @@
 package algocity.core.construibles;
 
 import algocity.core.Mapa;
+import algocity.core.capas.catastrofes.Godzilla;
 
 public class Industrial extends Edificio {
 	
@@ -51,27 +52,10 @@ public class Industrial extends Edificio {
 	public void procesarAgregado(Mapa mapa, int x, int y) {
 		mapa.getHectareasIndustriales().add(mapa.getHectarea(x, y));
 	}
-/*	
+
 	@Override
-	public void procesarAgregado(Partida partida, int x, int y) {
-		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
-		redElectricaConectada = partida.redElectricaConectada(x, y);
+	public void teImpacta(Godzilla godzy) {
+		godzy.impactame(this);
 	}
-	
-	public void procesarTurno(Partida partida, int x, int y) {
-		redElectricaConectada = partida.redElectricaConectada(x, y);
-		rutaPavimentadaConectada = partida.rutaPavimentadaConectada(x, y);
-		if (daniado())
-			partida.agregarDaniado(this, x, y);
-	}
-*/	
-	
-	
-/*	@Override
-	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
-		ProcesadorDeIndustrial procesador = new ProcesadorDeIndustrial(mapa, x, y);
-		procesador.setIndustrial(this);
-		return procesador;
-	}*/
 	
 }

@@ -1,6 +1,7 @@
 package algocity.core.construibles;
 
 import algocity.core.Mapa;
+import algocity.core.capas.catastrofes.Godzilla;
 
 public class Comercial extends Edificio {
 	
@@ -20,11 +21,9 @@ public class Comercial extends Edificio {
 		mapa.getHectareasComerciales().add(mapa.getHectarea(x, y));
 	}
 	
-/*	@Override
-	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
-		ProcesadorDeComercial procesador = new ProcesadorDeComercial(mapa, x, y);
-		procesador.setComercial(this);
-		return procesador;
-	}*/
 	
+	@Override
+	public void teImpacta(Godzilla godzy) {
+		godzy.impactame(this);
+	}
 }

@@ -2,6 +2,7 @@ package algocity.core.construibles;
 
 import algocity.core.Configuracion;
 import algocity.core.Mapa;
+import algocity.core.capas.catastrofes.Godzilla;
 public class Residencial extends Edificio {
 
 	int habitantes;
@@ -46,12 +47,9 @@ public class Residencial extends Edificio {
 		mapa.getHectareasResidenciales().add(mapa.getHectarea(x, y));
 	}
 
-/*	@Override
-	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
-		ProcesadorDeResidencial procesador = new ProcesadorDeResidencial(mapa, x, y);
-		procesador.setResidencial(this);
-		return procesador;
+	@Override
+	public void teImpacta(Godzilla godzy) {
+		godzy.impactame(this);
 	}
-*/
-
+	
 }

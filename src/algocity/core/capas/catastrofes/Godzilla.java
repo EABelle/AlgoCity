@@ -1,134 +1,52 @@
 package algocity.core.capas.catastrofes;
 
-import java.util.Random;
-
+import java.util.Iterator;
 import algocity.core.Mapa;
+import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RedElectrica;
+import algocity.core.construibles.CentralElectrica;
+import algocity.core.construibles.Comercial;
+import algocity.core.construibles.Industrial;
+import algocity.core.construibles.Residencial;
+import algocity.core.procesadores.ProcesadorDeDaniados;
 
 public class Godzilla extends Catastrofe {
-	int origenX;
-	int origenY;
+	Iterator<Hectarea> recorrido;
+	
+	public Godzilla(Iterator<Hectarea> recorrido){
+		this.recorrido = recorrido;
+	}
 
 	@Override
-	public void procesar(Mapa mapa, RedElectrica red) {
-		Random rn = new Random();
-		switch (rn.nextInt(6)){
-		case 0: movimientoHorizontal(mapa, red);
-			break;
-		case 1: movimientoVertical(mapa, red);
-			break;
-		case 2: movimientoDiagonal1(mapa, red);
-			break;
-		case 3: movimientoDiagonal2(mapa, red);
-			break;
-		case 4: movimientoZigZag1(mapa, red);
-			break;
-		case 5: movimientoZigZag2(mapa, red);
-			break;
+	public void procesar(Mapa mapa) {
+		while(recorrido.hasNext()) {
+			Hectarea hectarea = recorrido.next();
+			hectarea.teImpacta(this);
+			ProcesadorDeDaniados procesadorDeDaniados = new ProcesadorDeDaniados();
+			procesadorDeDaniados.procesarDanios(mapa, hectarea);
+			RedElectrica redElectrica = mapa.getRedElectrica();
+			redElectrica.eliminarNodo(hectarea.getFila(), hectarea.getColumna());
 		}
 	}
 	
-	
-	private void romper(Mapa mapa, RedElectrica red, int x, int y) {
-		mapa.impactarEn(x, y, danioPara(mapa.EnXYhayUn(x,y)));
-		red.eliminarNodo(x, y);
-	}
-	
-	private float danioPara(String tipo) {
-		if (tipo.compareTo("Residencial") == 0) {
-			return 100;
-		}else if (tipo.compareTo("Comercial") == 0){
-			return 75;
-		}else if (tipo.compareTo("Industrial") == 0){
-			return 40;
-		}else if (tipo.compareTo("CentralEolica") == 0){
-			return 35;
-		}else if (tipo.compareTo("CentralMineral") == 0){
-			return 35;
-		}else if (tipo.compareTo("CentralNuclear") == 0){
-			return 35;
-		}
-		return 0;
+	@Override
+	public boolean continua(){
+		return recorrido.hasNext();
 	}
 
-
-	private void movimientoHorizontal (Mapa mapa, RedElectrica red) {
-		Random rn = new Random();
-		origenX = 0;
-		origenY = rn.nextInt(mapa.getFilas());
-		
-		int i;
-		for (i = 0; i < mapa.getColumnas(); i ++) {
-			romper(mapa, red, origenX + i, origenY);
-		}
+	public void impactame(Comercial comercial) {
+		comercial.daniar(75);	
 	}
 
-	
-	private void movimientoVertical (Mapa mapa, RedElectrica red) {
-		Random rn = new Random();
-		origenX = rn.nextInt(mapa.getColumnas());
-		origenY = 0;
-		
-		int i;
-		for (i = 0; i < mapa.getFilas(); i ++) {
-			romper(mapa, red, origenX, origenY + i);
-		}
+	public void impactame(CentralElectrica centralElectrica) {
+		centralElectrica.daniar(35);
 	}
-	
-	private void movimientoDiagonal1 (Mapa mapa, RedElectrica red) {
-		Random rn = new Random();
-		origenX = rn.nextInt(mapa.getColumnas());
-		origenY = 0;
-		
-		int i = 0;
-		while (((origenX + i) < mapa.getColumnas()) &&
-				(origenY + i) < mapa.getFilas()) {
-			romper(mapa, red, origenX + i, origenY + i);
-			i ++;
-		}
+
+	public void impactame(Industrial industrial) {
+		industrial.daniar(40);
 	}
-	
-	private void movimientoDiagonal2 (Mapa mapa, RedElectrica red) {
-		Random rn = new Random();
-		origenX = rn.nextInt(mapa.getColumnas());
-		origenY = rn.nextInt(mapa.getFilas());
-		
-		int i = 0;
-		while (((origenX + i) < mapa.getColumnas()) &&
-				(origenY - i) >= 0) {
-			romper(mapa, red, origenX + i, origenY - i);
-			i ++;
-		}
-	}
-	
-	private void movimientoZigZag1 (Mapa mapa, RedElectrica red) {
-		Random rn = new Random();
-		origenX = 0;
-		origenY = rn.nextInt(mapa.getFilas());
-		
-		int i = 0;
-		while (((origenX + i) < mapa.getColumnas()) &&
-				(origenY - i) >= 0 && (origenY + i) < mapa.getFilas()) {
-			romper(mapa, red, origenX + i, origenY - i);
-			i ++;
-			romper(mapa, red, origenX + i, origenY + i);
-			i ++;
-		}
-	}
-	
-	private void movimientoZigZag2 (Mapa mapa, RedElectrica red) {
-		Random rn = new Random();
-		origenX = rn.nextInt(mapa.getColumnas());
-		origenY = 0;
-		
-		int i = 0;
-		while (((origenX + i) < mapa.getColumnas()) &&
-				(origenY - i) >= 0 && (origenY + i) < mapa.getFilas()) {
-			romper(mapa, red, origenX + i, origenY - i);
-			i ++;
-			romper(mapa, red, origenX + i, origenY + i);
-			i ++;
-		}
-	}
-	
+
+	public void impactame(Residencial residencial) {
+		residencial.daniar(100);
+	}	
 }

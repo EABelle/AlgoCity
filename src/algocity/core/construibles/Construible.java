@@ -1,6 +1,8 @@
 package algocity.core.construibles;
 
 import algocity.core.Mapa;
+import algocity.core.capas.catastrofes.Godzilla;
+import algocity.core.capas.catastrofes.Terremoto;
 public abstract class Construible {
 
 	protected int costo;
@@ -18,52 +20,31 @@ public abstract class Construible {
 		return porcentajeDeVida;
 	}
 
-	public boolean daniar (float porcentajeDeDanio) {
-		return false;
+	public void daniar (float porcentajeDeDanio) {
 	}
 
-	public boolean reparar (float porcentajeDeReparo) {
-		return false;
+	public void reparar (float porcentajeDeReparo) {
 	}
 
 	public boolean cumpleRequerimientos(boolean conexionAgua,
 			boolean conexionRuta, boolean conexionElectrica){
 		return true;
 	}
-	/*
-	public void conectarARedDeAgua(){
-		redDeAguaConectada = true;
-	}
 
-	public void conectarARedElectrica(){
-		redElectricaConectada = true;
-	}
-
-	public void conectarARutaPavimentada(){
-		rutaPavimentadaConectada = true;
-	}
-
-	public void desconectarDeRedDeAgua() {}
-	public void desconectarDeRedElectrica() {}
-	public void desconectarDeRutaPavimentada() {}
-
-	public abstract void procesarAgregado(Partida partida, int x, int y);
-
-	public void procesarTurno(Partida partida, int x, int y){
-		//redefinido en los edificios y las centrales
-	}
-*/
 	public boolean daniado() {
 		return porcentajeDeVida != 100;
 	}
 
-/*
-	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
-		return new ProcesadorDeAgregado(mapa, x, y);
-	}
-*/
 	public void procesarAgregado(Mapa mapa, int x, int y) {
 	
+	}
+
+	public void teImpacta(Terremoto terremoto) {
+		
+	}
+
+	public void teImpacta(Godzilla godzy) {
+		
 	}
 
 }

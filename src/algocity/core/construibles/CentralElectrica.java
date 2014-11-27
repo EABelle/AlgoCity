@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
+import algocity.core.capas.catastrofes.Godzilla;
 
 public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable{
 
@@ -32,20 +33,17 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	}
 	
 	@Override
-	public boolean daniar (float porcentajeDeDanio) {
+	public void daniar (float porcentajeDeDanio) {
 		if ((porcentajeDeVida -=  porcentajeDeDanio) < 0) {
 			porcentajeDeVida = 0;
 		}
-		else{porcentajeDeVida = 0;}
-		return false;
 	}
 
 	@Override
-	public boolean reparar (float porcentajeDeReparo) {
+	public void reparar (float porcentajeDeReparo) {
 		if ((porcentajeDeVida +=  porcentajeDeReparo) > 100) {
 			porcentajeDeVida = 100;
-		}else{porcentajeDeVida = 100;}
-		return false;
+		}
 	}
 	
 	@Override
@@ -65,37 +63,10 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 			hectarea.conectarRedElectrica();
 		}
 	}
-/*
-	@Override
-	public void procesarAgregado(Partida partida, int x, int y)  {
-
-		int i;
-		int j;
-
-		partida.agregarCentralElectrica(x, y);
-
-		for(i = 0; i <= 2 * radioDeAlimentacion; i++) {
-			for (j = 0; j <= 2 * radioDeAlimentacion; j++) {
-				if(((x - radioDeAlimentacion + i) >= 0 ) &&
-					((x - radioDeAlimentacion + i) < partida.getfilas()) && ((y - radioDeAlimentacion + j) >= 0) && ((y - radioDeAlimentacion + j) <partida.getcolumnas()))
-					partida.conectarRedElectrica(x - radioDeAlimentacion + i, y - radioDeAlimentacion + j);
-			}
-		}
-	}
 
 	@Override
-	public void procesarTurno(Partida partida, int x, int y) {
-		redDeAguaConectada = partida.redDeAguaConectada(x, y);
-		if (daniado())
-			partida.agregarDaniado(this, x, y);
+	public void teImpacta(Godzilla godzy) {
+		godzy.impactame(this);
 	}
-*/
-		
-/*	@Override
-	public ProcesadorDeAgregado getProcesador(Mapa mapa, int x, int y) {
-		ProcesadorDeCentral procesador = new ProcesadorDeCentral(mapa, x, y);
-		procesador.setCentral(this);
-		return procesador;
-	}*/
 
 }
