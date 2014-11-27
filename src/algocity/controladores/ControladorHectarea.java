@@ -33,6 +33,7 @@ public class ControladorHectarea extends MouseAdapter {
 				VistaDeConstruible vistaConstruible = controladorPartida.getVistaConstruible();
 				vistaDeHectarea.setConstruible(vistaConstruible.getRepresentacion());
 				controladorPartida.setMensaje("Construidisimo");
+				controladorPartida.actualizarPlata();
 			}
 		}
 	}
