@@ -1,6 +1,7 @@
 package algocity.vistas;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
@@ -14,6 +15,7 @@ import algocity.core.capas.HectareaLlana;
 public class VistaDeHectarea extends JPanel implements Observer {
 
 	private Hectarea hectarea;
+	private String construible;
 
 	public VistaDeHectarea(Hectarea hectarea) {
 		this.setSize(10, 10);
@@ -25,9 +27,10 @@ public class VistaDeHectarea extends JPanel implements Observer {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if (hectarea.getConstruible() != null) {
-			g.setColor(Color.red);
-			g.drawRect(9, 9, 9, 9);
+		if (this.construible != null) {
+			g.setColor(Color.BLACK);
+	        g.setFont(new Font("helvetica", Font.BOLD, 12));
+	        g.drawString(construible, 10, 10);
 		}
 	}
 
@@ -43,6 +46,10 @@ public class VistaDeHectarea extends JPanel implements Observer {
 	public void update(Observable hectarea, Object arg) {
 		((Hectarea) hectarea).dibujarse(this);
 		this.repaint();
+	}
+
+	public void setConstruible(String representacion) {
+		this.construible = representacion;
 	}
 
 }

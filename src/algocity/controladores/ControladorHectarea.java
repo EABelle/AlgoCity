@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.vistas.VistaDeHectarea;
+import algocity.vistas.construibles.VistaDeConstruible;
 
 public class ControladorHectarea extends MouseAdapter {
 
@@ -23,13 +24,14 @@ public class ControladorHectarea extends MouseAdapter {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		System.out.println("Presione en hectarea " + hectarea.getFila() + " " + hectarea.getColumna());
 		Construible cons = controladorPartida.getConstruible();
 		if (cons != null) {
 			if (!controladorPartida.agregarConstruible(
 				cons, hectarea.getFila(), hectarea.getColumna())) {
 				controladorPartida.setMensaje("No se puede construir aca");
 			} else {
+				VistaDeConstruible vistaConstruible = controladorPartida.getVistaConstruible();
+				vistaDeHectarea.setConstruible(vistaConstruible.getRepresentacion());
 				controladorPartida.setMensaje("Construidisimo");
 			}
 		}

@@ -27,7 +27,6 @@ public abstract class VistaDeConstruible extends JToggleButton {
 
         grafico.setColor(Color.black);
         grafico.setFont(new Font("helvetica", Font.BOLD, 12));
-
         grafico.drawString(representacion, 10, 10);
 
     }
@@ -39,8 +38,11 @@ public abstract class VistaDeConstruible extends JToggleButton {
 	}
 
 	public String getEstado() {
-		// TODO Auto-generated method stub
 		return estado;
+	}
+
+	public String getRepresentacion() {
+		return representacion;
 	}
 
 }
