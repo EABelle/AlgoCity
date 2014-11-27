@@ -6,7 +6,7 @@ import algocity.core.construibles.Residencial;
 public class VistaDeResidencial extends VistaDeConstruible {
 
 	public VistaDeResidencial() {
-		representation = "R";
+		representacion = "R";
 		estado = "Agregar residencial";
 	}
 

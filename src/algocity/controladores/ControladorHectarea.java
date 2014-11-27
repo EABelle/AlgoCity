@@ -23,10 +23,15 @@ public class ControladorHectarea extends MouseAdapter {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		System.out.println("Presione en hectarea " + hectarea.getFila() + " " + hectarea.getColumna());
 		Construible cons = controladorPartida.getConstruible();
 		if (cons != null) {
-			controladorPartida.agregarConstruible(cons,
-					hectarea.getFila(), hectarea.getColumna());
+			if (!controladorPartida.agregarConstruible(
+				cons, hectarea.getFila(), hectarea.getColumna())) {
+				controladorPartida.setMensaje("No se puede construir aca");
+			} else {
+				controladorPartida.setMensaje("Construidisimo");
+			}
 		}
 	}
 

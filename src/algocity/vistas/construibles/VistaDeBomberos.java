@@ -1,17 +1,17 @@
 package algocity.vistas.construibles;
 
-import algocity.core.construibles.Comercial;
 import algocity.core.construibles.Construible;
+import algocity.core.construibles.EstacionDeBombero;
 
-public class VistaDeComercial extends VistaDeConstruible {
+public class VistaDeBomberos extends VistaDeConstruible {
 
-	public VistaDeComercial() {
+	public VistaDeBomberos() {
 		representacion = "C";
 		estado = "Agregar comercial";
 	}
 
 	@Override
 	public Construible getConstruible() {
-		return new Comercial();
+		return new EstacionDeBombero();
 	}
 }

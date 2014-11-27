@@ -19,6 +19,7 @@ public class VistaDeHectarea extends JPanel implements Observer {
 		this.setSize(10, 10);
 		this.hectarea = hectarea;
 		this.hectarea.addObserver(this);
+		this.hectarea.dibujarse(this);
 	}
 
 	@Override

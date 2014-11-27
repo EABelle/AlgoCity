@@ -12,7 +12,7 @@ import algocity.core.construibles.Construible;
 
 public abstract class VistaDeConstruible extends JToggleButton {
 
-    protected String representation;
+    protected String representacion;
 	protected String estado;
 
 	@Override
@@ -28,7 +28,7 @@ public abstract class VistaDeConstruible extends JToggleButton {
         grafico.setColor(Color.black);
         grafico.setFont(new Font("helvetica", Font.BOLD, 12));
 
-        grafico.drawString(representation, 10, 10);
+        grafico.drawString(representacion, 10, 10);
 
     }
 

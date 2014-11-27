@@ -11,7 +11,6 @@ import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.capas.tendido.RutaPavimentada;
 import algocity.core.construibles.Construible;
-import algocity.core.procesadores.Procesador;
 
 public class Mapa {
 
@@ -34,8 +33,8 @@ public class Mapa {
 	private RedDeAgua redDeAgua;
 	private RedElectrica redElectrica;
 	private RutaPavimentada rutaPavimentada;
-	
-	
+
+
 
 
 	public Mapa(int filas, int columnas){
@@ -60,6 +59,8 @@ public class Mapa {
 		if (x < filas) {
 			if (y < columnas){
 				hectareas[x][y] = hectarea;
+				hectarea.setFila(x);
+				hectarea.setColumna(y);
 				y ++;
 			} else {
 				x ++;
@@ -133,15 +134,15 @@ public class Mapa {
 	public Iterator<Hectarea> recorridoComerciales() {
 		return comerciales.iterator();
 	}
-	
+
 	public Iterator<Hectarea> recorridoIndustriales() {
 		return industriales.iterator();
 	}
-	
+
 	public Iterator<Hectarea> recorridoCentrales() {
 		return centrales.iterator();
 	}
-	
+
 	public Iterator<Hectarea> recorridoDaniados() {
 		return daniadas.iterator();
 	}
@@ -150,22 +151,22 @@ public class Mapa {
 		return bomberos.iterator();
 	}
 
-	public void agregarConstruible(Construible construible, int x, int y) {
-		hectareas[x][y].agregarConstruible(construible);
+	public boolean agregarConstruible(Construible construible, int x, int y) {
+		return hectareas[x][y].agregarConstruible(construible);
 	}
 
 	public Hectarea getHectarea(int fila, int columna) {
 		return hectareas[fila][columna];
 	}
-	
+
 	public RedElectrica getRedElectrica() {
 		return redElectrica;
 	}
-	
+
 	public RedDeAgua getRedDeAgua() {
 		return redDeAgua;
 	}
-	
+
 	public RutaPavimentada getRutaPavimentada(){
 		return rutaPavimentada;
 	}
@@ -175,23 +176,23 @@ public class Mapa {
 	public ArrayList<Hectarea> getHectareasResidenciales() {
 		return residenciales;
 	}
-	
+
 	public ArrayList<Hectarea> getHectareasComerciales() {
 		return comerciales;
 	}
-	
+
 	public ArrayList<Hectarea> getHectareasIndustriales() {
 		return industriales;
 	}
-	
+
 	public ArrayList<Hectarea> getHectareasDaniadas() {
 		return daniadas;
 	}
-	
+
 	public ArrayList<Hectarea> getHectareasDeCentralElectrica() {
 		return centrales;
 	}
-	
+
 	public ArrayList<Hectarea> getHectareasDeBomberos() {
 		return bomberos;
 	}
