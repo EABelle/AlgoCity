@@ -6,7 +6,7 @@ import algocity.core.construibles.Industrial;
 public class VistaDeIndustrial extends VistaDeConstruible {
 
 	public VistaDeIndustrial() {
-		representation = "I";
+		representacion = "I";
 		estado = "Agregar industrial";
 	}
 

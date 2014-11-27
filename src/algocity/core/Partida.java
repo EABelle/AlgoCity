@@ -1,13 +1,9 @@
 package algocity.core;
 
-import java.util.Iterator;
-
-import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
 import algocity.core.procesadores.ProcesadorDeBomberos;
-import algocity.core.procesadores.ProcesadorDeTurno;
 
 public class Partida {
 
@@ -37,15 +33,15 @@ public class Partida {
 	}
 
 	public boolean agregarConstruible(Construible construible, int x, int y) {
-		if (plata >= construible.getCosto()) {
+		if (plata >= construible.getCosto() &&
+				mapa.agregarConstruible(construible, x, y)) {
 			plata -= construible.getCosto();
-			mapa.agregarConstruible(construible, x, y);
 			construible.procesarAgregado(mapa, x, y);
 			return true;
 		}
 		return false;
 	}
-	
+
 
 	public void pasarTurno() {
 		turno ++;
@@ -53,7 +49,7 @@ public class Partida {
 			Debitador debitador = new Debitador(mapa);
 			plata += debitador.getPago();
 		}
-		
+
 		ProcesadorDeBomberos procesadorBomberos = new ProcesadorDeBomberos(mapa);
 		CalculadorDeCalidadDeVida calculador = new CalculadorDeCalidadDeVida(mapa);
 	}
@@ -193,7 +189,7 @@ public class Partida {
 
 	}*/
 
-	
+
 /*	public void pasarTurno() {
 		turno++;
 		CalculadorDeCalidadDeVida calculador = new CalculadorDeCalidadDeVida();
