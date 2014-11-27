@@ -19,7 +19,7 @@ public class Godzilla extends Catastrofe {
 
 	@Override
 	public void procesar(Mapa mapa) {
-		while(recorrido.hasNext()) {
+		if(recorrido.hasNext()) {
 			Hectarea hectarea = recorrido.next();
 			hectarea.teImpacta(this);
 			ProcesadorDeDaniados procesadorDeDaniados = new ProcesadorDeDaniados();
