@@ -28,6 +28,7 @@ public class ControladorPartida {
 		vistaDeEdificios = new VistaDeEdificios(this);
 		vistaDePartida.agregarVistaDeEdificios(vistaDeEdificios);
 		vistaDeEstado = new VistaDeEstado();
+		actualizarPlata();
 		vistaDePartida.agregarVistaDeEstado(vistaDeEstado);
 	}
 
@@ -57,6 +58,10 @@ public class ControladorPartida {
 
 	public VistaDeConstruible getVistaConstruible() {
 		return this.controladorEdificios.getVistaConstruible();
+	}
+
+	public void actualizarPlata() {
+		vistaDeEstado.setPlata(partida.getPlata());
 	}
 
 }
