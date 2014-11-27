@@ -18,6 +18,7 @@ public class ControladorDeRuta extends MouseAdapter {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		controladorPartida.setVistaDeHerramienta(vistaDeRuta);
 	}
 
 }

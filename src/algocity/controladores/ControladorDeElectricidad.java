@@ -18,6 +18,7 @@ public class ControladorDeElectricidad extends MouseAdapter {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		controladorPartida.setVistaDeHerramienta(vistaDeElectricidad);
 	}
 
 

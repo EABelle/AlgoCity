@@ -35,6 +35,8 @@ public class ControladorHectarea extends MouseAdapter {
 				controladorPartida.setMensaje("Construidisimo");
 				controladorPartida.actualizarPlata();
 			}
+		} else {
+			controladorPartida.procesarClick(hectarea);
 		}
 	}
 

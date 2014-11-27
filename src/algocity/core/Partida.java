@@ -50,15 +50,16 @@ public class Partida {
 		}
 		return false;
 	}
-	
-	public boolean agreRutaPavimentada(int x, int y) {
+
+	public boolean agregarRutaPavimentada(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.rutaPavimentadaConectada())
-			return false;
-		hectarea.conectarRutaPavimentada();
-		return true;
+		if (hectarea.setConexionRuta(true)) {
+			mapa.getRutaPavimentada().agregarNodo(x, y);
+			return true;
+		}
+		return false;
 	}
-	
+
 	public boolean quitarRutaPavimentada(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.rutaPavimentadaConectada()){
@@ -67,15 +68,16 @@ public class Partida {
 		}
 		return false;
 	}
-	
-	public boolean agreRedElectrica(int x, int y) {
+
+	public boolean agregarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.redElectricaConectada())
-			return false;
-		hectarea.conectarRedElectrica();
-		return true;
+		if (hectarea.setConexionElectrica(true)) {
+			mapa.getRedElectrica().agregarNodo(x, y);
+			return true;
+		}
+		return false;
 	}
-	
+
 	public boolean quitarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.redElectricaConectada()){
@@ -84,15 +86,16 @@ public class Partida {
 		}
 		return false;
 	}
-	
-	public boolean agreRedDeAgua(int x, int y) {
+
+	public boolean agregarRedDeAgua(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.redDeAguaConectada())
-			return false;
-		hectarea.conectarRedDeAgua();
-		return true;
+		if (hectarea.setConexionAgua(true)) {
+			mapa.getRedDeAgua().agregarNodo(x, y);
+			return true;
+		}
+		return false;
 	}
-	
+
 	public boolean quitarRedDeAgua(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.redDeAguaConectada()){
@@ -101,7 +104,7 @@ public class Partida {
 		}
 		return false;
 	}
-	
+
 
 
 	public void pasarTurno() {
@@ -121,12 +124,12 @@ public class Partida {
 		int turno = 0;
 		while(turno < Configuracion.TurnoMaximo){
 			if (generarCatastrofe()){
-				
+
 			}
 			pasarTurno();
 		}
 	}*/
-	
+
 	public void jugar() {
 		int turno = 0;
 		while(turno < Configuracion.TurnoMaximo) {
@@ -138,7 +141,7 @@ public class Partida {
 	public Mapa getMapa() {
 		return mapa;
 	}
-	
+
 	private boolean generarGodzilla() {
 		Random rn = new Random();
 		return (rn.nextBoolean() & rn.nextBoolean() & rn.nextBoolean());

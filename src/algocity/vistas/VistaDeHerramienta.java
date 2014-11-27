@@ -7,6 +7,9 @@ import java.awt.Graphics;
 
 import javax.swing.JToggleButton;
 
+import algocity.core.Partida;
+import algocity.core.capas.Hectarea;
+
 public class VistaDeHerramienta extends JToggleButton {
 
     protected String representacion;
@@ -41,5 +44,8 @@ public class VistaDeHerramienta extends JToggleButton {
 
 	public String getRepresentacion() {
 		return representacion;
+	}
+
+	public void procesarPartida(Partida partida, Hectarea hectarea) {
 	}
 }

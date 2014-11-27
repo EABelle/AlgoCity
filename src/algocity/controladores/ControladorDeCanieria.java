@@ -18,5 +18,6 @@ public class ControladorDeCanieria extends MouseAdapter {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		controladorPartida.setVistaDeHerramienta(vistaDeElectricidad);
 	}
 }

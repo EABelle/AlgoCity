@@ -49,7 +49,7 @@ public abstract class Hectarea extends Observable {
 		}
 		return false;
 	}
-	
+
 	public void conectarRedElectrica() {
 		conexionElectrica = true;
 	}
@@ -57,13 +57,45 @@ public abstract class Hectarea extends Observable {
 	public void desconectarRedElectrica(){
 		conexionElectrica = false;
 	}
-	
+
 	public boolean redElectricaConectada() {
 		return conexionElectrica ;
 	}
 
-	public void conectarRedDeAgua() {
-		conexionAgua= true;
+	public boolean setConexionAgua(boolean conexionAgua) {
+		if (this.conexionAgua != conexionAgua) {
+			this.conexionAgua = conexionAgua;
+			hayCambio();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean setConexionElectrica(boolean conexionElectrica) {
+		if (this.conexionElectrica != conexionElectrica) {
+			this.conexionElectrica = conexionElectrica;
+			hayCambio();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean setConexionRuta(boolean conexionRuta) {
+		if (this.conexionRuta != conexionRuta) {
+			this.conexionRuta = conexionRuta;
+			hayCambio();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean conectarRedDeAgua() {
+		if (!conexionAgua) {
+			conexionAgua = true;
+ 			hayCambio();
+ 			return true;
+		}
+		return false;
 	}
 
 	public void desconectarRedDeAgua(){
@@ -81,11 +113,11 @@ public abstract class Hectarea extends Observable {
 	public void desconectarRutaPavimentada(){
 		conexionRuta = false;
 	}
-	
+
 	public boolean rutaPavimentadaConectada() {
 		return conexionRuta;
 	}
-	
+
 	public Construible getConstruible() {
 		return construible;
 	}

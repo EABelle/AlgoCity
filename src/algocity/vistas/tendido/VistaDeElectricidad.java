@@ -1,14 +1,19 @@
 package algocity.vistas.tendido;
 
+import algocity.core.Partida;
+import algocity.core.capas.Hectarea;
 import algocity.vistas.VistaDeHerramienta;
 
 public class VistaDeElectricidad extends VistaDeHerramienta {
 
 	public VistaDeElectricidad() {
-		x = 30;
-		y = 30;
-		representacion = "r";
+		representacion = "e";
 		estado = "Construir red electrica";
+	}
+
+	@Override
+	public void procesarPartida(Partida partida, Hectarea hectarea) {
+		partida.agregarRedElectrica(hectarea.getFila(), hectarea.getColumna());
 	}
 
 }

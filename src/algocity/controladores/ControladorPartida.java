@@ -1,9 +1,11 @@
 package algocity.controladores;
 
 import algocity.core.Partida;
+import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
-import algocity.vistas.VistaDeHerramientas;
 import algocity.vistas.VistaDeEstado;
+import algocity.vistas.VistaDeHerramienta;
+import algocity.vistas.VistaDeHerramientas;
 import algocity.vistas.VistaDeMapa;
 import algocity.vistas.VistaDePartida;
 import algocity.vistas.construibles.VistaDeConstruible;
@@ -16,6 +18,7 @@ public class ControladorPartida {
 	private VistaDeHerramientas vistaDeEdificios;
 	private VistaDeEstado vistaDeEstado;
 	private ControladorEdificios controladorEdificios;
+	private VistaDeHerramienta vistaDeHerramienta;
 
 	public ControladorPartida(Partida partida, VistaDePartida vista) {
 		this.partida = partida;
@@ -62,6 +65,15 @@ public class ControladorPartida {
 
 	public void actualizarPlata() {
 		vistaDeEstado.setPlata(partida.getPlata());
+	}
+
+	public void setVistaDeHerramienta(VistaDeHerramienta vistaDeHerramienta) {
+		this.vistaDeHerramienta = vistaDeHerramienta;
+	}
+
+	public void procesarClick(Hectarea hectarea) {
+		if (this.vistaDeHerramienta != null)
+			this.vistaDeHerramienta.procesarPartida(partida, hectarea);
 	}
 
 }
