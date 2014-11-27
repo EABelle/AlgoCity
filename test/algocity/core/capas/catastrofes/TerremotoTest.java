@@ -31,7 +31,7 @@ public class TerremotoTest extends TestCase{
 		}
 		
 		Terremoto terremoto = new Terremoto(0, 10);
-		terremoto.procesar(mapa, new RedElectrica());
+		terremoto.procesar(mapa);
 		
 		assertTrue (residencial.daniado());
 		partida.pasarTurno();
@@ -68,7 +68,7 @@ public class TerremotoTest extends TestCase{
 		
 		Terremoto terremoto = new Terremoto(0, 30);
 		
-		terremoto.procesar(mapa, new RedElectrica());
+		terremoto.procesar(mapa);
 		
 		assertTrue (residencial.daniado());
 		partida.pasarTurno();
