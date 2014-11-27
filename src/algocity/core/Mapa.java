@@ -49,6 +49,7 @@ public class Mapa {
 		industriales = new ArrayList<Hectarea>();
 		daniadas = new ArrayList<Hectarea>();
 		centrales = new ArrayList<Hectarea>();
+		bomberos = new ArrayList<Hectarea>();
 		redDeAgua = new RedDeAgua();
 		redElectrica = new RedElectrica();
 		rutaPavimentada = new RutaPavimentada();
@@ -93,8 +94,8 @@ public class Mapa {
 		Random rn = new Random();
 		while(!this.cargado()) {
 			Hectarea hectarea;
-			numero = rn.nextInt(3);
-			if (numero % 3 == 0) {
+			numero = rn.nextInt(5);
+			if (numero % 5 == 0) {
 				hectarea = new HectareaAgua();
 			} else {
 				hectarea = new HectareaLlana();
@@ -126,41 +127,41 @@ public class Mapa {
 		}
 		return recorrido.iterator();
 	}
-	
+
 	public Iterator<Hectarea> RecorrerSoloEnUnRadio(int radio,
 		int x, int y) {
 		int i;
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		if ((y - radio) >= 0) {
 			for (i = 0; i <= 2 * radio; i ++) {
-				if (((x - radio + i) >= 0) && 
+				if (((x - radio + i) >= 0) &&
 					((x - radio + i) < filas))
 					recorrido.add(hectareas[x - radio + i][y - radio]);
 			}
 		}
 		if ((y + radio) < columnas) {
 			for (i = 0; i <= 2 * radio; i ++) {
-				if (((x - radio + i) >= 0) && 
+				if (((x - radio + i) >= 0) &&
 					((x - radio + i) < filas))
 					recorrido.add(hectareas[x - radio + i][y + radio]);
 			}
 		}
 		if ((x - radio) >= 0) {
 			for (i = 1; i < 2 * radio; i ++) {
-				if (((y - radio + i) >= 0) && 
+				if (((y - radio + i) >= 0) &&
 					((y - radio + i) < columnas))
 					recorrido.add(hectareas[x - radio][y - radio + i]);
 			}
 		}
 		if ((x + radio) < filas) {
 			for (i = 1; i < 2 * radio; i ++) {
-				if (((y - radio + i) >= 0) && 
+				if (((y - radio + i) >= 0) &&
 					((y - radio + i) < columnas))
 					recorrido.add(hectareas[x - radio][y - radio + i]);
 			}
 		}
 		return recorrido.iterator();
-	
+
 	}
 
 	public Iterator<Hectarea> recorridoResidenciales() {

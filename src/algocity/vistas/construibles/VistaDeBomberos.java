@@ -6,8 +6,8 @@ import algocity.core.construibles.EstacionDeBombero;
 public class VistaDeBomberos extends VistaDeConstruible {
 
 	public VistaDeBomberos() {
-		representacion = "C";
-		estado = "Agregar comercial";
+		representacion = "B";
+		estado = "Agregar bomberos";
 	}
 
 	@Override
