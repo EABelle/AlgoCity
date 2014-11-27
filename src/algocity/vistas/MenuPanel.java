@@ -3,6 +3,7 @@ package algocity.vistas;
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 
@@ -15,12 +16,16 @@ public class MenuPanel extends JPanel {
 	public MenuPanel() {
 
 		botonComenzar = new JButton("Comenzar partida");
+		JLabel labelFilas = new JLabel("Filas");
 		inputFilas = new JSpinner();
-		inputFilas.setValue(10);
+		inputFilas.setValue(20);
+		JLabel labelColumnas = new JLabel("Columnas");
 		inputColumnas = new JSpinner();
-		inputColumnas.setValue(10);
-        add(inputColumnas, BorderLayout.LINE_START);
+		inputColumnas.setValue(20);
+		add(labelFilas, BorderLayout.LINE_END);
 		add(inputFilas, BorderLayout.LINE_END);
+		add(labelColumnas, BorderLayout.LINE_START);
+        add(inputColumnas, BorderLayout.LINE_START);
 		add(botonComenzar, BorderLayout.PAGE_END);
 		setSize(300, 300);
 	}

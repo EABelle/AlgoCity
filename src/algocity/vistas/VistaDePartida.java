@@ -9,7 +9,7 @@ import algocity.core.Partida;
 public class VistaDePartida extends JFrame {
 
 	public VistaDePartida(Partida partida) {
-		setSize(600, 600);
+		setSize(1000, 700);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		setLayout(new BorderLayout());

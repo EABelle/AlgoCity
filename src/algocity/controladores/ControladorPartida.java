@@ -6,6 +6,7 @@ import algocity.vistas.VistaDeEdificios;
 import algocity.vistas.VistaDeEstado;
 import algocity.vistas.VistaDeMapa;
 import algocity.vistas.VistaDePartida;
+import algocity.vistas.construibles.VistaDeConstruible;
 
 public class ControladorPartida {
 
@@ -27,11 +28,16 @@ public class ControladorPartida {
 		vistaDeEdificios = new VistaDeEdificios(this);
 		vistaDePartida.agregarVistaDeEdificios(vistaDeEdificios);
 		vistaDeEstado = new VistaDeEstado();
+		actualizarPlata();
 		vistaDePartida.agregarVistaDeEstado(vistaDeEstado);
 	}
 
 	public void setEstado(String text) {
 		vistaDeEstado.setEstado(text);
+	}
+
+	public void setMensaje(String text) {
+		vistaDeEstado.setMensaje(text);
 	}
 
 	public void setControladorEdificios(
@@ -46,8 +52,16 @@ public class ControladorPartida {
 		return null;
 	}
 
-	public void agregarConstruible(Construible cons, int x, int y) {
-		this.partida.agregarConstruible(cons, x, y);
+	public boolean agregarConstruible(Construible cons, int x, int y) {
+		return this.partida.agregarConstruible(cons, x, y);
+	}
+
+	public VistaDeConstruible getVistaConstruible() {
+		return this.controladorEdificios.getVistaConstruible();
+	}
+
+	public void actualizarPlata() {
+		vistaDeEstado.setPlata(partida.getPlata());
 	}
 
 }
