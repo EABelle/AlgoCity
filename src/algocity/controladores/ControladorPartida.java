@@ -2,7 +2,7 @@ package algocity.controladores;
 
 import algocity.core.Partida;
 import algocity.core.construibles.Construible;
-import algocity.vistas.VistaDeEdificios;
+import algocity.vistas.VistaDeHerramientas;
 import algocity.vistas.VistaDeEstado;
 import algocity.vistas.VistaDeMapa;
 import algocity.vistas.VistaDePartida;
@@ -13,7 +13,7 @@ public class ControladorPartida {
 	Partida partida;
 	VistaDePartida vistaDePartida;
 	private VistaDeMapa vistaDeMapa;
-	private VistaDeEdificios vistaDeEdificios;
+	private VistaDeHerramientas vistaDeEdificios;
 	private VistaDeEstado vistaDeEstado;
 	private ControladorEdificios controladorEdificios;
 
@@ -25,7 +25,7 @@ public class ControladorPartida {
 	public void inicializar() {
 		vistaDeMapa = new VistaDeMapa(partida.getMapa(), this);
 		vistaDePartida.agregarVistaDeMapa(vistaDeMapa);
-		vistaDeEdificios = new VistaDeEdificios(this);
+		vistaDeEdificios = new VistaDeHerramientas(this);
 		vistaDePartida.agregarVistaDeEdificios(vistaDeEdificios);
 		vistaDeEstado = new VistaDeEstado();
 		actualizarPlata();

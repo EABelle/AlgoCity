@@ -19,7 +19,7 @@ public class VistaDePartida extends JFrame {
 		add(vistaMapa, BorderLayout.CENTER);
 	}
 
-	public void agregarVistaDeEdificios(VistaDeEdificios vistaEdificios) {
+	public void agregarVistaDeEdificios(VistaDeHerramientas vistaEdificios) {
 		add(vistaEdificios, BorderLayout.WEST);
 	}
 
