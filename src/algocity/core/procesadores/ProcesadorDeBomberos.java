@@ -10,14 +10,8 @@ import algocity.core.construibles.EstacionDeBombero;
 import algocity.core.procesadores.ProcesadorDeDaniados;
 
 public class ProcesadorDeBomberos {
-	private Mapa mapa;
 
-	public ProcesadorDeBomberos(Mapa mapa) {
-		this.mapa = mapa;
-		procesar();
-	}
-	
-	private void procesar(){
+	public static void procesar(Mapa mapa) {
 		Iterator<Hectarea> iterBombero;
 		Iterator<Hectarea> iterDaniado;
 		ProcesadorDeDaniados procesadorDeDaniados = new ProcesadorDeDaniados();
