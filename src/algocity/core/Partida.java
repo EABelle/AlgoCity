@@ -51,13 +51,23 @@ public class Partida {
 		return false;
 	}
 
-	public boolean agregarRutaPavimentada(int x, int y) {
+/*	public boolean agregarRutaPavimentada(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.setConexionRuta(true)) {
 			mapa.getRutaPavimentada().agregarNodo(x, y);
 			return true;
 		}
 		return false;
+	}*/ 
+	
+	public boolean agregarRutaPavimentada(int x, int y) {
+		if (mapa.getRutaPavimentada().getCosto() > plata)
+			return false;
+		if (!mapa.getRutaPavimentada().agregarNodo(x, y))
+			return false;
+		plata -= mapa.getRutaPavimentada().getCosto();
+		return mapa.getHectarea(x, y).setConexionRuta(true);
+		
 	}
 
 	public boolean quitarRutaPavimentada(int x, int y) {
@@ -70,14 +80,25 @@ public class Partida {
 		return false;
 	}
 
-	public boolean agregarRedElectrica(int x, int y) {
+/*	public boolean agregarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.setConexionElectrica(true)) {
 			mapa.getRedElectrica().agregarNodo(x, y);
 			return true;
 		}
 		return false;
+	}*/
+	
+	public boolean agregarRedElectrica(int x, int y) {
+		if (mapa.getRedElectrica().getCosto() > plata)
+			return false;
+		if (!mapa.getRedElectrica().agregarNodo(x, y))
+			return false;
+		plata -= mapa.getRedElectrica().getCosto();
+		return mapa.getHectarea(x, y).setConexionElectrica(true);
+		
 	}
+
 
 	public boolean quitarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
