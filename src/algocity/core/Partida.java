@@ -59,8 +59,8 @@ public class Partida extends Observable {
 			return true;
 		}
 		return false;
-	}*/ 
-	
+	}*/
+
 	public boolean agregarRutaPavimentada(int x, int y) {
 		if (mapa.getRutaPavimentada().getCosto() > plata)
 			return false;
@@ -71,7 +71,7 @@ public class Partida extends Observable {
 		}
 		plata -= mapa.getRutaPavimentada().getCosto();
 		return true;
-		
+
 	}
 
 	public boolean quitarRutaPavimentada(int x, int y) {
@@ -95,7 +95,7 @@ public class Partida extends Observable {
 		}
 		plata -= mapa.getRedElectrica().getCosto();
 		return true;
-		
+
 	}
 
 
@@ -116,7 +116,7 @@ public class Partida extends Observable {
 			return false;
 		plata -= mapa.getRedDeAgua().getCosto();
 		return mapa.getHectarea(x, y).setConexionAgua(true);
-		
+
 	}
 
 	public boolean quitarRedDeAgua(int x, int y) {
