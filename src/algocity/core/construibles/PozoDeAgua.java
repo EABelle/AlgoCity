@@ -1,14 +1,17 @@
 package algocity.core.construibles;
 
+import algocity.vistas.VistaDeInfo;
+
 
 public class PozoDeAgua extends ConstruibleEnAgua {
-	int costo;
+
 	public PozoDeAgua(){
 		costo = 250;
 	}
 
-/*	@Override
-	public void procesarAgregado(Partida partida, int x, int y) {
-		partida.agregarPozoDeAgua(x, y);
-	}*/
+	@Override
+	public void mostrarInfo(VistaDeInfo vistaDeInfo) {
+		vistaDeInfo.mostrarInfo(this);
+	}
+
 }

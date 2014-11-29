@@ -27,4 +27,8 @@ public class VistaDePartida extends JFrame {
 		add(vistaEstado, BorderLayout.NORTH);
 	}
 
+	public void agregarVistaDeInfo(VistaDeInfo vistaDeInfo) {
+		add(vistaDeInfo, BorderLayout.SOUTH);
+	}
+
 }

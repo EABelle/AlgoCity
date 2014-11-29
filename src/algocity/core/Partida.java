@@ -51,7 +51,7 @@ public class Partida extends Observable {
 		}
 		return false;
 	}
-	
+
 	public boolean agregarRutaPavimentada(int x, int y) {
 		if (mapa.getRutaPavimentada().getCosto() > plata)
 			return false;

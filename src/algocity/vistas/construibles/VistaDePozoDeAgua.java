@@ -8,6 +8,7 @@ public class VistaDePozoDeAgua extends VistaDeConstruible {
 	public VistaDePozoDeAgua() {
 		representacion = "P";
 		estado = "Agregar pozo de agua";
+		costo = new PozoDeAgua().getCosto();
 	}
 
 	@Override
