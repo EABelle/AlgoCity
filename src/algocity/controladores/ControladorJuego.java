@@ -24,6 +24,12 @@ public class ControladorJuego {
 	}
 
 	public void inicializar() {
+		inicializarMenu();
+		ventanaPrincipal.add(menu);
+		ventanaPrincipal.setVisible(true);
+	}
+
+	private void inicializarMenu() {
 		menu = new MenuPanel();
 		JButton botonComenzar = menu.getBotonComenzar();
 		botonComenzar.addActionListener(new ActionListener() {
@@ -39,9 +45,6 @@ public class ControladorJuego {
 				ventanaPrincipal.dispose();
 			}
 		});
-
-		ventanaPrincipal.add(menu);
-		ventanaPrincipal.setVisible(true);
 	}
 
 }

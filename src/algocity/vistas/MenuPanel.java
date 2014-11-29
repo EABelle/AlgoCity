@@ -9,12 +9,19 @@ import javax.swing.JSpinner;
 
 public class MenuPanel extends JPanel {
 
-	JSpinner inputFilas;
-	JSpinner inputColumnas;
-	JButton botonComenzar;
+	private JSpinner inputFilas;
+	private JSpinner inputColumnas;
+	private JButton botonComenzar;
+	private JButton botonUsuario;
 
 	public MenuPanel() {
 
+		inicializar();
+		setSize(300, 300);
+	}
+
+	private void inicializar() {
+		botonComenzar = new JButton("Comenzar partida");
 		botonComenzar = new JButton("Comenzar partida");
 		JLabel labelFilas = new JLabel("Filas");
 		inputFilas = new JSpinner();
@@ -25,13 +32,16 @@ public class MenuPanel extends JPanel {
 		add(labelFilas, BorderLayout.LINE_END);
 		add(inputFilas, BorderLayout.LINE_END);
 		add(labelColumnas, BorderLayout.LINE_START);
-        add(inputColumnas, BorderLayout.LINE_START);
+		add(inputColumnas, BorderLayout.LINE_START);
 		add(botonComenzar, BorderLayout.PAGE_END);
-		setSize(300, 300);
 	}
 
 	public JButton getBotonComenzar() {
 		return botonComenzar;
+	}
+
+	public JButton getBotonUsuario() {
+		return botonUsuario;
 	}
 
 	public int getFilas() {

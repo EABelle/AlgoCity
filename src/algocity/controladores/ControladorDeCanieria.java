@@ -13,8 +13,11 @@ public class ControladorDeCanieria extends Herramienta {
 
 	@Override
 	public void procesarHectarea(Hectarea hectarea) {
-		controladorPartida.getPartida().agregarRedDeAgua(
-				hectarea.getFila(), hectarea.getColumna());
+		if (controladorPartida.getPartida().agregarRedDeAgua(
+				hectarea.getFila(), hectarea.getColumna()))
+			controladorPartida.setMensaje("Construido");
+		else
+			controladorPartida.setMensaje("No se puede construir aca");
 	}
 
 	@Override

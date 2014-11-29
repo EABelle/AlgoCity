@@ -12,8 +12,11 @@ public class ControladorDeRuta extends Herramienta {
 
 	@Override
 	public void procesarHectarea(Hectarea hectarea) {
-		controladorPartida.getPartida().agregarRutaPavimentada(
-				hectarea.getFila(), hectarea.getColumna());
+		if (controladorPartida.getPartida().agregarRutaPavimentada(
+				hectarea.getFila(), hectarea.getColumna()))
+			controladorPartida.setMensaje("Construidisimo");
+		else
+			controladorPartida.setMensaje("No se puede construir aca");
 	}
 
 	@Override
