@@ -34,16 +34,16 @@ public class VistaDeHectarea extends JPanel implements Observer {
 			actualGraphics.setColor(Color.BLACK);
 			actualGraphics.drawString(construible, 10, 10);
 		}
+		if (hectarea.redDeAguaConectada()) {
+			actualGraphics.setColor(Color.BLUE);
+			actualGraphics.drawString("a", 10, 30);
+		}
 		hectarea.dibujarse(this);
 
 	}
 
 	public void dibujarHectarea(HectareaLlana hectarea) {
 		this.setBackground(new Color(100, 200, 100));
-		if (hectarea.redDeAguaConectada()) {
-			actualGraphics.setColor(Color.BLUE);
-			actualGraphics.drawString("a", 10, 30);
-		}
 		if (hectarea.redElectricaConectada()) {
 			actualGraphics.setColor(Color.YELLOW);
 			actualGraphics.drawString("e", 20, 30);
