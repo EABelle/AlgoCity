@@ -60,7 +60,7 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 			mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
 			iter.hasNext();){
 			Hectarea hectarea = iter.next();
-			hectarea.conectarRedElectrica();
+			hectarea.setConexionElectrica(true);
 		}
 	}
 
