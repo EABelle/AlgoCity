@@ -5,6 +5,7 @@ import java.util.Iterator;
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.catastrofes.Godzilla;
+import algocity.vistas.VistaDeInfo;
 
 public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable{
 
@@ -24,14 +25,14 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	public int getPotenciaDisponible() {
 		return potenciaDisponible;
 	}
-	
+
 	public boolean restarPotencia(int consumo) {
 		if (potenciaDisponible - consumo < 0)
 			return false;
 		potenciaDisponible -= consumo;
 		return true;
 	}
-	
+
 	@Override
 	public void daniar (float porcentajeDeDanio) {
 		if ((porcentajeDeVida -=  porcentajeDeDanio) < 0) {
@@ -45,19 +46,19 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 			porcentajeDeVida = 100;
 		}
 	}
-	
+
 	@Override
-	public boolean cumpleRequerimientos(boolean conexionAgua, 
+	public boolean cumpleRequerimientos(boolean conexionAgua,
 			boolean conexionRuta, boolean conexionElectrica){
 		return conexionAgua;
-	}	
+	}
 
 	@Override
 	public void procesarAgregado(Mapa mapa, int x, int y) {
 
 		mapa.getRedElectrica().agregarEdificioProveedor(x, y);
 		mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
-		for(Iterator<Hectarea> iter = 
+		for(Iterator<Hectarea> iter =
 			mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
 			iter.hasNext();){
 			Hectarea hectarea = iter.next();
@@ -68,6 +69,11 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	@Override
 	public void teImpacta(Godzilla godzy) {
 		godzy.impactame(this);
+	}
+
+	@Override
+	public void mostrarInfo(VistaDeInfo vistaDeInfo) {
+		vistaDeInfo.mostrarInfo(this);
 	}
 
 }

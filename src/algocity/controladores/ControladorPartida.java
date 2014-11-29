@@ -5,6 +5,7 @@ import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.vistas.VistaDeEstado;
 import algocity.vistas.VistaDeHerramientas;
+import algocity.vistas.VistaDeInfo;
 import algocity.vistas.VistaDeMapa;
 import algocity.vistas.VistaDePartida;
 
@@ -15,6 +16,7 @@ public class ControladorPartida {
 	private VistaDeMapa vistaDeMapa;
 	private VistaDeHerramientas vistaDeEdificios;
 	private VistaDeEstado vistaDeEstado;
+	private VistaDeInfo vistaDeInfo;
 	private Herramienta herramienta;
 	private ControladorHectarea controladorDeHectarea;
 
@@ -25,12 +27,16 @@ public class ControladorPartida {
 
 	public void inicializar() {
 		vistaDeMapa = new VistaDeMapa(partida.getMapa(), this);
-		vistaDePartida.agregarVistaDeMapa(vistaDeMapa);
 		vistaDeEdificios = new VistaDeHerramientas(this);
-		vistaDePartida.agregarVistaDeEdificios(vistaDeEdificios);
 		vistaDeEstado = new VistaDeEstado(this);
-		partida.addObserver(vistaDeEstado);
+		vistaDeInfo = new VistaDeInfo();
+
+		vistaDePartida.agregarVistaDeMapa(vistaDeMapa);
+		vistaDePartida.agregarVistaDeEdificios(vistaDeEdificios);
 		vistaDePartida.agregarVistaDeEstado(vistaDeEstado);
+		vistaDePartida.agregarVistaDeInfo(vistaDeInfo);
+
+		partida.addObserver(vistaDeEstado);
 		partida.hayCambios();
 	}
 
@@ -75,6 +81,10 @@ public class ControladorPartida {
 
 	public void pasarTurno() {
 		this.partida.pasarTurno();
+	}
+
+	public VistaDeInfo getVistaDeInfo() {
+		return this.vistaDeInfo;
 	}
 
 }

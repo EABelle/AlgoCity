@@ -14,8 +14,11 @@ public class VistaDeHerramienta extends JToggleButton {
 
     protected String representacion;
 	protected String estado;
+	protected int costo;
+
 	protected int x;
 	protected int y;
+
 
 	public VistaDeHerramienta() {
 		x = 10;
@@ -44,6 +47,10 @@ public class VistaDeHerramienta extends JToggleButton {
 
 	public String getRepresentacion() {
 		return representacion;
+	}
+
+	public String getInfo() {
+		return "Costo $" + this.costo;
 	}
 
 	public void procesarPartida(Partida partida, Hectarea hectarea) {

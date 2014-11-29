@@ -3,6 +3,7 @@ package algocity.core.construibles;
 import algocity.core.Mapa;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
+import algocity.vistas.VistaDeInfo;
 public abstract class Construible {
 
 	protected int costo;
@@ -11,11 +12,11 @@ public abstract class Construible {
 	public Construible() {
 		porcentajeDeVida = 100;
 	}
-	
+
 	public int getCosto() {
 		return costo;
 	}
-	
+
 	public float getPorcetajeDeVida() {
 		return porcentajeDeVida;
 	}
@@ -36,15 +37,17 @@ public abstract class Construible {
 	}
 
 	public void procesarAgregado(Mapa mapa, int x, int y) {
-	
+
 	}
 
 	public void teImpacta(Terremoto terremoto) {
-		
+
 	}
 
 	public void teImpacta(Godzilla godzy) {
-		
+
 	}
+
+	public void mostrarInfo(VistaDeInfo vistaDeInfo) {}
 
 }

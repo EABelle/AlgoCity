@@ -8,6 +8,7 @@ public class VistaDeComercial extends VistaDeConstruible {
 	public VistaDeComercial() {
 		representacion = "C";
 		estado = "Agregar comercial";
+		costo = new Comercial().getCosto();
 	}
 
 	@Override

@@ -8,6 +8,7 @@ public class VistaDeCentralEolica extends VistaDeConstruible {
 	public VistaDeCentralEolica() {
 		representacion = "Ce";
 		estado = "Agregar Central Eolica";
+		costo = new CentralEolica().getCosto();
 	}
 
 	@Override

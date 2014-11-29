@@ -1,10 +1,11 @@
 package algocity.core.construibles;
 
 import algocity.core.Mapa;
+import algocity.vistas.VistaDeInfo;
 
 
 public class PozoDeAgua extends ConstruibleEnAgua {
-	int costo;
+
 	public PozoDeAgua(){
 		costo = 250;
 	}
@@ -12,5 +13,8 @@ public class PozoDeAgua extends ConstruibleEnAgua {
 	@Override
 	public void procesarAgregado(Mapa mapa, int x, int y) {
 		mapa.getRedDeAgua().agregarEdificioProveedor(x, y);
+
+	public void mostrarInfo(VistaDeInfo vistaDeInfo) {
+		vistaDeInfo.mostrarInfo(this);
 	}
 }
