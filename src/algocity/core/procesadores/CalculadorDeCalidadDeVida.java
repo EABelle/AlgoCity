@@ -11,13 +11,6 @@ import algocity.core.construibles.Residencial;
 
 public abstract class CalculadorDeCalidadDeVida {
 
-/*	int indice;
-	int cantidadResidenciales;
-	int cantidadComerciales;
-	int cantidadIndustriales;
-	private Mapa mapa;
-*/
-
 	private static final int MAXIMA_SALIDA = 20;
 	private static final int INDICE_RESIDENCIA_COMERCIAL = 1;
 	private static final int INDICE_RESIDENCIA_INDUSTRIAL = 1;

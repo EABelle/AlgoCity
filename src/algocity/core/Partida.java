@@ -92,7 +92,7 @@ public class Partida extends Observable {
 
 	public boolean quitarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.redElectricaConectada()){
+		if (hectarea.hayTendidoElectrico()){
 			hectarea.setConexionElectrica(false);
 			mapa.getRedElectrica().eliminarNodo(x, y);
 			return true;

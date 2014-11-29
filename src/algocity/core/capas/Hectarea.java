@@ -11,6 +11,7 @@ public abstract class Hectarea extends Observable {
 
 	Construible construible;
 	boolean conexionElectrica;
+	int centralesCerca;
 	boolean conexionRuta;
 	boolean conexionAgua;
 	int fila;
@@ -21,6 +22,7 @@ public abstract class Hectarea extends Observable {
 		conexionAgua = false;
 		conexionElectrica = false;
 		conexionRuta = false;
+		centralesCerca = 0;
 	}
 
 	public int getFila() {
@@ -50,8 +52,12 @@ public abstract class Hectarea extends Observable {
 		return false;
 	}
 
+	public boolean hayTendidoElectrico(){
+		return conexionElectrica;
+	}
+	
 	public boolean redElectricaConectada() {
-		return conexionElectrica ;
+		return conexionElectrica | (centralesCerca > 0);
 	}
 
 	public boolean setConexionAgua(boolean conexionAgua) {
@@ -66,6 +72,19 @@ public abstract class Hectarea extends Observable {
 	public boolean setConexionElectrica(boolean conexionElectrica) {
 		if (this.conexionElectrica != conexionElectrica) {
 			this.conexionElectrica = conexionElectrica;
+			hayCambio();
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean setCentralesCerca(boolean cerca) {
+		if (cerca) {
+			centralesCerca ++;
+			hayCambio();
+			return true;
+		}else if (centralesCerca > 0) {
+			centralesCerca --;
 			hayCambio();
 			return true;
 		}

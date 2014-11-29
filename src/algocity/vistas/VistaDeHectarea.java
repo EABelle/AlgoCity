@@ -48,6 +48,10 @@ public class VistaDeHectarea extends JPanel implements Observer {
 			actualGraphics.setColor(Color.YELLOW);
 			actualGraphics.drawString("e", 20, 30);
 		}
+		if (hectarea.hayTendidoElectrico()) {
+			actualGraphics.setColor(Color.ORANGE);
+			actualGraphics.drawString("e", 0, 30);
+		}
 		if (hectarea.rutaPavimentadaConectada()) {
 			actualGraphics.setColor(Color.GRAY);
 			actualGraphics.drawString("r", 30, 30);
