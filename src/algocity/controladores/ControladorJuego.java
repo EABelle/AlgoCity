@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import algocity.core.Juego;
 import algocity.core.Partida;
@@ -45,6 +46,17 @@ public class ControladorJuego {
 				ventanaPrincipal.dispose();
 			}
 		});
+
+		JButton botonUsuario= menu.getBotonUsuario();
+		botonUsuario.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			     String usuario = JOptionPane.showInputDialog("Please input a value");
+			     menu.setUsuario(usuario);
+			}
+		});
+
 	}
 
 }

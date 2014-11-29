@@ -4,14 +4,17 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import algocity.controladores.ControladorPartida;
+import algocity.core.Partida;
 
-public class VistaDeEstado extends JPanel {
+public class VistaDeEstado extends JPanel implements Observer {
 
 	private JLabel estado;
 	private JLabel mensaje;
@@ -63,6 +66,13 @@ public class VistaDeEstado extends JPanel {
 
 	public void setTurno(int turno) {
 		this.turno.setText(String.format("Turno: %d", turno));
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		Partida partida = (Partida) o;
+		setPlata(partida.getPlata());
+		setTurno(partida.getTurno());
 	}
 
 }

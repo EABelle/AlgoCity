@@ -13,6 +13,7 @@ public class MenuPanel extends JPanel {
 	private JSpinner inputColumnas;
 	private JButton botonComenzar;
 	private JButton botonUsuario;
+	private JLabel labelUsuario;
 
 	public MenuPanel() {
 
@@ -21,7 +22,11 @@ public class MenuPanel extends JPanel {
 	}
 
 	private void inicializar() {
-		botonComenzar = new JButton("Comenzar partida");
+		inicializarMenuPartida();
+		inicializarMenuUsuario();
+	}
+
+	private void inicializarMenuPartida() {
 		botonComenzar = new JButton("Comenzar partida");
 		JLabel labelFilas = new JLabel("Filas");
 		inputFilas = new JSpinner();
@@ -29,12 +34,22 @@ public class MenuPanel extends JPanel {
 		JLabel labelColumnas = new JLabel("Columnas");
 		inputColumnas = new JSpinner();
 		inputColumnas.setValue(20);
+
 		add(labelFilas, BorderLayout.LINE_END);
 		add(inputFilas, BorderLayout.LINE_END);
 		add(labelColumnas, BorderLayout.LINE_START);
 		add(inputColumnas, BorderLayout.LINE_START);
 		add(botonComenzar, BorderLayout.PAGE_END);
 	}
+
+	private void inicializarMenuUsuario() {
+		botonUsuario = new JButton("Seleccionar Usuario");
+		labelUsuario = new JLabel("No hay usuario seleccionado");
+
+		add(botonUsuario, BorderLayout.PAGE_START);
+		add(labelUsuario, BorderLayout.PAGE_START);
+	}
+
 
 	public JButton getBotonComenzar() {
 		return botonComenzar;
@@ -50,6 +65,10 @@ public class MenuPanel extends JPanel {
 
 	public int getColumnas() {
 		return (int) inputColumnas.getValue();
+	}
+
+	public void setUsuario(String usuario) {
+		this.labelUsuario.setText("Usuario: " + usuario);
 	}
 
 }

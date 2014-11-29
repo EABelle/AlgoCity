@@ -29,9 +29,9 @@ public class ControladorPartida {
 		vistaDeEdificios = new VistaDeHerramientas(this);
 		vistaDePartida.agregarVistaDeEdificios(vistaDeEdificios);
 		vistaDeEstado = new VistaDeEstado(this);
-		actualizarPlata();
-		actualizarTurno();
+		partida.addObserver(vistaDeEstado);
 		vistaDePartida.agregarVistaDeEstado(vistaDeEstado);
+		partida.hayCambios();
 	}
 
 
@@ -51,16 +51,8 @@ public class ControladorPartida {
 			ControladorDeConstruible controlador = (ControladorDeConstruible) herramienta;
 			controladorDeHectarea.setRepresentacion(controlador.getRepresentacion());
 			setMensaje("Construidisimo");
-			actualizarPlata();
 		}
 		return resultado;
-	}
-
-	public void actualizarPlata() {
-		vistaDeEstado.setPlata(partida.getPlata());
-	}
-	private void actualizarTurno() {
-		vistaDeEstado.setTurno(partida.getTurno());
 	}
 
 	public void procesarClick(Hectarea hectarea) {
@@ -83,7 +75,6 @@ public class ControladorPartida {
 
 	public void pasarTurno() {
 		this.partida.pasarTurno();
-		actualizarTurno();
 	}
 
 }

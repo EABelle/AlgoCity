@@ -1,5 +1,6 @@
 package algocity.core;
 
+import java.util.Observable;
 import java.util.Random;
 
 import algocity.core.capas.Hectarea;
@@ -10,7 +11,7 @@ import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
 import algocity.core.procesadores.ProcesadorDeBomberos;
 
-public class Partida {
+public class Partida extends Observable {
 
 	protected Mapa mapa;
 	protected int turno;
@@ -58,8 +59,8 @@ public class Partida {
 			return true;
 		}
 		return false;
-	}*/ 
-	
+	}*/
+
 	public boolean agregarRutaPavimentada(int x, int y) {
 		if (mapa.getRutaPavimentada().getCosto() > plata)
 			return false;
@@ -67,7 +68,7 @@ public class Partida {
 			return false;
 		plata -= mapa.getRutaPavimentada().getCosto();
 		return mapa.getHectarea(x, y).setConexionRuta(true);
-		
+
 	}
 
 	public boolean quitarRutaPavimentada(int x, int y) {
@@ -88,7 +89,7 @@ public class Partida {
 		}
 		return false;
 	}*/
-	
+
 	public boolean agregarRedElectrica(int x, int y) {
 		if (mapa.getRedElectrica().getCosto() > plata)
 			return false;
@@ -96,7 +97,7 @@ public class Partida {
 			return false;
 		plata -= mapa.getRedElectrica().getCosto();
 		return mapa.getHectarea(x, y).setConexionElectrica(true);
-		
+
 	}
 
 
@@ -138,6 +139,7 @@ public class Partida {
 
 		ProcesadorDeBomberos.procesar(mapa);
 		CalculadorDeCalidadDeVida.procesar(mapa) ;
+		hayCambios();
 	}
 
 	public void jugar() {
@@ -159,5 +161,10 @@ public class Partida {
 
 	public int getTurno() {
 		return turno;
+	}
+
+	public void hayCambios() {
+		setChanged();
+		notifyObservers();
 	}
 }
