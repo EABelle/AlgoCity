@@ -2,26 +2,51 @@ package algocity.vistas;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import algocity.controladores.ControladorPartida;
 
 public class VistaDeEstado extends JPanel {
 
 	private JLabel estado;
 	private JLabel mensaje;
 	private JLabel plata;
+	private ControladorPartida controladorPartida;
+	private JLabel turno;
+	private JButton pasarTurno;
 
 
-	public VistaDeEstado() {
-		setLayout(new GridLayout(1, 3));
+	public VistaDeEstado(ControladorPartida controladorPartida) {
+		this.controladorPartida = controladorPartida;
+		setLayout(new GridLayout(2, 3));
+		inicializarse();
+	}
+
+	private void inicializarse() {
 		estado = new JLabel();
 		mensaje = new JLabel();
 		mensaje.setForeground(Color.darkGray);
 		plata = new JLabel();
+		turno = new JLabel();
+		JLabel menu = new JLabel("Menu");
+		pasarTurno = new JButton("Pasar Turno");
+		pasarTurno.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controladorPartida.pasarTurno();
+			}
+		});
 		add(estado);
 		add(mensaje);
 		add(plata);
+		add(menu);
+		add(turno);
+		add(pasarTurno);
 	}
 
 	public void setEstado(String estado) {
@@ -34,6 +59,10 @@ public class VistaDeEstado extends JPanel {
 
 	public void setPlata(int plata) {
 		this.plata.setText(String.format("Plata: %d", plata));
+	}
+
+	public void setTurno(int turno) {
+		this.turno.setText(String.format("Turno: %d", turno));
 	}
 
 }
