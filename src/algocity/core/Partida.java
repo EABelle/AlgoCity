@@ -64,6 +64,7 @@ public class Partida {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.rutaPavimentadaConectada()){
 			hectarea.desconectarRutaPavimentada();
+			mapa.getRutaPavimentada().eliminarNodo(x, y);
 			return true;
 		}
 		return false;
@@ -82,6 +83,7 @@ public class Partida {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.redElectricaConectada()){
 			hectarea.desconectarRedElectrica();
+			mapa.getRedElectrica().eliminarNodo(x, y);
 			return true;
 		}
 		return false;
@@ -100,12 +102,11 @@ public class Partida {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.redDeAguaConectada()){
 			hectarea.desconectarRedDeAgua();
+			mapa.getRedDeAgua().eliminarNodo(x, y);
 			return true;
 		}
 		return false;
 	}
-
-
 
 	public void pasarTurno() {
 		turno ++;
