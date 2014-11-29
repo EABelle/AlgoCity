@@ -63,7 +63,7 @@ public class Partida {
 	public boolean quitarRutaPavimentada(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.rutaPavimentadaConectada()){
-			hectarea.desconectarRutaPavimentada();
+			hectarea.setConexionRuta(false);
 			mapa.getRutaPavimentada().eliminarNodo(x, y);
 			return true;
 		}
@@ -82,7 +82,7 @@ public class Partida {
 	public boolean quitarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.redElectricaConectada()){
-			hectarea.desconectarRedElectrica();
+			hectarea.setConexionElectrica(false);
 			mapa.getRedElectrica().eliminarNodo(x, y);
 			return true;
 		}
@@ -101,7 +101,7 @@ public class Partida {
 	public boolean quitarRedDeAgua(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.redDeAguaConectada()){
-			hectarea.desconectarRedDeAgua();
+			hectarea.setConexionAgua(false);
 			mapa.getRedDeAgua().eliminarNodo(x, y);
 			return true;
 		}
