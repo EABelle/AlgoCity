@@ -17,4 +17,9 @@ public class ControladorDeCanieria extends Herramienta {
 				hectarea.getFila(), hectarea.getColumna());
 	}
 
+	@Override
+	public String getEstado() {
+		return "Construir cañeria";
+	}
+
 }

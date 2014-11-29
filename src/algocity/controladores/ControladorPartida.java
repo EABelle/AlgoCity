@@ -64,6 +64,7 @@ public class ControladorPartida {
 	}
 
 	public void setHerramienta(Herramienta herramienta) {
+		setEstado(herramienta.getEstado());
 		this.herramienta = herramienta;
 	}
 

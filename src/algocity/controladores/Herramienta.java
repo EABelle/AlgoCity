@@ -24,4 +24,6 @@ public abstract class Herramienta extends MouseAdapter {
 
 	public abstract void procesarHectarea(Hectarea hectarea);
 
+	public abstract String getEstado();
+
 }

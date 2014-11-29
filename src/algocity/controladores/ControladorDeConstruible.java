@@ -1,7 +1,5 @@
 package algocity.controladores;
 
-import java.awt.event.MouseEvent;
-
 import algocity.core.capas.Hectarea;
 import algocity.vistas.construibles.VistaDeConstruible;
 
@@ -13,10 +11,6 @@ public class ControladorDeConstruible extends Herramienta {
 		super(vistaHerramienta, controladorPartida);
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-	}
-
 	public VistaDeConstruible getVistaConstruible() {
 		return (VistaDeConstruible) vistaHerramienta;
 	}
@@ -24,13 +18,17 @@ public class ControladorDeConstruible extends Herramienta {
 	@Override
 	public void procesarHectarea(Hectarea hectarea) {
 		VistaDeConstruible vistaDeConstruible = getVistaConstruible();
-		if (controladorPartida.agregarConstruible(vistaDeConstruible.getConstruible(),
-				hectarea.getFila(), hectarea.getColumna()))
-			this.controladorPartida.setEstado(vistaDeConstruible.getEstado());
+		controladorPartida.agregarConstruible(vistaDeConstruible.getConstruible(),
+				hectarea.getFila(), hectarea.getColumna());
 	}
 
 	public String getRepresentacion() {
 		return getVistaConstruible().getRepresentacion();
+	}
+
+	@Override
+	public String getEstado() {
+		return getVistaConstruible().getEstado();
 	}
 
 }
