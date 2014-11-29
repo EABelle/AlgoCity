@@ -59,16 +59,19 @@ public class Partida extends Observable {
 			return true;
 		}
 		return false;
-	}*/
-
+	}*/ 
+	
 	public boolean agregarRutaPavimentada(int x, int y) {
 		if (mapa.getRutaPavimentada().getCosto() > plata)
 			return false;
 		if (!mapa.getRutaPavimentada().agregarNodo(x, y))
 			return false;
+		if (mapa.getHectarea(x, y).setConexionRuta(true)){
+			mapa.getRutaPavimentada().eliminarNodo(x, y);
+		}
 		plata -= mapa.getRutaPavimentada().getCosto();
-		return mapa.getHectarea(x, y).setConexionRuta(true);
-
+		return true;
+		
 	}
 
 	public boolean quitarRutaPavimentada(int x, int y) {
@@ -81,23 +84,18 @@ public class Partida extends Observable {
 		return false;
 	}
 
-/*	public boolean agregarRedElectrica(int x, int y) {
-		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.setConexionElectrica(true)) {
-			mapa.getRedElectrica().agregarNodo(x, y);
-			return true;
-		}
-		return false;
-	}*/
-
 	public boolean agregarRedElectrica(int x, int y) {
 		if (mapa.getRedElectrica().getCosto() > plata)
 			return false;
 		if (!mapa.getRedElectrica().agregarNodo(x, y))
 			return false;
+		if (!mapa.getHectarea(x, y).setConexionElectrica(true)){
+			mapa.getRedElectrica().eliminarNodo(x, y);
+			return false;
+		}
 		plata -= mapa.getRedElectrica().getCosto();
-		return mapa.getHectarea(x, y).setConexionElectrica(true);
-
+		return true;
+		
 	}
 
 
@@ -112,12 +110,13 @@ public class Partida extends Observable {
 	}
 
 	public boolean agregarRedDeAgua(int x, int y) {
-		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.setConexionAgua(true)) {
-			mapa.getRedDeAgua().agregarNodo(x, y);
-			return true;
-		}
-		return false;
+		if (mapa.getRedDeAgua().getCosto() > plata)
+			return false;
+		if (!mapa.getRedDeAgua().agregarNodo(x, y))
+			return false;
+		plata -= mapa.getRedDeAgua().getCosto();
+		return mapa.getHectarea(x, y).setConexionAgua(true);
+		
 	}
 
 	public boolean quitarRedDeAgua(int x, int y) {

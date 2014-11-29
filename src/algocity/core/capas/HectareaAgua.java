@@ -28,6 +28,16 @@ public class HectareaAgua extends Hectarea {
 		return false;
 
 	}
+	
+	@Override
+	public boolean setConexionElectrica(boolean conexionElectrica) {
+		return false;
+	}
+	
+	@Override
+	public boolean setConexionRuta(boolean conexionRuta) {
+		return false;
+	}
 
 	@Override
 	public void dibujarse(VistaDeHectarea vistaDeHectarea) {
