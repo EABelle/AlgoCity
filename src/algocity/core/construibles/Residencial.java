@@ -51,5 +51,26 @@ public class Residencial extends Edificio {
 	public void teImpacta(Godzilla godzy) {
 		godzy.impactame(this);
 	}
+
+	public int trabajadores() {
+		int familias = habitantes % 4;
+		int otros = habitantes - (familias * 4);
+		if (otros > 0)
+			return familias + 1;
+		return familias;
+	}
+
+	public float danio() {
+		return 100 - porcentajeDeVida;
+	}
+
+	public void modificarCantidadDeHabitantes(int modificacion) {
+		if (modificacion >= 0){
+			agregarHabitantes(modificacion);
+		}else{
+			quitarHabitantes(modificacion);
+		}
+		
+	}
 	
 }
