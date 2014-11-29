@@ -5,6 +5,10 @@ import algocity.vistas.VistaDeInfo;
 
 public class EstacionDeBombero extends ConstruibleEnLlano {
 
+	public EstacionDeBombero() {
+		costo = 1500;
+	}
+
 	public void reparar (Arreglable arreglable) {
 		arreglable.teArreglanLosBomberos(this);
 	}

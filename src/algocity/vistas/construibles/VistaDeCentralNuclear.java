@@ -8,6 +8,7 @@ public class VistaDeCentralNuclear extends VistaDeConstruible {
 	public VistaDeCentralNuclear() {
 		representacion = "Cn";
 		estado = "Agregar Central Nuclear";
+		costo = new CentralNuclear().getCosto();
 	}
 
 	@Override

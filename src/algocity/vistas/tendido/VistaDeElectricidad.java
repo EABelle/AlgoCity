@@ -9,6 +9,7 @@ public class VistaDeElectricidad extends VistaDeHerramienta {
 	public VistaDeElectricidad() {
 		representacion = "e";
 		estado = "Construir red electrica";
+		costo = 5;
 	}
 
 	@Override

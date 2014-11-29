@@ -9,6 +9,7 @@ public class VistaDeRuta extends VistaDeHerramienta {
 	public VistaDeRuta() {
 		representacion = "r";
 		estado = "Construir ruta";
+		costo = 10;
 	}
 
 	@Override

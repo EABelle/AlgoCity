@@ -9,6 +9,7 @@ public class VistaDeCanieria extends VistaDeHerramienta {
 	public VistaDeCanieria() {
 		representacion = "c";
 		estado = "Construir cañeria";
+		costo = 5;
 	}
 
 	@Override

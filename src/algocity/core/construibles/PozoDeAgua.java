@@ -4,7 +4,7 @@ import algocity.vistas.VistaDeInfo;
 
 
 public class PozoDeAgua extends ConstruibleEnAgua {
-	int costo;
+
 	public PozoDeAgua(){
 		costo = 250;
 	}

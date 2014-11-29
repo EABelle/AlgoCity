@@ -8,6 +8,7 @@ public class VistaDeIndustrial extends VistaDeConstruible {
 	public VistaDeIndustrial() {
 		representacion = "I";
 		estado = "Agregar industrial";
+		costo = new Industrial().getCosto();
 	}
 
 	@Override

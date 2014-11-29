@@ -22,6 +22,12 @@ public abstract class Herramienta extends MouseAdapter {
 		controladorPartida.setHerramienta(this);
 	}
 
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		controladorPartida.getVistaDeInfo().setInfo(
+				vistaHerramienta.getInfo());
+	}
+
 	public abstract void procesarHectarea(Hectarea hectarea);
 
 	public abstract String getEstado();
