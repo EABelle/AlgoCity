@@ -2,16 +2,14 @@ package algocity.core.procesadores;
 
 import java.util.Iterator;
 
-import algocity.core.Configuracion;
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RutaPavimentada;
-import algocity.core.construibles.Comercial;
 import algocity.core.construibles.Edificio;
 import algocity.core.construibles.Industrial;
 import algocity.core.construibles.Residencial;
 
-public class CalculadorDeCalidadDeVida {
+public abstract class CalculadorDeCalidadDeVida {
 
 /*	int indice;
 	int cantidadResidenciales;
@@ -21,14 +19,13 @@ public class CalculadorDeCalidadDeVida {
 */
 
 	private static final int MAXIMA_SALIDA = 20;
-	private static final int INDICE_RESIDENCIA_COMERCIAL = 0;
-	private static final int INDICE_RESIDENCIA_INDUSTRIAL = 0;
+	private static final int INDICE_RESIDENCIA_COMERCIAL = 1;
+	private static final int INDICE_RESIDENCIA_INDUSTRIAL = 1;
 
-	public CalculadorDeCalidadDeVida(Mapa mapa){
+	public static void procesar (Mapa mapa){
 		int indice = 0;
 		Residencial residencial;
-		Comercial comercial;
-		Industrial Industrial;
+		Industrial industrial;
 		Hectarea hectareaResidencial;
 		Hectarea hectareaComercial;
 		Hectarea hectareaIndustrial;	
@@ -55,27 +52,31 @@ public class CalculadorDeCalidadDeVida {
 				while (industriales.hasNext()){
 					hectareaIndustrial = industriales.next();
 					if (hayConexion(ruta, hectareaResidencial, hectareaIndustrial)){
-						indice += INDICE_RESIDENCIA_INDUSTRIAL;
-						break;	
+						industrial = (Industrial)hectareaIndustrial.getConstruible();
+						if (industrial.puestosDeTrabajoDisponibles() >= residencial.trabajadores()){
+							industrial.agregarTrabajadores(residencial.trabajadores());
+							indice += INDICE_RESIDENCIA_INDUSTRIAL;
+							break;
+						}
 					}
-				
-				
 				}
-				
+				int habitantesNuevos = (int)((1 - residencial.danio()/100
+						- indice/2) * (residencial.disponibilidad()/5));
+				residencial.modificarCantidadDeHabitantes(habitantesNuevos);
 			}else{
 				residencial.quitarHabitantes(MAXIMA_SALIDA);
 			}
 		}
 	}
 
-	private boolean funcionaElEdificio(Hectarea hectarea){
+	private static boolean funcionaElEdificio(Hectarea hectarea){
 		Edificio edificio = (Edificio)hectarea.getConstruible();
 		return edificio.cumpleRequerimientos(hectarea.redDeAguaConectada(),
 				hectarea.rutaPavimentadaConectada(),
 				hectarea.redElectricaConectada());
 	}
 	
-	private boolean hayConexion(RutaPavimentada ruta, Hectarea hectarea1,
+	private static boolean hayConexion(RutaPavimentada ruta, Hectarea hectarea1,
 						Hectarea hectarea2) {
 		return ruta.existeConexionBFS(hectarea1.getColumna(), hectarea1.getFila()
 				,hectarea2.getColumna(), hectarea2.getFila());

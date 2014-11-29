@@ -115,21 +115,9 @@ public class Partida {
 			plata += debitador.getPago();
 		}
 
-		ProcesadorDeBomberos procesadorBomberos = new ProcesadorDeBomberos(mapa);
-		CalculadorDeCalidadDeVida calculador = new CalculadorDeCalidadDeVida(mapa);
+		ProcesadorDeBomberos.procesar(mapa);
+		CalculadorDeCalidadDeVida.procesar(mapa) ;
 	}
-
-	/*public void jugando() {
-		godzy = new Godzilla(Configuracion.RecorridoInicial);
-		terremoto = new Terremoto(mapa);
-		int turno = 0;
-		while(turno < Configuracion.TurnoMaximo){
-			if (generarCatastrofe()){
-
-			}
-			pasarTurno();
-		}
-	}*/
 
 	public void jugar() {
 		int turno = 0;
