@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import algocity.controladores.ControladorDeCanieria;
 import algocity.controladores.ControladorDeElectricidad;
 import algocity.controladores.ControladorDeRuta;
-import algocity.controladores.ControladorEdificios;
+import algocity.controladores.ControladorDeConstruible;
 import algocity.controladores.ControladorPartida;
 import algocity.vistas.construibles.VistaDeBomberos;
 import algocity.vistas.construibles.VistaDeCentralEolica;
@@ -66,7 +66,7 @@ public class VistaDeHerramientas extends JPanel {
 
 	private void agregarOpcion(VistaDeConstruible vistaConstruible) {
 		vistaConstruible.agregarControladorDeMouse(
-				new ControladorEdificios(vistaConstruible, controladorPartida));
+				new ControladorDeConstruible(vistaConstruible, controladorPartida));
 		add(vistaConstruible);
 	}
 

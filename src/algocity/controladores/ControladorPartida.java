@@ -4,11 +4,9 @@ import algocity.core.Partida;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.vistas.VistaDeEstado;
-import algocity.vistas.VistaDeHerramienta;
 import algocity.vistas.VistaDeHerramientas;
 import algocity.vistas.VistaDeMapa;
 import algocity.vistas.VistaDePartida;
-import algocity.vistas.construibles.VistaDeConstruible;
 
 public class ControladorPartida {
 
@@ -17,8 +15,8 @@ public class ControladorPartida {
 	private VistaDeMapa vistaDeMapa;
 	private VistaDeHerramientas vistaDeEdificios;
 	private VistaDeEstado vistaDeEstado;
-	private ControladorEdificios controladorEdificios;
-	private VistaDeHerramienta vistaDeHerramienta;
+	private Herramienta herramienta;
+	private ControladorHectarea controladorDeHectarea;
 
 	public ControladorPartida(Partida partida, VistaDePartida vista) {
 		this.partida = partida;
@@ -43,37 +41,38 @@ public class ControladorPartida {
 		vistaDeEstado.setMensaje(text);
 	}
 
-	public void setControladorEdificios(
-			ControladorEdificios controladorEdificios) {
-		this.controladorEdificios = controladorEdificios;
-	}
-
-	public Construible getConstruible() {
-		if (this.controladorEdificios != null) {
-			return this.controladorEdificios.getConstruible();
-		}
-		return null;
-	}
-
 	public boolean agregarConstruible(Construible cons, int x, int y) {
-		return this.partida.agregarConstruible(cons, x, y);
-	}
-
-	public VistaDeConstruible getVistaConstruible() {
-		return this.controladorEdificios.getVistaConstruible();
+		boolean resultado = this.partida.agregarConstruible(cons, x, y);
+		if (!resultado) {
+			setMensaje("No se puede construir aca");
+		} else {
+			ControladorDeConstruible controlador = (ControladorDeConstruible) herramienta;
+			controladorDeHectarea.setRepresentacion(controlador.getRepresentacion());
+			setMensaje("Construidisimo");
+			actualizarPlata();
+		}
+		return resultado;
 	}
 
 	public void actualizarPlata() {
 		vistaDeEstado.setPlata(partida.getPlata());
 	}
 
-	public void setVistaDeHerramienta(VistaDeHerramienta vistaDeHerramienta) {
-		this.vistaDeHerramienta = vistaDeHerramienta;
+	public void procesarClick(Hectarea hectarea) {
+		if (this.herramienta != null)
+			this.herramienta.procesarHectarea(hectarea);
 	}
 
-	public void procesarClick(Hectarea hectarea) {
-		if (this.vistaDeHerramienta != null)
-			this.vistaDeHerramienta.procesarPartida(partida, hectarea);
+	public void setHerramienta(Herramienta herramienta) {
+		this.herramienta = herramienta;
+	}
+
+	public void setControladorDeHectarea(ControladorHectarea controladorHectarea) {
+		this.controladorDeHectarea = controladorHectarea;
+	}
+
+	public Partida getPartida() {
+		return partida;
 	}
 
 }

@@ -1,24 +1,19 @@
 package algocity.controladores;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
+import algocity.core.capas.Hectarea;
 import algocity.vistas.tendido.VistaDeRuta;
 
-public class ControladorDeRuta extends MouseAdapter {
+public class ControladorDeRuta extends Herramienta {
 
-	private VistaDeRuta vistaDeRuta;
-	private ControladorPartida controladorPartida;
-
-	public ControladorDeRuta(VistaDeRuta vistaDeRuta,
+	public ControladorDeRuta(VistaDeRuta vistaHerramienta,
 			ControladorPartida controladorPartida) {
-		this.vistaDeRuta = vistaDeRuta;
-		this.controladorPartida = controladorPartida;
+		super(vistaHerramienta, controladorPartida);
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		controladorPartida.setVistaDeHerramienta(vistaDeRuta);
+	public void procesarHectarea(Hectarea hectarea) {
+		controladorPartida.getPartida().agregarRutaPavimentada(
+				hectarea.getFila(), hectarea.getColumna());
 	}
 
 }

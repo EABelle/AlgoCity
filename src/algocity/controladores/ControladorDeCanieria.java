@@ -1,23 +1,20 @@
 package algocity.controladores;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
+import algocity.core.capas.Hectarea;
 import algocity.vistas.tendido.VistaDeCanieria;
 
-public class ControladorDeCanieria extends MouseAdapter {
 
-	private VistaDeCanieria vistaDeElectricidad;
-	private ControladorPartida controladorPartida;
+public class ControladorDeCanieria extends Herramienta {
 
-	public ControladorDeCanieria(VistaDeCanieria vistaDeElectricidad,
+	public ControladorDeCanieria(VistaDeCanieria vistaHerramienta,
 			ControladorPartida controladorPartida) {
-		this.vistaDeElectricidad = vistaDeElectricidad;
-		this.controladorPartida = controladorPartida;
+		super(vistaHerramienta, controladorPartida);
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		controladorPartida.setVistaDeHerramienta(vistaDeElectricidad);
+	public void procesarHectarea(Hectarea hectarea) {
+		controladorPartida.getPartida().agregarRedDeAgua(
+				hectarea.getFila(), hectarea.getColumna());
 	}
+
 }
