@@ -28,10 +28,12 @@ public class ControladorPartida {
 		vistaDePartida.agregarVistaDeMapa(vistaDeMapa);
 		vistaDeEdificios = new VistaDeHerramientas(this);
 		vistaDePartida.agregarVistaDeEdificios(vistaDeEdificios);
-		vistaDeEstado = new VistaDeEstado();
+		vistaDeEstado = new VistaDeEstado(this);
 		actualizarPlata();
+		actualizarTurno();
 		vistaDePartida.agregarVistaDeEstado(vistaDeEstado);
 	}
+
 
 	public void setEstado(String text) {
 		vistaDeEstado.setEstado(text);
@@ -57,6 +59,9 @@ public class ControladorPartida {
 	public void actualizarPlata() {
 		vistaDeEstado.setPlata(partida.getPlata());
 	}
+	private void actualizarTurno() {
+		vistaDeEstado.setTurno(partida.getTurno());
+	}
 
 	public void procesarClick(Hectarea hectarea) {
 		if (this.herramienta != null)
@@ -74,6 +79,11 @@ public class ControladorPartida {
 
 	public Partida getPartida() {
 		return partida;
+	}
+
+	public void pasarTurno() {
+		this.partida.pasarTurno();
+		actualizarTurno();
 	}
 
 }

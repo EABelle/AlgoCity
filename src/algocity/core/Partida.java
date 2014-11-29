@@ -135,4 +135,8 @@ public class Partida {
 		Random rn = new Random();
 		return (rn.nextBoolean() & rn.nextBoolean() & rn.nextBoolean());
 	}
+
+	public int getTurno() {
+		return turno;
+	}
 }

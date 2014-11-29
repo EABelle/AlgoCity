@@ -27,18 +27,19 @@ public class VistaDeHectarea extends JPanel implements Observer {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setFont(new Font("helvetica", Font.BOLD, 12));
 		actualGraphics = g;
+
+		g.setFont(new Font("helvetica", Font.BOLD, 12));
+		if (this.construible != null) {
+			actualGraphics.setColor(Color.BLACK);
+			actualGraphics.drawString(construible, 10, 10);
+		}
 		hectarea.dibujarse(this);
 
 	}
 
 	public void dibujarHectarea(HectareaLlana hectarea) {
 		this.setBackground(new Color(100, 200, 100));
-		if (this.construible != null) {
-			actualGraphics.setColor(Color.BLACK);
-			actualGraphics.drawString(construible, 10, 10);
-		}
 		if (hectarea.redDeAguaConectada()) {
 			actualGraphics.setColor(Color.BLUE);
 			actualGraphics.drawString("a", 10, 30);
