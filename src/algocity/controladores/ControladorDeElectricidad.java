@@ -24,5 +24,14 @@ public class ControladorDeElectricidad extends Herramienta {
 		return "Construir electricidad";
 	}
 
+	@Override
+	public void procesarBorradoHectarea(Hectarea hectarea) {
+		if (controladorPartida.getPartida().quitarRedElectrica(
+				hectarea.getFila(), hectarea.getColumna()))
+			controladorPartida.setMensaje("Borradisima");
+		else
+			controladorPartida.setMensaje("No se puede borrar red eléctrica aca");
+	}
+
 
 }

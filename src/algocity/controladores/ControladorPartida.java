@@ -90,6 +90,11 @@ public class ControladorPartida {
 			this.herramienta.procesarHectarea(hectarea);
 	}
 
+	public void procesarClickDerecho(Hectarea hectarea) {
+		if (this.herramienta != null)
+			this.herramienta.procesarBorradoHectarea(hectarea);
+	}
+
 	public void setHerramienta(Herramienta herramienta) {
 		setEstado(herramienta.getEstado());
 		this.herramienta = herramienta;
@@ -110,5 +115,6 @@ public class ControladorPartida {
 	public VistaDeInfo getVistaDeInfo() {
 		return this.vistaDeInfo;
 	}
+
 
 }

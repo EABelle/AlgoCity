@@ -55,10 +55,6 @@ public class VistaDeMapa extends JPanel implements Observer {
 
 		int finX = startX + pasoX;
 		int finY = startY + pasoY;
-		System.out.println("Start " + startX + " " + startY);
-		System.out.println("Fin " + finX + " " + finY);
-		System.out.println("Filas y columnas " + filas + " " + columnas);
-
 		for (int x = startX; x < finX; x++) {
 			for (int y = startY; y < finY; y++) {
 				add(hectareas[x][y]);

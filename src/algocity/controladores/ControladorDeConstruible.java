@@ -5,7 +5,6 @@ import algocity.vistas.construibles.VistaDeConstruible;
 
 public class ControladorDeConstruible extends Herramienta {
 
-
 	public ControladorDeConstruible(VistaDeConstruible vistaHerramienta,
 			ControladorPartida controladorPartida) {
 		super(vistaHerramienta, controladorPartida);
@@ -29,6 +28,15 @@ public class ControladorDeConstruible extends Herramienta {
 	@Override
 	public String getEstado() {
 		return getVistaConstruible().getEstado();
+	}
+
+	@Override
+	public void procesarBorradoHectarea(Hectarea hectarea) {
+		if (controladorPartida.getPartida().quitarConstruible(
+				hectarea.getFila(), hectarea.getColumna()))
+			controladorPartida.setMensaje("Borradisimo");
+		else
+			controladorPartida.setMensaje("No se puede borrar!");
 	}
 
 }

@@ -3,6 +3,8 @@ package algocity.controladores;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.SwingUtilities;
+
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.vistas.VistaDeHectarea;
@@ -25,7 +27,11 @@ public class ControladorHectarea extends MouseAdapter {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		controladorPartida.setControladorDeHectarea(this);
-		controladorPartida.procesarClick(hectarea);
+		if (SwingUtilities.isRightMouseButton(e)) {
+			controladorPartida.procesarClickDerecho(hectarea);
+		} else if (SwingUtilities.isLeftMouseButton(e)) {
+			controladorPartida.procesarClick(hectarea);
+		}
 	}
 
 	@Override

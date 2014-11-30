@@ -16,12 +16,21 @@ public class ControladorDeRuta extends Herramienta {
 				hectarea.getFila(), hectarea.getColumna()))
 			controladorPartida.setMensaje("Construidisimo");
 		else
-			controladorPartida.setMensaje("No se puede construir aca");
+			controladorPartida.setMensaje("No se puede construir ruta aca");
 	}
 
 	@Override
 	public String getEstado() {
 		return "Construir ruta";
+	}
+
+	@Override
+	public void procesarBorradoHectarea(Hectarea hectarea) {
+		if (controladorPartida.getPartida().quitarRutaPavimentada(
+				hectarea.getFila(), hectarea.getColumna()))
+			controladorPartida.setMensaje("Borradisima");
+		else
+			controladorPartida.setMensaje("No se puede borrar ruta aca");
 	}
 
 

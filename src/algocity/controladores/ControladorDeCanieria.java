@@ -25,4 +25,13 @@ public class ControladorDeCanieria extends Herramienta {
 		return "Construir cañeria";
 	}
 
+	@Override
+	public void procesarBorradoHectarea(Hectarea hectarea) {
+		if (controladorPartida.getPartida().quitarRedDeAgua(
+				hectarea.getFila(), hectarea.getColumna()))
+			controladorPartida.setMensaje("Borrada");
+		else
+			controladorPartida.setMensaje("No se puede borrar red de agua aca");
+	}
+
 }
