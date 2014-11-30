@@ -146,25 +146,29 @@ public class Partida extends Observable {
 			return false;
 		if (!mapa.getRedDeAgua().agregarNodo(x, y))
 			return false;
+		if (!mapa.getHectarea(x, y).setConexionAgua(true)){
+			mapa.getRedDeAgua().eliminarNodo(x, y);
+			return false;
+		}
 		cobrar(mapa.getRedDeAgua().getCosto());
 		mapa.getHectarea(x, y).procesarConexion(mapa);
-		return mapa.getHectarea(x, y).setConexionAgua(true);
+		return true;
 
-	}
-
-	private void cobrar(int costo) {
-		plata -= costo;
-		hayCambios();
 	}
 
 	public boolean quitarRedDeAgua(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.redDeAguaConectada()){
-			hectarea.setConexionAgua(false);
+		if (hectarea.setConexionAgua(false)) {
 			mapa.getRedDeAgua().eliminarNodo(x, y);
+			hectarea.procesarDesconexion(mapa);
 			return true;
 		}
 		return false;
+	}
+	
+	private void cobrar(int costo) {
+		plata -= costo;
+		hayCambios();
 	}
 
 	public void pasarTurno() {
