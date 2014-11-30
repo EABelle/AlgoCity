@@ -31,6 +31,17 @@ abstract public class Tendido {
 		this.edificiosProveedores.add ( new Coordenada(coordenadaX,coordenadaY) );
 	}
 	
+	public void eliminarEdificioProveedor(int x, int y) {
+		
+		Iterator<Coordenada> iter = this.edificiosProveedores.iterator();
+		while (iter.hasNext()){
+			Coordenada proveedorActual = iter.next();
+			if ((proveedorActual.getX() == x) && (proveedorActual.getY() == y)){
+				this.edificiosProveedores.remove(proveedorActual);
+			}
+		}
+		
+	}
 	public boolean nodoExiste (int coordenadaX , int coordenadaY){
 		if (this.getNodo(coordenadaX,coordenadaY) == null){
 			return false;
