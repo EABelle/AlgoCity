@@ -24,15 +24,12 @@ public class ProcesoMusicaPartida extends Thread {
 	
 	public void run(){
 		try {
-			Clip sonido = AudioSystem.getClip();
-			File tema = new File("files\\AUDIO01.wav");
-			sonido.open(AudioSystem.getAudioInputStream(tema));
-			long duracion = sonido.getMicrosecondLength()/1000;
+			
 			
 			Timer timer = new Timer(true); // true = el timer corre como Demonio (DAEMON).
 			TareaMusicaPartida reproductor = new TareaMusicaPartida();
-			reproductor.setSonido(sonido);
-			timer.scheduleAtFixedRate(reproductor, 0, 5000);
+			long duracion = reproductor.getDuracion();
+			timer.scheduleAtFixedRate(reproductor, 0, duracion + 100);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -1,8 +1,11 @@
 package algocity.core;
 
+import java.io.File;
 import java.util.TimerTask;
 
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 public class TareaMusicaPartida extends TimerTask {
 
 	
@@ -10,23 +13,31 @@ public class TareaMusicaPartida extends TimerTask {
 	
 	@Override
 	public void run() {
-		if (sonido != null){
+		try {
+			sonido = AudioSystem.getClip();
+			File tema = new File("files\\AUDIO01.wav");
+			sonido.open(AudioSystem.getAudioInputStream(tema));
+			long duracion = getDuracion();
+			
 			sonido.start();
-			long duracion = sonido.getMicrosecondLength()/1000;
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			sonido.stop();
 			
+			Thread.sleep(duracion);
+			
+			sonido.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-			
+					
 	}
-	
-	public void setSonido(Clip sonido){
-		this.sonido = sonido;
+
+	public long getDuracion() {
+		try{
+			return sonido.getMicrosecondLength()/1000;
+		} catch (Exception e){
+			return 0;
+		}
 	}
 	
 	

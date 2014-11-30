@@ -38,11 +38,16 @@ public class Partida extends Observable {
 	public void inicializar() {
 		turno = 0;
 		plata = Configuracion.PlataInicial;
+		/*--------------------------------------------------
+		 * CODIGO QUE INICIALIZA LA MUSICA
 		
 		ProcesoMusicaPartida musica = new ProcesoMusicaPartida("hilo musica de la partida");
 		musica.setMensaje("AGUANTE SINESTESIA");
 		musica.start();
-		
+		/*
+		 * ---------------------------------------------------
+		 * TIMER DEL PASADOR DE TURNOS (MAL HECHO PERO ME SIRVE COMO NOTA)
+		 */
 		/*
 		System.out.println("Comienza el juego");
 
