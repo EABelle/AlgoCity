@@ -57,4 +57,8 @@ public abstract class Construible {
 	public void procesarConexion(Mapa mapa, int x, int y) {
 		
 	}
+
+	public void procesarDesconexion(Mapa mapa, int fila, int columna) {
+				
+	}
 }

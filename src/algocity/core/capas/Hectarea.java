@@ -48,6 +48,7 @@ public abstract class Hectarea extends Observable {
 	public boolean borrarConstruible(){
 		if (construible != null){
 			construible = null;
+			hayCambio();
 			return true;
 		}
 		return false;
@@ -135,8 +136,17 @@ public abstract class Hectarea extends Observable {
 	}
 
 	public void procesarConexion(Mapa mapa) {
-		if (construible != null)
+		if (construible != null) {
 			construible.procesarConexion(mapa, fila, columna);
+			hayCambio();
+		}
+	}
+
+	public void procesarDesconexion(Mapa mapa) {
+		if (construible != null) {
+			construible.procesarDesconexion(mapa, fila, columna);
+			hayCambio();
+		}
 	}
 
 }
