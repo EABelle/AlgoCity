@@ -1,5 +1,6 @@
 package algocity.vistas;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -22,15 +23,18 @@ public class VistaDeEstado extends JPanel implements Observer {
 	private ControladorPartida controladorPartida;
 	private JLabel turno;
 	private JButton pasarTurno;
+	private JPanel miniMapa;
 
 
 	public VistaDeEstado(ControladorPartida controladorPartida) {
 		this.controladorPartida = controladorPartida;
-		setLayout(new GridLayout(2, 3));
-		inicializarse();
+		inicializarPanelEstado();
+//		inicializarMiniMapa();
 	}
 
-	private void inicializarse() {
+	private void inicializarPanelEstado() {
+		setLayout(new GridLayout(2, 3));
+
 		estado = new JLabel();
 		mensaje = new JLabel();
 		mensaje.setForeground(Color.darkGray);
@@ -50,6 +54,14 @@ public class VistaDeEstado extends JPanel implements Observer {
 		add(menu);
 		add(turno);
 		add(pasarTurno);
+
+	}
+
+	private void inicializarMiniMapa() {
+		miniMapa = new JPanel();
+		miniMapa.setBackground(Color.cyan);
+		miniMapa.setSize(100, 100);
+		add(miniMapa, BorderLayout.EAST);
 	}
 
 	public void setEstado(String estado) {

@@ -1,5 +1,9 @@
 package algocity.controladores;
 
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
+
 import algocity.core.Partida;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
@@ -19,6 +23,7 @@ public class ControladorPartida {
 	private VistaDeInfo vistaDeInfo;
 	private Herramienta herramienta;
 	private ControladorHectarea controladorDeHectarea;
+	private ControladorDeMapa controladorDeMapa;
 
 	public ControladorPartida(Partida partida, VistaDePartida vista) {
 		this.partida = partida;
@@ -38,8 +43,27 @@ public class ControladorPartida {
 
 		partida.addObserver(vistaDeEstado);
 		partida.hayCambios();
+		inicializarTeclado();
 	}
 
+
+	private void inicializarTeclado() {
+		controladorDeMapa = new ControladorDeMapa(vistaDeMapa);
+
+		// Esto es necesario para capturar eventos de teclado en todos los paneles
+		KeyboardFocusManager.getCurrentKeyboardFocusManager()
+		  .addKeyEventDispatcher(new KeyEventDispatcher() {
+		      @Override
+		      public boolean dispatchKeyEvent(KeyEvent e) {
+		    	if (e.getID() == KeyEvent.KEY_PRESSED) {
+		    		controladorDeMapa.keyPressed(e);
+		    	}
+		        return false;
+		      }
+		});
+
+
+	}
 
 	public void setEstado(String text) {
 		vistaDeEstado.setEstado(text);

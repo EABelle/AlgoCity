@@ -4,6 +4,7 @@ import algocity.controladores.ControladorJuego;
 import algocity.core.Juego;
 import algocity.vistas.VentanaPrincipal;
 
+
 public class Aplicacion {
 
 	public static void main(String[] args) {
