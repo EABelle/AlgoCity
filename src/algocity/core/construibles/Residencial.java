@@ -54,7 +54,7 @@ public class Residencial extends Edificio {
 	}
 
 	public int trabajadores() {
-		int familias = habitantes % 4;
+		int familias = habitantes / 4;
 		int otros = habitantes - (familias * 4);
 		if (otros > 0)
 			return familias + 1;
