@@ -2,6 +2,11 @@ package algocity.core;
 
 import java.util.Observable;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+
+
 
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.catastrofes.Godzilla;
@@ -19,7 +24,7 @@ public class Partida extends Observable {
 	int plata;
 	Godzilla godzy;
 	Terremoto terremoto;
-
+	static int TIEMPO = 5; //en segundos
 	boolean inicializada;
 
 
@@ -33,6 +38,25 @@ public class Partida extends Observable {
 	public void inicializar() {
 		turno = 0;
 		plata = Configuracion.PlataInicial;
+		
+		ProcesoMusicaPartida musica = new ProcesoMusicaPartida("hilo musica de la partida");
+		musica.setMensaje("AGUANTE SINESTESIA");
+		musica.start();
+		
+		/*
+		System.out.println("Comienza el juego");
+
+		TimerTask tarea = new AlgoCityTimer();
+		Timer timer = new Timer(true); // true = el timer corre como Demonio (DAEMON).
+		timer.scheduleAtFixedRate(tarea, 0, TIEMPO * 1000);
+		try{
+			Thread.sleep(120000); // limita 2 minutos
+		} catch(InterruptedException e){
+			e.printStackTrace();
+		}
+		timer.cancel();
+		System.out.println("TimerTask cancelled");
+		*/
 		inicializada = true;
 	}
 

@@ -1,0 +1,44 @@
+package algocity.core;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+public class ProcesoMusicaPartida extends Thread {
+	
+	String mensaje;
+	
+	public ProcesoMusicaPartida(String mensaje){
+		super(mensaje);
+	}
+	
+	public void setMensaje(String mensaje){
+		this.mensaje = mensaje;
+	}
+	
+	public void run(){
+		try {
+			Clip sonido = AudioSystem.getClip();
+			File tema = new File("files\\AUDIO01.wav");
+			sonido.open(AudioSystem.getAudioInputStream(tema));
+			long duracion = sonido.getMicrosecondLength()/1000;
+			
+			Timer timer = new Timer(true); // true = el timer corre como Demonio (DAEMON).
+			TareaMusicaPartida reproductor = new TareaMusicaPartida();
+			reproductor.setSonido(sonido);
+			timer.scheduleAtFixedRate(reproductor, 0, 5000);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("ERROR");
+		}
+		
+		
+	}
+}
