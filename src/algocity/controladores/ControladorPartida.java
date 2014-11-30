@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import algocity.core.Partida;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
+import algocity.core.io.GuardadorDePartida;
 import algocity.vistas.VistaDeEstado;
 import algocity.vistas.VistaDeHerramientas;
 import algocity.vistas.VistaDeInfo;
@@ -114,6 +115,10 @@ public class ControladorPartida {
 
 	public VistaDeInfo getVistaDeInfo() {
 		return this.vistaDeInfo;
+	}
+
+	public void guardarPartida() {
+		GuardadorDePartida.guardarPartida(partida);
 	}
 
 

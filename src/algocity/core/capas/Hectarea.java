@@ -56,7 +56,7 @@ public abstract class Hectarea extends Observable {
 	public boolean hayTendidoElectrico(){
 		return conexionElectrica;
 	}
-	
+
 	public boolean redElectricaConectada() {
 		return conexionElectrica | (centralesCerca > 0);
 	}
@@ -78,7 +78,7 @@ public abstract class Hectarea extends Observable {
 		}
 		return false;
 	}
-	
+
 	public boolean setCentralesCerca(boolean cerca) {
 		if (cerca) {
 			centralesCerca ++;
