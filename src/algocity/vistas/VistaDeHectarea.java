@@ -64,7 +64,6 @@ public class VistaDeHectarea extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable hectarea, Object arg) {
-		((Hectarea) hectarea).dibujarse(this);
 		this.repaint();
 	}
 

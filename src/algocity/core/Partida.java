@@ -6,11 +6,11 @@ import java.util.Random;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
-import algocity.core.capas.tendido.Tendido;
 import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
 import algocity.core.procesadores.ProcesadorDeBomberos;
+
 
 public class Partida extends Observable {
 
@@ -74,7 +74,7 @@ public class Partida extends Observable {
 		cobrar(mapa.getRutaPavimentada().getCosto());
 		mapa.getHectarea(x, y).procesarConexion(mapa);
 		return true;
-		
+
 	}
 
 	public boolean quitarRutaPavimentada(int x, int y) {
@@ -120,14 +120,14 @@ public class Partida extends Observable {
 		cobrar(mapa.getRedDeAgua().getCosto());
 		mapa.getHectarea(x, y).procesarConexion(mapa);
 		return mapa.getHectarea(x, y).setConexionAgua(true);
-		
+
 	}
 
 	private void cobrar(int costo) {
 		plata -= costo;
 		hayCambios();
 	}
-	
+
 	public boolean quitarRedDeAgua(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.redDeAguaConectada()){
