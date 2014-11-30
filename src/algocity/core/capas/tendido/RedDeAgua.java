@@ -38,22 +38,27 @@ public class RedDeAgua extends Tendido {
 		 * Agrega el nodo si solo hay un nodo vecino (es extremo)
 		 *------------------------------------------------------------------------------------------*/
 		
-		int count = 0;
 		Iterator<NodoTendido> iter = vecinosPosibles.iterator();
-		NodoTendido vecino = null;
 		while (iter.hasNext()){
 			NodoTendido nodoActual = iter.next();
 			if (nodoActual != null){
-				count++;
-				vecino = nodoActual;
+				if (nodoActual.getVecinos().size() <= 1){
+					hacerVecinos (nodoNuevo, nodoActual);
+					this.nodos.add(nodoNuevo);
+					return true;
+				}
 			}
 		}
 		
-		if (count >= 1){
-			hacerVecinos (nodoNuevo, vecino);
-			this.nodos.add(nodoNuevo);
-			return true;
-		}
+		/*if ( count >= 1 ){
+			Iterator<NodoTendido>iter3 = vecinosPosibles.iterator();
+			vecino = iter3.next();
+			if (vecino.getVecinos().size() == 1){
+				hacerVecinos (nodoNuevo, vecino);
+				this.nodos.add(nodoNuevo);
+				return true;
+			}
+		}*/
 		return false;
 	}
 

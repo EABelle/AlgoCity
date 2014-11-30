@@ -6,16 +6,17 @@ import algocity.vistas.VistaDeInfo;
 
 public class Industrial extends Edificio {
 
+	public static final int CAPACIDAD_MAXIMA = 25;
 	int puestosDisponibles;
 
 	public Industrial() {
 		costo = 10;
 		consumo = 5;
-		puestosDisponibles = 25;
+		puestosDisponibles = CAPACIDAD_MAXIMA;
 	}
 
 	public int puestosDeTrabajoOcupados() {
-		return 25 - puestosDisponibles;
+		return CAPACIDAD_MAXIMA - puestosDisponibles;
 	}
 
 	public int puestosDeTrabajoDisponibles() {
@@ -36,6 +37,10 @@ public class Industrial extends Edificio {
 			return true;
 		}
 		return false;
+	}
+	
+	public void plim() {
+		puestosDisponibles = CAPACIDAD_MAXIMA;
 	}
 
 	@Override

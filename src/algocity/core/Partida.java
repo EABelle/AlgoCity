@@ -67,7 +67,7 @@ public class Partida extends Observable {
 			return false;
 		if (!mapa.getRutaPavimentada().agregarNodo(x, y))
 			return false;
-		if (mapa.getHectarea(x, y).setConexionRuta(true)){
+		if (!mapa.getHectarea(x, y).setConexionRuta(true)){
 			mapa.getRutaPavimentada().eliminarNodo(x, y);
 			return false;
 		}
@@ -80,8 +80,8 @@ public class Partida extends Observable {
 	public boolean quitarRutaPavimentada(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.rutaPavimentadaConectada()){
-			hectarea.setConexionRuta(false);
 			mapa.getRutaPavimentada().eliminarNodo(x, y);
+			hectarea.setConexionRuta(false);
 			return true;
 		}
 		return false;

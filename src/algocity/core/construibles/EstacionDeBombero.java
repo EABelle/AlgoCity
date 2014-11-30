@@ -41,6 +41,7 @@ public class EstacionDeBombero extends ConstruibleEnLlano {
 	public void procesarAgregado(Mapa mapa, int x, int y) {
 		super.procesarAgregado(mapa, x, y);
 		mapa.getHectareasDeBomberos().add(mapa.getHectarea(x, y));
+		mapa.getRutaPavimentada().agregarEdificioProveedor(x, y);
 	}
 
 	@Override
