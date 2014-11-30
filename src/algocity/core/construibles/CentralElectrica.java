@@ -67,12 +67,12 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 		setHectareasCercanas(mapa, x, y, false);
 	}
 
-	@Override
-	public void procesarConexion(Mapa mapa, int x, int y) {
-		mapa.getRedElectrica().agregarEdificioProveedor(x, y);
-		mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
-		setHectareasCercanas(mapa, x, y, true);
-	}
+
+//	public void procesarConexion(Mapa mapa, int x, int y) {
+//		mapa.getRedElectrica().agregarEdificioProveedor(x, y);
+//		mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
+//		setHectareasCercanas(mapa, x, y, true);
+//	}
 
 	private void setHectareasCercanas(Mapa mapa, int x, int y, boolean b) {
 		for(Iterator<Hectarea> iter =

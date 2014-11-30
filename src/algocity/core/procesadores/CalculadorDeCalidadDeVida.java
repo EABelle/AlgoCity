@@ -24,6 +24,12 @@ public abstract class CalculadorDeCalidadDeVida {
 		Hectarea hectareaIndustrial;
 		Iterator<Hectarea> residenciales = mapa.recorridoResidenciales();
 		RutaPavimentada ruta = mapa.getRutaPavimentada();
+		
+		for(Iterator<Hectarea> industriales = mapa.recorridoIndustriales(); 
+				industriales.hasNext();){
+			industrial = (Industrial)industriales.next().getConstruible();
+			industrial.plim();
+		}
 
 		while (residenciales.hasNext()){
 			hectareaResidencial = residenciales.next();
@@ -44,11 +50,9 @@ public abstract class CalculadorDeCalidadDeVida {
 
 				while (industriales.hasNext()){
 					hectareaIndustrial = industriales.next();
-					industrial = (Industrial)hectareaIndustrial.getConstruible();
-					industrial.plim();
 					if (hayConexion(ruta, hectareaResidencial, hectareaIndustrial) &&
 							funcionaElEdificio(hectareaIndustrial)) {
-//						industrial = (Industrial)hectareaIndustrial.getConstruible();
+						industrial = (Industrial)hectareaIndustrial.getConstruible();
 						if (industrial.puestosDeTrabajoDisponibles() >= residencial.trabajadores()){
 							industrial.agregarTrabajadores(residencial.trabajadores());
 							indice += INDICE_RESIDENCIAL_INDUSTRIAL;
@@ -56,7 +60,7 @@ public abstract class CalculadorDeCalidadDeVida {
 						}
 					}
 				}
-				int habitantesNuevos = (int)((1 - residencial.danio()/100
+				int habitantesNuevos = (int) Math.rint((1 - residencial.danio()/100
 						- indice/2) * (residencial.disponibilidad()/5));
 				residencial.modificarCantidadDeHabitantes(habitantesNuevos);
 			}else{
