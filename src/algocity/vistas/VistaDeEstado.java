@@ -24,6 +24,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 	private JLabel turno;
 	private JButton pasarTurno;
 	private JPanel miniMapa;
+	private JButton guardarPartida;
 
 
 	public VistaDeEstado(ControladorPartida controladorPartida) {
@@ -40,9 +41,19 @@ public class VistaDeEstado extends JPanel implements Observer {
 		mensaje.setForeground(Color.darkGray);
 		plata = new JLabel();
 		turno = new JLabel();
-		JLabel menu = new JLabel("Menu");
+
+		guardarPartida = new JButton("Guardar Partida");
+		guardarPartida.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controladorPartida.guardarPartida();
+			}
+		});
+
 		pasarTurno = new JButton("Pasar Turno");
 		pasarTurno.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controladorPartida.pasarTurno();
@@ -51,7 +62,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 		add(estado);
 		add(mensaje);
 		add(plata);
-		add(menu);
+		add(guardarPartida);
 		add(turno);
 		add(pasarTurno);
 
