@@ -6,6 +6,7 @@ import java.util.Random;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
+import algocity.core.capas.tendido.Tendido;
 import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
@@ -52,6 +53,15 @@ public class Partida extends Observable {
 		return false;
 	}
 
+	public boolean quitarConstruible(int x, int y) {
+		Construible construible = mapa.getHectarea(x, y).getConstruible();
+		if (mapa.borrarConstruible(x, y)){
+			construible.procesarBorrado(mapa, x, y);
+			return true;
+		}
+		return false;
+	}
+
 	public boolean agregarRutaPavimentada(int x, int y) {
 		if (mapa.getRutaPavimentada().getCosto() > plata)
 			return false;
@@ -59,8 +69,10 @@ public class Partida extends Observable {
 			return false;
 		if (mapa.getHectarea(x, y).setConexionRuta(true)){
 			mapa.getRutaPavimentada().eliminarNodo(x, y);
+			return false;
 		}
 		cobrar(mapa.getRutaPavimentada().getCosto());
+		mapa.getHectarea(x, y).procesarConexion(mapa);
 		return true;
 		
 	}
@@ -85,8 +97,8 @@ public class Partida extends Observable {
 			return false;
 		}
 		cobrar(mapa.getRedElectrica().getCosto());
+		mapa.getHectarea(x, y).procesarConexion(mapa);
 		return true;
-		
 	}
 
 
@@ -106,6 +118,7 @@ public class Partida extends Observable {
 		if (!mapa.getRedDeAgua().agregarNodo(x, y))
 			return false;
 		cobrar(mapa.getRedDeAgua().getCosto());
+		mapa.getHectarea(x, y).procesarConexion(mapa);
 		return mapa.getHectarea(x, y).setConexionAgua(true);
 		
 	}
@@ -114,7 +127,7 @@ public class Partida extends Observable {
 		plata -= costo;
 		hayCambios();
 	}
-
+	
 	public boolean quitarRedDeAgua(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (hectarea.redDeAguaConectada()){

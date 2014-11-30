@@ -2,6 +2,7 @@ package algocity.core.capas;
 
 import java.util.Observable;
 
+import algocity.core.Mapa;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
 import algocity.core.construibles.Construible;
@@ -131,6 +132,11 @@ public abstract class Hectarea extends Observable {
 
 	public void teImpacta(Godzilla godzy) {
 		construible.teImpacta(godzy);
+	}
+
+	public void procesarConexion(Mapa mapa) {
+		if (construible != null)
+			construible.procesarConexion(mapa, fila, columna);
 	}
 
 }

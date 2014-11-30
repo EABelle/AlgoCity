@@ -55,15 +55,32 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 
 	@Override
 	public void procesarAgregado(Mapa mapa, int x, int y) {
+		if (!mapa.getHectarea(x, y).redDeAguaConectada())
+			return;
+		procesarConexion(mapa, x, y);
+		
+	}
+	
+	@Override
+	public void procesarBorrado(Mapa mapa, int x, int y) {
+		mapa.getRedElectrica().eliminarEdificioProveedor(x,y);
+		setHectareasCercanas(mapa, x, y, false);
+	}
 
+	@Override
+	public void procesarConexion(Mapa mapa, int x, int y) {
 		mapa.getRedElectrica().agregarEdificioProveedor(x, y);
 		mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
+		setHectareasCercanas(mapa, x, y, true);
+	}
+
+	private void setHectareasCercanas(Mapa mapa, int x, int y, boolean b) {
 		for(Iterator<Hectarea> iter =
-			mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
-			iter.hasNext();){
-			Hectarea hectarea = iter.next();
-			hectarea.setCentralesCerca(true);
-		}
+				mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
+				iter.hasNext();){
+				Hectarea hectarea = iter.next();
+				hectarea.setCentralesCerca(b);
+			}
 	}
 
 	@Override

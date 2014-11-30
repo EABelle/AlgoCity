@@ -192,6 +192,10 @@ public class Mapa {
 		return hectareas[x][y].agregarConstruible(construible);
 	}
 
+	public boolean borrarConstruible(int x, int y) {
+		return hectareas[x][y].borrarConstruible();
+	}
+
 	public Hectarea getHectarea(int fila, int columna) {
 		return hectareas[fila][columna];
 	}
@@ -207,8 +211,6 @@ public class Mapa {
 	public RutaPavimentada getRutaPavimentada(){
 		return rutaPavimentada;
 	}
-
-
 
 	public ArrayList<Hectarea> getHectareasResidenciales() {
 		return residenciales;
@@ -233,5 +235,4 @@ public class Mapa {
 	public ArrayList<Hectarea> getHectareasDeBomberos() {
 		return bomberos;
 	}
-
 }
