@@ -5,6 +5,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 
 import algocity.core.Partida;
+import algocity.core.ProcesoMusicaPartida;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.core.io.GuardadorDePartida;
@@ -45,8 +46,15 @@ public class ControladorPartida {
 		partida.addObserver(vistaDeEstado);
 		partida.hayCambios();
 		inicializarTeclado();
+		//inicializarMusica();  //DESCOMENTAR PARA ACTIVAR
+
 	}
 
+	private void inicializarMusica() {
+		ProcesoMusicaPartida musica = new ProcesoMusicaPartida("hilo musica de la partida");
+		musica.setMensaje("AGUANTE SINESTESIA");
+		musica.start();	
+	}
 
 	private void inicializarTeclado() {
 		controladorDeMapa = new ControladorDeMapa(vistaDeMapa);
