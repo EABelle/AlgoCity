@@ -38,6 +38,7 @@ abstract public class Tendido {
 			Coordenada proveedorActual = iter.next();
 			if ((proveedorActual.getX() == x) && (proveedorActual.getY() == y)){
 				this.edificiosProveedores.remove(proveedorActual);
+				break;
 			}
 		}
 		

@@ -67,7 +67,6 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 		mapa.getRedElectrica().eliminarEdificioProveedor(x,y);
 		mapa.getHectareasDeCentralElectrica().remove(mapa.getHectarea(x,y));
 		setHectareasCercanas(mapa, x, y, false);
-		System.out.println("Llego feliz");
 	}
 
 	@Override
