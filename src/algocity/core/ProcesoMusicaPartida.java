@@ -13,7 +13,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class ProcesoMusicaPartida extends Thread {
 	
 	String mensaje;
-	
+	TareaMusicaPartida reproductor;
 	public ProcesoMusicaPartida(String mensaje){
 		super(mensaje);
 	}
@@ -27,7 +27,7 @@ public class ProcesoMusicaPartida extends Thread {
 			
 			
 			Timer timer = new Timer(true); // true = el timer corre como Demonio (DAEMON).
-			TareaMusicaPartida reproductor = new TareaMusicaPartida();
+			reproductor = new TareaMusicaPartida();
 			long duracion = reproductor.getDuracion();
 			timer.scheduleAtFixedRate(reproductor, 0, duracion + 100);
 			
@@ -37,5 +37,10 @@ public class ProcesoMusicaPartida extends Thread {
 		}
 		
 		
+	}
+
+	public void playPauseMusic() {
+		
+		reproductor.playPauseMusic();
 	}
 }

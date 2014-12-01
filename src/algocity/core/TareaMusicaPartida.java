@@ -39,6 +39,16 @@ public class TareaMusicaPartida extends TimerTask {
 			return 0;
 		}
 	}
+
+	public void playPauseMusic() {
+		if (sonido == null)
+			return;
+		
+		if (sonido.isActive())
+			sonido.stop();
+		else
+			sonido.start();
+	}
 	
 	
 	

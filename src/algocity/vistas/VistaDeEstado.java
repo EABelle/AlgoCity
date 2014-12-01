@@ -25,6 +25,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 	private JButton pasarTurno;
 	private JPanel miniMapa;
 	private JButton guardarPartida;
+	private JButton playPauseMusic;
 
 
 	public VistaDeEstado(ControladorPartida controladorPartida) {
@@ -34,7 +35,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 	}
 
 	private void inicializarPanelEstado() {
-		setLayout(new GridLayout(2, 3));
+		setLayout(new GridLayout(2, 4));
 
 		estado = new JLabel();
 		mensaje = new JLabel();
@@ -59,12 +60,25 @@ public class VistaDeEstado extends JPanel implements Observer {
 				controladorPartida.pasarTurno();
 			}
 		});
+		
+		playPauseMusic = new JButton("Musica: Play/Pausa");
+		playPauseMusic.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controladorPartida.playPauseMusic();
+				
+			}
+		});
+		
 		add(estado);
 		add(mensaje);
 		add(plata);
 		add(guardarPartida);
 		add(turno);
 		add(pasarTurno);
+		add(playPauseMusic);
+		
 
 	}
 

@@ -26,7 +26,8 @@ public class ControladorPartida {
 	private Herramienta herramienta;
 	private ControladorHectarea controladorDeHectarea;
 	private ControladorDeMapa controladorDeMapa;
-
+	private ProcesoMusicaPartida musica;
+	
 	public ControladorPartida(Partida partida, VistaDePartida vista) {
 		this.partida = partida;
 		this.vistaDePartida = vista;
@@ -46,16 +47,22 @@ public class ControladorPartida {
 		partida.addObserver(vistaDeEstado);
 		partida.hayCambios();
 		inicializarTeclado();
-		//inicializarMusica();  //DESCOMENTAR PARA ACTIVAR
+		inicializarMusica();  //DESCOMENTAR PARA ACTIVAR
 
 	}
 
 	private void inicializarMusica() {
-		ProcesoMusicaPartida musica = new ProcesoMusicaPartida("hilo musica de la partida");
+		musica = new ProcesoMusicaPartida("hilo musica de la partida");
 		musica.setMensaje("AGUANTE SINESTESIA");
 		musica.start();	
 	}
 
+	public void playPauseMusic() {
+		musica.playPauseMusic();
+		
+	}
+	
+	
 	private void inicializarTeclado() {
 		controladorDeMapa = new ControladorDeMapa(vistaDeMapa);
 
@@ -128,6 +135,8 @@ public class ControladorPartida {
 	public void guardarPartida() {
 		GuardadorDePartida.guardarPartida(partida);
 	}
+
+
 
 
 }
