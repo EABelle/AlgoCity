@@ -43,6 +43,12 @@ public class EstacionDeBombero extends ConstruibleEnLlano {
 		mapa.getHectareasDeBomberos().add(mapa.getHectarea(x, y));
 		mapa.getRutaPavimentada().agregarEdificioProveedor(x, y);
 	}
+	
+	@Override
+	public void procesarBorrado(Mapa mapa, int x, int y) {
+		mapa.getHectareasDeBomberos().remove(mapa.getHectarea(x, y));
+		mapa.getRutaPavimentada().eliminarEdificioProveedor(x, y);
+	}
 
 	@Override
 	public void mostrarInfo(VistaDeInfo vistaDeInfo) {

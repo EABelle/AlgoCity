@@ -60,6 +60,11 @@ public class Industrial extends Edificio {
 	}
 
 	@Override
+	public void procesarBorrado(Mapa mapa, int x, int y) {
+			mapa.getHectareasIndustriales().remove(mapa.getHectarea(x, y));
+	}
+
+	@Override
 	public void teImpacta(Godzilla godzy) {
 		godzy.impactame(this);
 	}

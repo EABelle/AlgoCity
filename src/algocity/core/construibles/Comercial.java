@@ -21,6 +21,11 @@ public class Comercial extends Edificio {
 	public void procesarAgregado(Mapa mapa, int x, int y) {
 		mapa.getHectareasComerciales().add(mapa.getHectarea(x, y));
 	}
+	
+	@Override
+	public void procesarBorrado(Mapa mapa, int x, int y) {
+			mapa.getHectareasComerciales().remove(mapa.getHectarea(x, y));
+	}
 
 
 	@Override

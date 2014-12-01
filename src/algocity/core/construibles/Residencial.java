@@ -49,6 +49,11 @@ public class Residencial extends Edificio {
 	}
 
 	@Override
+	public void procesarBorrado(Mapa mapa, int x, int y) {
+			mapa.getHectareasResidenciales().remove(mapa.getHectarea(x, y));
+	}
+
+	@Override
 	public void teImpacta(Godzilla godzy) {
 		godzy.impactame(this);
 	}

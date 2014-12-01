@@ -60,8 +60,20 @@ public abstract class CalculadorDeCalidadDeVida {
 						}
 					}
 				}
-				int habitantesNuevos = (int) Math.rint((1 - residencial.danio()/100
-						- indice/2) * (residencial.disponibilidad()/5));
+				int habitantesNuevos = (int) Math.rint(residencial.disponibilidad()/5)*(indice + 2)/4;
+//						(indice/4 - residencial.danio()/100)
+//						* ((indice + 1)/3) * (residencial.disponibilidad()/5));
+				System.out.println("danio");
+				System.out.println(residencial.danio());
+				System.out.println("Indice");
+				System.out.println(indice);
+				System.out.println("disponibilidad");
+				System.out.println(residencial.disponibilidad());
+				System.out.println("a");
+				System.out.println((1 + indice/4 - residencial.danio()/100)
+				* ((indice + 1)/3));
+				System.out.println("habitantes nuevos");
+				System.out.println(habitantesNuevos);
 				residencial.modificarCantidadDeHabitantes(habitantesNuevos);
 			}else{
 				residencial.quitarHabitantes(MAXIMA_SALIDA);
