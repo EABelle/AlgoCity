@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 
 import algocity.core.Partida;
 import algocity.core.ProcesoMusicaPartida;
+import algocity.core.ProcesoTimerTurno;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.core.io.GuardadorDePartida;
@@ -27,6 +28,8 @@ public class ControladorPartida {
 	private ControladorHectarea controladorDeHectarea;
 	private ControladorDeMapa controladorDeMapa;
 	private ProcesoMusicaPartida musica;
+	private ProcesoTimerTurno timerTurno;
+	private PasadorDeTurno pasadorDeTurno;
 	
 	public ControladorPartida(Partida partida, VistaDePartida vista) {
 		this.partida = partida;
@@ -34,6 +37,7 @@ public class ControladorPartida {
 	}
 
 	public void inicializar() {
+		
 		vistaDeMapa = new VistaDeMapa(partida.getMapa(), this);
 		vistaDeEdificios = new VistaDeHerramientas(this);
 		vistaDeEstado = new VistaDeEstado(this);
@@ -47,8 +51,26 @@ public class ControladorPartida {
 		partida.addObserver(vistaDeEstado);
 		partida.hayCambios();
 		inicializarTeclado();
-		inicializarMusica();  //DESCOMENTAR PARA ACTIVAR
+		//inicializarMusica();
+		inicializarPasadorDeTurno();
+		inicializarTimer();		
+		
 
+	}
+
+	private void inicializarPasadorDeTurno() {
+		pasadorDeTurno = new PasadorDeTurno(this.partida);
+	}
+	
+	private void inicializarTimer() {
+		timerTurno = new ProcesoTimerTurno(pasadorDeTurno);
+		timerTurno.start();
+	}
+	
+	public int getTiempoRestante() {
+		if (timerTurno != null)
+			return timerTurno.getTiempoRestante();
+		return 0;
 	}
 
 	private void inicializarMusica() {
@@ -125,7 +147,8 @@ public class ControladorPartida {
 	}
 
 	public void pasarTurno() {
-		this.partida.pasarTurno();
+		this.pasadorDeTurno.pasarTurno();
+		this.timerTurno.reset();
 	}
 
 	public VistaDeInfo getVistaDeInfo() {
@@ -135,8 +158,6 @@ public class ControladorPartida {
 	public void guardarPartida() {
 		GuardadorDePartida.guardarPartida(partida);
 	}
-
-
 
 
 }

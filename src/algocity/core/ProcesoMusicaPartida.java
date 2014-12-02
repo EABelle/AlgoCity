@@ -25,7 +25,6 @@ public class ProcesoMusicaPartida extends Thread {
 	public void run(){
 		try {
 			
-			
 			Timer timer = new Timer(true); // true = el timer corre como Demonio (DAEMON).
 			reproductor = new TareaMusicaPartida();
 			long duracion = reproductor.getDuracion();

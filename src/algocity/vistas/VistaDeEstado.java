@@ -20,6 +20,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 	private JLabel estado;
 	private JLabel mensaje;
 	private JLabel plata;
+	private JLabel tiempoRestante;
 	private ControladorPartida controladorPartida;
 	private JLabel turno;
 	private JButton pasarTurno;
@@ -42,6 +43,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 		mensaje.setForeground(Color.darkGray);
 		plata = new JLabel();
 		turno = new JLabel();
+		tiempoRestante = new JLabel();
 
 		guardarPartida = new JButton("Guardar Partida");
 		guardarPartida.addActionListener(new ActionListener() {
@@ -76,6 +78,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 		add(plata);
 		add(guardarPartida);
 		add(turno);
+		add(tiempoRestante);
 		add(pasarTurno);
 		add(playPauseMusic);
 		
@@ -104,12 +107,21 @@ public class VistaDeEstado extends JPanel implements Observer {
 	public void setTurno(int turno) {
 		this.turno.setText(String.format("Turno: %d", turno));
 	}
-
+	
+	
+	public void setTiempoRestante(int tiempoRestante) {
+		this.tiempoRestante.setText(String.format("Tiempo Restante: %d", tiempoRestante));
+	}
+	
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		Partida partida = (Partida) o;
 		setPlata(partida.getPlata());
 		setTurno(partida.getTurno());
+		setTiempoRestante(this.controladorPartida.getTiempoRestante());
+
 	}
+
 
 }
