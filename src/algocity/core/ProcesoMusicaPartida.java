@@ -12,15 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class ProcesoMusicaPartida extends Thread {
 	
-	String mensaje;
 	TareaMusicaPartida reproductor;
-	public ProcesoMusicaPartida(String mensaje){
-		super(mensaje);
-	}
-	
-	public void setMensaje(String mensaje){
-		this.mensaje = mensaje;
-	}
 	
 	public void run(){
 		try {

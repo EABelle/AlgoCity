@@ -51,7 +51,7 @@ public class ControladorPartida {
 		partida.addObserver(vistaDeEstado);
 		partida.hayCambios();
 		inicializarTeclado();
-		//inicializarMusica();
+		inicializarMusica();
 		inicializarPasadorDeTurno();
 		inicializarTimer();		
 		
@@ -63,6 +63,7 @@ public class ControladorPartida {
 	}
 	
 	private void inicializarTimer() {
+		System.out.println("INICIALIZADO EL TEMPORIZADOR DE TURNOS");
 		timerTurno = new ProcesoTimerTurno(pasadorDeTurno);
 		timerTurno.start();
 	}
@@ -74,8 +75,7 @@ public class ControladorPartida {
 	}
 
 	private void inicializarMusica() {
-		musica = new ProcesoMusicaPartida("hilo musica de la partida");
-		musica.setMensaje("AGUANTE SINESTESIA");
+		musica = new ProcesoMusicaPartida();
 		musica.start();	
 	}
 

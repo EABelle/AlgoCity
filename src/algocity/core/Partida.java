@@ -38,36 +38,13 @@ public class Partida extends Observable {
 	public void inicializar() {
 		turno = 0;
 		plata = Configuracion.PlataInicial;
-		/*--------------------------------------------------
-		 * CODIGO QUE INICIALIZA LA MUSICA
-		
-		ProcesoMusicaPartida musica = new ProcesoMusicaPartida("hilo musica de la partida");
-		musica.setMensaje("AGUANTE SINESTESIA");
-		musica.start();
-		/*
-		 * ---------------------------------------------------
-		 * TIMER DEL PASADOR DE TURNOS (MAL HECHO PERO ME SIRVE COMO NOTA)
-		 */
-		/*
-		System.out.println("Comienza el juego");
-
-		TimerTask tarea = new AlgoCityTimer();
-		Timer timer = new Timer(true); // true = el timer corre como Demonio (DAEMON).
-		timer.scheduleAtFixedRate(tarea, 0, TIEMPO * 1000);
-		try{
-			Thread.sleep(120000); // limita 2 minutos
-		} catch(InterruptedException e){
-			e.printStackTrace();
-		}
-		timer.cancel();
-		System.out.println("TimerTask cancelled");
-		*/
 		inicializada = true;
 	}
 
 	public boolean inicializada() {
 		return inicializada;
 	}
+	
 	public int getPlata(){
 		return plata;
 	}
