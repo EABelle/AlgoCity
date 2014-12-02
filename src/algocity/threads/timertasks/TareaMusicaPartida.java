@@ -1,4 +1,4 @@
-package algocity.core;
+package algocity.threads.timertasks;
 
 import java.io.File;
 import java.util.TimerTask;

@@ -1,7 +1,9 @@
-package algocity.core;
+package algocity.threads.timertasks;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import algocity.threads.ProcesoTimerTurno;
 
 public class TareaContarSegundos extends TimerTask {
 

@@ -5,11 +5,11 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 
 import algocity.core.Partida;
-import algocity.core.ProcesoMusicaPartida;
-import algocity.core.ProcesoTimerTurno;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.core.io.GuardadorDePartida;
+import algocity.threads.ProcesoMusicaPartida;
+import algocity.threads.ProcesoTimerTurno;
 import algocity.vistas.VistaDeEstado;
 import algocity.vistas.VistaDeHerramientas;
 import algocity.vistas.VistaDeInfo;
@@ -67,12 +67,12 @@ public class ControladorPartida {
 		timerTurno = new ProcesoTimerTurno(pasadorDeTurno);
 		timerTurno.start();
 	}
-	
+	/*
 	public int getTiempoRestante() {
 		if (timerTurno != null)
 			return timerTurno.getTiempoRestante();
 		return 0;
-	}
+	}*/
 
 	private void inicializarMusica() {
 		musica = new ProcesoMusicaPartida();

@@ -78,7 +78,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 		add(plata);
 		add(guardarPartida);
 		add(turno);
-		add(tiempoRestante);
+		//add(tiempoRestante);
 		add(pasarTurno);
 		add(playPauseMusic);
 		
@@ -119,7 +119,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 		Partida partida = (Partida) o;
 		setPlata(partida.getPlata());
 		setTurno(partida.getTurno());
-		setTiempoRestante(this.controladorPartida.getTiempoRestante());
+		//setTiempoRestante(this.controladorPartida.getTiempoRestante());
 
 	}
 

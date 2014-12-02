@@ -1,8 +1,10 @@
-package algocity.core;
+package algocity.threads;
 
 import java.util.Timer;
 
 import algocity.controladores.PasadorDeTurno;
+import algocity.threads.timertasks.TareaContarSegundos;
+import algocity.threads.timertasks.TareaPasarTurno;
 
 public class ProcesoTimerTurno extends Thread {
 	

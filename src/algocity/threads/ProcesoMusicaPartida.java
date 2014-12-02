@@ -1,4 +1,4 @@
-package algocity.core;
+package algocity.threads;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
+import algocity.threads.timertasks.TareaMusicaPartida;
 
 public class ProcesoMusicaPartida extends Thread {
 	

@@ -1,7 +1,7 @@
 package algocity.controladores;
 
 import algocity.core.Partida;
-import algocity.core.ProcesoTimerTurno;
+import algocity.threads.ProcesoTimerTurno;
 
 public class PasadorDeTurno {
 
