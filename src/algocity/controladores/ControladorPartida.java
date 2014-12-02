@@ -63,16 +63,16 @@ public class ControladorPartida {
 	}
 	
 	private void inicializarTimer() {
-		System.out.println("INICIALIZADO EL TEMPORIZADOR DE TURNOS");
-		timerTurno = new ProcesoTimerTurno(pasadorDeTurno);
+		//System.out.println("INICIALIZADO EL TEMPORIZADOR DE TURNOS");
+		timerTurno = new ProcesoTimerTurno(pasadorDeTurno, partida);
 		timerTurno.start();
 	}
-	/*
+	
 	public int getTiempoRestante() {
 		if (timerTurno != null)
 			return timerTurno.getTiempoRestante();
 		return 0;
-	}*/
+	}
 
 	private void inicializarMusica() {
 		musica = new ProcesoMusicaPartida();
