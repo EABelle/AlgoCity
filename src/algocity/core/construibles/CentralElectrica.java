@@ -58,9 +58,11 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	public void procesarAgregado(Mapa mapa, int x, int y) {
 		if (!mapa.getHectarea(x, y).redDeAguaConectada())
 			return;
-		mapa.getRedElectrica().agregarEdificioProveedor(x, y);
-		mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
-		setHectareasCercanas(mapa, x, y, true);
+
+		if(mapa.getRedElectrica().agregarEdificioProveedor(x, y)){
+			mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
+			setHectareasCercanas(mapa, x, y, true);
+		}
 	}
 	
 	@Override
@@ -79,15 +81,13 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	public void procesarDesconexion(Mapa mapa, int x, int y) {
 		if (mapa.getHectarea(x, y).redDeAguaConectada())
 			return;
-		mapa.getRedElectrica().eliminarEdificioProveedor(x, y);
-		mapa.getHectareasDeCentralElectrica().remove(mapa.getHectarea(x, y));
-		setHectareasCercanas(mapa, x, y, false);
+		procesarBorrado(mapa, x, y);
 	}
 	
 	private void setHectareasCercanas(Mapa mapa, int x, int y, boolean b) {
 		for(Iterator<Hectarea> iter =
 				mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
-				iter.hasNext();){
+				iter.hasNext();) {
 				Hectarea hectarea = iter.next();
 				hectarea.setCentralesCerca(b);
 			}

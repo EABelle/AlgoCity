@@ -26,9 +26,12 @@ abstract public class Tendido {
 	
 	abstract public boolean agregarNodo (int coordenadaX , int coordenadaY);
 	
-	public void agregarEdificioProveedor (int coordenadaX , int coordenadaY){
-		
-		this.edificiosProveedores.add ( new Coordenada(coordenadaX,coordenadaY) );
+	public boolean agregarEdificioProveedor (int coordenadaX , int coordenadaY){
+		Coordenada coord = new Coordenada(coordenadaX,coordenadaY);
+		if (edificiosProveedores.contains(coord))
+			return false;
+		this.edificiosProveedores.add (coord);
+		return true;
 	}
 	
 	public void eliminarEdificioProveedor(int x, int y) {

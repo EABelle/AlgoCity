@@ -89,6 +89,7 @@ public class Partida extends Observable {
 		if (hectarea.rutaPavimentadaConectada()){
 			mapa.getRutaPavimentada().eliminarNodo(x, y);
 			hectarea.setConexionRuta(false);
+			hectarea.procesarDesconexion(mapa);
 			return true;
 		}
 		return false;
@@ -111,9 +112,9 @@ public class Partida extends Observable {
 
 	public boolean quitarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.hayTendidoElectrico()){
-			hectarea.setConexionElectrica(false);
+		if (hectarea.setConexionElectrica(false)){
 			mapa.getRedElectrica().eliminarNodo(x, y);
+			hectarea.procesarDesconexion(mapa);
 			return true;
 		}
 		return false;
