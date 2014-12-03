@@ -15,6 +15,7 @@ import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
 import algocity.core.procesadores.ProcesadorDeBomberos;
+import algocity.core.procesadores.Refrescador;
 
 
 public class Partida extends Observable {
@@ -154,7 +155,7 @@ public class Partida extends Observable {
 			Debitador debitador = new Debitador(mapa);
 			plata += debitador.getPago();
 		}
-
+		Refrescador.refresh(mapa);
 		ProcesadorDeBomberos.procesar(mapa);
 		CalculadorDeCalidadDeVida.procesar(mapa) ;
 		hayCambios();

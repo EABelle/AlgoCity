@@ -7,10 +7,11 @@ import algocity.core.capas.Hectarea;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.vistas.VistaDeInfo;
 
-public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable{
+public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable, Refrescable {
 
 	int radioDeAlimentacion;
 	int capacidad;
+	int potenciaMaxima;
 	int potenciaDisponible;
 
 
@@ -102,4 +103,8 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 		vistaDeInfo.mostrarInfo(this);
 	}
 
+	@Override
+	public void refresh() {
+		potenciaDisponible = capacidad;
+	}
 }

@@ -62,6 +62,7 @@ public class Mapa {
 				hectareas[x][y] = hectarea;
 				hectarea.setFila(x);
 				hectarea.setColumna(y);
+				hectarea.setTendidos(redDeAgua, redElectrica);
 				y ++;
 			} else {
 				x ++;

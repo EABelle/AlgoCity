@@ -4,7 +4,7 @@ import algocity.core.Mapa;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.vistas.VistaDeInfo;
 
-public class Industrial extends Edificio {
+public class Industrial extends Edificio implements Refrescable {
 
 	public static final int CAPACIDAD_MAXIMA = 25;
 	int puestosDisponibles;
@@ -38,10 +38,6 @@ public class Industrial extends Edificio {
 		}
 		return false;
 	}
-	
-	public void plim() {
-		puestosDisponibles = CAPACIDAD_MAXIMA;
-	}
 
 	@Override
 	public boolean cumpleRequerimientos(boolean conexionAgua,
@@ -72,6 +68,11 @@ public class Industrial extends Edificio {
 	@Override
 	public void mostrarInfo(VistaDeInfo vistaDeInfo) {
 		vistaDeInfo.mostrarInfo(this);
+	}
+
+	@Override
+	public void refresh() {
+		puestosDisponibles = CAPACIDAD_MAXIMA;
 	}
 
 }

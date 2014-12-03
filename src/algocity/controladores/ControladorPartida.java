@@ -51,7 +51,7 @@ public class ControladorPartida {
 		partida.addObserver(vistaDeEstado);
 		partida.hayCambios();
 		inicializarTeclado();
-		inicializarMusica();
+//		inicializarMusica();
 		inicializarPasadorDeTurno();
 		inicializarTimer();		
 		
