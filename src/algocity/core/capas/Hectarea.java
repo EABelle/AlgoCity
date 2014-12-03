@@ -132,10 +132,12 @@ public abstract class Hectarea extends Observable {
 
 	public void teImpacta(Terremoto terremoto) {
 		construible.teImpacta(terremoto);
+		hayCambio();
 	}
 
 	public void teImpacta(Godzilla godzy) {
 		construible.teImpacta(godzy);
+		hayCambio();
 	}
 
 	public void procesarConexion(Mapa mapa) {

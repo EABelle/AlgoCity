@@ -1,8 +1,5 @@
 package algocity.core.capas.tendido;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 public class RutaPavimentada extends Tendido {
 
 	public RutaPavimentada() {

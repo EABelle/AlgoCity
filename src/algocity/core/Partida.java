@@ -4,10 +4,6 @@ import java.util.Observable;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-
-
-
-
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
