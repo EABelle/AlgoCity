@@ -26,7 +26,7 @@ public class Residencial extends Edificio {
 		if (habitantes + habitantesNuevos <= Configuracion.MaximoHabitantes)  {
 			habitantes += habitantesNuevos;
 			return true;
-		}
+		}else{habitantes = 100;}
 		return false;
 	}
 
@@ -34,7 +34,7 @@ public class Residencial extends Edificio {
 		if ( (habitantes - habitantesSalientes) >= 0) {
 			habitantes -= habitantesSalientes;
 			return true;
-		}
+		}else{habitantes = 0;}
 		return false;
 	}
 

@@ -16,7 +16,6 @@ public abstract class CalculadorDeCalidadDeVida {
 	private static final int INDICE_RESIDENCIAL_INDUSTRIAL = 1;
 
 	public static void procesar (Mapa mapa) {
-		int indice = 0;
 		Residencial residencial;
 		Industrial industrial;
 		Hectarea hectareaResidencial;
@@ -26,6 +25,7 @@ public abstract class CalculadorDeCalidadDeVida {
 		RutaPavimentada ruta = mapa.getRutaPavimentada();
 
 		while (residenciales.hasNext()){
+			int indice = 0;
 			hectareaResidencial = residenciales.next();
 			residencial = (Residencial)hectareaResidencial.getConstruible();
 			if(funcionaElEdificio(hectareaResidencial)){
@@ -54,20 +54,8 @@ public abstract class CalculadorDeCalidadDeVida {
 						}
 					}
 				}
-				int habitantesNuevos = (int) Math.rint(residencial.disponibilidad()/5)*(indice + 2)/4;
-//						(indice/4 - residencial.danio()/100)
-//						* ((indice + 1)/3) * (residencial.disponibilidad()/5));
-				System.out.println("danio");
-				System.out.println(residencial.danio());
-				System.out.println("Indice");
-				System.out.println(indice);
-				System.out.println("disponibilidad");
-				System.out.println(residencial.disponibilidad());
-				System.out.println("a");
-				System.out.println((1 + indice/4 - residencial.danio()/100)
-				* ((indice + 1)/3));
-				System.out.println("habitantes nuevos");
-				System.out.println(habitantesNuevos);
+				int habitantesNuevos = (int)Math.rint((residencial.disponibilidad()/5)
+						*(indice + 2)/4);
 				residencial.modificarCantidadDeHabitantes(habitantesNuevos);
 			}else{
 				residencial.quitarHabitantes(MAXIMA_SALIDA);
