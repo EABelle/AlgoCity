@@ -16,16 +16,16 @@ public class HectareasFactory {
 	
 	public HectareaLlana getHectareaLlana(Construible casa) {
 		HectareaLlana hectarea = new HectareaLlana();
-		prepararConstruible(casa);
+		//prepararConstruible(casa);
 		hectarea.agregarConstruible(casa);
 		return hectarea;
 	}
-	
+	/*
 	private void prepararConstruible(Construible casa) {
 		casa.conectarARedDeAgua();
 		casa.conectarARedElectrica();
 		casa.conectarARutaPavimentada();
-	}
+	}*/
 	
 	public Hectarea getHectareaConResidencial() {
 		Construible casa = new Residencial();
