@@ -1,11 +1,15 @@
 package algocity.core.capas;
 
+import algocity.core.capas.tendido.RedDeAgua;
+import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.construibles.Construible;
 import algocity.core.construibles.ConstruibleEnLlano;
 import algocity.vistas.VistaDeHectarea;
 
 public class HectareaLlana extends Hectarea {
 
+	RedElectrica redElectrica;
+	
 	@Override
 	public boolean agregarConstruible(Construible construible) {
 		try{
@@ -18,7 +22,9 @@ public class HectareaLlana extends Hectarea {
 
 	}
 
-
+	public boolean hayElectricidad() {
+		return redElectrica.servicioExiste(fila, columna);
+	}
 
 	private boolean agregarConstruibleEnLlano(ConstruibleEnLlano construible) {
 
@@ -34,5 +40,13 @@ public class HectareaLlana extends Hectarea {
 	public void dibujarse(VistaDeHectarea vistaDeHectarea) {
 		vistaDeHectarea.dibujarHectarea(this);
 	}
+
+
+
+	@Override
+	public void setTendidos(RedDeAgua redDeAgua, RedElectrica redElectrica) {
+		this.redDeAgua = redDeAgua;
+		this.redElectrica = redElectrica;
+		}
 
 }

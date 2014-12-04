@@ -1,6 +1,8 @@
 package algocity.core.capas.catastrofes;
 
 import java.util.Iterator;
+import java.util.Random;
+
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RedElectrica;
@@ -12,9 +14,11 @@ import algocity.core.procesadores.ProcesadorDeDaniados;
 
 public class Godzilla extends Catastrofe {
 	Iterator<Hectarea> recorrido;
+	static boolean presente;
 	
 	public Godzilla(Iterator<Hectarea> recorrido){
 		this.recorrido = recorrido;
+		presente = true;
 	}
 
 	@Override
@@ -26,6 +30,8 @@ public class Godzilla extends Catastrofe {
 			procesadorDeDaniados.procesarDanios(mapa, hectarea);
 			RedElectrica redElectrica = mapa.getRedElectrica();
 			redElectrica.eliminarNodo(hectarea.getFila(), hectarea.getColumna());
+		}else { 
+			presente = false;
 		}
 	}
 	
@@ -34,19 +40,31 @@ public class Godzilla extends Catastrofe {
 		return recorrido.hasNext();
 	}
 
-	public void impactame(Comercial comercial) {
+	public void impactarEn(Comercial comercial) {
 		comercial.daniar(75);	
 	}
 
-	public void impactame(CentralElectrica centralElectrica) {
+	public void impactarEn(CentralElectrica centralElectrica) {
 		centralElectrica.daniar(35);
 	}
 
-	public void impactame(Industrial industrial) {
+	public void impactarEn(Industrial industrial) {
 		industrial.daniar(40);
 	}
 
-	public void impactame(Residencial residencial) {
+	public void impactarEn(Residencial residencial) {
 		residencial.daniar(100);
-	}	
+	}
+	
+	public static void inicializar(){
+		presente = false;
+	}
+
+	public static boolean aparecer() {
+		Random rn = new Random();
+		if (!presente&(rn.nextInt(49) % 12 == 0)) {
+			presente = true;
+		}
+		return presente;
+	}
 }

@@ -55,7 +55,7 @@ public class Residencial extends Edificio {
 
 	@Override
 	public void teImpacta(Godzilla godzy) {
-		godzy.impactame(this);
+		godzy.impactarEn(this);
 	}
 
 	public int trabajadores() {

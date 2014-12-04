@@ -7,10 +7,11 @@ import algocity.core.capas.Hectarea;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.vistas.VistaDeInfo;
 
-public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable{
+public abstract class CentralElectrica extends ConstruibleEnLlano implements Arreglable, Refrescable {
 
 	int radioDeAlimentacion;
 	int capacidad;
+	int potenciaMaxima;
 	int potenciaDisponible;
 
 
@@ -57,9 +58,11 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	public void procesarAgregado(Mapa mapa, int x, int y) {
 		if (!mapa.getHectarea(x, y).redDeAguaConectada())
 			return;
-		mapa.getRedElectrica().agregarEdificioProveedor(x, y);
-		mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
-		setHectareasCercanas(mapa, x, y, true);
+
+		if(mapa.getRedElectrica().agregarEdificioProveedor(x, y)){
+			mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
+			setHectareasCercanas(mapa, x, y, true);
+		}
 	}
 	
 	@Override
@@ -78,15 +81,13 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 	public void procesarDesconexion(Mapa mapa, int x, int y) {
 		if (mapa.getHectarea(x, y).redDeAguaConectada())
 			return;
-		mapa.getRedElectrica().eliminarEdificioProveedor(x, y);
-		mapa.getHectareasDeCentralElectrica().remove(mapa.getHectarea(x, y));
-		setHectareasCercanas(mapa, x, y, false);
+		procesarBorrado(mapa, x, y);
 	}
 	
 	private void setHectareasCercanas(Mapa mapa, int x, int y, boolean b) {
 		for(Iterator<Hectarea> iter =
 				mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
-				iter.hasNext();){
+				iter.hasNext();) {
 				Hectarea hectarea = iter.next();
 				hectarea.setCentralesCerca(b);
 			}
@@ -94,7 +95,7 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 
 	@Override
 	public void teImpacta(Godzilla godzy) {
-		godzy.impactame(this);
+		godzy.impactarEn(this);
 	}
 
 	@Override
@@ -102,4 +103,8 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 		vistaDeInfo.mostrarInfo(this);
 	}
 
+	@Override
+	public void refresh() {
+		potenciaDisponible = capacidad;
+	}
 }

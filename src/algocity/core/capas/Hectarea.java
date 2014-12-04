@@ -5,6 +5,8 @@ import java.util.Observable;
 import algocity.core.Mapa;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
+import algocity.core.capas.tendido.RedDeAgua;
+import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.construibles.Construible;
 import algocity.vistas.VistaDeHectarea;
 
@@ -17,6 +19,7 @@ public abstract class Hectarea extends Observable {
 	boolean conexionAgua;
 	int fila;
 	int columna;
+	RedDeAgua redDeAgua;
 
 	public Hectarea() {
 		construible = null;
@@ -129,10 +132,12 @@ public abstract class Hectarea extends Observable {
 
 	public void teImpacta(Terremoto terremoto) {
 		construible.teImpacta(terremoto);
+		hayCambio();
 	}
 
 	public void teImpacta(Godzilla godzy) {
 		construible.teImpacta(godzy);
+		hayCambio();
 	}
 
 	public void procesarConexion(Mapa mapa) {
@@ -148,5 +153,7 @@ public abstract class Hectarea extends Observable {
 			hayCambio();
 		}
 	}
+
+	public abstract void setTendidos(RedDeAgua redDeAgua, RedElectrica redElectrica);
 
 }

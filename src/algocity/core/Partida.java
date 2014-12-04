@@ -1,20 +1,20 @@
 package algocity.core;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-
-
-
-
 import algocity.core.capas.Hectarea;
+import algocity.core.capas.catastrofes.Catastrofe;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
 import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
 import algocity.core.procesadores.ProcesadorDeBomberos;
+import algocity.core.procesadores.ProcesadorDeCatastrofes;
+import algocity.core.procesadores.Refrescador;
 
 
 public class Partida extends Observable {
@@ -22,8 +22,7 @@ public class Partida extends Observable {
 	protected Mapa mapa;
 	protected int turno;
 	int plata;
-	Godzilla godzy;
-	Terremoto terremoto;
+	ArrayList<Catastrofe> catastrofes;
 	static int TIEMPO = 5; //en segundos
 	boolean inicializada;
 
@@ -31,14 +30,15 @@ public class Partida extends Observable {
 	public Partida (Mapa mapa) {
 		this.mapa = mapa;
 		inicializada = false;
-		godzy = null;
-		terremoto = null;
+		catastrofes = new ArrayList<Catastrofe>();
 	}
 
 	public void inicializar() {
 		turno = 0;
 		plata = Configuracion.PlataInicial;
 		inicializada = true;
+		Terremoto.inicializar();
+		Godzilla.inicializar();
 	}
 
 	public boolean inicializada() {
@@ -88,6 +88,7 @@ public class Partida extends Observable {
 		if (hectarea.rutaPavimentadaConectada()){
 			mapa.getRutaPavimentada().eliminarNodo(x, y);
 			hectarea.setConexionRuta(false);
+			hectarea.procesarDesconexion(mapa);
 			return true;
 		}
 		return false;
@@ -110,9 +111,9 @@ public class Partida extends Observable {
 
 	public boolean quitarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.hayTendidoElectrico()){
-			hectarea.setConexionElectrica(false);
+		if (hectarea.setConexionElectrica(false)){
 			mapa.getRedElectrica().eliminarNodo(x, y);
+			hectarea.procesarDesconexion(mapa);
 			return true;
 		}
 		return false;
@@ -154,9 +155,14 @@ public class Partida extends Observable {
 			Debitador debitador = new Debitador(mapa);
 			plata += debitador.getPago();
 		}
-
+		Refrescador.refresh(mapa);
+		if (Godzilla.aparecer())
+			catastrofes.add(new Godzilla(mapa.recorridoGodzilla(turno)));
+		if (Terremoto.aparecer())
+			catastrofes.add(new Terremoto(mapa));
 		ProcesadorDeBomberos.procesar(mapa);
-		CalculadorDeCalidadDeVida.procesar(mapa) ;
+		CalculadorDeCalidadDeVida.procesar(mapa);
+		ProcesadorDeCatastrofes.procesar(mapa, catastrofes);
 		hayCambios();
 	}
 
@@ -172,11 +178,11 @@ public class Partida extends Observable {
 		return mapa;
 	}
 
-	private boolean generarGodzilla() {
+/*	private boolean generarGodzilla() {
 		Random rn = new Random();
 		return (rn.nextBoolean() & rn.nextBoolean() & rn.nextBoolean());
-	}
-
+	}*/
+	
 	public int getTurno() {
 		return turno;
 	}

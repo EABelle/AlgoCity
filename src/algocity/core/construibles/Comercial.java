@@ -30,7 +30,7 @@ public class Comercial extends Edificio {
 
 	@Override
 	public void teImpacta(Godzilla godzy) {
-		godzy.impactame(this);
+		godzy.impactarEn(this);
 	}
 
 	@Override

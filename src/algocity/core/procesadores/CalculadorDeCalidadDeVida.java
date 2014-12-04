@@ -24,12 +24,6 @@ public abstract class CalculadorDeCalidadDeVida {
 		Hectarea hectareaIndustrial;
 		Iterator<Hectarea> residenciales = mapa.recorridoResidenciales();
 		RutaPavimentada ruta = mapa.getRutaPavimentada();
-		
-		for(Iterator<Hectarea> industriales = mapa.recorridoIndustriales(); 
-				industriales.hasNext();){
-			industrial = (Industrial)industriales.next().getConstruible();
-			industrial.plim();
-		}
 
 		while (residenciales.hasNext()){
 			hectareaResidencial = residenciales.next();
