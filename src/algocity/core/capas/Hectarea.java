@@ -131,12 +131,14 @@ public abstract class Hectarea extends Observable {
 	}
 
 	public void teImpacta(Terremoto terremoto) {
-		construible.teImpacta(terremoto);
+		if (construible != null)
+			construible.teImpacta(terremoto);
 		hayCambio();
 	}
 
 	public void teImpacta(Godzilla godzy) {
-		construible.teImpacta(godzy);
+		if (construible != null)
+			construible.teImpacta(godzy);
 		hayCambio();
 	}
 
