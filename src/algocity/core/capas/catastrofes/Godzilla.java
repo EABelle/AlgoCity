@@ -1,6 +1,8 @@
 package algocity.core.capas.catastrofes;
 
 import java.util.Iterator;
+import java.util.Random;
+
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RedElectrica;
@@ -56,5 +58,13 @@ public class Godzilla extends Catastrofe {
 	
 	public static void inicializar(){
 		presente = false;
+	}
+
+	public static boolean aparecer() {
+		Random rn = new Random();
+		if (!presente&(rn.nextInt(49) % 12 == 0)) {
+			presente = true;
+		}
+		return presente;
 	}
 }

@@ -13,6 +13,7 @@ import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
 import algocity.core.procesadores.ProcesadorDeBomberos;
+import algocity.core.procesadores.ProcesadorDeCatastrofes;
 import algocity.core.procesadores.Refrescador;
 
 
@@ -29,7 +30,7 @@ public class Partida extends Observable {
 	public Partida (Mapa mapa) {
 		this.mapa = mapa;
 		inicializada = false;
-		catastrofes = new ArrayList<Catastrofe>;
+		catastrofes = new ArrayList<Catastrofe>();
 	}
 
 	public void inicializar() {
@@ -158,9 +159,10 @@ public class Partida extends Observable {
 		if (Godzilla.aparecer())
 			catastrofes.add(new Godzilla(mapa.recorridoGodzilla(turno)));
 		if (Terremoto.aparecer())
-			catastrofes.add(new Terremoto());
+			catastrofes.add(new Terremoto(mapa));
 		ProcesadorDeBomberos.procesar(mapa);
 		CalculadorDeCalidadDeVida.procesar(mapa);
+		ProcesadorDeCatastrofes.procesar(mapa, catastrofes);
 		hayCambios();
 	}
 

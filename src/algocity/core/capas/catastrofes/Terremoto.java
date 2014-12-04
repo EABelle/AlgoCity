@@ -9,6 +9,7 @@ import algocity.core.construibles.Construible;
 import algocity.core.procesadores.ProcesadorDeDaniados;
 
 public class Terremoto extends Catastrofe {
+	private static final int MaximaCantidad = 3;
 	int origenX;
 	int origenY;
 	float danio;
@@ -71,6 +72,16 @@ public class Terremoto extends Catastrofe {
 
 	public static void inicializar() {
 		cantidadPresentes = 0;
+	}
+
+	public static boolean aparecer() {
+		Random rm = new Random();
+		int aparece = rm.nextInt(5);
+		if ((cantidadPresentes < MaximaCantidad) && (aparece == 0)) {
+			cantidadPresentes ++;
+			return true;
+		}
+		return false;
 	}
 
 }

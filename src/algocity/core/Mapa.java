@@ -236,4 +236,109 @@ public class Mapa {
 	public ArrayList<Hectarea> getHectareasDeBomberos() {
 		return bomberos;
 	}
+
+	public Iterator<Hectarea> recorridoGodzilla(int turno) {
+		Iterator<Hectarea> recorrido = null;
+		switch (turno % 6){
+		case 0:
+			recorrido = recorridoHorizontal();
+			break;
+		case 1:
+			recorrido = recorridoVertical();
+			break;
+		case 2:
+			recorrido = recorridoDiagonal1();
+			break;
+		case 3:
+			recorrido = recorridoDiagonal2();
+			break;
+		case 4:
+			recorrido = recorridoZigZagHorizontal();
+			break;
+		case 5:
+			recorrido = recorridoZigZagVertical();
+			break;
+		}
+		return recorrido;
+	}
+
+	private Iterator<Hectarea> recorridoHorizontal() {
+		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		Random rm = new Random();
+		int fila = rm.nextInt(filas);
+		for(int i = 0; i <= columnas; i++) {
+			recorrido.add(hectareas[fila][i]);
+		}
+		return recorrido.iterator();
+	}
+	
+	private Iterator<Hectarea> recorridoVertical() {
+		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		Random rm = new Random();
+		int columna = rm.nextInt(columnas);
+		for(int i = 0; i <= filas; i++) {
+			recorrido.add(hectareas[i][columna]);
+		}
+		return recorrido.iterator();
+	}
+
+	private Iterator<Hectarea> recorridoDiagonal1() {
+		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		Random rm = new Random();
+		int fila = rm.nextInt(filas);
+		int columna = 0;
+		while((fila < filas) && (columna < columnas)){
+			recorrido.add(hectareas[fila][columna]);
+			fila ++;
+			columna ++;
+		}
+		return recorrido.iterator();
+	}
+	
+	private Iterator<Hectarea> recorridoDiagonal2() {
+		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		Random rm = new Random();
+		int fila = rm.nextInt(filas);
+		int columna = 0;
+		while((fila > 0) && (columna < columnas)){
+			recorrido.add(hectareas[fila][columna]);
+			fila --;
+			columna ++;
+		}
+		return recorrido.iterator();
+	}
+
+	private Iterator<Hectarea> recorridoZigZagVertical() {
+		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		Random rm = new Random();
+		int columna = rm.nextInt(filas - 2) + 1;
+		int fila = 0;
+		while(fila < columnas) {
+			recorrido.add(hectareas[fila][columna]);
+			fila ++;
+			if (columna % 2 == 0){
+				columna --;
+			}else{
+				columna ++;
+			}
+		}
+		return recorrido.iterator();
+	}
+
+	private Iterator<Hectarea> recorridoZigZagHorizontal() {
+		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		Random rm = new Random();
+		int fila = rm.nextInt(filas - 2) + 1;
+		int columna = 0;
+		while(columna < columnas) {
+			recorrido.add(hectareas[fila][columna]);
+			columna ++;
+			if (fila % 2 == 0){
+				fila --;
+			}else{
+				fila ++;
+			}
+		}
+		return recorrido.iterator();
+	}
 }
