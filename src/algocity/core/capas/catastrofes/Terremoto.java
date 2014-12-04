@@ -13,6 +13,7 @@ public class Terremoto extends Catastrofe {
 	int origenY;
 	float danio;
 	int radio;
+	static int cantidadPresentes;
 	
 
 	public Terremoto(int x, int y) {
@@ -20,6 +21,7 @@ public class Terremoto extends Catastrofe {
 		origenY = y;
 		danio = 50;
 		radio=0;
+		cantidadPresentes ++;
 	}
 	
 	public Terremoto(Mapa mapa) {
@@ -42,7 +44,7 @@ public class Terremoto extends Catastrofe {
 			procesadorDeDanios.procesarDanios(mapa, hectarea);
 			radioRestante --;
 		}
-		while (((danio - 1.5)> 0) && ((radioRestante --) >= 0)){
+		while (((danio - 1.5) > 0) && ((radioRestante --) >= 0)){
 			danio -= 1.5;
 			radio ++;
 			for(iter = mapa.RecorrerSoloEnUnRadio(radio, origenX, origenY);
@@ -51,6 +53,10 @@ public class Terremoto extends Catastrofe {
 				hectarea.teImpacta(this);
 				procesadorDeDanios.procesarDanios(mapa, hectarea);
 			}
+		}
+		
+		if (danio <= 0) {
+			cantidadPresentes --;
 		}
 	}
 	
@@ -61,6 +67,10 @@ public class Terremoto extends Catastrofe {
 	@Override
 	public boolean continua() {
 		return danio > 0;
+	}
+
+	public static void inicializar() {
+		cantidadPresentes = 0;
 	}
 
 }

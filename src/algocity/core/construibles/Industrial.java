@@ -62,7 +62,7 @@ public class Industrial extends Edificio implements Refrescable {
 
 	@Override
 	public void teImpacta(Godzilla godzy) {
-		godzy.impactame(this);
+		godzy.impactarEn(this);
 	}
 
 	@Override

@@ -95,7 +95,7 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 
 	@Override
 	public void teImpacta(Godzilla godzy) {
-		godzy.impactame(this);
+		godzy.impactarEn(this);
 	}
 
 	@Override
