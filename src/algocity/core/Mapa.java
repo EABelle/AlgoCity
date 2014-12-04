@@ -266,7 +266,7 @@ public class Mapa {
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		Random rm = new Random();
 		int fila = rm.nextInt(filas);
-		for(int i = 0; i <= columnas; i++) {
+		for(int i = 0; i < columnas; i++) {
 			recorrido.add(hectareas[fila][i]);
 		}
 		return recorrido.iterator();
@@ -276,7 +276,7 @@ public class Mapa {
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		Random rm = new Random();
 		int columna = rm.nextInt(columnas);
-		for(int i = 0; i <= filas; i++) {
+		for(int i = 0; i < filas; i++) {
 			recorrido.add(hectareas[i][columna]);
 		}
 		return recorrido.iterator();
