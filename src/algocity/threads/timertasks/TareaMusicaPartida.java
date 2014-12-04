@@ -3,9 +3,13 @@ package algocity.threads.timertasks;
 import java.io.File;
 import java.util.TimerTask;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.DataLine;
+
+
 public class TareaMusicaPartida extends TimerTask {
 
 	
@@ -14,9 +18,15 @@ public class TareaMusicaPartida extends TimerTask {
 	@Override
 	public void run() {
 		try {
-			sonido = AudioSystem.getClip();
-			File tema = new File("files\\AUDIO01.wav");
-			sonido.open(AudioSystem.getAudioInputStream(tema));
+			
+			File tema = new File("files/AUDIO01.wav");
+			AudioInputStream stream = AudioSystem.getAudioInputStream(tema);
+			AudioFormat format = stream.getFormat();
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			
+			sonido = (Clip)AudioSystem.getLine(info);
+			
+			sonido.open(stream);
 			long duracion = getDuracion();
 			
 			sonido.start();
