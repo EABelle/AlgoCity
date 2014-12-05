@@ -59,6 +59,13 @@ public class TareaMusicaPartida extends TimerTask {
 		else
 			sonido.start();
 	}
+
+	public boolean estaCorriendo() {
+		if (sonido == null)
+			return false;
+		
+		return sonido.isActive();
+	}
 	
 	
 	

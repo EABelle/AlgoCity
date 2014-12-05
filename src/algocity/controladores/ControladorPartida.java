@@ -157,6 +157,13 @@ public class ControladorPartida {
 		timerTurno.playPause();
 		
 	}
+	
+	public boolean timerEstaCorriendo(){
+		return timerTurno.estaCorriendo();
+	}
 
+	public boolean musicaEstaCorriendo(){
+		return musica.estaCorriendo();
+	}
 
 }

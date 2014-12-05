@@ -61,4 +61,9 @@ public class ProcesoTimerTurno extends Thread {
 			run();
 		}
 	}
+
+	public boolean estaCorriendo() {
+
+		return this.corriendo;
+	}
 }

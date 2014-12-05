@@ -1,15 +1,6 @@
 package algocity.threads;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
 import algocity.threads.timertasks.TareaMusicaPartida;
 
 public class ProcesoMusicaPartida extends Thread {
@@ -35,5 +26,10 @@ public class ProcesoMusicaPartida extends Thread {
 	public void playPauseMusic() {
 		
 		reproductor.playPauseMusic();
+	}
+
+	public boolean estaCorriendo() {
+
+		return reproductor.estaCorriendo();
 	}
 }
