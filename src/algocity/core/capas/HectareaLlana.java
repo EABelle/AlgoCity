@@ -28,9 +28,14 @@ public class HectareaLlana extends Hectarea {
 				| (centralesCerca > 0);
 	}
 	
-//	public boolean hayElectricidad() {
-//		return redElectrica.servicioExiste(fila, columna);
-//	}
+	public boolean setConexionElectrica(boolean conexionElectrica) {
+		if (this.conexionElectrica != conexionElectrica) {
+			this.conexionElectrica = conexionElectrica;
+			hayCambio();
+			return true;
+		}
+		return false;
+	}
 
 	private boolean agregarConstruibleEnLlano(ConstruibleEnLlano construible) {
 

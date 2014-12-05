@@ -72,9 +72,10 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 
 	@Override
 	public void procesarBorrado(Mapa mapa, int x, int y) {
-		mapa.getRedElectrica().eliminarEdificioProveedor(x,y);
-		mapa.getHectareasDeCentralElectrica().remove(mapa.getHectarea(x,y));
-		setHectareasCercanas(mapa, x, y, false);
+		if(mapa.getHectareasDeCentralElectrica().remove(mapa.getHectarea(x,y))) {
+			mapa.getRedElectrica().eliminarEdificioProveedor(x,y);
+			setHectareasCercanas(mapa, x, y, false);
+		}
 	}
 
 	@Override
