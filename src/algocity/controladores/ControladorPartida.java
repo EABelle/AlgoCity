@@ -29,7 +29,6 @@ public class ControladorPartida {
 	private ControladorDeMapa controladorDeMapa;
 	private ProcesoMusicaPartida musica;
 	private ProcesoTimerTurno timerTurno;
-	private PasadorDeTurno pasadorDeTurno;
 	
 	public ControladorPartida(Partida partida, VistaDePartida vista) {
 		this.partida = partida;
@@ -52,19 +51,14 @@ public class ControladorPartida {
 		partida.hayCambios();
 		inicializarTeclado();
 		inicializarMusica();
-		inicializarPasadorDeTurno();
 		inicializarTimer();		
 		
 
 	}
 
-	private void inicializarPasadorDeTurno() {
-		pasadorDeTurno = new PasadorDeTurno(this.partida);
-	}
-	
 	private void inicializarTimer() {
 		//System.out.println("INICIALIZADO EL TEMPORIZADOR DE TURNOS");
-		timerTurno = new ProcesoTimerTurno(pasadorDeTurno, partida);
+		timerTurno = new ProcesoTimerTurno(partida);
 		timerTurno.start();
 	}
 	
@@ -147,7 +141,7 @@ public class ControladorPartida {
 	}
 
 	public void pasarTurno() {
-		this.pasadorDeTurno.pasarTurno();
+		this.partida.pasarTurno();
 		this.timerTurno.reset();
 	}
 
@@ -157,6 +151,11 @@ public class ControladorPartida {
 
 	public void guardarPartida() {
 		GuardadorDePartida.guardarPartida(partida);
+	}
+
+	public void playPauseTimer() {
+		timerTurno.playPause();
+		
 	}
 
 
