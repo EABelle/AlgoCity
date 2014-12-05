@@ -45,6 +45,7 @@ public class ControladorJuego {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (juego.getJugador() == null) {
+					ventanaPrincipal.setEstado("Seleccione un jugador!");
 					return;
 				}
 				int filas = ventanaPrincipal.getMenu().getFilas();
@@ -52,7 +53,10 @@ public class ControladorJuego {
 				juego.prepararMapa(filas, columnas);
 				Partida partida = juego.crearPartida();
 				VistaDePartida vistaDePartida = new VistaDePartida(partida);
-				controladorPartida = new ControladorPartida(partida, vistaDePartida);
+				vistaDePartida.setTitle("Juego de " + juego.getJugador().getNombre());
+				controladorPartida = new ControladorPartida(
+						partida, vistaDePartida, juego);
+				controladorPartida.setManejadorDeJugadores(manejador);
 				controladorPartida.inicializar();
 				ventanaPrincipal.dispose();
 			}
@@ -67,8 +71,9 @@ public class ControladorJuego {
 			public void actionPerformed(ActionEvent e) {
 				List<String> optionList = manejador.nombresDeJugadores();
 				Object[] options = optionList.toArray();
-				String nombre = (String) JOptionPane.showInputDialog(null, "Favorite Food",
-						"Food", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+				String nombre = (String) JOptionPane.showInputDialog(null,
+						"Seleccione jugador", "Seleccionar jugador",
+						JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 				if (nombre != null) {
 					Jugador jugador = manejador.obtenerJugadorPorNombre(nombre);
 					seleccionarJugador(jugador);

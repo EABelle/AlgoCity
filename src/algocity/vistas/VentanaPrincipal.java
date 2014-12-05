@@ -1,5 +1,7 @@
 package algocity.vistas;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -17,9 +19,9 @@ public class VentanaPrincipal extends JFrame {
 
 	private void inicializarMenu() {
 		estado = new JLabel("Bienvenido al AlgoCity!");
-		add(estado);
+		add(estado, BorderLayout.BEFORE_FIRST_LINE);
 		menu = new MenuPanel();
-		add(menu);
+		add(menu, BorderLayout.CENTER);
 	}
 
 	public MenuPanel getMenu() {

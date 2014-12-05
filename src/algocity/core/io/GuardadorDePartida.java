@@ -1,5 +1,8 @@
 package algocity.core.io;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import algocity.core.Mapa;
 import algocity.core.Partida;
 import algocity.core.capas.HectareaAgua;
@@ -11,8 +14,14 @@ import com.google.gson.GsonBuilder;
 
 public class GuardadorDePartida {
 
+	private String ruta;
 
-	public static void guardarPartida(Partida partida) {
+	public GuardadorDePartida(String ruta) {
+		this.ruta = ruta;
+	}
+
+
+	public boolean guardarPartida(Partida partida) {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 	    gsonBuilder.registerTypeAdapter(Partida.class, new PartidaSerializer());
 	    gsonBuilder.registerTypeAdapter(HectareaLlana.class, new HectareaSerializer());
@@ -20,7 +29,16 @@ public class GuardadorDePartida {
 	    gsonBuilder.setPrettyPrinting();
 	    Gson gson = gsonBuilder.create();
 	    String json = gson.toJson(partida);
-	    System.out.println(json);
+
+		try {
+			FileWriter writer = new FileWriter(ruta);
+		    writer.write(json);
+		    writer.close();
+		} catch (IOException e) {
+		   return false;
+		}
+		return true;
+
 	}
 
 	public static void main(String[] args) {
@@ -30,7 +48,7 @@ public class GuardadorDePartida {
 		partida.inicializar();
 		partida.pasarTurno();
 		partida.agregarConstruible(new CentralEolica(), 0, 0);
-		guardarPartida(partida);
+//		guardarPartida(partida);
 	}
 
 }

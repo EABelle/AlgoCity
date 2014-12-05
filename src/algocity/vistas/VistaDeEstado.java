@@ -2,7 +2,6 @@ package algocity.vistas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,7 +51,8 @@ public class VistaDeEstado extends JPanel implements Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controladorPartida.guardarPartida();
+				String ruta = seleccionarRuta();
+				if (ruta != null) controladorPartida.guardarPartida(ruta);
 			}
 		});
 
@@ -96,6 +96,14 @@ public class VistaDeEstado extends JPanel implements Observer {
 		add(playPauseTimer);
 		
 
+
+	}
+
+	private String seleccionarRuta() {
+
+		PanelGuardarPartida panelGuardar = new PanelGuardarPartida(
+				controladorPartida.getJuego().getJugador());
+		return panelGuardar.mostrarPanel();
 	}
 
 	private void inicializarMiniMapa() {

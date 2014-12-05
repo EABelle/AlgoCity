@@ -84,7 +84,18 @@ public class ManejadorDeJugadores {
 			if (jugador.getNombre() == nombre) return jugador;
 		}
 		return null;
+	}
 
+	public void actualizarJugador(Jugador jugador) {
+		leerJugadores();
+		for (int i = 0; i < jugadores.size(); i++) {
+			if (jugadores.get(i).getNombre().equals(jugador.getNombre())) {
+				jugadores.remove(i);
+				break;
+			}
+		}
+		jugadores.add(jugador);
+		guardarJugadores(jugadores);
 	}
 
 }

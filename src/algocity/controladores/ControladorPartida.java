@@ -4,10 +4,13 @@ import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 
+import algocity.core.Juego;
+import algocity.core.Jugador;
 import algocity.core.Partida;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.core.io.GuardadorDePartida;
+import algocity.core.io.ManejadorDeJugadores;
 import algocity.threads.ProcesoMusicaPartida;
 import algocity.threads.ProcesoTimerTurno;
 import algocity.vistas.VistaDeEstado;
@@ -20,6 +23,7 @@ public class ControladorPartida {
 
 	Partida partida;
 	VistaDePartida vistaDePartida;
+	private Juego juego;
 	private VistaDeMapa vistaDeMapa;
 	private VistaDeHerramientas vistaDeEdificios;
 	private VistaDeEstado vistaDeEstado;
@@ -29,10 +33,12 @@ public class ControladorPartida {
 	private ControladorDeMapa controladorDeMapa;
 	private ProcesoMusicaPartida musica;
 	private ProcesoTimerTurno timerTurno;
-	
-	public ControladorPartida(Partida partida, VistaDePartida vista) {
+	private ManejadorDeJugadores manejadorDeJugadores;
+
+	public ControladorPartida(Partida partida, VistaDePartida vista, Juego juego) {
 		this.partida = partida;
 		this.vistaDePartida = vista;
+		this.juego = juego;
 	}
 
 	public void inicializar() {
@@ -51,8 +57,7 @@ public class ControladorPartida {
 		partida.hayCambios();
 		inicializarTeclado();
 		inicializarMusica();
-		inicializarTimer();		
-		
+		inicializarTimer();
 
 	}
 
@@ -149,8 +154,24 @@ public class ControladorPartida {
 		return this.vistaDeInfo;
 	}
 
-	public void guardarPartida() {
-		GuardadorDePartida.guardarPartida(partida);
+	public void guardarPartida(String ruta) {
+		GuardadorDePartida guardador = new GuardadorDePartida(ruta);
+		if (guardador.guardarPartida(partida)) {
+			Jugador jugador = juego.getJugador();
+			jugador.agregarPartida(ruta);
+			manejadorDeJugadores.actualizarJugador(jugador);
+			setEstado("Guardadisima la partida!");
+		} else {
+			setEstado("No se ha podido guardar la partida!");
+		}
+	}
+
+	public Juego getJuego() {
+		return juego;
+	}
+
+	public void setManejadorDeJugadores(ManejadorDeJugadores manejador) {
+		this.manejadorDeJugadores = manejador;
 	}
 
 	public void playPauseTimer() {
@@ -165,5 +186,6 @@ public class ControladorPartida {
 	public boolean musicaEstaCorriendo(){
 		return musica.estaCorriendo();
 	}
+
 
 }
