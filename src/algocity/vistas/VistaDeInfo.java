@@ -47,7 +47,7 @@ public class VistaDeInfo extends JPanel {
 	public void mostrarInfo(Industrial industrial) {
 		String mensaje = "Industrial | Puestos ocupados: " +
 				industrial.puestosDeTrabajoOcupados() + "/" +
-				industrial.puestosDeTrabajoDisponibles();
+				industrial.puestosDeTrabajoTotal();
 		mensajeComun(industrial, mensaje);
 	}
 
