@@ -11,8 +11,10 @@ public class MenuPanel extends JPanel {
 
 	private JSpinner inputFilas;
 	private JSpinner inputColumnas;
+
 	private JButton botonComenzar;
 	private JButton botonUsuario;
+	private JButton botonAgregarUsuario;
 	private JLabel labelUsuario;
 
 	public MenuPanel() {
@@ -43,9 +45,11 @@ public class MenuPanel extends JPanel {
 	}
 
 	private void inicializarMenuUsuario() {
-		botonUsuario = new JButton("Seleccionar Usuario");
+		botonAgregarUsuario = new JButton("Agregar usuario nuevo");
+		botonUsuario = new JButton("Seleccionar usuario");
 		labelUsuario = new JLabel("No hay usuario seleccionado");
 
+		add(botonAgregarUsuario, BorderLayout.PAGE_START);
 		add(botonUsuario, BorderLayout.PAGE_START);
 		add(labelUsuario, BorderLayout.PAGE_START);
 	}
@@ -59,6 +63,10 @@ public class MenuPanel extends JPanel {
 		return botonUsuario;
 	}
 
+	public JButton getBotonAgregarUsuario() {
+		return botonAgregarUsuario;
+	}
+
 	public int getFilas() {
 		return (int) inputFilas.getValue();
 	}
@@ -70,5 +78,6 @@ public class MenuPanel extends JPanel {
 	public void setUsuario(String usuario) {
 		this.labelUsuario.setText("Usuario: " + usuario);
 	}
+
 
 }
