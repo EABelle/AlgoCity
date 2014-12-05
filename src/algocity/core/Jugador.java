@@ -9,10 +9,12 @@ public class Jugador {
 
 	public Jugador(String nombre) {
 		this.nombre = nombre;
+		this.partidas = new ArrayList<String>();
 	}
 
-	public void agregarJuego(String partida) {
-		partidas.add(partida);
+	public void agregarPartida(String partida) {
+		if (!partidas.contains(partida))
+			partidas.add(partida);
 	}
 
 	public void setPartidas(ArrayList<String> partidas) {
@@ -21,6 +23,10 @@ public class Jugador {
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public ArrayList<String> getPartidas() {
+		return partidas;
 	}
 
 }

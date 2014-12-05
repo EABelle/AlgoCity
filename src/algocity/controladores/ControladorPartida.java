@@ -4,10 +4,13 @@ import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 
+import algocity.core.Juego;
+import algocity.core.Jugador;
 import algocity.core.Partida;
 import algocity.core.capas.Hectarea;
 import algocity.core.construibles.Construible;
 import algocity.core.io.GuardadorDePartida;
+import algocity.core.io.ManejadorDeJugadores;
 import algocity.threads.ProcesoMusicaPartida;
 import algocity.threads.ProcesoTimerTurno;
 import algocity.vistas.VistaDeEstado;
@@ -20,6 +23,7 @@ public class ControladorPartida {
 
 	Partida partida;
 	VistaDePartida vistaDePartida;
+	private Juego juego;
 	private VistaDeMapa vistaDeMapa;
 	private VistaDeHerramientas vistaDeEdificios;
 	private VistaDeEstado vistaDeEstado;
@@ -30,14 +34,16 @@ public class ControladorPartida {
 	private ProcesoMusicaPartida musica;
 	private ProcesoTimerTurno timerTurno;
 	private PasadorDeTurno pasadorDeTurno;
-	
-	public ControladorPartida(Partida partida, VistaDePartida vista) {
+	private ManejadorDeJugadores manejadorDeJugadores;
+
+	public ControladorPartida(Partida partida, VistaDePartida vista, Juego juego) {
 		this.partida = partida;
 		this.vistaDePartida = vista;
+		this.juego = juego;
 	}
 
 	public void inicializar() {
-		
+
 		vistaDeMapa = new VistaDeMapa(partida.getMapa(), this);
 		vistaDeEdificios = new VistaDeHerramientas(this);
 		vistaDeEstado = new VistaDeEstado(this);
@@ -53,21 +59,21 @@ public class ControladorPartida {
 		inicializarTeclado();
 		inicializarMusica();
 		inicializarPasadorDeTurno();
-		inicializarTimer();		
-		
+		inicializarTimer();
+
 
 	}
 
 	private void inicializarPasadorDeTurno() {
 		pasadorDeTurno = new PasadorDeTurno(this.partida);
 	}
-	
+
 	private void inicializarTimer() {
 		//System.out.println("INICIALIZADO EL TEMPORIZADOR DE TURNOS");
 		timerTurno = new ProcesoTimerTurno(pasadorDeTurno, partida);
 		timerTurno.start();
 	}
-	
+
 	public int getTiempoRestante() {
 		if (timerTurno != null)
 			return timerTurno.getTiempoRestante();
@@ -76,15 +82,15 @@ public class ControladorPartida {
 
 	private void inicializarMusica() {
 		musica = new ProcesoMusicaPartida();
-		musica.start();	
+		musica.start();
 	}
 
 	public void playPauseMusic() {
 		musica.playPauseMusic();
-		
+
 	}
-	
-	
+
+
 	private void inicializarTeclado() {
 		controladorDeMapa = new ControladorDeMapa(vistaDeMapa);
 
@@ -155,8 +161,24 @@ public class ControladorPartida {
 		return this.vistaDeInfo;
 	}
 
-	public void guardarPartida() {
-		GuardadorDePartida.guardarPartida(partida);
+	public void guardarPartida(String ruta) {
+		GuardadorDePartida guardador = new GuardadorDePartida(ruta);
+		if (guardador.guardarPartida(partida)) {
+			Jugador jugador = juego.getJugador();
+			jugador.agregarPartida(ruta);
+			manejadorDeJugadores.actualizarJugador(jugador);
+			setEstado("Guardadisima la partida!");
+		} else {
+			setEstado("No se ha podido guardar la partida!");
+		}
+	}
+
+	public Juego getJuego() {
+		return juego;
+	}
+
+	public void setManejadorDeJugadores(ManejadorDeJugadores manejador) {
+		this.manejadorDeJugadores = manejador;
 	}
 
 
