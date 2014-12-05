@@ -62,7 +62,7 @@ public abstract class Hectarea extends Observable {
 	}
 
 	public boolean redElectricaConectada() {
-		return conexionElectrica | (centralesCerca > 0);
+		return (conexionElectrica) | (centralesCerca > 0);
 	}
 
 	public boolean setConexionAgua(boolean conexionAgua) {

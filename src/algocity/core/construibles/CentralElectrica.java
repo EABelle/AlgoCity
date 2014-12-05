@@ -59,8 +59,7 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 		if (!mapa.getHectarea(x, y).redDeAguaConectada())
 			return;
 
-		if(mapa.getRedElectrica().agregarEdificioProveedor(x, y)){
-//			System.out.println("hola");
+		if(mapa.getRedElectrica().agregarEdificioProveedor(x, y)) {
 			mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
 			setHectareasCercanas(mapa, x, y, true);
 		}
