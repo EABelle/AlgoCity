@@ -2,7 +2,6 @@ package algocity.threads;
 
 import java.util.Timer;
 
-import algocity.controladores.PasadorDeTurno;
 import algocity.core.Partida;
 import algocity.threads.timertasks.TareaContarSegundos;
 
@@ -15,7 +14,7 @@ public class ProcesoTimerTurno extends Thread {
 	private Partida partida;
 	private boolean corriendo;
 	
-	public ProcesoTimerTurno(PasadorDeTurno pasadorDeTurno, Partida partida) {
+	public ProcesoTimerTurno(Partida partida) {
 		this.partida = partida;
 		this.corriendo = false;
 		this.tiempoRestanteEnPausa = DURACION;

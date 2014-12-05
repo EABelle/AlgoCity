@@ -88,11 +88,11 @@ public class VistaDeEstado extends JPanel implements Observer {
 		add(estado);
 		add(mensaje);
 		add(plata);
+		add(playPauseMusic);
 		add(guardarPartida);
 		add(turno);
 		add(tiempoRestante);
 		add(pasarTurno);
-		add(playPauseMusic);
 		add(playPauseTimer);
 		
 

@@ -20,7 +20,6 @@ public class TareaContarSegundos extends TimerTask {
 	@Override
 	public void run() {
 		if (estadoCuentaRegresiva >= 0){
-			//System.out.println(estadoCuentaRegresiva/1000);
 			estadoCuentaRegresiva -= 1000;
 			partida.hayCambios();
 			if (estadoCuentaRegresiva < 0){
