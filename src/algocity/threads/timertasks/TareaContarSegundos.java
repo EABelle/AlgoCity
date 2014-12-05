@@ -1,6 +1,5 @@
 package algocity.threads.timertasks;
 
-import java.util.Timer;
 import java.util.TimerTask;
 
 import algocity.core.Partida;
@@ -25,6 +24,7 @@ public class TareaContarSegundos extends TimerTask {
 			estadoCuentaRegresiva -= 1000;
 			partida.hayCambios();
 			if (estadoCuentaRegresiva < 0){
+				partida.pasarTurno();
 				timerJuego.reset();
 			}
 		}

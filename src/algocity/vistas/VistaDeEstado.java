@@ -2,6 +2,7 @@ package algocity.vistas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +28,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 	private JPanel miniMapa;
 	private JButton guardarPartida;
 	private JButton playPauseMusic;
+	private JButton playPauseTimer;
 
 
 	public VistaDeEstado(ControladorPartida controladorPartida) {
@@ -36,7 +38,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 	}
 
 	private void inicializarPanelEstado() {
-		setLayout(new GridLayout(2, 4));
+		setLayout(new GridLayout(2, 5));
 
 		estado = new JLabel();
 		mensaje = new JLabel();
@@ -73,6 +75,16 @@ public class VistaDeEstado extends JPanel implements Observer {
 			}
 		});
 		
+		playPauseTimer = new JButton("Timer: Play/Pausa");
+		playPauseTimer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controladorPartida.playPauseTimer();
+				
+			}
+		});
+		
 		add(estado);
 		add(mensaje);
 		add(plata);
@@ -81,6 +93,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 		add(tiempoRestante);
 		add(pasarTurno);
 		add(playPauseMusic);
+		add(playPauseTimer);
 		
 
 	}

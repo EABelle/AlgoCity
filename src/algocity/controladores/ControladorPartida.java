@@ -159,5 +159,10 @@ public class ControladorPartida {
 		GuardadorDePartida.guardarPartida(partida);
 	}
 
+	public void playPauseTimer() {
+		timerTurno.playPause();
+		
+	}
+
 
 }
