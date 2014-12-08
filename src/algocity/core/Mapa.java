@@ -105,6 +105,24 @@ public class Mapa {
 		}
 	}
 
+	/**
+	 * Llena el mapa de hectareas pasadas en la lista, las que no
+	 * esten, se consideran hectareas llanas vacias.
+	 */
+	public void llenar(ArrayList<Hectarea> hectareas) {
+		for (Iterator<Hectarea> iterator = hectareas.iterator(); iterator.hasNext();) {
+			Hectarea hectarea = iterator.next();
+			this.hectareas[hectarea.getFila()][hectarea.getColumna()] = hectarea;
+		}
+		for (int i = 0; i < filas; i++) {
+			for (int j = 0; j < columnas; j++) {
+				if (this.hectareas[i][j] == null) {
+					this.hectareas[i][j] = new HectareaLlana();
+				}
+			}
+		}
+	}
+
 	public Iterator<Hectarea> recorridoSecuencial() {
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		for (int i = 0; i < filas; i++) {
@@ -271,7 +289,7 @@ public class Mapa {
 		}
 		return recorrido.iterator();
 	}
-	
+
 	private Iterator<Hectarea> recorridoVertical() {
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		Random rm = new Random();
@@ -294,7 +312,7 @@ public class Mapa {
 		}
 		return recorrido.iterator();
 	}
-	
+
 	private Iterator<Hectarea> recorridoDiagonal2() {
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		Random rm = new Random();

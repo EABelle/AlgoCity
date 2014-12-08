@@ -2,9 +2,7 @@ package algocity.core;
 
 import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
+
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.catastrofes.Catastrofe;
 import algocity.core.capas.catastrofes.Godzilla;
@@ -44,9 +42,13 @@ public class Partida extends Observable {
 	public boolean inicializada() {
 		return inicializada;
 	}
-	
+
 	public int getPlata(){
 		return plata;
+	}
+
+	public void setPlata(int plata) {
+		this.plata = plata;
 	}
 
 	public boolean agregarConstruible(Construible construible, int x, int y) {
@@ -143,7 +145,7 @@ public class Partida extends Observable {
 		}
 		return false;
 	}
-	
+
 	private void cobrar(int costo) {
 		plata -= costo;
 		hayCambios();
@@ -178,13 +180,12 @@ public class Partida extends Observable {
 		return mapa;
 	}
 
-/*	private boolean generarGodzilla() {
-		Random rn = new Random();
-		return (rn.nextBoolean() & rn.nextBoolean() & rn.nextBoolean());
-	}*/
-	
 	public int getTurno() {
 		return turno;
+	}
+
+	public void setTurno(int turno) {
+		this.turno = turno;
 	}
 
 	public void hayCambios() {

@@ -1,5 +1,8 @@
 package algocity.core.io;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -15,21 +18,16 @@ import com.google.gson.GsonBuilder;
 public class GuardadorDePartida {
 
 	private String ruta;
+	private Gson gson;
 
 	public GuardadorDePartida(String ruta) {
 		this.ruta = ruta;
+		prepararGson();
 	}
 
 
 	public boolean guardarPartida(Partida partida) {
-		GsonBuilder gsonBuilder = new GsonBuilder();
-	    gsonBuilder.registerTypeAdapter(Partida.class, new PartidaSerializer());
-	    gsonBuilder.registerTypeAdapter(HectareaLlana.class, new HectareaSerializer());
-	    gsonBuilder.registerTypeAdapter(HectareaAgua.class, new HectareaSerializer());
-	    gsonBuilder.setPrettyPrinting();
-	    Gson gson = gsonBuilder.create();
 	    String json = gson.toJson(partida);
-
 		try {
 			FileWriter writer = new FileWriter(ruta);
 		    writer.write(json);
@@ -38,7 +36,27 @@ public class GuardadorDePartida {
 		   return false;
 		}
 		return true;
+	}
 
+	public Partida cargarPartida(String ruta) {
+		Partida partida = null;
+		BufferedReader br;
+		try {
+			 br = new BufferedReader(
+					new FileReader(ruta));
+			 partida = gson.fromJson(br, Partida.class);
+		} catch (FileNotFoundException e) {
+		}
+		return partida;
+	}
+
+	private void prepararGson() {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+	    gsonBuilder.registerTypeAdapter(Partida.class, new PartidaSerializer());
+	    gsonBuilder.registerTypeAdapter(HectareaLlana.class, new HectareaSerializer());
+	    gsonBuilder.registerTypeAdapter(HectareaAgua.class, new HectareaSerializer());
+	    gsonBuilder.setPrettyPrinting();
+	    gson = gsonBuilder.create();
 	}
 
 	public static void main(String[] args) {
