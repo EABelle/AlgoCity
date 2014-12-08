@@ -54,8 +54,9 @@ public abstract class CalculadorDeCalidadDeVida {
 						}
 					}
 				}
-				int habitantesNuevos = (int)Math.rint((residencial.disponibilidad()/5)
+				int habitantesNuevos = (int)((residencial.disponibilidad()/5)
 						*(indice + 2)/4);
+//				habitantesNuevos -= (int)(residencial.danio()/5);
 				residencial.modificarCantidadDeHabitantes(habitantesNuevos);
 			}else{
 				residencial.quitarHabitantes(MAXIMA_SALIDA);

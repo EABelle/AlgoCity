@@ -28,8 +28,15 @@ abstract public class Tendido {
 	
 	public boolean agregarEdificioProveedor (int coordenadaX , int coordenadaY){
 		Coordenada coord = new Coordenada(coordenadaX,coordenadaY);
-		if (edificiosProveedores.contains(coord))
-			return false;
+		Iterator<Coordenada> iter = edificiosProveedores.iterator();
+		Coordenada existente;
+		while(iter.hasNext()) {
+			existente = iter.next();
+			if((coord.getX() == existente.getX()) && 
+					(coord.getY() == existente.getY())){
+				return false;
+			}
+		}
 		this.edificiosProveedores.add (coord);
 		return true;
 	}

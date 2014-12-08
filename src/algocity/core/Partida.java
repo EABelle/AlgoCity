@@ -24,7 +24,6 @@ public class Partida extends Observable {
 	static int TIEMPO = 5; //en segundos
 	boolean inicializada;
 
-
 	public Partida (Mapa mapa) {
 		this.mapa = mapa;
 		inicializada = false;
@@ -82,7 +81,6 @@ public class Partida extends Observable {
 		cobrar(mapa.getRutaPavimentada().getCosto());
 		mapa.getHectarea(x, y).procesarConexion(mapa);
 		return true;
-
 	}
 
 	public boolean quitarRutaPavimentada(int x, int y) {
@@ -109,7 +107,6 @@ public class Partida extends Observable {
 		mapa.getHectarea(x, y).procesarConexion(mapa);
 		return true;
 	}
-
 
 	public boolean quitarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);

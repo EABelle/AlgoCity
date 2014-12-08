@@ -59,22 +59,23 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 		if (!mapa.getHectarea(x, y).redDeAguaConectada())
 			return;
 
-		if(mapa.getRedElectrica().agregarEdificioProveedor(x, y)){
+		if(mapa.getRedElectrica().agregarEdificioProveedor(x, y)) {
 			mapa.getHectareasDeCentralElectrica().add(mapa.getHectarea(x,y));
 			setHectareasCercanas(mapa, x, y, true);
 		}
-	}
-	
-	@Override
-	public void procesarBorrado(Mapa mapa, int x, int y) {
-		mapa.getRedElectrica().eliminarEdificioProveedor(x,y);
-		mapa.getHectareasDeCentralElectrica().remove(mapa.getHectarea(x,y));
-		setHectareasCercanas(mapa, x, y, false);
 	}
 
 	@Override
 	public void procesarConexion(Mapa mapa, int x, int y) {
 		procesarAgregado(mapa, x, y);
+	}
+
+	@Override
+	public void procesarBorrado(Mapa mapa, int x, int y) {
+		if(mapa.getHectareasDeCentralElectrica().remove(mapa.getHectarea(x,y))) {
+			mapa.getRedElectrica().eliminarEdificioProveedor(x,y);
+			setHectareasCercanas(mapa, x, y, false);
+		}
 	}
 
 	@Override
@@ -90,6 +91,7 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 				iter.hasNext();) {
 				Hectarea hectarea = iter.next();
 				hectarea.setCentralesCerca(b);
+//				System.out.println("hectarea " + hectarea.getFila() + hectarea.getColumna());
 			}
 	}
 

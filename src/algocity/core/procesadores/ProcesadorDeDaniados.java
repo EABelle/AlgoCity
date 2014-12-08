@@ -8,10 +8,11 @@ public class ProcesadorDeDaniados {
 	
 	public void procesarDanios(Mapa mapa, Hectarea hectarea) {
 		Construible construible = hectarea.getConstruible(); 
-		if ((construible != null) && (construible.daniado())) {
+		if ((construible != null) && (construible.daniado()) &&
+				!mapa.getHectareasDaniadas().contains(hectarea)) {
 			mapa.getHectareasDaniadas().add(hectarea);
-		}else if(mapa.getHectareasDaniadas().contains(hectarea)){
-			mapa.getHectareasDaniadas().remove(hectarea);
+//		}else if(mapa.getHectareasDaniadas().contains(hectarea)){
+//			mapa.getHectareasDaniadas().remove(hectarea);
 		}
 	}
 
