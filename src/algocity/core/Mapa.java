@@ -56,13 +56,11 @@ public class Mapa {
 	}
 
 	public boolean cargarHectareaNueva(Hectarea hectarea) {
-
 		if (x < filas) {
 			if (y < columnas){
-				hectareas[x][y] = hectarea;
 				hectarea.setFila(x);
 				hectarea.setColumna(y);
-				hectarea.setTendidos(redDeAgua, redElectrica);
+				agregarHectarea(hectarea);
 				y ++;
 			} else {
 				x ++;
@@ -73,6 +71,12 @@ public class Mapa {
 		else cargadoCompleto = true;
 		return cargadoCompleto;
 	}
+
+	private void agregarHectarea(Hectarea hectarea) {
+		hectareas[hectarea.getFila()][hectarea.getColumna()] = hectarea;
+		hectarea.setTendidos(redDeAgua, redElectrica);
+	}
+
 	public boolean cargado() {
 		return cargadoCompleto;
 	}
@@ -103,6 +107,7 @@ public class Mapa {
 			}
 			this.cargarHectareaNueva(hectarea);
 		}
+		cargadoCompleto = true;
 	}
 
 	/**
@@ -112,15 +117,23 @@ public class Mapa {
 	public void llenar(ArrayList<Hectarea> hectareas) {
 		for (Iterator<Hectarea> iterator = hectareas.iterator(); iterator.hasNext();) {
 			Hectarea hectarea = iterator.next();
-			this.hectareas[hectarea.getFila()][hectarea.getColumna()] = hectarea;
+			agregarHectarea(hectarea);
+			Construible cons = hectarea.getConstruible();
+			if (cons != null) {
+				cons.procesarAgregado(this, hectarea.getFila(), hectarea.getColumna());
+			}
 		}
-		for (int i = 0; i < filas; i++) {
-			for (int j = 0; j < columnas; j++) {
-				if (this.hectareas[i][j] == null) {
-					this.hectareas[i][j] = new HectareaLlana();
+		for (int x = 0; x < filas; x++) {
+			for (int y = 0; y < columnas; y++) {
+				if (this.hectareas[x][y] == null) {
+					Hectarea hectarea = new HectareaLlana();
+					hectarea.setFila(x);
+					hectarea.setColumna(y);
+					agregarHectarea(hectarea);
 				}
 			}
 		}
+		cargadoCompleto = true;
 	}
 
 	public Iterator<Hectarea> recorridoSecuencial() {

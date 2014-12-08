@@ -75,4 +75,9 @@ public class Industrial extends Edificio implements Refrescable {
 		puestosDisponibles = CAPACIDAD_MAXIMA;
 	}
 
+	@Override
+	public String getRepresentation() {
+		return "I";
+	}
+
 }

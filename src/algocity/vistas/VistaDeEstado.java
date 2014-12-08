@@ -51,8 +51,10 @@ public class VistaDeEstado extends JPanel implements Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				controladorPartida.playPauseTimer();
 				String ruta = seleccionarRuta();
 				if (ruta != null) controladorPartida.guardarPartida(ruta);
+				controladorPartida.playPauseTimer();
 			}
 		});
 
@@ -64,27 +66,27 @@ public class VistaDeEstado extends JPanel implements Observer {
 				controladorPartida.pasarTurno();
 			}
 		});
-		
+
 		playPauseMusic = new JButton("Musica: Play/Pausa");
 		playPauseMusic.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controladorPartida.playPauseMusic();
-				
+
 			}
 		});
-		
+
 		playPauseTimer = new JButton("Timer: Play/Pausa");
 		playPauseTimer.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controladorPartida.playPauseTimer();
-				
+
 			}
 		});
-		
+
 		add(estado);
 		add(mensaje);
 		add(plata);
@@ -94,8 +96,6 @@ public class VistaDeEstado extends JPanel implements Observer {
 		add(tiempoRestante);
 		add(pasarTurno);
 		add(playPauseTimer);
-		
-
 
 	}
 
@@ -128,13 +128,13 @@ public class VistaDeEstado extends JPanel implements Observer {
 	public void setTurno(int turno) {
 		this.turno.setText(String.format("Turno: %d", turno));
 	}
-	
-	
+
+
 	public void setTiempoRestante(int tiempoRestante) {
 		this.tiempoRestante.setText(String.format("Tiempo Restante: %d", tiempoRestante));
 	}
-	
-	
+
+
 	@Override
 	public void update(Observable o, Object arg) {
 		Partida partida = (Partida) o;

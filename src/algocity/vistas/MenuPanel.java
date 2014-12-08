@@ -14,6 +14,7 @@ public class MenuPanel extends JPanel {
 
 	private JButton botonComenzar;
 	private JButton botonUsuario;
+	private JButton botonCargarPartida;
 	private JButton botonAgregarUsuario;
 	private JLabel labelUsuario;
 
@@ -46,12 +47,14 @@ public class MenuPanel extends JPanel {
 
 	private void inicializarMenuUsuario() {
 		botonAgregarUsuario = new JButton("Agregar usuario nuevo");
+		botonCargarPartida = new JButton("Cargar partida");
 		botonUsuario = new JButton("Seleccionar usuario");
 		labelUsuario = new JLabel("No hay usuario seleccionado");
 
 		add(botonAgregarUsuario, BorderLayout.PAGE_START);
 		add(botonUsuario, BorderLayout.PAGE_START);
 		add(labelUsuario, BorderLayout.PAGE_START);
+		add(botonCargarPartida, BorderLayout.PAGE_END);
 	}
 
 
@@ -67,6 +70,10 @@ public class MenuPanel extends JPanel {
 		return botonAgregarUsuario;
 	}
 
+	public JButton getBotonCargarPartida() {
+		return botonCargarPartida;
+	}
+
 	public int getFilas() {
 		return (int) inputFilas.getValue();
 	}
@@ -78,6 +85,5 @@ public class MenuPanel extends JPanel {
 	public void setUsuario(String usuario) {
 		this.labelUsuario.setText("Usuario: " + usuario);
 	}
-
 
 }

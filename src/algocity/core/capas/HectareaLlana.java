@@ -9,7 +9,11 @@ import algocity.vistas.VistaDeHectarea;
 public class HectareaLlana extends Hectarea {
 
 	RedElectrica redElectrica;
-	
+
+	public HectareaLlana() {
+		super();
+	}
+
 	@Override
 	public boolean agregarConstruible(Construible construible) {
 		try{

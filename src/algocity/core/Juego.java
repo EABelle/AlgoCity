@@ -15,6 +15,10 @@ public class Juego {
 		return mapa;
 	}
 
+	public void setMapa(Mapa mapa) {
+		this.mapa = mapa;
+	}
+
 	public Partida crearPartida() {
 		Partida partida = new Partida(mapa);
 		partida.inicializar();

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.HectareaAgua;
 import algocity.core.capas.HectareaLlana;
+import algocity.core.construibles.Construible;
 
 public class VistaDeHectarea extends JPanel implements Observer {
 
@@ -41,12 +42,10 @@ public class VistaDeHectarea extends JPanel implements Observer {
 	}
 
 	private void printConstruible() {
-		if (hectarea.getConstruible() == null) {
-			this.construible = null;
-		}
-		if (this.construible != null) {
+		Construible cons = hectarea.getConstruible();
+		if (cons != null) {
 			actualGraphics.setColor(Color.BLACK);
-			actualGraphics.drawString(construible, 10, 10);
+			actualGraphics.drawString(cons.getRepresentation(), 10, 10);
 		}
 	}
 
@@ -73,10 +72,6 @@ public class VistaDeHectarea extends JPanel implements Observer {
 	@Override
 	public void update(Observable hectarea, Object arg) {
 		this.repaint();
-	}
-
-	public void setConstruible(String representacion) {
-		this.construible = representacion;
 	}
 
 }

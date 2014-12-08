@@ -41,7 +41,7 @@ public abstract class Construible {
 	}
 
 	public void procesarBorrado(Mapa mapa, int x, int y) {
-		
+
 	}
 
 	public void teImpacta(Terremoto terremoto) {
@@ -55,10 +55,12 @@ public abstract class Construible {
 	public void mostrarInfo(VistaDeInfo vistaDeInfo) {}
 
 	public void procesarConexion(Mapa mapa, int x, int y) {
-		
+
 	}
 
 	public void procesarDesconexion(Mapa mapa, int fila, int columna) {
-				
+
 	}
+
+	public abstract String getRepresentation();
 }

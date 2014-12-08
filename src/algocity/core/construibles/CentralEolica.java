@@ -14,4 +14,9 @@ public class CentralEolica extends CentralElectrica {
 		estacion.arreglar(this);
 	}
 
+	@Override
+	public String getRepresentation() {
+		return "Ce";
+	}
+
 }

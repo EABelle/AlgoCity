@@ -42,7 +42,7 @@ public class ControladorPartida {
 	}
 
 	public void inicializar() {
-		
+
 		vistaDeMapa = new VistaDeMapa(partida.getMapa(), this);
 		vistaDeEdificios = new VistaDeHerramientas(this);
 		vistaDeEstado = new VistaDeEstado(this);
@@ -62,11 +62,10 @@ public class ControladorPartida {
 	}
 
 	private void inicializarTimer() {
-		//System.out.println("INICIALIZADO EL TEMPORIZADOR DE TURNOS");
 		timerTurno = new ProcesoTimerTurno(partida);
 		timerTurno.start();
 	}
-	
+
 	public int getTiempoRestante() {
 		if (timerTurno != null)
 			return timerTurno.getTiempoRestante();
@@ -75,15 +74,15 @@ public class ControladorPartida {
 
 	private void inicializarMusica() {
 		musica = new ProcesoMusicaPartida();
-		musica.start();	
+		musica.start();
 	}
 
 	public void playPauseMusic() {
 		musica.playPauseMusic();
-		
+
 	}
-	
-	
+
+
 	private void inicializarTeclado() {
 		controladorDeMapa = new ControladorDeMapa(vistaDeMapa);
 
@@ -115,8 +114,6 @@ public class ControladorPartida {
 		if (!resultado) {
 			setMensaje("No se puede construir aca");
 		} else {
-			ControladorDeConstruible controlador = (ControladorDeConstruible) herramienta;
-			controladorDeHectarea.setRepresentacion(controlador.getRepresentacion());
 			setMensaje("Construidisimo");
 		}
 		return resultado;
@@ -155,8 +152,8 @@ public class ControladorPartida {
 	}
 
 	public void guardarPartida(String ruta) {
-		GuardadorDePartida guardador = new GuardadorDePartida(ruta);
-		if (guardador.guardarPartida(partida)) {
+		GuardadorDePartida guardador = new GuardadorDePartida();
+		if (guardador.guardarPartida(partida, ruta)) {
 			Jugador jugador = juego.getJugador();
 			jugador.agregarPartida(ruta);
 			manejadorDeJugadores.actualizarJugador(jugador);
@@ -176,9 +173,8 @@ public class ControladorPartida {
 
 	public void playPauseTimer() {
 		timerTurno.playPause();
-		
 	}
-	
+
 	public boolean timerEstaCorriendo(){
 		return timerTurno.estaCorriendo();
 	}

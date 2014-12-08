@@ -2,6 +2,7 @@ package algocity.controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -9,6 +10,7 @@ import javax.swing.JOptionPane;
 import algocity.core.Juego;
 import algocity.core.Jugador;
 import algocity.core.Partida;
+import algocity.core.io.GuardadorDePartida;
 import algocity.core.io.ManejadorDeJugadores;
 import algocity.vistas.VentanaPrincipal;
 import algocity.vistas.VistaDePartida;
@@ -36,6 +38,7 @@ public class ControladorJuego {
 		inicializarBotonComenzar();
 		inicializarBotonSeleccionarUsuario();
 		inicializarBotonAgregarUsuario();
+		inicializarBotonCargarPartida();
 	}
 
 	private void inicializarBotonAgregarUsuario() {
@@ -50,16 +53,9 @@ public class ControladorJuego {
 				}
 				int filas = ventanaPrincipal.getMenu().getFilas();
 				int columnas = ventanaPrincipal.getMenu().getColumnas();
-				juego.prepararMapa(filas, columnas);
-				Partida partida = juego.crearPartida();
-				VistaDePartida vistaDePartida = new VistaDePartida(partida);
-				vistaDePartida.setTitle("Juego de " + juego.getJugador().getNombre());
-				controladorPartida = new ControladorPartida(
-						partida, vistaDePartida, juego);
-				controladorPartida.setManejadorDeJugadores(manejador);
-				controladorPartida.inicializar();
-				ventanaPrincipal.dispose();
+				crearPartida(filas, columnas);
 			}
+
 		});
 	}
 
@@ -99,8 +95,57 @@ public class ControladorJuego {
 		});
 	}
 
+	private void inicializarBotonCargarPartida() {
+		ventanaPrincipal.getMenu().getBotonCargarPartida()
+		.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Jugador jugador = juego.getJugador();
+				if (jugador != null) {
+					ArrayList<String> rutas = jugador.getPartidas();
+					if (rutas.size() == 0) {
+						ventanaPrincipal.setEstado("El jugador no tiene partidas guardadas");
+						return;
+					}
+					Object[] options = rutas.toArray();
+					String ruta = (String) JOptionPane.showInputDialog(null,
+							"Seleccione partida", "Seleccionar partida",
+							JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+					if (ruta != null) {
+						cargarPartida(ruta);
+					}
+				} else {
+					ventanaPrincipal.setEstado("Seleccione el jugador");
+				}
+			}
+		});
+	}
+
+	private void iniciarPartida(Partida partida) {
+		VistaDePartida vistaDePartida = new VistaDePartida();
+		vistaDePartida.setTitle("Juego de " + juego.getJugador().getNombre());
+		controladorPartida = new ControladorPartida(
+				partida, vistaDePartida, juego);
+		controladorPartida.setManejadorDeJugadores(manejador);
+		controladorPartida.inicializar();
+		ventanaPrincipal.dispose();
+	}
+
+	private void crearPartida(int filas, int columnas) {
+		juego.prepararMapa(filas, columnas);
+		iniciarPartida(juego.crearPartida());
+	}
+
 	private void seleccionarJugador(Jugador jugador) {
 		ventanaPrincipal.getMenu().setUsuario(jugador.getNombre());
 		juego.setJugador(jugador);
+	}
+
+	private void cargarPartida(String ruta) {
+		GuardadorDePartida cargador = new GuardadorDePartida();
+		Partida partida = cargador.cargarPartida(ruta);
+		juego.setMapa(partida.getMapa());
+		iniciarPartida(partida);
 	}
 }

@@ -36,7 +36,6 @@ public class VistaDeMapa extends JPanel implements Observer {
 		hectareas = new VistaDeHectarea[filas][columnas];
 		startX = 0;
 		startY = 0;
-
 		for (int x = 0; x < filas; x++) {
 			for (int y = 0; y < columnas; y++) {
 				Hectarea hectarea = mapa.getHectarea(x, y);

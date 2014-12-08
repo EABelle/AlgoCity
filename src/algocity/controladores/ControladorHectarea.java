@@ -45,8 +45,4 @@ public class ControladorHectarea extends MouseAdapter {
 		}
 	}
 
-	public void setRepresentacion(String repr) {
-		this.vistaDeHectarea.setConstruible(repr);
-	}
-
 }

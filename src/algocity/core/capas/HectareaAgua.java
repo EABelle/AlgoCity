@@ -11,6 +11,11 @@ public class HectareaAgua extends Hectarea {
 
 	PozoDeAgua pozoDeAgua;
 
+
+	public HectareaAgua() {
+		super();
+	}
+
 	@Override
 	public boolean agregarConstruible(Construible construible) {
 		try{
@@ -30,12 +35,12 @@ public class HectareaAgua extends Hectarea {
 		return false;
 
 	}
-	
+
 	@Override
 	public boolean setConexionElectrica(boolean conexionElectrica) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean setConexionRuta(boolean conexionRuta) {
 		return false;

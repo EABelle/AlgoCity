@@ -50,7 +50,7 @@ public class Residencial extends Edificio {
 
 	@Override
 	public void procesarBorrado(Mapa mapa, int x, int y) {
-			mapa.getHectareasResidenciales().remove(mapa.getHectarea(x, y));
+		mapa.getHectareasResidenciales().remove(mapa.getHectarea(x, y));
 	}
 
 	@Override
@@ -81,6 +81,11 @@ public class Residencial extends Edificio {
 	@Override
 	public void mostrarInfo(VistaDeInfo vistaDeInfo) {
 		vistaDeInfo.mostrarInfo(this);
+	}
+
+	@Override
+	public String getRepresentation() {
+		return "R";
 	}
 
 }
