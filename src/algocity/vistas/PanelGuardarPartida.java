@@ -54,8 +54,8 @@ public class PanelGuardarPartida extends JPanel {
 
 	private void inicializarPartidas() {
 		ArrayList<String> partidas = jugador.getPartidas();
-		String[] partidasArray = partidas.toArray(new String[partidas.size()]);
 		if (partidas != null) {
+			String[] partidasArray = partidas.toArray(new String[partidas.size()]);
 			partidasList = new JList<String>(partidasArray);
 
 			partidasList.addListSelectionListener(new ListSelectionListener() {
