@@ -58,8 +58,8 @@ public class Mapa {
 	public boolean cargarHectareaNueva(Hectarea hectarea) {
 		if (x < filas) {
 			if (y < columnas){
-				hectarea.setFila(x);
-				hectarea.setColumna(y);
+				hectarea.setX(x);
+				hectarea.setY(y);
 				agregarHectarea(hectarea);
 				y ++;
 			} else {
@@ -73,7 +73,7 @@ public class Mapa {
 	}
 
 	private void agregarHectarea(Hectarea hectarea) {
-		hectareas[hectarea.getFila()][hectarea.getColumna()] = hectarea;
+		hectareas[hectarea.getX()][hectarea.getY()] = hectarea;
 		hectarea.setTendidos(redDeAgua, redElectrica);
 	}
 
@@ -120,15 +120,15 @@ public class Mapa {
 			agregarHectarea(hectarea);
 			Construible cons = hectarea.getConstruible();
 			if (cons != null) {
-				cons.procesarAgregado(this, hectarea.getFila(), hectarea.getColumna());
+				cons.procesarAgregado(this, hectarea.getX(), hectarea.getY());
 			}
 		}
 		for (int x = 0; x < filas; x++) {
 			for (int y = 0; y < columnas; y++) {
 				if (this.hectareas[x][y] == null) {
 					Hectarea hectarea = new HectareaLlana();
-					hectarea.setFila(x);
-					hectarea.setColumna(y);
+					hectarea.setX(x);
+					hectarea.setY(y);
 					agregarHectarea(hectarea);
 				}
 			}

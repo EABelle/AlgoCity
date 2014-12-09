@@ -22,10 +22,10 @@ public class ProcesadorDeBomberos {
 			for(iterDaniado = mapa.recorridoDaniados(); iterDaniado.hasNext();) {
 				Hectarea hectareaDaniada = iterDaniado.next();
 				Arreglable daniado = (Arreglable) hectareaDaniada.getConstruible();
-				if (ruta.existeConexionBFS(hectareaDeBombero.getFila(), 
-					hectareaDeBombero.getColumna(),
-					hectareaDaniada.getFila(),
-					hectareaDaniada.getColumna())){
+				if (ruta.existeConexionBFS(hectareaDeBombero.getX(), 
+					hectareaDeBombero.getY(),
+					hectareaDaniada.getX(),
+					hectareaDaniada.getY())){
 						bombero.reparar(daniado);
 						procesadorDeDaniados.procesarDanios(mapa, hectareaDaniada);
 				}

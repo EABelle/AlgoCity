@@ -7,9 +7,8 @@ public class RutaPavimentada extends Tendido {
 	}
 
 	@Override
-	public boolean agregarNodo(int coordenadaX, int coordenadaY){
-
-		return regenerarNodo( coordenadaX,  coordenadaY);
+	public boolean agregarNodo(NodoTendido nodo){
+		return regenerarNodo(nodo);
 	}
 
 }

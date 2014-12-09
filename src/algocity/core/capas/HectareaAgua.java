@@ -9,12 +9,12 @@ import algocity.vistas.VistaDeHectarea;
 
 public class HectareaAgua extends Hectarea {
 
-	PozoDeAgua pozoDeAgua;
-
-
 	public HectareaAgua() {
 		super();
 	}
+
+	PozoDeAgua pozoDeAgua;
+
 
 	@Override
 	public boolean agregarConstruible(Construible construible) {

@@ -1,24 +1,21 @@
 package algocity.core.capas;
 
-import java.util.Observable;
-
 import algocity.core.Mapa;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
+import algocity.core.capas.tendido.NodoTendido;
 import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.construibles.Construible;
 import algocity.vistas.VistaDeHectarea;
 
-public abstract class Hectarea extends Observable {
+public abstract class Hectarea extends NodoTendido {
 
 	Construible construible;
 	boolean conexionElectrica;
 	int centralesCerca;
 	boolean conexionRuta;
 	boolean conexionAgua;
-	int fila;
-	int columna;
 	RedDeAgua redDeAgua;
 
 	public Hectarea() {
@@ -28,23 +25,6 @@ public abstract class Hectarea extends Observable {
 		conexionRuta = false;
 		centralesCerca = 0;
 	}
-
-	public int getFila() {
-		return fila;
-	}
-
-	public void setFila(int fila) {
-		this.fila = fila;
-	}
-
-	public int getColumna() {
-		return columna;
-	}
-
-	public void setColumna(int columna) {
-		this.columna = columna;
-	}
-
 
 	public abstract boolean agregarConstruible(Construible construible);
 
@@ -139,14 +119,14 @@ public abstract class Hectarea extends Observable {
 
 	public void procesarConexion(Mapa mapa) {
 		if (construible != null) {
-			construible.procesarConexion(mapa, fila, columna);
+			construible.procesarConexion(mapa, x, y);
 			hayCambio();
 		}
 	}
 
 	public void procesarDesconexion(Mapa mapa) {
 		if (construible != null) {
-			construible.procesarDesconexion(mapa, fila, columna);
+			construible.procesarDesconexion(mapa, x, y);
 			hayCambio();
 		}
 	}

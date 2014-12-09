@@ -73,8 +73,8 @@ public abstract class CalculadorDeCalidadDeVida {
 	
 	private static boolean hayConexion(RutaPavimentada ruta, Hectarea hectarea1,
 						Hectarea hectarea2) {
-		return ruta.existeConexionBFS(hectarea1.getFila(), hectarea1.getColumna()
-				,hectarea2.getFila(), hectarea2.getColumna());
+		return ruta.existeConexionBFS(hectarea1.getX(), hectarea1.getY()
+				,hectarea2.getX(), hectarea2.getY());
 	}
 
 }

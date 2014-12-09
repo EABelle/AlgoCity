@@ -14,7 +14,7 @@ public class VistaDeElectricidad extends VistaDeHerramienta {
 
 	@Override
 	public void procesarPartida(Partida partida, Hectarea hectarea) {
-		partida.agregarRedElectrica(hectarea.getFila(), hectarea.getColumna());
+		partida.agregarRedElectrica(hectarea.getX(), hectarea.getY());
 	}
 
 }

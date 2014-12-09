@@ -17,7 +17,7 @@ public abstract class VistaDeConstruible extends VistaDeHerramienta {
 	@Override
 	public void procesarPartida(Partida partida, Hectarea hectarea) {
 		partida.agregarConstruible(this.getConstruible(),
-				hectarea.getFila(), hectarea.getColumna());
+				hectarea.getX(), hectarea.getY());
 	}
 
 }

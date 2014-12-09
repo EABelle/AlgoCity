@@ -14,7 +14,7 @@ public class VistaDeRuta extends VistaDeHerramienta {
 
 	@Override
 	public void procesarPartida(Partida partida, Hectarea hectarea) {
-		partida.agregarRutaPavimentada(hectarea.getFila(), hectarea.getColumna());
+		partida.agregarRutaPavimentada(hectarea.getX(), hectarea.getY());
 	}
 
 }

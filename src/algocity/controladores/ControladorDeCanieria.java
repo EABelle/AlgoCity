@@ -14,7 +14,7 @@ public class ControladorDeCanieria extends Herramienta {
 	@Override
 	public void procesarHectarea(Hectarea hectarea) {
 		if (controladorPartida.getPartida().agregarRedDeAgua(
-				hectarea.getFila(), hectarea.getColumna()))
+				hectarea.getX(), hectarea.getY()))
 			controladorPartida.setMensaje("Construido");
 		else
 			controladorPartida.setMensaje("No se puede construir aca");
@@ -28,7 +28,7 @@ public class ControladorDeCanieria extends Herramienta {
 	@Override
 	public void procesarBorradoHectarea(Hectarea hectarea) {
 		if (controladorPartida.getPartida().quitarRedDeAgua(
-				hectarea.getFila(), hectarea.getColumna()))
+				hectarea.getX(), hectarea.getY()))
 			controladorPartida.setMensaje("Borrada");
 		else
 			controladorPartida.setMensaje("No se puede borrar red de agua aca");

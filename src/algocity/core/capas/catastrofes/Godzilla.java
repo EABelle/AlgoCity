@@ -29,7 +29,7 @@ public class Godzilla extends Catastrofe {
 			ProcesadorDeDaniados procesadorDeDaniados = new ProcesadorDeDaniados();
 			procesadorDeDaniados.procesarDanios(mapa, hectarea);
 			RedElectrica redElectrica = mapa.getRedElectrica();
-			redElectrica.eliminarNodo(hectarea.getFila(), hectarea.getColumna());
+			redElectrica.eliminarNodo(hectarea.getX(), hectarea.getY());
 		}else { 
 			presente = false;
 		}

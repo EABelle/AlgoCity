@@ -14,7 +14,7 @@ public class VistaDeCanieria extends VistaDeHerramienta {
 
 	@Override
 	public void procesarPartida(Partida partida, Hectarea hectarea) {
-		partida.agregarRedDeAgua(hectarea.getFila(), hectarea.getColumna());
+		partida.agregarRedDeAgua(hectarea.getX(), hectarea.getY());
 	}
 
 

@@ -29,8 +29,8 @@ public class HectareaSerializer implements JsonSerializer<Hectarea>, JsonDeseria
 		} else if (cons == null) {
 			return null;
 		}
-		jsonObject.addProperty("x", hectarea.getFila());
-		jsonObject.addProperty("y", hectarea.getColumna());
+		jsonObject.addProperty("x", hectarea.getX());
+		jsonObject.addProperty("y", hectarea.getY());
 		jsonObject.addProperty("tipo", tipo);
 
 		if (cons != null) {
@@ -54,8 +54,8 @@ public class HectareaSerializer implements JsonSerializer<Hectarea>, JsonDeseria
 		} else {
 			hectarea = new HectareaLlana();
 		}
-		hectarea.setFila(jsonObject.get("x").getAsInt());
-		hectarea.setColumna(jsonObject.get("y").getAsInt());
+		hectarea.setX(jsonObject.get("x").getAsInt());
+		hectarea.setY(jsonObject.get("y").getAsInt());
 
 		JsonElement construibleJson = jsonObject.get("construible");
 		if (construibleJson != null) {

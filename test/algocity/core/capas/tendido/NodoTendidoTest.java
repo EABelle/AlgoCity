@@ -9,8 +9,8 @@ public class NodoTendidoTest extends TestCase {
 
 	public void testCrearNodoTendidoConCoordenadas() {
 		NodoTendido nodo = new NodoTendido (2,3);
-		int coordenadaX = nodo.getCoordenadaX();
-		int coordenadaY = nodo.getCoordenadaY();
+		int coordenadaX = nodo.getX();
+		int coordenadaY = nodo.getY();
 		
 		assertEquals(coordenadaX,2);
 		assertEquals(coordenadaY,3);

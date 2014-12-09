@@ -28,10 +28,11 @@ public class HectareaLlana extends Hectarea {
 
 	@Override
 	public boolean redElectricaConectada() {
-		return (conexionElectrica && redElectrica.servicioExiste(fila, columna)) 
+		return (conexionElectrica && redElectrica.servicioExiste(x, y))
 				| (centralesCerca > 0);
 	}
-	
+
+	@Override
 	public boolean setConexionElectrica(boolean conexionElectrica) {
 		if (this.conexionElectrica != conexionElectrica) {
 			this.conexionElectrica = conexionElectrica;

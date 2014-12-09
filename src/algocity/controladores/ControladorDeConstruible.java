@@ -18,7 +18,7 @@ public class ControladorDeConstruible extends Herramienta {
 	public void procesarHectarea(Hectarea hectarea) {
 		VistaDeConstruible vistaDeConstruible = getVistaConstruible();
 		controladorPartida.agregarConstruible(vistaDeConstruible.getConstruible(),
-				hectarea.getFila(), hectarea.getColumna());
+				hectarea.getX(), hectarea.getY());
 	}
 
 	public String getRepresentacion() {
@@ -33,7 +33,7 @@ public class ControladorDeConstruible extends Herramienta {
 	@Override
 	public void procesarBorradoHectarea(Hectarea hectarea) {
 		if (controladorPartida.getPartida().quitarConstruible(
-				hectarea.getFila(), hectarea.getColumna()))
+				hectarea.getX(), hectarea.getY()))
 			controladorPartida.setMensaje("Borradisimo");
 		else
 			controladorPartida.setMensaje("No se puede borrar!");

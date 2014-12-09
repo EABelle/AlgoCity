@@ -13,7 +13,7 @@ public class ControladorDeElectricidad extends Herramienta {
 	@Override
 	public void procesarHectarea(Hectarea hectarea) {
 		if (controladorPartida.getPartida().agregarRedElectrica(
-				hectarea.getFila(), hectarea.getColumna()))
+				hectarea.getX(), hectarea.getY()))
 			controladorPartida.setMensaje("Construidazo");
 		else
 			controladorPartida.setMensaje("No se puede construir aca");
@@ -27,7 +27,7 @@ public class ControladorDeElectricidad extends Herramienta {
 	@Override
 	public void procesarBorradoHectarea(Hectarea hectarea) {
 		if (controladorPartida.getPartida().quitarRedElectrica(
-				hectarea.getFila(), hectarea.getColumna()))
+				hectarea.getX(), hectarea.getY()))
 			controladorPartida.setMensaje("Borradisima");
 		else
 			controladorPartida.setMensaje("No se puede borrar red eléctrica aca");
