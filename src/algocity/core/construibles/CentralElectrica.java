@@ -84,14 +84,13 @@ public abstract class CentralElectrica extends ConstruibleEnLlano implements Arr
 			return;
 		procesarBorrado(mapa, x, y);
 	}
-	
+
 	private void setHectareasCercanas(Mapa mapa, int x, int y, boolean b) {
 		for(Iterator<Hectarea> iter =
 				mapa.recorrerEnUnRadio(radioDeAlimentacion, x, y);
 				iter.hasNext();) {
 				Hectarea hectarea = iter.next();
 				hectarea.setCentralesCerca(b);
-//				System.out.println("hectarea " + hectarea.getFila() + hectarea.getColumna());
 			}
 	}
 

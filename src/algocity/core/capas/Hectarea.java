@@ -11,18 +11,21 @@ import algocity.vistas.VistaDeHectarea;
 
 public abstract class Hectarea extends NodoTendido {
 
+	RedDeAgua redDeAgua;
 	Construible construible;
-	boolean conexionElectrica;
 	int centralesCerca;
+
+	boolean conexionElectrica;
 	boolean conexionRuta;
 	boolean conexionAgua;
-	RedDeAgua redDeAgua;
+	boolean alimentada;
 
 	public Hectarea() {
 		construible = null;
 		conexionAgua = false;
 		conexionElectrica = false;
 		conexionRuta = false;
+		alimentada = false;
 		centralesCerca = 0;
 	}
 

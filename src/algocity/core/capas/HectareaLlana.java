@@ -21,15 +21,15 @@ public class HectareaLlana extends Hectarea {
 				return true;
 			}
 		}catch(Exception e){}
-			//System.out.println("NO ES CONSTRUIBLE EN LLANO");
 		return false;
 
 	}
 
 	@Override
 	public boolean redElectricaConectada() {
-		return (conexionElectrica && redElectrica.servicioExiste(x, y))
-				| (centralesCerca > 0);
+		alimentada = (conexionElectrica && redElectrica.servicioExiste(x, y))
+					 | (centralesCerca > 0);
+		return alimentada;
 	}
 
 	@Override
