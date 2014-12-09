@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import algocity.core.capas.NodoTendido;
+
 abstract public class Tendido {
 
 	ArrayList<NodoTendido> nodos;
@@ -20,6 +22,23 @@ abstract public class Tendido {
 
 	public int getCosto() {
 		return costo;
+	}
+
+	public ArrayList<NodoTendido> getNodos() {
+		return nodos;
+	}
+
+	public void setNodos(ArrayList<NodoTendido> nodos) {
+		this.nodos = nodos;
+	}
+
+	public ArrayList<Coordenada> getEdificiosProveedores() {
+		return edificiosProveedores;
+	}
+
+	public void setEdificiosProveedores(
+			ArrayList<Coordenada> edificiosProveedores) {
+		this.edificiosProveedores = edificiosProveedores;
 	}
 
 	public boolean agregarNodo (NodoTendido nodo) {

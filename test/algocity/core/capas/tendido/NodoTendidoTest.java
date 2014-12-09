@@ -3,7 +3,7 @@ package algocity.core.capas.tendido;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
-import algocity.core.capas.tendido.NodoTendido;
+import algocity.core.capas.NodoTendido;
 
 public class NodoTendidoTest extends TestCase {
 

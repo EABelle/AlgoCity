@@ -59,9 +59,8 @@ public class HectareaSerializer implements JsonSerializer<Hectarea>, JsonDeseria
 
 		JsonElement construibleJson = jsonObject.get("construible");
 		if (construibleJson != null) {
-			Class<?> clazz = null;
 			try {
-				clazz = Class.forName(construibleJson.getAsString());
+				Class<?> clazz = Class.forName(construibleJson.getAsString());
 				Construible cons = (Construible) clazz.newInstance();
 				if (cons instanceof Residencial) {
 					((Residencial) cons).agregarHabitantes(

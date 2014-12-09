@@ -1,5 +1,7 @@
 package algocity.core.capas.tendido;
 
+import algocity.core.capas.NodoTendido;
+
 public class RutaPavimentada extends Tendido {
 
 	public RutaPavimentada() {

@@ -1,4 +1,4 @@
-package algocity.core.capas.tendido;
+package algocity.core.capas;
 
 import java.util.ArrayList;
 import java.util.Iterator;

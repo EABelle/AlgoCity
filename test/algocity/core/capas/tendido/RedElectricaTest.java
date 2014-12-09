@@ -1,5 +1,6 @@
 package algocity.core.capas.tendido;
 
+import algocity.core.capas.NodoTendido;
 import junit.framework.TestCase;
 
 public class RedElectricaTest extends TestCase{

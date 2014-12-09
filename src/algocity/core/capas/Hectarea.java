@@ -3,7 +3,6 @@ package algocity.core.capas;
 import algocity.core.Mapa;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
-import algocity.core.capas.tendido.NodoTendido;
 import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.construibles.Construible;

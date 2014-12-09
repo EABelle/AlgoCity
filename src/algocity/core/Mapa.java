@@ -235,13 +235,22 @@ public class Mapa {
 	public RedElectrica getRedElectrica() {
 		return redElectrica;
 	}
+	public void setRedElectrica(RedElectrica redElectrica) {
+		this.redElectrica = redElectrica;
+	}
 
 	public RedDeAgua getRedDeAgua() {
 		return redDeAgua;
 	}
+	public void setRedDeAgua(RedDeAgua redDeAgua) {
+		this.redDeAgua = redDeAgua;
+	}
 
 	public RutaPavimentada getRutaPavimentada(){
 		return rutaPavimentada;
+	}
+	public void setRutaPavimentada(RutaPavimentada rutaPavimentada) {
+		this.rutaPavimentada = rutaPavimentada;
 	}
 
 	public ArrayList<Hectarea> getHectareasResidenciales() {
