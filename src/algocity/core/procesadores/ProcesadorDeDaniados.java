@@ -11,8 +11,6 @@ public class ProcesadorDeDaniados {
 		if ((construible != null) && (construible.daniado()) &&
 				!mapa.getHectareasDaniadas().contains(hectarea)) {
 			mapa.getHectareasDaniadas().add(hectarea);
-//		}else if(mapa.getHectareasDaniadas().contains(hectarea)){
-//			mapa.getHectareasDaniadas().remove(hectarea);
 		}
 	}
 

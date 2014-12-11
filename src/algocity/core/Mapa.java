@@ -352,9 +352,9 @@ public class Mapa {
 	private Iterator<Hectarea> recorridoZigZagVertical() {
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		Random rm = new Random();
-		int columna = rm.nextInt(filas - 2) + 1;
+		int columna = rm.nextInt(columnas - 2) + 1;
 		int fila = 0;
-		while(fila < columnas) {
+		while(fila < filas) {
 			recorrido.add(hectareas[fila][columna]);
 			fila ++;
 			if (columna % 2 == 0){
