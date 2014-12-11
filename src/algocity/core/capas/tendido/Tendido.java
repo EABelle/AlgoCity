@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import algocity.core.capas.Hectarea;
 import algocity.core.capas.NodoTendido;
 
 abstract public class Tendido {
@@ -121,9 +122,7 @@ abstract public class Tendido {
 		return true;
 	}
 
-	public boolean eliminarNodo (int coordenadaX , int coordenadaY){
-
-		NodoTendido nodo = getNodo (coordenadaX , coordenadaY);
+	public boolean eliminarNodo (NodoTendido nodo){
 
 		if (nodo != null){
 			quitarReferenciasDeVecinos(nodo);
@@ -328,4 +327,7 @@ abstract public class Tendido {
 		}
 		return edificiosBuscados;
 	}
+
+	public abstract boolean setConexion(Hectarea hectarea, boolean estado);
+
 }

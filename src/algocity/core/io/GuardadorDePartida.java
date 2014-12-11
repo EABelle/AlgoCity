@@ -7,11 +7,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import algocity.core.Partida;
+import algocity.core.capas.Hectarea;
 import algocity.core.capas.HectareaAgua;
 import algocity.core.capas.HectareaLlana;
 import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.capas.tendido.RutaPavimentada;
+import algocity.core.capas.tendido.Tendido;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,8 +54,10 @@ public class GuardadorDePartida {
 	private void prepararGson() {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 	    gsonBuilder.registerTypeAdapter(Partida.class, new PartidaSerializer());
+	    gsonBuilder.registerTypeAdapter(Hectarea.class, new HectareaSerializer());
 	    gsonBuilder.registerTypeAdapter(HectareaLlana.class, new HectareaSerializer());
 	    gsonBuilder.registerTypeAdapter(HectareaAgua.class, new HectareaSerializer());
+	    gsonBuilder.registerTypeAdapter(Tendido.class, new TendidoSerializer());
 	    gsonBuilder.registerTypeAdapter(RedDeAgua.class, new TendidoSerializer());
 	    gsonBuilder.registerTypeAdapter(RedElectrica.class, new TendidoSerializer());
 	    gsonBuilder.registerTypeAdapter(RutaPavimentada.class, new TendidoSerializer());

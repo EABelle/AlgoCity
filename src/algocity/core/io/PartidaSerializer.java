@@ -79,13 +79,13 @@ public class PartidaSerializer implements JsonSerializer<Partida>,
  		llenarNodos(redDeAgua, mapa, redDeAguaJson);
  		mapa.setRedDeAgua(redDeAgua);
 
- 		JsonObject redElectricaJson = jsonObject.get("redElectricaJson").getAsJsonObject();
+ 		JsonObject redElectricaJson = jsonObject.get("redElectrica").getAsJsonObject();
  		RedElectrica redElectrica = context.deserialize(
  				redElectricaJson, RedElectrica.class);
  		llenarNodos(redElectrica, mapa, redElectricaJson);
  		mapa.setRedElectrica(redElectrica);
 
- 		JsonObject rutaPavimentadaJson = jsonObject.get("rutaPavimentadaJson").getAsJsonObject();
+ 		JsonObject rutaPavimentadaJson = jsonObject.get("rutaPavimentada").getAsJsonObject();
  		RutaPavimentada rutaPavimentada = context.deserialize(
  				rutaPavimentadaJson, RutaPavimentada.class);
  		llenarNodos(rutaPavimentada, mapa, rutaPavimentadaJson);
@@ -102,6 +102,7 @@ public class PartidaSerializer implements JsonSerializer<Partida>,
 			Hectarea hectarea = mapa.getHectarea(nodoJson.get("x").getAsInt(),
 					nodoJson.get("y").getAsInt());
 			tendido.agregarNodo(hectarea);
+			tendido.setConexion(hectarea, true);
 		}
 	}
 

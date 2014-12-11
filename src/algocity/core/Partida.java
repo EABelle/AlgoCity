@@ -7,6 +7,7 @@ import algocity.core.capas.Hectarea;
 import algocity.core.capas.catastrofes.Catastrofe;
 import algocity.core.capas.catastrofes.Godzilla;
 import algocity.core.capas.catastrofes.Terremoto;
+import algocity.core.capas.tendido.Tendido;
 import algocity.core.construibles.Construible;
 import algocity.core.procesadores.CalculadorDeCalidadDeVida;
 import algocity.core.procesadores.Debitador;
@@ -71,75 +72,49 @@ public class Partida extends Observable {
 
 	public boolean agregarRutaPavimentada(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (mapa.getRutaPavimentada().getCosto() > plata)
-			return false;
-		if (!mapa.getRutaPavimentada().agregarNodo(hectarea))
-			return false;
-		if (!hectarea.setConexionRuta(true)){
-			mapa.getRutaPavimentada().eliminarNodo(x, y);
-			return false;
-		}
-		cobrar(mapa.getRutaPavimentada().getCosto());
-		mapa.getHectarea(x, y).procesarConexion(mapa);
-		return true;
+		return procesarConexion(hectarea, mapa.getRutaPavimentada());
 	}
 
 	public boolean quitarRutaPavimentada(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.rutaPavimentadaConectada()){
-			mapa.getRutaPavimentada().eliminarNodo(x, y);
-			hectarea.setConexionRuta(false);
-			hectarea.procesarDesconexion(mapa);
-			return true;
-		}
-		return false;
+		return procesarConexion(hectarea, mapa.getRutaPavimentada());
 	}
 
 	public boolean agregarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (mapa.getRedElectrica().getCosto() > plata)
-			return false;
-		if (!mapa.getRedElectrica().agregarNodo(hectarea))
-			return false;
-		if (!hectarea.setConexionElectrica(true)){
-			mapa.getRedElectrica().eliminarNodo(x, y);
-			return false;
-		}
-		cobrar(mapa.getRedElectrica().getCosto());
-		hectarea.procesarConexion(mapa);
-		return true;
+		return procesarConexion(hectarea, mapa.getRedElectrica());
 	}
 
 	public boolean quitarRedElectrica(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.setConexionElectrica(false)){
-			mapa.getRedElectrica().eliminarNodo(x, y);
-			hectarea.procesarDesconexion(mapa);
-			return true;
-		}
-		return false;
+		return procesarConexion(hectarea, mapa.getRedElectrica());
 	}
 
 	public boolean agregarRedDeAgua(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (mapa.getRedDeAgua().getCosto() > plata)
-			return false;
-		if (!mapa.getRedDeAgua().agregarNodo(hectarea))
-			return false;
-		if (!mapa.getHectarea(x, y).setConexionAgua(true)){
-			mapa.getRedDeAgua().eliminarNodo(x, y);
-			return false;
-		}
-		cobrar(mapa.getRedDeAgua().getCosto());
-		hectarea.procesarConexion(mapa);
-		return true;
-
+		return procesarConexion(hectarea, mapa.getRedDeAgua());
 	}
 
 	public boolean quitarRedDeAgua(int x, int y) {
 		Hectarea hectarea = mapa.getHectarea(x, y);
-		if (hectarea.setConexionAgua(false)) {
-			mapa.getRedDeAgua().eliminarNodo(x, y);
+		return procesarConexion(hectarea, mapa.getRedDeAgua());
+	}
+
+	private boolean procesarConexion(Hectarea hectarea, Tendido tendido) {
+		if (tendido.getCosto() > plata) return false;
+		if (!tendido.agregarNodo(hectarea)) return false;
+		if (!tendido.setConexion(hectarea, true)) {
+			tendido.eliminarNodo(hectarea);
+			return false;
+		}
+		cobrar(tendido.getCosto());
+		hectarea.procesarConexion(mapa);
+		return true;
+	}
+
+	private boolean procesarDesconexion(Hectarea hectarea, Tendido tendido) {
+		if (tendido.setConexion(hectarea, false)){
+			tendido.eliminarNodo(hectarea);
 			hectarea.procesarDesconexion(mapa);
 			return true;
 		}

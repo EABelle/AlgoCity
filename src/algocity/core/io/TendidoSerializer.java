@@ -28,7 +28,7 @@ public class TendidoSerializer implements JsonSerializer<Tendido>, JsonDeseriali
 		for (NodoTendido nodoTendido : nodos) {
 			JsonObject nodoJson = new JsonObject();
 			nodoJson.addProperty("x", nodoTendido.getX());
-			nodoJson.addProperty("y", nodoTendido.getX());
+			nodoJson.addProperty("y", nodoTendido.getY());
 			nodosJson.add(nodoJson);
 		}
 		tendidoJson.add("nodos", nodosJson);
@@ -38,7 +38,7 @@ public class TendidoSerializer implements JsonSerializer<Tendido>, JsonDeseriali
 		for (Coordenada coordenada : edificios) {
 			JsonObject nodoJson = new JsonObject();
 			nodoJson.addProperty("x", coordenada.getX());
-			nodoJson.addProperty("y", coordenada.getX());
+			nodoJson.addProperty("y", coordenada.getY());
 			proveedoresJson.add(nodoJson);
 		}
 		tendidoJson.add("proveedores", proveedoresJson);
@@ -51,17 +51,16 @@ public class TendidoSerializer implements JsonSerializer<Tendido>, JsonDeseriali
 			JsonDeserializationContext context) throws JsonParseException {
 		Tendido tendido = null;
 		try {
-			Class<?> clazz = Class.forName(tipo.toString());
-			tendido = (Tendido) clazz.newInstance();
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			tendido = (Tendido) ((Class<?>) tipo).newInstance();
+		} catch (InstantiationException | IllegalAccessException e) {
+			System.out.println(e);
 		}
-
 		JsonObject tendidoJson = elem.getAsJsonObject();
 		JsonArray nodosJson = tendidoJson.get("proveedores").getAsJsonArray();
 		for (JsonElement nodoElement : nodosJson) {
 			JsonObject nodoJson = nodoElement.getAsJsonObject();
 			tendido.agregarEdificioProveedor(nodoJson.get("x").getAsInt(),
-					nodoJson.get("x").getAsInt());
+					nodoJson.get("y").getAsInt());
 		}
 
 		return tendido;

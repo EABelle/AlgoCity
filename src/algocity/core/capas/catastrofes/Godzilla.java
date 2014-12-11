@@ -15,7 +15,7 @@ import algocity.core.procesadores.ProcesadorDeDaniados;
 public class Godzilla extends Catastrofe {
 	Iterator<Hectarea> recorrido;
 	static boolean presente;
-	
+
 	public Godzilla(Iterator<Hectarea> recorrido){
 		this.recorrido = recorrido;
 		presente = true;
@@ -29,19 +29,19 @@ public class Godzilla extends Catastrofe {
 			ProcesadorDeDaniados procesadorDeDaniados = new ProcesadorDeDaniados();
 			procesadorDeDaniados.procesarDanios(mapa, hectarea);
 			RedElectrica redElectrica = mapa.getRedElectrica();
-			redElectrica.eliminarNodo(hectarea.getX(), hectarea.getY());
-		}else { 
+			redElectrica.eliminarNodo(hectarea);
+		}else {
 			presente = false;
 		}
 	}
-	
+
 	@Override
 	public boolean continua(){
 		return recorrido.hasNext();
 	}
 
 	public void impactarEn(Comercial comercial) {
-		comercial.daniar(75);	
+		comercial.daniar(75);
 	}
 
 	public void impactarEn(CentralElectrica centralElectrica) {
@@ -55,7 +55,7 @@ public class Godzilla extends Catastrofe {
 	public void impactarEn(Residencial residencial) {
 		residencial.daniar(100);
 	}
-	
+
 	public static void inicializar(){
 		presente = false;
 	}
