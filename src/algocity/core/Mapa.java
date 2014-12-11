@@ -145,6 +145,7 @@ public class Mapa {
 		}
 		return recorrido.iterator();
 	}
+
 	public Iterator<Hectarea> recorrerEnUnRadio(int radio, int x, int y) {
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		int fila, columna;

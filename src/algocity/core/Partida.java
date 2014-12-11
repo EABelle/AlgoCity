@@ -71,36 +71,31 @@ public class Partida extends Observable {
 	}
 
 	public boolean agregarRutaPavimentada(int x, int y) {
-		Hectarea hectarea = mapa.getHectarea(x, y);
-		return procesarConexion(hectarea, mapa.getRutaPavimentada());
+		return procesarConexion(x, y, mapa.getRutaPavimentada());
 	}
 
 	public boolean quitarRutaPavimentada(int x, int y) {
-		Hectarea hectarea = mapa.getHectarea(x, y);
-		return procesarConexion(hectarea, mapa.getRutaPavimentada());
+		return procesarDesconexion(x, y, mapa.getRutaPavimentada());
 	}
 
 	public boolean agregarRedElectrica(int x, int y) {
-		Hectarea hectarea = mapa.getHectarea(x, y);
-		return procesarConexion(hectarea, mapa.getRedElectrica());
+		return procesarConexion(x, y, mapa.getRedElectrica());
 	}
 
 	public boolean quitarRedElectrica(int x, int y) {
-		Hectarea hectarea = mapa.getHectarea(x, y);
-		return procesarConexion(hectarea, mapa.getRedElectrica());
+		return procesarDesconexion(x, y, mapa.getRedElectrica());
 	}
 
 	public boolean agregarRedDeAgua(int x, int y) {
-		Hectarea hectarea = mapa.getHectarea(x, y);
-		return procesarConexion(hectarea, mapa.getRedDeAgua());
+		return procesarConexion(x, y, mapa.getRedDeAgua());
 	}
 
 	public boolean quitarRedDeAgua(int x, int y) {
-		Hectarea hectarea = mapa.getHectarea(x, y);
-		return procesarConexion(hectarea, mapa.getRedDeAgua());
+		return procesarDesconexion(x, y, mapa.getRedDeAgua());
 	}
 
-	private boolean procesarConexion(Hectarea hectarea, Tendido tendido) {
+	private boolean procesarConexion(int x, int y, Tendido tendido) {
+		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (tendido.getCosto() > plata) return false;
 		if (!tendido.agregarNodo(hectarea)) return false;
 		if (!tendido.setConexion(hectarea, true)) {
@@ -112,7 +107,8 @@ public class Partida extends Observable {
 		return true;
 	}
 
-	private boolean procesarDesconexion(Hectarea hectarea, Tendido tendido) {
+	private boolean procesarDesconexion(int x, int y, Tendido tendido) {
+		Hectarea hectarea = mapa.getHectarea(x, y);
 		if (tendido.setConexion(hectarea, false)){
 			tendido.eliminarNodo(hectarea);
 			hectarea.procesarDesconexion(mapa);

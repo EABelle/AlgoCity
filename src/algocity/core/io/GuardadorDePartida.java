@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Iterator;
 
+import algocity.core.Mapa;
 import algocity.core.Partida;
 import algocity.core.capas.Hectarea;
 import algocity.core.capas.HectareaAgua;
@@ -14,6 +16,7 @@ import algocity.core.capas.tendido.RedDeAgua;
 import algocity.core.capas.tendido.RedElectrica;
 import algocity.core.capas.tendido.RutaPavimentada;
 import algocity.core.capas.tendido.Tendido;
+import algocity.core.construibles.Construible;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,8 +51,22 @@ public class GuardadorDePartida {
 			 partida = gson.fromJson(br, Partida.class);
 		} catch (FileNotFoundException e) {
 		}
+		prepararPartida(partida);
 		return partida;
 	}
+
+	private void prepararPartida(Partida partida) {
+		Mapa mapa = partida.getMapa();
+		for (Iterator<Hectarea> iterator = mapa.recorridoSecuencial();
+				iterator.hasNext();) {
+			Hectarea hectarea = iterator.next();
+			Construible cons = hectarea.getConstruible();
+			if (cons != null) {
+				cons.procesarAgregado(mapa, hectarea.getX(), hectarea.getY());
+			}
+		}
+	}
+
 
 	private void prepararGson() {
 		GsonBuilder gsonBuilder = new GsonBuilder();
