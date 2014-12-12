@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
-public abstract class NodoTendido extends Observable{
+public class NodoTendido extends Observable{
 
 	protected int x;
 	protected int y;
@@ -13,6 +13,12 @@ public abstract class NodoTendido extends Observable{
 
 	public NodoTendido() {
 		this.vecinos = new ArrayList<NodoTendido>();
+	}
+
+	public NodoTendido(int x, int y) {
+		this.vecinos = new ArrayList<NodoTendido>();
+		this.x = x;
+		this.y = y;
 	}
 
 	public void agregarVecino (NodoTendido vecino){

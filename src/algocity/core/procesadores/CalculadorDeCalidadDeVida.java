@@ -9,7 +9,7 @@ import algocity.core.construibles.Edificio;
 import algocity.core.construibles.Industrial;
 import algocity.core.construibles.Residencial;
 
-public abstract class CalculadorDeCalidadDeVida {
+public class CalculadorDeCalidadDeVida {
 
 	private static final int MAXIMA_SALIDA = 20;
 	private static final int INDICE_RESIDENCIA_COMERCIAL = 1;
@@ -54,8 +54,8 @@ public abstract class CalculadorDeCalidadDeVida {
 						}
 					}
 				}
-				int habitantesNuevos = (int)((residencial.disponibilidad()/5)
-						*(indice + 2)/4);
+				int habitantesNuevos = (residencial.disponibilidad()/5)
+						*(indice + 2)/4;
 //				habitantesNuevos -= (int)(residencial.danio()/5);
 				residencial.modificarCantidadDeHabitantes(habitantesNuevos);
 			}else{
@@ -70,7 +70,7 @@ public abstract class CalculadorDeCalidadDeVida {
 				hectarea.rutaPavimentadaConectada(),
 				hectarea.redElectricaConectada());
 	}
-	
+
 	private static boolean hayConexion(RutaPavimentada ruta, Hectarea hectarea1,
 						Hectarea hectarea2) {
 		return ruta.existeConexionBFS(hectarea1.getX(), hectarea1.getY()
