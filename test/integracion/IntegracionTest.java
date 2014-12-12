@@ -187,6 +187,7 @@ public class IntegracionTest extends TestCase {
 		}
 
 		residencial.daniar(10);
+		mapa.getHectareasDaniadas().add(mapa.getHectarea(0, 10));
 
 		assertTrue (residencial.daniado());
 		partida.pasarTurno();
@@ -214,6 +215,7 @@ public class IntegracionTest extends TestCase {
 		}
 
 		residencial.daniar(20);
+		mapa.getHectareasDaniadas().add(mapa.getHectarea(0, 10));
 
 		assertTrue (residencial.daniado());
 		partida.pasarTurno();
@@ -248,6 +250,7 @@ public class IntegracionTest extends TestCase {
 		}
 
 		residencial.daniar(20);
+		mapa.getHectareasDaniadas().add(mapa.getHectarea(0, 10));
 
 		assertTrue (residencial.daniado());
 		partida.pasarTurno();
@@ -285,6 +288,9 @@ public void test10UnaEstacionDeBomberoReparaTodosLosEdificiosALosQueSeConecta(){
 		partida.agregarConstruible(central, 10, 0);
 		partida.agregarConstruible(residencial, 0, 10);
 
+
+		mapa.getHectareasDaniadas().add(mapa.getHectarea(10, 0));
+		mapa.getHectareasDaniadas().add(mapa.getHectarea(0, 10));
 
 		assertTrue (residencial.daniado());
 		assertTrue (central.daniado());
