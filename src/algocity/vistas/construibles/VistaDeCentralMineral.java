@@ -9,6 +9,7 @@ public class VistaDeCentralMineral extends VistaDeConstruible {
 		representacion = "Cm";
 		estado = "Agregar Central Mineral";
 		costo = new CentralMineral().getCosto();
+		nombre = "Central Mineral";
 	}
 
 	@Override

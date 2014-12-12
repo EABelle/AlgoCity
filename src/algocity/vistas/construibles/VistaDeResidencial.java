@@ -9,6 +9,7 @@ public class VistaDeResidencial extends VistaDeConstruible {
 		representacion = "R";
 		estado = "Agregar residencial";
 		costo = new Residencial().getCosto();
+		nombre = "Zona Residencial";
 	}
 
 	@Override

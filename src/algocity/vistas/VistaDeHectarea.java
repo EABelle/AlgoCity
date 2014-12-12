@@ -63,6 +63,14 @@ public class VistaDeHectarea extends JPanel implements Observer {
 			actualGraphics.setColor(Color.GRAY);
 			actualGraphics.drawString("r", 30, 30);
 		}
+		if (hectarea.hayGodzilla()) {
+			actualGraphics.setColor(Color.RED);
+			actualGraphics.drawString("G", 15, 20);
+		}
+		if (hectarea.hayTerremoto()) {
+			actualGraphics.setColor(Color.RED);
+			actualGraphics.drawString("T", 25, 20);
+		}
 	}
 
 	public void dibujarHectarea(HectareaAgua hectarea) {

@@ -7,7 +7,6 @@ import algocity.core.capas.Hectarea;
 import algocity.core.capas.tendido.RutaPavimentada;
 import algocity.core.construibles.Arreglable;
 import algocity.core.construibles.EstacionDeBombero;
-import algocity.core.procesadores.ProcesadorDeDaniados;
 
 public class ProcesadorDeBomberos {
 
@@ -22,7 +21,7 @@ public class ProcesadorDeBomberos {
 			for(iterDaniado = mapa.recorridoDaniados(); iterDaniado.hasNext();) {
 				Hectarea hectareaDaniada = iterDaniado.next();
 				Arreglable daniado = (Arreglable) hectareaDaniada.getConstruible();
-				if (ruta.existeConexionBFS(hectareaDeBombero.getX(), 
+				if (ruta.existeConexionBFS(hectareaDeBombero.getX(),
 					hectareaDeBombero.getY(),
 					hectareaDaniada.getX(),
 					hectareaDaniada.getY())){
@@ -32,5 +31,5 @@ public class ProcesadorDeBomberos {
 			}
 		}
 	}
-	
+
 }

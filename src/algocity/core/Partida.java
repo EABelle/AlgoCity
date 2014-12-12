@@ -129,10 +129,12 @@ public class Partida extends Observable {
 			plata += debitador.getPago();
 		}
 		Refrescador.refresh(mapa);
-		if (Godzilla.aparecer())
+		if (Godzilla.aparecer()) {
 			catastrofes.add(new Godzilla(mapa.recorridoGodzilla(turno)));
-		if (Terremoto.aparecer())
+		}
+		if (Terremoto.aparecer()) {
 			catastrofes.add(new Terremoto(mapa));
+		}
 		ProcesadorDeBomberos.procesar(mapa);
 		CalculadorDeCalidadDeVida.procesar(mapa);
 		ProcesadorDeCatastrofes.procesar(mapa, catastrofes);

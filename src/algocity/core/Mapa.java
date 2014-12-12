@@ -161,8 +161,7 @@ public class Mapa {
 		return recorrido.iterator();
 	}
 
-	public Iterator<Hectarea> RecorrerSoloEnUnRadio(int radio,
-		int x, int y) {
+	public Iterator<Hectarea> RecorrerSoloEnUnRadio(int radio, int x, int y) {
 		int i;
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
 		if ((y - radio) >= 0) {

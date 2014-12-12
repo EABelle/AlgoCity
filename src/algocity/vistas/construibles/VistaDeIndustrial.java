@@ -9,6 +9,7 @@ public class VistaDeIndustrial extends VistaDeConstruible {
 		representacion = "I";
 		estado = "Agregar industrial";
 		costo = new Industrial().getCosto();
+		nombre = "Zona Industrial";
 	}
 
 	@Override

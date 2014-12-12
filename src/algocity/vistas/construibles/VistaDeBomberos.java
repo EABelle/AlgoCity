@@ -9,6 +9,7 @@ public class VistaDeBomberos extends VistaDeConstruible {
 		representacion = "B";
 		estado = "Agregar bomberos";
 		costo = new EstacionDeBombero().getCosto();
+		nombre = "Estación de Bomberos";
 	}
 
 	@Override
