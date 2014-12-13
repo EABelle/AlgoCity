@@ -88,7 +88,7 @@ public class Terremoto extends Catastrofe {
 
 	public static boolean aparecer() {
 		Random rm = new Random();
-		int aparece = rm.nextInt(1);
+		int aparece = rm.nextInt(15);
 		if ((cantidadPresentes < MaximaCantidad) && (aparece == 0)) {
 			cantidadPresentes ++;
 			return true;

@@ -21,10 +21,11 @@ public class Partida extends Observable {
 	protected Mapa mapa;
 	protected int turno;
 	int plata;
-	ArrayList<Catastrofe> catastrofes;
 	static int TIEMPO = 5; //en segundos
 	boolean inicializada;
+	boolean conCatastrofes;
 	String estado;
+	ArrayList<Catastrofe> catastrofes;
 
 	public Partida (Mapa mapa) {
 		this.mapa = mapa;
@@ -36,6 +37,7 @@ public class Partida extends Observable {
 		turno = 0;
 		plata = Configuracion.PlataInicial;
 		inicializada = true;
+		conCatastrofes = true;
 		Terremoto.inicializar();
 		Godzilla.inicializar();
 	}
@@ -50,6 +52,10 @@ public class Partida extends Observable {
 
 	public void setPlata(int plata) {
 		this.plata = plata;
+	}
+
+	public void setConCatastrofes(boolean conCatastrofes) {
+		this.conCatastrofes = conCatastrofes;
 	}
 
 	public boolean agregarConstruible(Construible construible, int x, int y) {
@@ -133,6 +139,15 @@ public class Partida extends Observable {
 			plata += pago;
 		}
 		Refrescador.refresh(mapa);
+		procesarCatastrofes();
+		ProcesadorDeBomberos.procesar(mapa);
+		CalculadorDeCalidadDeVida.procesar(mapa);
+		ProcesadorDeCatastrofes.procesar(mapa, catastrofes);
+		hayCambios();
+	}
+
+	private void procesarCatastrofes() {
+		if (!this.conCatastrofes) return;
 		Refrescador.actualizarCatastrofes(catastrofes);
 		if (Godzilla.aparecer()) {
 			catastrofes.add(new Godzilla(mapa.recorridoGodzilla(turno)));
@@ -142,10 +157,6 @@ public class Partida extends Observable {
 			catastrofes.add(new Terremoto(mapa));
 			setEstado("Apareció Terremoto!");
 		}
-		ProcesadorDeBomberos.procesar(mapa);
-		CalculadorDeCalidadDeVida.procesar(mapa);
-		ProcesadorDeCatastrofes.procesar(mapa, catastrofes);
-		hayCambios();
 	}
 
 	public void jugar() {

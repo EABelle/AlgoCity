@@ -193,7 +193,7 @@ public class Mapa {
 			for (i = 1; i < 2 * radio; i ++) {
 				if (((y - radio + i) >= 0) &&
 					((y - radio + i) < columnas))
-					recorrido.add(hectareas[x - radio][y - radio + i]);
+					recorrido.add(hectareas[x + radio][y - radio + i]);
 			}
 		}
 		return recorrido.iterator();

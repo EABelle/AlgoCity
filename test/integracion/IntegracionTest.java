@@ -176,6 +176,7 @@ public class IntegracionTest extends TestCase {
 
 		Partida partida = new Partida(mapa);
 		partida.inicializar();
+		partida.setConCatastrofes(false);
 		Residencial residencial = new Residencial();
 
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
@@ -204,6 +205,7 @@ public class IntegracionTest extends TestCase {
 
 		Partida partida = new Partida(mapa);
 		partida.inicializar();
+		partida.setConCatastrofes(false);
 		Residencial residencial = new Residencial();
 
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
@@ -234,6 +236,7 @@ public class IntegracionTest extends TestCase {
 
 		Partida partida = new Partida(mapa);
 		partida.inicializar();
+		partida.setConCatastrofes(false);
 		Residencial residencial = new Residencial();
 
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
@@ -268,6 +271,7 @@ public void test10UnaEstacionDeBomberoReparaTodosLosEdificiosALosQueSeConecta(){
 
 		Partida partida = new Partida(mapa);
 		partida.inicializar();
+		partida.setConCatastrofes(false);
 		Residencial residencial = new Residencial();
 		CentralNuclear central = new CentralNuclear();
 

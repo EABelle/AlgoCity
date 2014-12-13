@@ -19,6 +19,7 @@ public class TerremotoTest extends TestCase{
 
 		Partida partida = new Partida(mapa);
 		partida.inicializar();
+		partida.setConCatastrofes(false);
 		Residencial residencial = new Residencial();
 
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
@@ -55,6 +56,7 @@ public class TerremotoTest extends TestCase{
 
 		Partida partida = new Partida(mapa);
 		partida.inicializar();
+		partida.setConCatastrofes(false);
 		Residencial residencial = new Residencial();
 
 		partida.agregarConstruible(new EstacionDeBombero(), 0, 0);
@@ -65,10 +67,12 @@ public class TerremotoTest extends TestCase{
 			partida.agregarRutaPavimentada(0, j);
 		}
 
-		Terremoto terremoto = new Terremoto(0, 30);
+		Terremoto terremoto = new Terremoto(0, 27);
 
 		terremoto.procesar(mapa);
 
+		assertTrue (residencial.daniado());
+		partida.pasarTurno();
 		assertTrue (residencial.daniado());
 		partida.pasarTurno();
 		assertTrue (residencial.daniado());

@@ -27,6 +27,7 @@ public class ProcesadorDeBomberos {
 					hectareaDaniada.getY())){
 						bombero.reparar(daniado);
 						procesadorDeDaniados.procesarDanios(mapa, hectareaDaniada);
+						hectareaDaniada.hayCambio();
 				}
 			}
 		}
