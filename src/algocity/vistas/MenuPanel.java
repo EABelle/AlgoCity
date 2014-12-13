@@ -46,10 +46,10 @@ public class MenuPanel extends JPanel {
 	}
 
 	private void inicializarMenuUsuario() {
-		botonAgregarUsuario = new JButton("Agregar usuario nuevo");
+		botonAgregarUsuario = new JButton("Agregar jugador nuevo");
 		botonCargarPartida = new JButton("Cargar partida");
-		botonUsuario = new JButton("Seleccionar usuario");
-		labelUsuario = new JLabel("No hay usuario seleccionado");
+		botonUsuario = new JButton("Seleccionar jugador");
+		labelUsuario = new JLabel("No hay jugador seleccionado");
 
 		add(botonAgregarUsuario, BorderLayout.PAGE_START);
 		add(botonUsuario, BorderLayout.PAGE_START);
