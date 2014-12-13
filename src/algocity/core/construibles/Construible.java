@@ -45,7 +45,7 @@ public abstract class Construible {
 	}
 
 	public void teImpacta(Terremoto terremoto) {
-
+		daniar(terremoto.getDanio());
 	}
 
 	public void teImpacta(Godzilla godzy) {

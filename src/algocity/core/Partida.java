@@ -133,6 +133,7 @@ public class Partida extends Observable {
 			plata += pago;
 		}
 		Refrescador.refresh(mapa);
+		Refrescador.actualizarCatastrofes(catastrofes);
 		if (Godzilla.aparecer()) {
 			catastrofes.add(new Godzilla(mapa.recorridoGodzilla(turno)));
 			setEstado("Apareció Godzilla!");

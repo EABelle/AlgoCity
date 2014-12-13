@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
+import algocity.core.capas.catastrofes.Catastrofe;
 import algocity.core.construibles.Construible;
 import algocity.core.construibles.Refrescable;
 
@@ -45,6 +46,17 @@ public abstract class Refrescador {
 			Refrescable refrescable = (Refrescable)hectarea.getConstruible();
 			refrescable.refresh();
 		}
+	}
+
+	public static void actualizarCatastrofes(ArrayList<Catastrofe> catastrofes) {
+		ArrayList<Catastrofe> catastrofesFinalizadas = new ArrayList<Catastrofe>();
+		for (Iterator<Catastrofe> iterator = catastrofes.iterator(); iterator.hasNext();) {
+			Catastrofe catastrofe = iterator.next();
+			if (!catastrofe.estaPresente()) {
+				catastrofesFinalizadas.add(catastrofe);
+			}
+		}
+		catastrofes.removeAll(catastrofesFinalizadas);
 	}
 
 }

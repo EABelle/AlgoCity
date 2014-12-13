@@ -5,30 +5,41 @@ import java.util.Random;
 
 import algocity.core.Mapa;
 import algocity.core.capas.Hectarea;
-import algocity.core.construibles.Construible;
 import algocity.core.procesadores.ProcesadorDeDaniados;
 
 public class Terremoto extends Catastrofe {
+
+	private static final double Paso = 1.5;
 	private static final int MaximaCantidad = 3;
+
+	static int cantidadPresentes;
+
 	int origenX;
 	int origenY;
-	float danio;
 	int radio;
-	static int cantidadPresentes;
+	float danio;
+
+	private boolean presente;
 
 
 	public Terremoto(int x, int y) {
 		origenX = x;
 		origenY = y;
-		danio = 50;
-		radio=0;
-		cantidadPresentes ++;
+		inicializarVariables();
 	}
 
 	public Terremoto(Mapa mapa) {
 		Random rn = new Random();
 		origenX = rn.nextInt(mapa.getFilas());
 		origenY = rn.nextInt(mapa.getColumnas());
+		inicializarVariables();
+	}
+
+	private void inicializarVariables() {
+		danio = 50;
+		radio = 0;
+		cantidadPresentes ++;
+		presente = true;
 	}
 
 	@Override
@@ -37,15 +48,15 @@ public class Terremoto extends Catastrofe {
 		Hectarea hectarea;
 		Iterator<Hectarea> iter;
 		ProcesadorDeDaniados procesadorDeDanios = new ProcesadorDeDaniados();
-
 		if(radio == 0) {
 			hectarea = mapa.getHectarea(origenX, origenY);
 			hectarea.teImpacta(this);
 			procesadorDeDanios.procesarDanios(mapa, hectarea);
 			radioRestante --;
 		}
-		while (((danio - 1.5) > 0) && ((radioRestante --) >= 0)){
-			danio -= 1.5;
+
+		while (((danio - Paso) > 0) && ((radioRestante --) >= 0)){
+			danio -= Paso;
 			radio ++;
 			for(iter = mapa.RecorrerSoloEnUnRadio(radio, origenX, origenY);
 				iter.hasNext();){
@@ -55,13 +66,15 @@ public class Terremoto extends Catastrofe {
 			}
 		}
 
-		if (danio <= 0) {
+		if (danio < Paso) {
+			presente = false;
 			cantidadPresentes --;
 		}
 	}
 
-	public void impactame(Construible construible){
-		construible.daniar(danio);
+	@Override
+	public boolean estaPresente() {
+		return presente;
 	}
 
 	@Override
@@ -75,12 +88,16 @@ public class Terremoto extends Catastrofe {
 
 	public static boolean aparecer() {
 		Random rm = new Random();
-		int aparece = rm.nextInt(5);
+		int aparece = rm.nextInt(1);
 		if ((cantidadPresentes < MaximaCantidad) && (aparece == 0)) {
 			cantidadPresentes ++;
 			return true;
 		}
 		return false;
+	}
+
+	public float getDanio() {
+		return danio;
 	}
 
 }
