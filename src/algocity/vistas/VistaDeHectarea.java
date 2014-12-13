@@ -30,9 +30,10 @@ public class VistaDeHectarea extends JPanel implements Observer {
 		super.paintComponent(g);
 		actualGraphics = g;
 
-		g.setFont(new Font("helvetica", Font.BOLD, 12));
+		g.setFont(new Font("helvetica", Font.BOLD, 16));
 
 		printConstruible();
+		g.setFont(new Font("helvetica", Font.PLAIN, 12));
 		if (hectarea.redDeAguaConectada()) {
 			actualGraphics.setColor(Color.BLUE);
 			actualGraphics.drawString("a", 10, 30);
@@ -44,8 +45,11 @@ public class VistaDeHectarea extends JPanel implements Observer {
 	private void printConstruible() {
 		Construible cons = hectarea.getConstruible();
 		if (cons != null) {
-			actualGraphics.setColor(Color.BLACK);
-			actualGraphics.drawString(cons.getRepresentation(), 10, 10);
+			int r = 30; int g = 30; int b = 30;
+			r += (100 - cons.getPorcetajeDeVida()) * 2;
+			Color color = new Color(r, g, b);
+			actualGraphics.setColor(color);
+			actualGraphics.drawString(cons.getRepresentation(), 10, 15);
 		}
 	}
 
@@ -65,11 +69,11 @@ public class VistaDeHectarea extends JPanel implements Observer {
 		}
 		if (hectarea.hayGodzilla()) {
 			actualGraphics.setColor(Color.RED);
-			actualGraphics.drawString("G", 15, 20);
+			actualGraphics.drawString("G", 20, 20);
 		}
 		if (hectarea.hayTerremoto()) {
 			actualGraphics.setColor(Color.RED);
-			actualGraphics.drawString("T", 25, 20);
+			actualGraphics.drawString("T", 30, 20);
 		}
 	}
 

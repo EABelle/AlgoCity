@@ -17,14 +17,15 @@ import algocity.core.Partida;
 
 public class VistaDeEstado extends JPanel implements Observer {
 
+	private ControladorPartida controladorPartida;
 	private JLabel estado;
 	private JLabel mensaje;
 	private JLabel plata;
 	private JLabel tiempoRestante;
-	private ControladorPartida controladorPartida;
+	private JLabel info;
 	private JLabel turno;
-	private JButton pasarTurno;
 	private JPanel miniMapa;
+	private JButton pasarTurno;
 	private JButton guardarPartida;
 	private JButton playPauseMusic;
 	private JButton playPauseTimer;
@@ -44,6 +45,7 @@ public class VistaDeEstado extends JPanel implements Observer {
 		mensaje.setForeground(Color.darkGray);
 		plata = new JLabel();
 		turno = new JLabel();
+		info = new JLabel();
 		tiempoRestante = new JLabel();
 
 		guardarPartida = new JButton("Guardar Partida");
@@ -90,10 +92,11 @@ public class VistaDeEstado extends JPanel implements Observer {
 		add(estado);
 		add(mensaje);
 		add(plata);
-		add(playPauseMusic);
-		add(guardarPartida);
 		add(turno);
 		add(tiempoRestante);
+		add(info);
+		add(playPauseMusic);
+		add(guardarPartida);
 		add(pasarTurno);
 		add(playPauseTimer);
 
@@ -141,7 +144,12 @@ public class VistaDeEstado extends JPanel implements Observer {
 		setPlata(partida.getPlata());
 		setTurno(partida.getTurno());
 		setTiempoRestante(this.controladorPartida.getTiempoRestante());
+		String estado = partida.getEstado();
+		setInfo(estado);
+	}
 
+	private void setInfo(String info) {
+		this.info.setText(info);
 	}
 
 

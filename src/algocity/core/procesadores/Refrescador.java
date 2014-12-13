@@ -14,6 +14,15 @@ public abstract class Refrescador {
 		refresh(mapa.getHectareasIndustriales());
 		refresh(mapa.getHectareasDeCentralElectrica());
 		rearmar(mapa.getHectareasDaniadas());
+		deshacerCatastrofes(mapa.recorridoSecuencial());
+	}
+
+	private static void deshacerCatastrofes(Iterator<Hectarea> iter) {
+		while (iter.hasNext()) {
+			Hectarea hectarea= iter.next();
+			hectarea.setGodzillaPresente(false);
+			hectarea.setTerremotoPresente(false);
+		}
 	}
 
 	private static void rearmar(ArrayList<Hectarea> hectareas) {

@@ -112,17 +112,15 @@ public abstract class Hectarea extends NodoTendido {
 	public void teImpacta(Terremoto terremoto) {
 		if (construible != null)
 			construible.teImpacta(terremoto);
-		this.terremotoPresente = true;
+		setTerremotoPresente(true);
 		hayCambio();
-		this.terremotoPresente = false;
 	}
 
 	public void teImpacta(Godzilla godzy) {
 		if (construible != null)
 			construible.teImpacta(godzy);
-		godzillaPresente = true;
+		setGodzillaPresente(true);
 		hayCambio();
-		godzillaPresente = false;
 	}
 
 	public boolean hayGodzilla() {
@@ -133,6 +131,19 @@ public abstract class Hectarea extends NodoTendido {
 		return terremotoPresente;
 	}
 
+	public void setGodzillaPresente(boolean godzillaPresente) {
+		if (this.godzillaPresente != godzillaPresente) {
+			this.godzillaPresente = godzillaPresente;
+			hayCambio();
+		}
+	}
+
+	public void setTerremotoPresente(boolean terremotoPresente) {
+		if (this.terremotoPresente != terremotoPresente) {
+			this.terremotoPresente = terremotoPresente;
+			hayCambio();
+		}
+	}
 
 	public void procesarConexion(Mapa mapa) {
 		if (construible != null) {

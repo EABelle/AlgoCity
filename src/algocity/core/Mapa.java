@@ -33,6 +33,7 @@ public class Mapa {
 	private RedDeAgua redDeAgua;
 	private RedElectrica redElectrica;
 	private RutaPavimentada rutaPavimentada;
+	private ArrayList<Hectarea> recorridoSecuencial;
 
 
 
@@ -137,13 +138,16 @@ public class Mapa {
 	}
 
 	public Iterator<Hectarea> recorridoSecuencial() {
-		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
-		for (int i = 0; i < filas; i++) {
-			for (int j = 0; j < columnas; j++) {
-				recorrido.add(hectareas[i][j]);
+		if (this.recorridoSecuencial == null) {
+			ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+			for (int i = 0; i < filas; i++) {
+				for (int j = 0; j < columnas; j++) {
+					recorrido.add(hectareas[i][j]);
+				}
 			}
+			this.recorridoSecuencial = recorrido;
 		}
-		return recorrido.iterator();
+		return this.recorridoSecuencial.iterator();
 	}
 
 	public Iterator<Hectarea> recorrerEnUnRadio(int radio, int x, int y) {

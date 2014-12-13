@@ -24,6 +24,7 @@ public class Partida extends Observable {
 	ArrayList<Catastrofe> catastrofes;
 	static int TIEMPO = 5; //en segundos
 	boolean inicializada;
+	String estado;
 
 	public Partida (Mapa mapa) {
 		this.mapa = mapa;
@@ -124,16 +125,21 @@ public class Partida extends Observable {
 
 	public void pasarTurno() {
 		turno ++;
+		setEstado("");
 		if ((turno % 30) == 0){
 			Debitador debitador = new Debitador(mapa);
-			plata += debitador.getPago();
+			int pago = debitador.getPago();
+			setEstado("Ganancia " + pago);
+			plata += pago;
 		}
 		Refrescador.refresh(mapa);
 		if (Godzilla.aparecer()) {
 			catastrofes.add(new Godzilla(mapa.recorridoGodzilla(turno)));
+			setEstado("Apareció Godzilla!");
 		}
 		if (Terremoto.aparecer()) {
 			catastrofes.add(new Terremoto(mapa));
+			setEstado("Apareció Terremoto!");
 		}
 		ProcesadorDeBomberos.procesar(mapa);
 		CalculadorDeCalidadDeVida.procesar(mapa);
@@ -147,6 +153,18 @@ public class Partida extends Observable {
 			this.pasarTurno();
 			turno++;
 		}
+	}
+
+	public void setEstado(String estado) {
+		if (this.estado != "" && estado != "") {
+			this.estado += " | " + estado;
+		} else {
+			this.estado = estado;
+		}
+	}
+
+	public String getEstado() {
+		return estado;
 	}
 
 	public Mapa getMapa() {

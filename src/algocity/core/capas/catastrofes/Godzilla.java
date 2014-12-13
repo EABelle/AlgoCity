@@ -62,7 +62,7 @@ public class Godzilla extends Catastrofe {
 
 	public static boolean aparecer() {
 		Random rn = new Random();
-		if (!presente&(rn.nextInt(49) % 12 == 0)) {
+		if (!presente&(rn.nextInt(49) % 2 == 0)) {
 			presente = true;
 		}
 		return presente;

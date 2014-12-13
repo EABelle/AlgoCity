@@ -15,7 +15,7 @@ public class Terremoto extends Catastrofe {
 	float danio;
 	int radio;
 	static int cantidadPresentes;
-	
+
 
 	public Terremoto(int x, int y) {
 		origenX = x;
@@ -24,12 +24,11 @@ public class Terremoto extends Catastrofe {
 		radio=0;
 		cantidadPresentes ++;
 	}
-	
+
 	public Terremoto(Mapa mapa) {
 		Random rn = new Random();
 		origenX = rn.nextInt(mapa.getFilas());
 		origenY = rn.nextInt(mapa.getColumnas());
-		
 	}
 
 	@Override
@@ -38,7 +37,7 @@ public class Terremoto extends Catastrofe {
 		Hectarea hectarea;
 		Iterator<Hectarea> iter;
 		ProcesadorDeDaniados procesadorDeDanios = new ProcesadorDeDaniados();
-		
+
 		if(radio == 0) {
 			hectarea = mapa.getHectarea(origenX, origenY);
 			hectarea.teImpacta(this);
@@ -55,12 +54,12 @@ public class Terremoto extends Catastrofe {
 				procesadorDeDanios.procesarDanios(mapa, hectarea);
 			}
 		}
-		
+
 		if (danio <= 0) {
 			cantidadPresentes --;
 		}
 	}
-	
+
 	public void impactame(Construible construible){
 		construible.daniar(danio);
 	}
